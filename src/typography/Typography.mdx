@@ -1,0 +1,41 @@
+import { Fragment as F } from 'react'
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks'
+import decorator from '../stories/decorator'
+import { Title, Subtitle, Text } from '.'
+import { fonts } from '../config'
+
+<Meta title="GreyVest Library | Typography" decorators={[decorator]} />
+
+export let x = 'test'
+
+# Typography
+
+Grey Vest uses three typography components: `Title`, `Subtitle`, and `Text`.
+
+## `Title`
+
+<Preview>
+  <Story name="Title">
+    <Title>Lorem ipsum dolor sit amet</Title>
+    <Size font={fonts.Title} />
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="Title (large)">
+    <Title large>
+      Lorem Ipsum etc
+      <Size font={fonts.Title.variants.large} />
+    </Title>
+  </Story>
+</Preview>
+
+## Subtitle
+
+<Story name="Subtitle">
+  <Subtitle>Lorem Ipsum etc</Subtitle>
+</Story>
+
+<Story name="Subtitle (large)">
+  <Subtitle large>Lorem Ipsum etc</Subtitle>
+</Story>

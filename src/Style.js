@@ -4,7 +4,7 @@ let tableCellPadding = 8
 
 /*
 Component styles for the Grey Vest library. Each of these should be associated
-with a specific omponent in the lib. The css/emotion refactor will move each of
+with a specific component in the lib. The css/emotion refactor will move each of
 these styles into its respective component - when it's finished, we should be
 able to kill this file.
 */
@@ -19,53 +19,7 @@ export default () => (
         font-size: 14px;
         color: #454545;
       }
-      h1 {
-        font-family: Lato;
-        font-size: 18px;
-        font-weight: bold;
-        line-height: 1.3;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        /*font-size: 22px;*/
-        margin: 30px 0;
-      }
-
       /* Button */
-      .gv-button {
-        padding: 11px 22px 12px 22px;
-        border-radius: 3px;
-        background-color: #e3e5e6;
-
-        border: none;
-        outline: none;
-        font-size: 14px;
-        font-weight: bold;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        cursor: pointer;
-        /* margin 5px ????? */
-        transition: background-color .25s linear;
-      }
-      .gv-button.active, .gv-button.primary {
-        background-color: #0076de;
-        color: #fff;
-      }
-      .gv-button:disabled {
-        cursor: not-allowed;
-        opacity: 0.5;
-      }
-      .gv-button.success {
-        background-color: #5bb85b !important;
-      }
-      .gv-button.danger {
-        background-color: #d75050 !important;
-      }
-      .gv-button-radio > .gv-button {
-        margin-right: 20px;
-      }
-      .gv-button-radio > .gv-button:last-child {
-        margin-right: 0;
-      }
       .gv-link-button {
         /* Same as a contexture-themed link */
         color: #0076DE;

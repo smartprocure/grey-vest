@@ -10,7 +10,7 @@ export default {
 }
 
 export let basicUsage = () => (
-  <Button onClick={() => action('clicked')()}>Click</Button>
+<Button onClick={() => action('clicked')()}>Click</Button>
 )
 
 export let disabled = () => (
