@@ -1,8 +1,8 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
-import { NestedPicker } from '.'
-import decorator from './stories/decorator'
+import { NestedPicker } from '..'
+import decorator from './decorator'
 
 storiesOf('Components|NestedPicker', module)
   .addDecorator(decorator)

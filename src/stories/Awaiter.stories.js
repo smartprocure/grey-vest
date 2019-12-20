@@ -1,7 +1,7 @@
 import React from 'react'
 import { fromPromise } from 'mobx-utils'
-import { Awaiter, Button, Box } from '.'
-import decorator from './stories/decorator'
+import { Awaiter, Button, Box } from '..'
+import decorator from './decorator'
 
 export default {
   title: 'Components|Awaiter',

@@ -1,6 +1,6 @@
 import React from 'react'
-import { Checkbox } from '.'
-import decorator from './stories/decorator'
+import { Checkbox } from '..'
+import decorator from './decorator'
 
 export default {
   title: 'Components|Checkbox',

@@ -1,6 +1,5 @@
 import React from 'react'
-import { Dynamic } from '../greyVest'
-import TextButton from './TextButton'
+import { Dynamic, TextButton } from '.'
 
 let SmallIcon = ({ icon, style, ...props }) => (
   <i className="material-icons" style={{ fontSize: 20, ...style }} {...props}>

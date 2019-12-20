@@ -1,7 +1,7 @@
 import React from 'react'
 import { action } from '@storybook/addon-actions'
-import { LinkButton } from '.'
-import decorator from './stories/decorator'
+import { LinkButton } from '..'
+import decorator from './decorator'
 
 let click = action('clicked')
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import F from 'futil'
-import { useLensObject } from '../utils/react'
+import { useLensObject } from './utils/react'
 import { Modal, Button, Popover, DropdownItem } from '.'
 import decorator from './stories/decorator'
 

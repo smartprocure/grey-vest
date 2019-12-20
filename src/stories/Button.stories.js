@@ -1,7 +1,7 @@
 import React from 'react'
 import { action } from '@storybook/addon-actions'
-import { Button } from '.'
-import decorator from './stories/decorator'
+import { Button } from '..'
+import decorator from './decorator'
 
 export default {
   title: 'Components|Button',
