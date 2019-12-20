@@ -1,0 +1,14 @@
+import React from 'react'
+import { action } from '@storybook/addon-actions'
+import { LinkButton } from '..'
+import decorator from './decorator'
+
+let click = action('clicked')
+
+export default {
+  title: 'Components|LinkButton',
+  component: LinkButton,
+  decorators: [decorator],
+}
+
+export let story = () => <LinkButton onClick={() => click()}>Click</LinkButton>

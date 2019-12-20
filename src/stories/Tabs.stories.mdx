@@ -1,0 +1,175 @@
+import { Meta, Preview, Story } from '@storybook/addon-docs/blocks'
+import { action } from '@storybook/addon-actions'
+import { observable } from 'mobx'
+import { Observer } from 'mobx-react'
+import { Tabs, Tab, TabLabel, TabContent, ButtonRadio, Button } from '..'
+import decorator from './decorator'
+
+<Meta title="Components|Tabs" component={Tabs} decorators={[decorator]} />
+
+# Tabs
+
+## Overview
+
+A tab control which switches out content dynamically. `Tabs` is used with one or more `Tab` components (or `TabLabel`/`TabContent` pairs) as children.
+
+```js
+<Tabs>
+  <Tab label="Tab One">Tab One Contents</Tab>
+  <Tab label="Tab Two">Tab Two Contents</Tab>
+</Tabs>
+```
+
+## Stories
+
+### Base usage
+
+<Preview>
+  <Story name="Base usage">
+    <Tabs>
+      <Tab label="Tab One">Tab One Contents</Tab>
+      <Tab label="Tab Two">Tab Two Contents</Tab>
+    </Tabs>
+  </Story>
+</Preview>
+
+### Anonymous values
+
+<Preview>
+  <Story name="Anonymous values">
+    <Tabs defaultValue={0}>
+      <Tab label="First Tab">First Tab Contents</Tab>
+      <Tab label="Second Tab">Second Tab Contents</Tab>
+    </Tabs>
+  </Story>
+</Preview>
+
+### TabLabel and TabContent
+
+<Preview>
+  <Story name="TabLabel and TabContent">
+    <Tabs>
+      <TabLabel value="results">Results</TabLabel>
+      <TabContent value="results">Results Tables</TabContent>
+      <Tab value="analytics" label="Analytics">
+        Charts and Stuff
+      </Tab>
+    </Tabs>
+  </Story>
+</Preview>
+
+### Tab render function
+
+<Preview>
+  <Story name="Tab render function">
+    <Tabs>
+      <Tab label="Analytics">Charts and Stuff</Tab>
+      <Tab label="Analytics2" value="tab 2">
+        {tab => `Current tab is ${tab}`}
+      </Tab>
+    </Tabs>
+  </Story>
+</Preview>
+
+### Uncontrolled with defaultValue
+
+<Preview>
+  <Story name="Uncontrolled with defaultValue">
+    <Tabs defaultValue="analytics">
+      <Tab value="results" label="Results">
+        Results Tables
+      </Tab>
+      <Tab value="analytics" label="Analytics">
+        Charts and Stuff
+      </Tab>
+    </Tabs>
+  </Story>
+</Preview>
+
+### Controlled
+
+<Preview>
+  <Story name="Controlled">
+    {() => {
+      let state = observable({ tab: 'results' })
+      return (
+        <Observer>
+          {() => (
+            <>
+              <Button onClick={() => (state.tab = 'analytics')}>
+                Change from {state.tab} to analytics
+              </Button>
+              <Tabs
+                onChange={(x, y) => {
+                  state.tab = x
+                  action('change tab')(x, y)
+                }}
+                value={state.tab}
+              >
+                <Tab value="results" label="Results">
+                  Results Tables
+                </Tab>
+                <Tab value="analytics" label="Analytics">
+                  Charts and Stuff
+                </Tab>
+              </Tabs>
+            </>
+          )}
+        </Observer>
+      )
+    }}
+  </Story>
+</Preview>
+
+### Custom TabList and TabPanel
+
+<Preview>
+  <Story name="Custom TabList and TabPanel">
+    <Tabs TabsList={ButtonRadio} TabPanel={React.Fragment}>
+      <Tab value="results" label="Results">
+        Results Tables
+      </Tab>
+      <Tab value="analytics" label="Analytics">
+        Charts and Stuff
+      </Tab>
+    </Tabs>
+  </Story>
+</Preview>
+
+## Component API
+
+### `Tabs`
+
+| Prop Name      | Type             | Description                                                                                       |
+| -------------- | ---------------- | ------------------------------------------------------------------------------------------------- |
+| `value`        | string/number    | Sets tab value. Makes it controlled.                                                              |
+| `defaultValue` | string/number    | Default value if uncontrolled.                                                                    |
+| `TabsList`     | Component        | Component to use to render the list of tab options                                                |
+| `TabPanel`     | Component        | Component to use for the tab panel which wraps active tab content                                 |
+| `onChange`     | (to, from) => {} | Function to handle tab change. Takes (to, from) and works on both controlled and uncontrolled Tab |
+
+### `Tab`
+
+| Prop Name  | Type          | Description                                                                                      |
+| ---------- | ------------- | ------------------------------------------------------------------------------------------------ |
+| `value`    | string/number | Tab value, used to represent the underlying value. Defaults to the index in the list of children |
+| `label`    | Fragment      | Label used for the tab option                                                                    |
+| `children` | Fragment      | Tab contents shown if the tab is active                                                          |
+
+### `TabLabel`
+
+Used in conjunction with TabContent as an alternative to a combined Tab.
+
+| Prop Name  | Type          | Description                                                                                      |
+| ---------- | ------------- | ------------------------------------------------------------------------------------------------ |
+| `value`    | string/number | Tab value, used to represent the underlying value. Defaults to the index in the list of children |
+| `children` | Fragment      | Label used for the tab option                                                                    |
+
+### `TabContent`
+
+Used in conjunction with TabLabel as an alternative to a combined Tab.
+
+| Prop Name  | Type          | Description                                                                                      |
+| ---------- | ------------- | ------------------------------------------------------------------------------------------------ |
+| `value`    | string/number | Tab value, used to represent the underlying value. Defaults to the index in the list of children |
+| `children` | Fragment      | Tab contents shown if the tab is active                                                          |
