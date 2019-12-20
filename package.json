@@ -1,14 +1,14 @@
 {
   "name": "grey-vest",
   "version": "2.10.0",
-  "description": "React components for building contexture interfaces",
+  "description": "GreyVest component library",
   "main": "dist/index.js",
   "scripts": {
     "start": "npm run storybook",
     "build": "babel ./src --out-dir ./dist --source-maps --delete-dir-on-start",
     "watch": "npm run build -- --watch",
     "prepublish": "npm run build",
-    "storybook": "start-storybook -p 3001",
+    "storybook": "start-storybook -p 3002",
     "build-storybook": "build-storybook",
     "deploy-storybook": "storybook-to-ghpages",
     "lint": "eslint src stories .storybook .circleci __tests__",
