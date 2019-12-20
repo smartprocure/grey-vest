@@ -5,7 +5,7 @@ import { Modal, Button, Popover, DropdownItem } from '.'
 import decorator from './stories/decorator'
 
 export default {
-  title: 'GreyVest Library|Modal',
+  title: 'Components|Modal',
   component: Modal,
   decorators: [decorator],
 }

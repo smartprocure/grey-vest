@@ -3,7 +3,7 @@ import { Checkbox } from '.'
 import decorator from './stories/decorator'
 
 export default {
-  title: 'GreyVest Library|Checkbox',
+  title: 'Components|Checkbox',
   decorators: [decorator],
   component: Checkbox,
   parameters: {

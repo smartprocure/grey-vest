@@ -5,7 +5,7 @@ import { Button, Popover } from '.'
 import decorator from './stories/decorator'
 
 export default {
-  title: 'GreyVest Library|Popover',
+  title: 'Components|Popover',
   component: Popover,
   decorators: [decorator],
 }

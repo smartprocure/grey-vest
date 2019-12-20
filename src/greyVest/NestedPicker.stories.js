@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions'
 import { NestedPicker } from '.'
 import decorator from './stories/decorator'
 
-storiesOf('GreyVest Library|NestedPicker', module)
+storiesOf('Components|NestedPicker', module)
   .addDecorator(decorator)
   .add('story', () => (
     <NestedPicker

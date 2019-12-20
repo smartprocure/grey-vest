@@ -6,7 +6,7 @@ import decorator from './stories/decorator'
 let click = action('clicked')
 
 export default {
-  title: 'GreyVest Library|LinkButton',
+  title: 'Components|LinkButton',
   component: LinkButton,
   decorators: [decorator],
 }

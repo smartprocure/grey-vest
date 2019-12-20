@@ -7,7 +7,7 @@ let input
 let select
 let textArea
 
-storiesOf('GreyVest Library|Refs', module)
+storiesOf('Components|Refs', module)
   .addDecorator(decorator)
   .add('story', () => (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
