@@ -31,10 +31,11 @@ export let fonts = {
         lineHeight: 1,
         letterSpacing: -0.05,
       },
+      // Modal & tab titles
       small: {
         as: 'h3',
         fontSize: 18,
-        lineHeight: 1.78,
+        lineHeight: 1.75,
         fontWeight: 'bold',
       }
     }

@@ -2,7 +2,7 @@
 import { jsx } from '@emotion/core'
 import _ from 'lodash/fp'
 import { fonts } from '../config'
-import { findKeys } from '../../utils/futil'
+import { findKeys } from '../utils'
 
 let getVariants = (props, variants) =>
   _.flow(

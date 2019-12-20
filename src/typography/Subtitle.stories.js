@@ -1,35 +1,35 @@
-import { fonts } from '../config'
-import { Grid, Flex } from '..'
+import React from 'react'
 import _ from 'lodash/fp'
 import F from 'futil'
+import { Grid, Flex } from '..'
+import { fonts } from '../config'
 import decorator from '../stories/decorator'
 import { Subtitle, Text } from '.'
-import React from 'react'
+import SizeInfo from './SizeInfo'
 
 export default {
-  title: 'GreyVest Library | Typography / Subtitle',
+  title: 'Typography | Subtitle',
   decorators: [decorator],
   component: Subtitle,
 }
 
-let SizeInfo = ({ config }) => (
-  <div style={{ paddingRight: 16, whiteSpace: 'nowrap' }}>
-    <Text>
-      {config.fontSize} / {config.lineHeight * config.fontSize}
-    </Text>
-  </div>
-)
-
 export let regular = () => (
   <Flex alignItems="center">
     <SizeInfo config={fonts.Subtitle} />
-    <Subtitle>Regular title. Lorem ipsum dolor sit amet.</Subtitle>
+    <Subtitle>
+      Regular subtitle. Used for buttons and navigation elements. Vestibulum
+      dapibus maximus magna, id suscipit massa lobortis sit amet.
+    </Subtitle>
   </Flex>
 )
 
 export let largeVariant = () => (
   <Flex alignItems="center">
     <SizeInfo config={fonts.Subtitle.variants.large} />
-    <Subtitle large>Large title. Lorem ipsum dolor sit amet.</Subtitle>
+    <Subtitle large>
+      Large subtitle. Used for section headers, subsections within pages, and
+      large buttons. Cras non nulla sit amet metus facilisis lacinia at vel
+      sapien.
+    </Subtitle>
   </Flex>
 )

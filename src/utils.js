@@ -15,3 +15,11 @@ export let openBinding = (...lens) => ({
   isOpen: F.view(...lens),
   onClose: F.off(...lens),
 })
+
+// plural of _.findKey, returns an array of keys
+export let findKeys = _.curry((predicate, data) =>
+  _.flow(
+    _.pickBy(predicate),
+    _.keys
+  )(data)
+)
