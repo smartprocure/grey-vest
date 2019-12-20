@@ -18,8 +18,7 @@
     "test-ci": "npm t -- --json --outputFile=test-results.json",
     "duti": "duti",
     "fmt": "prettier --write '{src,stories,.storybook}/**/*'",
-    "duti:fix": "npm run lint-fix && npm run fmt",
-    "update-pkg": "node updatePackage"
+    "duti:fix": "npm run lint-fix && npm run fmt"
   },
   "repository": {
     "type": "git",
@@ -103,20 +102,15 @@
     "eslint": "^4.12.1",
     "eslint-config-smartprocure": "^1.1.0",
     "jest": "^24.7.1",
-    "material-ui-chip-input": "^1.0.0",
     "mobx": "^4.3.1",
     "mobx-react": "^6.1.1",
     "mobx-utils": "^5.0.0",
-    "moment": "^2.24.0",
     "prettier": "^1.8.2",
     "raw-loader": "^2.0.0",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "react-select": "^2.0.0",
-    "react-test-renderer": "^16.2.0",
-    "read-pkg": "^5.2.0",
-    "storybook-addon-jsx": "^7.1.0",
-    "write-pkg": "^4.0.0"
+    "react-test-renderer": "^16.2.0"
   },
   "dependencies": {
     "futil": "^1.64.3",
@@ -124,9 +118,6 @@
     "moment": "^2.24.0",
     "prop-types": "^15.7.2",
     "react-date-picker": "^7.2.0",
-    "react-dnd": "^2.5.4",
-    "react-dnd-html5-backend": "^2.5.4",
-    "react-measure": "^2.3.0",
     "react-outside-click-handler": "^1.2.3",
     "recompose": "^0.30.0"
   },
