@@ -8,8 +8,6 @@ export let fontFamilies = { primary: 'Lato' }
 
 let common = {
   fontFamily: fontFamilies.primary,
-  margin: 0,
-  padding: 0,
   fontStyle: 'normal',
   fontStretch: 'normal',
 }
@@ -18,7 +16,6 @@ export let fonts = {
   Title: {
     // Page titles
     ...common,
-    as: 'h1',
     fontSize: 30,
     lineHeight: 1.25,
     fontWeight: 300,
@@ -33,7 +30,6 @@ export let fonts = {
       },
       // Modal & tab titles
       small: {
-        as: 'h3',
         fontSize: 18,
         lineHeight: 1.75,
         fontWeight: 'bold',
@@ -43,7 +39,6 @@ export let fonts = {
   Subtitle: {
     // Regular size buttons, main nav section
     ...common,
-    as: 'h3',
     fontSize: 14,
     lineHeight: 1,
     fontWeight: 'bold',
@@ -61,7 +56,6 @@ export let fonts = {
   Text: {
     // Default body copy, table copy, general text
     ...common,
-    as: 'p',
     fontSize: 16,
     lineHeight: 1.75,
     fontWeight: 'normal',
