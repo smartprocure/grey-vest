@@ -1,7 +1,8 @@
 export let colors = {
-  secondary1: '#272c41',
-  neutral8: '#454545',
-  success00: '#5bb85b'
+  primaries: ['#0076de', '#0061b6', '#004c8e'],
+  secondaries: ['#272c41'],
+  neutrals: ['#ffffff', '', '', '', '#e8e8e8', '', '#aaaaaa', '', '#454545'],
+  success0: '#5bb85b'
 }
 
 export let fontFamilies = { primary: 'Lato' }
@@ -19,7 +20,7 @@ export let fonts = {
     fontSize: 30,
     lineHeight: 1.25,
     fontWeight: 300,
-    color: colors.secondary1,
+    color: colors.secondaries[0],
     letterSpacing: 'normal',
     variants: {
       // Extra large numerical callouts
@@ -42,7 +43,7 @@ export let fonts = {
     fontSize: 14,
     lineHeight: 1,
     fontWeight: 'bold',
-    color: colors.secondary1,
+    color: colors.secondaries[0],
     letterSpacing: 2,
     textTransform: 'uppercase',
     variants: {
@@ -59,7 +60,7 @@ export let fonts = {
     fontSize: 16,
     lineHeight: 1.75,
     fontWeight: 'normal',
-    color: colors.neutral8,
+    color: colors.neutrals[8],
     letterSpacing: 'normal',
     variants: {
       // Table header & footer, field labels, dropdown items, compact buttons, pagination, banner copy
