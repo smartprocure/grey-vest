@@ -1,10 +1,9 @@
 import React from 'react'
 import _ from 'lodash/fp'
 import F from 'futil'
-import { Grid, Flex } from '..'
-import { fonts } from '../config'
-import decorator from '../stories/decorator'
-import { Text } from '.'
+import { Grid, Flex, Text } from '../..'
+import { fonts } from '../../config'
+import decorator from '../decorator'
 import SizeInfo from './SizeInfo'
 
 export default {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text } from '.'
+import { Text } from '../..'
 
 let SizeInfo = ({ config }) => (
   <div style={{ paddingRight: 16, whiteSpace: 'nowrap' }}>

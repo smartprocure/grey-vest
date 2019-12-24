@@ -22,6 +22,7 @@ export Textarea from './Textarea'
 export TextButton from './TextButton'
 export TextHighlight from './TextHighlight'
 export TextInput from './TextInput'
+export * from './Typography'
 
 // former layout components
 // ------------------------

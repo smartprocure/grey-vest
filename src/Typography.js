@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import _ from 'lodash/fp'
-import { fonts } from '../config'
-import { findKeys } from '../utils'
+import { fonts } from './config'
+import { findKeys } from './utils'
 
 let getVariants = (props, variants) =>
   _.flow(
