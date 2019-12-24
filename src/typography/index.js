@@ -10,10 +10,9 @@ let getVariants = (props, variants) =>
     _.values
   )(variants)
 
-let toComponent = ({ as: As = 'div', variants, ...styles }) => ({
-  style,
-  ...props
-}) => <As css={[styles, ...getVariants(props, variants)]} {...props} />
+let toComponent = ({ as: As = 'div', variants, ...styles }) => props => (
+  <As css={[styles, ...getVariants(props, variants)]} {...props} />
+)
 
 // these have to be statically declared so they can be named exports :(
 let { Text, Title, Subtitle } = _.mapValues(toComponent, fonts)
