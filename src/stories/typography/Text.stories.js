@@ -7,7 +7,7 @@ import decorator from '../decorator'
 import SizeInfo from './SizeInfo'
 
 export default {
-  title: 'Typography | Text',
+  title: 'Design System | Typography / Text',
   decorators: [decorator],
   component: Text,
 }
@@ -25,7 +25,7 @@ export let regular = () => (
 export let smallVariant = () => (
   <Flex alignItems="center">
     <SizeInfo config={fonts.Text.variants.small} />
-    <Text size="small">
+    <Text small>
       Small text. Used for table headers and footers, field labels, dropdown
       items, compact buttons, pagination, and banner copy.
     </Text>
@@ -35,7 +35,7 @@ export let smallVariant = () => (
 export let extraSmallVariant = () => (
   <Flex alignItems="center">
     <SizeInfo config={fonts.Text.variants.extraSmall} />
-    <Text size="extraSmall">
+    <Text extraSmall>
       Extra-small text. Used for tooltips, validation messages. Neque porro
       quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
       velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore

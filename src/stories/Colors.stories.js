@@ -1,10 +1,9 @@
 import React from 'react'
 import _ from 'lodash/fp'
 import F from 'futil'
-// import { colors } from '../theme'
+import theme from '../theme'
 import decorator from './decorator'
 import { Flex, Title, Text } from '..'
-import { useTheme } from 'emotion-theming'
 
 let Swatch = ({ color, size = 120 }) => (
   <Flex inline column alignItems="center" style={{ margin: 8 }}>
@@ -20,13 +19,12 @@ let Swatch = ({ color, size = 120 }) => (
 )
 
 export default {
-  title: 'Colors',
+  title: 'Design System | Colors',
   decorators: [decorator],
 }
 
-export let Colors = () => {
-  let { colors } = useTheme()
-  return F.mapIndexed(
+export let Colors = () =>
+  F.mapIndexed(
     (value, key) => (
       <div>
         <Title style={{ marginTop: 32, marginBottom: 8, marginLeft: 8 }}>
@@ -42,6 +40,5 @@ export let Colors = () => {
         </div>
       </div>
     ),
-    colors
+    theme.colors
   )
-}

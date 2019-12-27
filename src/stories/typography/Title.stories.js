@@ -7,7 +7,7 @@ import decorator from '../decorator'
 import SizeInfo from './SizeInfo'
 
 export default {
-  title: 'Typography | Title',
+  title: 'Design System | Typography / Title',
   decorators: [decorator],
   component: Title,
 }
@@ -22,14 +22,14 @@ export let regular = () => (
 export let largeVariant = () => (
   <Flex alignItems="center">
     <SizeInfo config={fonts.Title.variants.large} />
-    <Title size="large">Large title. Used for extra-large callouts. Integer et vestibulum mi.</Title>
+    <Title large>Large title. Used for extra-large callouts. Integer et vestibulum mi.</Title>
   </Flex>
 )
 
 export let smallVariant = () => (
   <Flex alignItems="center">
     <SizeInfo config={fonts.Title.variants.small} />
-    <Title size="small">
+    <Title small>
       Small title. Used for modal headers and tab titles. Sed ornare bibendum
       nisl, sit amet finibus orci blandit eget. Sed rhoncus, tellus in maximus
       blandit, sapien enim suscipit nisl, sed eleifend sapien velit id nulla.

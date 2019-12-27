@@ -7,7 +7,7 @@ import decorator from '../decorator'
 import SizeInfo from './SizeInfo'
 
 export default {
-  title: 'Typography | Subtitle',
+  title: 'Design System | Typography / Subtitle',
   decorators: [decorator],
   component: Subtitle,
 }
@@ -25,7 +25,7 @@ export let regular = () => (
 export let largeVariant = () => (
   <Flex alignItems="center">
     <SizeInfo config={fonts.Subtitle.variants.large} />
-    <Subtitle size="large">
+    <Subtitle large>
       Large subtitle. Used for section headers, subsections within pages, and
       large buttons. Cras non nulla sit amet metus facilisis lacinia at vel
       sapien.
