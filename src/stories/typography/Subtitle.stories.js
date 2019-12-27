@@ -25,7 +25,7 @@ export let regular = () => (
 export let largeVariant = () => (
   <Flex alignItems="center">
     <SizeInfo config={fonts.Subtitle.variants.large} />
-    <Subtitle large>
+    <Subtitle size="large">
       Large subtitle. Used for section headers, subsections within pages, and
       large buttons. Cras non nulla sit amet metus facilisis lacinia at vel
       sapien.

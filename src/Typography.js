@@ -3,11 +3,16 @@ import { jsx } from '@emotion/core'
 import styled from '@emotion/styled'
 import _ from 'lodash/fp'
 import { findKeys } from './utils'
-import { variant, typography } from 'styled-system'
+import { variant, typography, color } from 'styled-system'
 
 export let fonts = {
   Title: {
     // Page titles
+    fontSize: 4,
+    lineHeight: 1,
+    fontWeight: 300,
+    color: 'secondaries.0',
+    letterSpacing: 'normal',
     variants: {
       // Extra large numerical callouts
       large: {
@@ -67,40 +72,19 @@ let getVariants = (props, variants) =>
     _.values
   )(variants)
 
-let toComponent = ({ as: As = 'div', variants, ...styles }) => props => (
-  <As css={[styles, ...getVariants(props, variants)]} {...props} />
-)
+let toComponent = ({ variants, ...styles }) => {
+  let Component = styled('div')(
+    typography,
+    color,
+    variant({
+      prop: 'size',
+      variants
+    })
+  )
+  Component.defaultProps = styles
+  return Component
+}
 
 // these have to be statically declared so they can be named exports :(
-let { Text, Subtitle } = _.mapValues(toComponent, fonts)
-export { Text, Subtitle }
-
-export let Title = styled('div')(
-  typography,
-  {
-    fontWeight: 300,
-    color: 'secondaries.0',
-    letterSpacing: 'normal',
-  },
-  variant({
-    prop: 'size',
-    variants: {
-      // Extra large numerical callouts
-      large: {
-        fontSize: 5,
-        lineHeight: 0,
-        letterSpacing: -0.05,
-      },
-      // Modal & tab titles
-      small: {
-        fontSize: 3,
-        lineHeight: 4,
-        fontWeight: 'bold',
-      },
-    },
-  })
-)
-Title.defaultProps = {
-  fontSize: 4,
-  lineHeight: 1,
-}
+let { Text, Subtitle, Title } = _.mapValues(toComponent, fonts)
+export { Text, Subtitle, Title }
