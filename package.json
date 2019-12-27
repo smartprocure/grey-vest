@@ -114,13 +114,16 @@
   },
   "dependencies": {
     "@emotion/core": "^10.0.27",
+    "@emotion/styled": "^10.0.27",
+    "emotion-theming": "^10.0.27",
     "futil": "^1.64.3",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "prop-types": "^15.7.2",
     "react-date-picker": "^7.2.0",
     "react-outside-click-handler": "^1.2.3",
-    "recompose": "^0.30.0"
+    "recompose": "^0.30.0",
+    "styled-system": "^5.1.4"
   },
   "readme": "README.mdx"
 }

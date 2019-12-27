@@ -2,7 +2,7 @@ import React from 'react'
 import _ from 'lodash/fp'
 import F from 'futil'
 import { Grid, Flex, Subtitle } from '../..'
-import { fonts } from '../../config'
+import { fonts } from '../../Typography'
 import decorator from '../decorator'
 import SizeInfo from './SizeInfo'
 

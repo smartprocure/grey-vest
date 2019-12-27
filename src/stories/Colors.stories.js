@@ -1,7 +1,7 @@
 import React from 'react'
 import _ from 'lodash/fp'
 import F from 'futil'
-import { colors } from '../config'
+// import { colors } from '../theme'
 import decorator from './decorator'
 import { Flex, Title, Text } from '..'
 
@@ -23,8 +23,9 @@ export default {
   decorators: [decorator],
 }
 
-export let Colors = () =>
-  F.mapIndexed(
+export let Colors = () => {
+  let { colors } = useTheme()
+  return F.mapIndexed(
     (value, key) => (
       <div>
         <Title style={{ marginTop: 32, marginBottom: 8, marginLeft: 8 }}>
@@ -42,3 +43,4 @@ export let Colors = () =>
     ),
     colors
   )
+}

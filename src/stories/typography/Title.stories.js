@@ -2,7 +2,7 @@ import React from 'react'
 import _ from 'lodash/fp'
 import F from 'futil'
 import { Grid, Flex, Title } from '../..'
-import { fonts } from '../../config'
+import { fonts } from '../../Typography'
 import decorator from '../decorator'
 import SizeInfo from './SizeInfo'
 
@@ -22,14 +22,14 @@ export let regular = () => (
 export let largeVariant = () => (
   <Flex alignItems="center">
     <SizeInfo config={fonts.Title.variants.large} />
-    <Title large>Large title. Used for extra-large callouts. Integer et vestibulum mi.</Title>
+    <Title size="large">Large title. Used for extra-large callouts. Integer et vestibulum mi.</Title>
   </Flex>
 )
 
 export let smallVariant = () => (
   <Flex alignItems="center">
     <SizeInfo config={fonts.Title.variants.small} />
-    <Title small>
+    <Title size="small">
       Small title. Used for modal headers and tab titles. Sed ornare bibendum
       nisl, sit amet finibus orci blandit eget. Sed rhoncus, tellus in maximus
       blandit, sapien enim suscipit nisl, sed eleifend sapien velit id nulla.
