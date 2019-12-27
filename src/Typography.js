@@ -75,7 +75,7 @@ let getVariants = (props, variants) =>
   )(variants)
 
 let toComponent = ({ variants, ...styles }) => ({ as: As = 'div', ...props }) => (
-  <As css={theme => [styles, ...getVariants(props, variants)]} {...props} />
+  <As css={[styles, ...getVariants(props, variants)]} {...props} />
 )
 
 // these have to be statically declared so they can be named exports :(
