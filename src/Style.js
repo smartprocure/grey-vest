@@ -104,12 +104,6 @@ export default () => (
         background: rgba(237, 237, 237, 0.5)
       }
 
-      .gv-box {
-        border-radius: 4px;
-        background-color: #fff;
-        box-shadow: 0 2px 10px 0 rgba(39, 44, 65, 0.1);
-        padding: 15px;
-      }
 
       input.gv-input, textarea.gv-input {
         padding: 10px;
