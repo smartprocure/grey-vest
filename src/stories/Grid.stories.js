@@ -2,8 +2,8 @@ import React from 'react'
 import _ from 'lodash/fp'
 import { storiesOf } from '@storybook/react'
 import { defaultProps } from 'recompose'
-import { Grid, GridItem as BaseGridItem } from '.'
-import decorator from './stories/decorator'
+import { Grid, GridItem as BaseGridItem } from '..'
+import decorator from './decorator'
 
 let GridItem = defaultProps({ className: 'gv-grid-item' })(BaseGridItem)
 
@@ -50,7 +50,7 @@ storiesOf('Components|Grid', module)
       <Grid
         columns="repeat(8, 50px)"
         rows="repeat(8, 50px)"
-        gap={2}
+        gap={1}
         style={{ backgroundColor: 'lightgrey', display: 'inline-grid' }}
       >
         <GridItem column={4} row={3}>
@@ -73,7 +73,7 @@ storiesOf('Components|Grid', module)
     </>
   ))
   .add('Rows/columns shorthand', () => (
-    <Grid columns={5} gap={10}>
+    <Grid columns={5} gap={2}>
       {_.times(
         n => (
           <div style={{ border: '2px solid black' }}>{n}</div>
