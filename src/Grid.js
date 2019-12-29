@@ -11,16 +11,12 @@ let formatAreas = _.flow(
 
 let repeatNumber = F.when(_.isNumber, x => `repeat(${x}, 1fr)`)
 
-let getSpace = (gap, override) => F.alias(F.when(_.isNil, override, gap), theme.spacings)
-
 let Grid = ({
   as: As = 'div',
   columns,
   rows,
   areas,
   gap,
-  xGap,
-  yGap,
   placeContent,
   placeItems,
   inline = false,
@@ -33,7 +29,7 @@ let Grid = ({
       gridTemplateColumns: repeatNumber(columns),
       gridTemplateRows: repeatNumber(rows),
       gridTemplateAreas: formatAreas(areas),
-      gridGap: `${getSpace(xGap, gap)} ${getSpace(yGap, gap)}`,
+      gridGap: F.alias(gap, theme.spaces),
       placeContent,
       placeItems,
     })}
