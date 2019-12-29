@@ -1,6 +1,6 @@
 {
   "name": "grey-vest",
-  "version": "2.10.0",
+  "version": "3.0.0-alpha.0",
   "description": "GreyVest component library",
   "main": "dist/index.js",
   "scripts": {
@@ -113,6 +113,9 @@
     "react-test-renderer": "^16.2.0"
   },
   "dependencies": {
+    "@emotion/core": "^10.0.27",
+    "@emotion/styled": "^10.0.27",
+    "emotion-theming": "^10.0.27",
     "futil": "^1.64.3",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",

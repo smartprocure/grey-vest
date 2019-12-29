@@ -1,6 +1,6 @@
 import React from 'react'
-import { Flex, Box, ErrorList, TextInput } from '.'
-import decorator from './stories/decorator'
+import { Flex, Box, ErrorList, TextInput } from '..'
+import decorator from './decorator'
 
 export default {
   title: 'Components|ErrorList',
