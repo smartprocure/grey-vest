@@ -3,7 +3,7 @@ import { jsx } from '@emotion/core'
 import _ from 'lodash/fp'
 import F from 'futil'
 
-let Box = ({ as: As = 'div', variant = 'normal', p = 4, ...props }) => (
+let Box = ({ as: As = 'div', variant = 'normal', ...props }) => (
   <As
     css={theme => ({
       borderRadius: theme.spaces[1],
@@ -14,7 +14,7 @@ let Box = ({ as: As = 'div', variant = 'normal', p = 4, ...props }) => (
         popup: `0 8px 16px -4px ${theme.colors.secondaries[1]}4c,
                 0 0 1px 0 ${theme.colors.secondaries[1]}4c`
       }),
-      padding: theme.spaces[p],
+      padding: theme.spaces[4],
     })}
     {...props}
   />

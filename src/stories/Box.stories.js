@@ -39,14 +39,3 @@ export let popupBox = () => (
     <Box variant="popup">Box Contents</Box>
   </Backgrounds>
 )
-
-export let controlledPadding = () => (
-  <Grid gap={3}>
-    {F.mapIndexed(
-      (value, i) => (
-        <Box p={i}>{value}px padding</Box>
-      ),
-      theme.spaces
-    )}
-  </Grid>
-)
