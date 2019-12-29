@@ -1,9 +1,7 @@
 import React from 'react'
 import { Box, Grid } from '..'
 import _ from 'lodash/fp'
-import F from 'futil'
 import decorator from './decorator'
-import theme from '../theme'
 
 export default {
   title: 'Components | Box',

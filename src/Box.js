@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import _ from 'lodash/fp'
-import F from 'futil'
 
 let Box = ({ as: As = 'div', variant = 'normal', ...props }) => (
   <As

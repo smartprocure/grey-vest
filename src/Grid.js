@@ -20,11 +20,10 @@ let Grid = ({
   placeContent,
   placeItems,
   inline = false,
-  style,
   ...props
 }) => (
   <As
-    css={theme => ({
+    css={{
       display: `${inline ? 'inline-' : ''}grid`,
       gridTemplateColumns: repeatNumber(columns),
       gridTemplateRows: repeatNumber(rows),
@@ -32,7 +31,7 @@ let Grid = ({
       gridGap: F.alias(gap, theme.spaces),
       placeContent,
       placeItems,
-    })}
+    }}
     {...props}
   />
 )
