@@ -22,9 +22,13 @@ let Container = ({ cols = 3, ...props }) => (
 
 export let regular = () => (
   <Container>
-    <Button>Regular Button</Button>
-    <Button large>Large Button</Button>
-    <Button compact>Compact Button</Button>
+    <Button onClick={clickAction}>Regular Button</Button>
+    <Button large onClick={clickAction}>
+      Large Button
+    </Button>
+    <Button compact onClick={clickAction}>
+      Compact Button
+    </Button>
   </Container>
 )
 
@@ -82,8 +86,4 @@ export let withIcon = () => (
   <Button icon="keyboard_arrow_right">Dropdown</Button>
 )
 
-export let asDiv = () => (
-  <Button as="div" onClick={clickAction}>
-    Click
-  </Button>
-)
+export let asDiv = () => <Button as="div">Click</Button>
