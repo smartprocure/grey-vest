@@ -1,18 +1,11 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import F from 'futil'
+import _ from 'lodash/fp'
 import styled from '@emotion/styled'
 import { Subtitle, Text, Icon, Flex } from './'
 import theme from './theme'
-
-let getColor = F.aliasIn(theme.colors)
-
-let buttonStyle = (baseColor, hoverColor, activeColor, textColor) => ({
-  backgroundColor: getColor(baseColor),
-  ':hover': { backgroundColor: getColor(hoverColor) },
-  ':active': { backgroundColor: getColor(activeColor) },
-  '& *': { color: getColor(textColor) },
-})
+let { spaces, colors } = theme
 
 let ButtonText = ({ compact = false, large = false, ...props }) =>
   compact ? (
@@ -33,7 +26,7 @@ let BaseButton = ({
     css={[
       {
         padding: large
-          ? theme.spaces[4]
+          ? `${theme.spaces[4]}px ${theme.spaces[4]}px`
           : compact
           ? `${theme.spaces[1]}px ${theme.spaces[2]}px`
           : `${theme.spaces[2]}px ${theme.spaces[4]}px`,
@@ -50,7 +43,7 @@ let BaseButton = ({
           style={{
             paddingLeft: theme.spaces[1],
             paddingRight: compact ? theme.spaces[1] : theme.spaces[2],
-            opacity: 0.5
+            opacity: 0.5,
           }}
         />
       )}
@@ -67,7 +60,6 @@ let Button = styled(BaseButton)(
     transition: 'background-color .2s linear',
     ':active': { transition: 'none' },
   },
-  buttonStyle('neutrals.4', 'neutrals.5', 'neutrals.6', 'secondaries.1'),
   ({ disabled }) =>
     disabled && {
       cursor: 'not-allowed',
@@ -76,17 +68,44 @@ let Button = styled(BaseButton)(
 )
 Button.Secondary = Button
 
-Button.Primary = styled(Button)(
-  buttonStyle('primaries.0', 'primaries.1', 'primaries.2', 'neutrals.0')
+let buttonStyles = _.mapValues(
+  ({ baseColor, hoverColor, activeColor, textColor }) =>
+    styled(Button)({
+      backgroundColor: baseColor,
+      ':hover': { backgroundColor: hoverColor },
+      ':active': { backgroundColor: activeColor },
+      '& *': { color: textColor },
+    }),
+  {
+    Primary: {
+      baseColor: colors.primaries[0],
+      hoverColor: colors.primaries[1],
+      activeColor: colors.primaries[2],
+      textColor: colors.neutrals[0],
+    },
+    Tertiary: {
+      baseColor: colors.secondaries[1],
+      hoverColor: colors.secondaries[0],
+      activeColor: colors.secondaries[2],
+      textColor: colors.neutrals[0],
+    },
+    Danger: {
+      baseColor: colors.errors[1],
+      hoverColor: colors.errors[2],
+      activeColor: colors.errors[0],
+      textColor: colors.neutrals[0],
+    },
+    Ghost: {
+      baseColor: colors.transparent,
+      hoverColor: colors.neutrals[4],
+      activeColor: colors.neutrals[5],
+      textColor: colors.primaries[0],
+    },
+  }
 )
-Button.Tertiary = styled(Button)(
-  buttonStyle('secondaries.1', 'secondaries.0', 'secondaries.2', 'neutrals.0')
-)
-Button.Danger = styled(Button)(
-  buttonStyle('errors.1', 'errors.2', 'errors.0', 'neutrals.0')
-)
-Button.Ghost = styled(Button)(
-  buttonStyle('transparent', 'neutrals.4', 'neutrals.5', 'primaries.0')
-)
+
+console.log({ buttonStyles })
+
+F.extendOn(Button, buttonStyles)
 
 export default Button

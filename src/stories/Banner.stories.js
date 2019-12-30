@@ -24,7 +24,7 @@ export let warningBanner = () => (
 
 export let errorBanner = () => (
   <Banner.Error>
-    Lorem ipsum massa sapien amet, neque hendrerit ultrices.{' '}
+    Lorem ipsum massa sapien amet.{' '}
     <a href="#">Click here</a> eu velit at consectetur.
   </Banner.Error>
 )
