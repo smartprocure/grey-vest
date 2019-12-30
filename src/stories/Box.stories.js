@@ -4,7 +4,7 @@ import _ from 'lodash/fp'
 import decorator from './decorator'
 
 export default {
-  title: 'Components | Box',
+  title: 'Box',
   decorators: [decorator],
   component: Box,
 }
