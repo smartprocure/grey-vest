@@ -5,6 +5,11 @@ import theme from '../theme'
 import decorator from './decorator'
 import { Flex, Title, Text } from '..'
 
+export default {
+  title: 'Design System | Colors',
+  decorators: [decorator],
+}
+
 let Swatch = ({ color, size = 120 }) => (
   <Flex inline column alignItems="center" style={{ margin: 8 }}>
     <div
@@ -17,11 +22,6 @@ let Swatch = ({ color, size = 120 }) => (
     <Text>{color}</Text>
   </Flex>
 )
-
-export default {
-  title: 'Design System | Colors',
-  decorators: [decorator],
-}
 
 export let Colors = () =>
   F.mapIndexed(
