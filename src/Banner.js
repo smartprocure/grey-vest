@@ -10,7 +10,7 @@ let getColor = F.aliasIn(theme.colors)
 
 let bannerStyle = (bgColor, textColor) => ({
   backgroundColor: getColor(bgColor),
-  '& *': { color: getColor(textColor) },
+  '*': { color: `${getColor(textColor)} !important` },
 })
 
 let BaseBanner = ({ children, icon = 'priority_high', ...props }) => (
