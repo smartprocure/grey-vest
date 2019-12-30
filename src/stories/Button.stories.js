@@ -78,6 +78,10 @@ export let disabled = () => (
   </Container>
 )
 
+export let withIcon = () => (
+  <Button icon="keyboard_arrow_right">Dropdown</Button>
+)
+
 export let asDiv = () => (
   <Button as="div" onClick={clickAction}>
     Click

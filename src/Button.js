@@ -2,9 +2,8 @@
 import { jsx } from '@emotion/core'
 import F from 'futil'
 import styled from '@emotion/styled'
-import { Subtitle, Text } from './'
+import { Subtitle, Text, Icon, Flex } from './'
 import theme from './theme'
-import { defaultProps } from 'recompose'
 
 let getColor = F.aliasIn(theme.colors)
 
@@ -12,7 +11,7 @@ let buttonStyle = (baseColor, hoverColor, activeColor, textColor) => ({
   backgroundColor: getColor(baseColor),
   ':hover': { backgroundColor: getColor(hoverColor) },
   ':active': { backgroundColor: getColor(activeColor) },
-  '& > *': { color: getColor(textColor) },
+  '& *': { color: getColor(textColor) },
 })
 
 let ButtonText = ({ compact = false, large = false, ...props }) =>
@@ -26,20 +25,36 @@ let BaseButton = ({
   as: As = 'button',
   compact = false,
   large = false,
+  icon,
   children,
   ...props
 }) => (
   <As
-    css={{
-      padding: large
-        ? theme.spaces[4]
-        : compact
-        ? `${theme.spaces[1]}px ${theme.spaces[2]}px`
-        : `${theme.spaces[2]}px ${theme.spaces[4]}px`,
-    }}
+    css={[
+      {
+        padding: large
+          ? theme.spaces[4]
+          : compact
+          ? `${theme.spaces[1]}px ${theme.spaces[2]}px`
+          : `${theme.spaces[2]}px ${theme.spaces[4]}px`,
+      },
+      icon && { paddingRight: 0 },
+    ]}
     {...props}
   >
-    <ButtonText {...{ compact, large }}>{children}</ButtonText>
+    <Flex alignItems="center">
+      <ButtonText {...{ compact, large }}>{children}</ButtonText>
+      {icon && (
+        <Icon
+          icon={icon}
+          style={{
+            paddingLeft: theme.spaces[1],
+            paddingRight: compact ? theme.spaces[1] : theme.spaces[2],
+            opacity: 0.5
+          }}
+        />
+      )}
+    </Flex>
   </As>
 )
 
