@@ -1,6 +1,5 @@
 import React from 'react'
 import { Banner } from '..'
-import _ from 'lodash/fp'
 import decorator from './decorator'
 
 export default {
