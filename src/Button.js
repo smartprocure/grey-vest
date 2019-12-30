@@ -1,9 +1,19 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
+import F from 'futil'
 import styled from '@emotion/styled'
 import { Subtitle, Text } from './'
 import theme from './theme'
 import { defaultProps } from 'recompose'
+
+let getColor = F.aliasIn(theme.colors)
+
+let buttonStyle = (baseColor, hoverColor, activeColor, textColor) => ({
+  backgroundColor: getColor(baseColor),
+  ':hover': { backgroundColor: getColor(hoverColor) },
+  ':active': { backgroundColor: getColor(activeColor) },
+  '& > *': { color: getColor(textColor) },
+})
 
 let ButtonText = ({ compact = false, large = false, ...props }) =>
   compact ? (
@@ -40,14 +50,9 @@ let Button = styled(BaseButton)(
     cursor: 'pointer',
     borderRadius: 3,
     transition: 'background-color .2s linear',
-    backgroundColor: theme.colors.neutrals[4],
-    ':hover': { backgroundColor: theme.colors.neutrals[5] },
-    ':active': {
-      backgroundColor: theme.colors.neutrals[6],
-      transition: 'none',
-    },
-    '& > *': { color: theme.colors.secondaries[1] },
+    ':active': { transition: 'none' },
   },
+  buttonStyle('neutrals.4', 'neutrals.5', 'neutrals.6', 'secondaries.1'),
   ({ disabled }) =>
     disabled && {
       cursor: 'not-allowed',
@@ -56,32 +61,17 @@ let Button = styled(BaseButton)(
 )
 Button.Secondary = Button
 
-Button.Primary = styled(Button)({
-  backgroundColor: theme.colors.primaries[0],
-  ':hover': { backgroundColor: theme.colors.primaries[1] },
-  ':active': { backgroundColor: theme.colors.primaries[2] },
-  '& > *': { color: theme.colors.neutrals[0] },
-})
-
-Button.Tertiary = styled(Button)({
-  backgroundColor: theme.colors.secondaries[1],
-  ':hover': { backgroundColor: theme.colors.secondaries[0] },
-  ':active': { backgroundColor: theme.colors.secondaries[2] },
-  '& > *': { color: theme.colors.neutrals[0] },
-})
-
-Button.Danger = styled(Button)({
-  backgroundColor: theme.colors.errors[1],
-  ':hover': { backgroundColor: theme.colors.errors[2] },
-  ':active': { backgroundColor: theme.colors.errors[0] },
-  '& > *': { color: theme.colors.neutrals[0] },
-})
-
-Button.Ghost = styled(Button)({
-  backgroundColor: 'transparent',
-  ':hover': { backgroundColor: theme.colors.neutrals[4] },
-  ':active': { backgroundColor: theme.colors.neutrals[5] },
-  '& > *': { color: theme.colors.primaries[0] },
-})
+Button.Primary = styled(Button)(
+  buttonStyle('primaries.0', 'primaries.1', 'primaries.2', 'neutrals.0')
+)
+Button.Tertiary = styled(Button)(
+  buttonStyle('secondaries.1', 'secondaries.0', 'secondaries.2', 'neutrals.0')
+)
+Button.Danger = styled(Button)(
+  buttonStyle('errors.1', 'errors.2', 'errors.0', 'neutrals.0')
+)
+Button.Ghost = styled(Button)(
+  buttonStyle('transparent', 'neutrals.4', 'neutrals.5', 'primaries.0')
+)
 
 export default Button
