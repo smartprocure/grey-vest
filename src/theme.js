@@ -1,7 +1,11 @@
+import F from 'futil'
+import _ from 'lodash/fp'
+
+let spaces = { xs: 4, sm: 8, md: 16, lg: 32 }
+
 export default {
-  // spaces: [0, 4, 8, 12, 16, 24, 32, 40],
-  space: n => n * 8,
-  spaces: { xs: 4, sm: 8, md: 16, lg: 32 },
+  spaces,
+  space: F.ifElse(_.isNumber, n => n * 8, F.aliasIn(spaces)),
   colors: {
     primaries: ['#0076de', '#0061b6', '#004c8e', '#b9d9f6'],
     secondaries: ['#3a3f52', '#272c41', '#202536'],

@@ -28,7 +28,7 @@ let Grid = ({
       gridTemplateColumns: repeatNumber(columns),
       gridTemplateRows: repeatNumber(rows),
       gridTemplateAreas: formatAreas(areas),
-      gridGap: F.alias(gap, theme.spaces),
+      gridGap: theme.space(gap),
       placeContent,
       placeItems,
     }}
