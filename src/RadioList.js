@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
-import React from 'react'
 import _ from 'lodash/fp'
 import { observer } from 'mobx-react'
 import Flex from './Flex'

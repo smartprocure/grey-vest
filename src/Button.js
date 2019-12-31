@@ -42,8 +42,8 @@ let ButtonComponent = ({
         <Icon
           icon={icon}
           style={{
-            paddingLeft: theme.spaces.xs,
-            paddingRight: compact ? theme.spaces.xs : theme.spaces.sm,
+            paddingLeft: spaces.xs,
+            paddingRight: compact ? spaces.xs : spaces.sm,
             opacity: 0.5,
           }}
         />
