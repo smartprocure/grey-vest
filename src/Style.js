@@ -120,37 +120,6 @@ export default () => (
         border-color: transparent;
       }
 
-      /* Radio Buttons */
-      .gv-radio {
-        width: 16px;
-        height: 16px;
-        background: #FFFFFF;
-        border: 2px solid #EDEDED;
-        border-radius: 50%;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .gv-radio-dot.active {
-        width: 14px;
-        height: 14px;
-        background: #007AFF;
-        border-radius: 50%;
-      }
-      .gv-radio-label {
-        padding-left: 10px;
-      }
-      .gv-radio-option {
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        margin-right: 25px;
-      }
-      .gv-radio-list {
-        display: flex;
-      }
-
-
       /* Tags Input */
       .tags-input {
         border: 2px solid #EBEBEB;
@@ -284,11 +253,6 @@ export default () => (
       }
       .gv-search-toolbar .gv-text-button:last-child {
         margin-right: 0;
-      }
-
-      /* Min Height here is to align better in QueryBuilder */
-       .gv-radio-list {
-        min-height: 40px;
       }
 
       /* Tabs */
