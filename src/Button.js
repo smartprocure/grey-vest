@@ -5,7 +5,7 @@ import _ from 'lodash/fp'
 import styled from '@emotion/styled'
 import { Subtitle, Text, Icon, Flex } from './'
 import theme from './theme'
-let { spaces, colors } = theme
+let { spaces, space, colors } = theme
 
 let ButtonText = ({ size, ...x }) => {
   if (size === 'compact')
@@ -13,6 +13,9 @@ let ButtonText = ({ size, ...x }) => {
   if (size === 'large') return <Subtitle large {...x} />
   return <Subtitle {...x} />
 }
+
+let getPadding = (size, ratio = 2) =>
+  `${space(size)}px ${space(size * ratio)}px`
 
 let ButtonComponent = ({
   as: As = 'button',
@@ -25,24 +28,22 @@ let ButtonComponent = ({
   <As
     css={[
       {
-        padding: large
-          ? `${spaces[4]}px ${spaces[5]}px`
-          : compact
-          ? `${spaces[1]}px ${spaces[2]}px`
-          : `${spaces[2]}px ${spaces[4]}px`,
+        padding: getPadding(large ? 2 : compact ? 0.5 : 1, large ? 1 : 2),
       },
       icon && { paddingRight: 0 },
     ]}
     {...props}
   >
     <Flex alignItems="center">
-      <ButtonText size={compact && 'compact' || large && 'large'}>{children}</ButtonText>
+      <ButtonText size={(compact && 'compact') || (large && 'large')}>
+        {children}
+      </ButtonText>
       {icon && (
         <Icon
           icon={icon}
           style={{
-            paddingLeft: theme.spaces[1],
-            paddingRight: compact ? theme.spaces[1] : theme.spaces[2],
+            paddingLeft: theme.spaces.xs,
+            paddingRight: compact ? theme.spaces.xs : theme.spaces.sm,
             opacity: 0.5,
           }}
         />

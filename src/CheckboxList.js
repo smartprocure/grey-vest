@@ -23,7 +23,7 @@ let CheckboxList = ({ options, value, onChange, ...props }) => (
               get: () => value,
               set: onChange,
             })}
-            css={{ marginRight: theme.spaces[2] }}
+            css={{ marginRight: theme.spaces.sm }}
           />
           <Text small>{option.label}</Text>
         </Flex>

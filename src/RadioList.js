@@ -25,10 +25,10 @@ let RadioButton = ({ native, option, value, onChange, ...props }) => (
       <div
         css={[
           {
-            width: theme.spaces[4],
-            height: theme.spaces[4],
-            minWidth: theme.spaces[4],
-            minHeight: theme.spaces[4],
+            width: theme.spaces.md,
+            height: theme.spaces.md,
+            minWidth: theme.spaces.md,
+            minHeight: theme.spaces.md,
             boxSizing: 'border-box',
             background: theme.colors.neutrals[0],
             border: `2px solid ${theme.colors.neutrals[6]}`,
@@ -61,7 +61,7 @@ let RadioList = ({ options, value, onChange, native = false, ...props }) => (
           <RadioButton
             {...{ native, value, option }}
             onChange={option.disabled ? _.noop : onChange}
-            css={{ marginRight: theme.spaces[2] }}
+            css={{ marginRight: theme.spaces.sm }}
           />
           <Text small>{option.label}</Text>
         </Flex>

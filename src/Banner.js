@@ -12,12 +12,12 @@ let BaseBanner = ({ children, icon = 'priority_high', ...props }) => (
   <Flex
     alignItems="center"
     justifyContent="center"
-    css={{ padding: theme.spaces[1] }}
+    css={{ padding: theme.spaces.xs }}
     {...props}
   >
     <Icon
       icon={icon}
-      style={{ marginRight: theme.spaces[1], verticalAlign: 'text-bottom' }}
+      style={{ marginRight: theme.spaces.xs, verticalAlign: 'text-bottom' }}
     />
     <Text small as="span">
       {children}
