@@ -14,7 +14,7 @@ let ButtonText = ({ compact = false, large = false, ...props }) =>
     <Subtitle large={large} {...props} />
   )
 
-let BaseButton = ({
+let ButtonComponent = ({
   as: As = 'button',
   compact = false,
   large = false,
@@ -26,10 +26,10 @@ let BaseButton = ({
     css={[
       {
         padding: large
-          ? `${theme.spaces[4]}px ${theme.spaces[4]}px`
+          ? `${spaces[4]}px ${spaces[5]}px`
           : compact
-          ? `${theme.spaces[1]}px ${theme.spaces[2]}px`
-          : `${theme.spaces[2]}px ${theme.spaces[4]}px`,
+          ? `${spaces[1]}px ${spaces[2]}px`
+          : `${spaces[2]}px ${spaces[4]}px`,
       },
       icon && { paddingRight: 0 },
     ]}
@@ -51,7 +51,7 @@ let BaseButton = ({
   </As>
 )
 
-let Button = styled(BaseButton)(
+let BaseButton = styled(ButtonComponent)(
   {
     border: 'none',
     outline: 'none',
@@ -66,11 +66,10 @@ let Button = styled(BaseButton)(
       opacity: 0.5,
     }
 )
-Button.Secondary = Button
 
 let buttonStyles = _.mapValues(
   ({ baseColor, hoverColor, activeColor, textColor }) =>
-    styled(Button)({
+    styled(BaseButton)({
       backgroundColor: baseColor,
       ':hover': { backgroundColor: hoverColor },
       ':active': { backgroundColor: activeColor },
@@ -82,6 +81,12 @@ let buttonStyles = _.mapValues(
       hoverColor: colors.primaries[1],
       activeColor: colors.primaries[2],
       textColor: colors.neutrals[0],
+    },
+    Secondary: {
+      baseColor: colors.neutrals[4],
+      hoverColor: colors.neutrals[5],
+      activeColor: colors.neutrals[6],
+      textColor: colors.secondaries[1],
     },
     Tertiary: {
       baseColor: colors.secondaries[1],
@@ -104,8 +109,8 @@ let buttonStyles = _.mapValues(
   }
 )
 
-console.log({ buttonStyles })
-
+// default button is a secondary button
+let Button = buttonStyles.Secondary
 F.extendOn(Button, buttonStyles)
 
 export default Button
