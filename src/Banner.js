@@ -2,16 +2,11 @@
 import { jsx } from '@emotion/core'
 import styled from '@emotion/styled'
 import F from 'futil'
+import _ from 'lodash/fp'
 import { defaultProps } from 'recompose'
 import { Icon, Text, Flex } from '.'
 import theme from './theme'
-
-let getColor = F.aliasIn(theme.colors)
-
-let bannerStyle = (bgColor, textColor) => ({
-  backgroundColor: getColor(bgColor),
-  '&, span, a': { color: `${getColor(textColor)} !important` },
-})
+let { colors } = theme
 
 let BaseBanner = ({ children, icon = 'priority_high', ...props }) => (
   <Flex
@@ -20,18 +15,39 @@ let BaseBanner = ({ children, icon = 'priority_high', ...props }) => (
     css={{ padding: theme.spaces[1] }}
     {...props}
   >
-    <Icon icon={icon} style={{ marginRight: theme.spaces[1], verticalAlign: 'text-bottom' }} />
-    <Text small as='span'>{children}</Text>
+    <Icon
+      icon={icon}
+      style={{ marginRight: theme.spaces[1], verticalAlign: 'text-bottom' }}
+    />
+    <Text small as="span">
+      {children}
+    </Text>
   </Flex>
 )
 
-let Banner = styled(BaseBanner)(bannerStyle('primaries.0', 'neutrals.0'))
+let convertBannerStyles = ({ backgroundColor, textColor, icon }) =>
+  styled(defaultProps({ icon })(BaseBanner))({
+    backgroundColor,
+    '&, span, a': { color: `${textColor} !important` },
+  })
 
-Banner.Warning = styled(defaultProps({ icon: 'warning' })(BaseBanner))(
-  bannerStyle('warning', 'secondaries.1')
-)
-Banner.Error = styled(defaultProps({ icon: 'report' })(BaseBanner))(
-  bannerStyle('errors.1', 'neutrals.0')
-)
+let bannerStyles = _.mapValues(convertBannerStyles, {
+  Warning: {
+    backgroundColor: colors.warning,
+    textColor: colors.secondaries[1],
+    icon: 'warning',
+  },
+  Error: {
+    backgroundColor: colors.errors[1],
+    textColor: colors.neutrals[0],
+    icon: 'report',
+  },
+})
 
+let Banner = convertBannerStyles({
+  backgroundColor: colors.primaries[0],
+  textColor: colors.neutrals[0],
+})
+
+F.extendOn(Banner, bannerStyles)
 export default Banner
