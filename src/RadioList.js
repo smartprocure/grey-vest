@@ -8,27 +8,6 @@ import Grid from './Grid'
 import { Text } from './Typography'
 import theme from './theme'
 
-/* Radio Buttons 
-.gv-radio-dot.active {
-  width: 14px;
-  height: 14px;
-  background: #007AFF;
-  border-radius: 50%;
-}
-.gv-radio-label {
-  padding-left: 10px;
-}
-.gv-radio-option {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  margin-right: 25px;
-}
-.gv-radio-list {
-  display: flex;
-}
-*/
-
 let RadioButton = ({ native, option, value, onChange, ...props }) => (
   <div {...props}>
     <input
@@ -58,6 +37,8 @@ let RadioButton = ({ native, option, value, onChange, ...props }) => (
           value === option.value && {
             border: `5px solid ${theme.colors.primaries[0]}`,
           },
+          // kludge to fix baseline alignment
+          { marginBottom: -3 },
         ]}
       />
     )}
@@ -72,10 +53,14 @@ let RadioList = ({ options, value, onChange, native = false, ...props }) => (
           as="label"
           alignItems="baseline"
           key={option.value}
-          style={{ cursor: 'pointer' }}
+          css={[
+            { cursor: 'pointer' },
+            option.disabled && { opacity: 0.5, cursor: 'not-allowed' },
+          ]}
         >
           <RadioButton
-            {...{ native, value, option, onChange }}
+            {...{ native, value, option }}
+            onChange={option.disabled ? _.noop : onChange}
             css={{ marginRight: theme.spaces[2] }}
           />
           <Text small>{option.label}</Text>

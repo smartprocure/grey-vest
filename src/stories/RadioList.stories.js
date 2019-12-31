@@ -17,7 +17,7 @@ let options = [
         'Mauris auctor scelerisque erat quis imperdiet. Nulla consequat, velit tincidunt accumsan laoreet, metus est euismod libero, eget euismod nisl eros eget metus.',
       value: 3,
     },
-    { label: 'Phasellus at efficitur quam', value: 4 },
+    { label: 'Phasellus at efficitur quam', disabled: true, value: 4 },
   ]
 
 export let baseStory = () => {
