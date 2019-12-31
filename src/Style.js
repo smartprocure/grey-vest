@@ -101,25 +101,6 @@ export default () => (
         cursor: pointer;
       }
 
-      /* Checkbox */
-      .gv-checkbox {
-        height: 20px;
-        width: 20px;
-        min-height: 20px;
-        min-width: 20px;
-        max-height: 20px;
-        max-width: 20px;
-        border-radius: 3px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-      }
-      .gv-checkbox i {
-        font-size: 14px;
-        font-weight: bold;
-      }
-
       /* CheckButton */
       .gv-button.check-button {
         padding: 5px 23px 5px 10px;
