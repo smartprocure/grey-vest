@@ -31,35 +31,6 @@ export default () => (
       }
 
       /* Button */
-      .gv-button {
-        padding: 11px 22px 12px 22px;
-        border-radius: 3px;
-        background-color: #e3e5e6;
-
-        border: none;
-        outline: none;
-        font-size: 14px;
-        font-weight: bold;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        cursor: pointer;
-        /* margin 5px ????? */
-        transition: background-color .25s linear;
-      }
-      .gv-button.active, .gv-button.primary {
-        background-color: #0076de;
-        color: #fff;
-      }
-      .gv-button:disabled {
-        cursor: not-allowed;
-        opacity: 0.5;
-      }
-      .gv-button.success {
-        background-color: #5bb85b !important;
-      }
-      .gv-button.danger {
-        background-color: #d75050 !important;
-      }
       .gv-button-radio > .gv-button {
         margin-right: 20px;
       }
@@ -103,7 +74,6 @@ export default () => (
       .gv-table .expanded, .gv-table .expanded + tr {
         background: rgba(237, 237, 237, 0.5)
       }
-
 
       input.gv-input, textarea.gv-input {
         padding: 10px;

@@ -70,7 +70,7 @@ export let fonts = {
 
 let getVariants = (props, variants) =>
   _.flow(
-    _.pick(findKeys(_.stubTrue, props)),
+    _.pick(findKeys(x => x === true, props)),
     _.values
   )(variants)
 

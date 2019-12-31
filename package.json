@@ -1,6 +1,6 @@
 {
   "name": "grey-vest",
-  "version": "3.0.0-alpha.1",
+  "version": "3.0.0-alpha.2",
   "description": "GreyVest component library",
   "main": "dist/index.js",
   "scripts": {
@@ -97,7 +97,7 @@
     "contexture-client": "^2.26.4",
     "contexture-elasticsearch": "^0.18.2",
     "danger": "^6.1.13",
-    "duti": "^0.15.1",
+    "duti": "^0.15.2",
     "elasticsearch-browser": "^14.2.2",
     "eslint": "^4.12.1",
     "eslint-config-smartprocure": "^1.1.0",
@@ -116,7 +116,7 @@
     "@emotion/core": "^10.0.27",
     "@emotion/styled": "^10.0.27",
     "emotion-theming": "^10.0.27",
-    "futil": "^1.64.3",
+    "futil": "^1.65.0",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "prop-types": "^15.7.2",

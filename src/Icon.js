@@ -1,8 +1,14 @@
 import React from 'react'
+import F from 'futil'
 import { Dynamic, TextButton } from '.'
+import theme from './theme'
 
-let SmallIcon = ({ icon, style, ...props }) => (
-  <i className="material-icons" style={{ fontSize: 20, ...style }} {...props}>
+let SmallIcon = ({ icon, style, size = 2, ...props }) => (
+  <i
+    className="material-icons"
+    style={{ fontSize: F.alias(size, theme.fontSizes), ...style }}
+    {...props}
+  >
     {icon}
   </i>
 )

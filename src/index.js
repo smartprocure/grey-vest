@@ -1,3 +1,4 @@
+export Banner from './Banner'
 export Box from './Box'
 export Button from './Button'
 export ButtonGroup from './ButtonGroup'
