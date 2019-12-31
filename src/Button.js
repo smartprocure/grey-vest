@@ -7,12 +7,12 @@ import { Subtitle, Text, Icon, Flex } from './'
 import theme from './theme'
 let { spaces, colors } = theme
 
-let ButtonText = ({ compact = false, large = false, ...props }) =>
-  compact ? (
-    <Text extraSmall css={{ fontWeight: 'bold' }} {...props} />
-  ) : (
-    <Subtitle large={large} {...props} />
-  )
+let ButtonText = ({ size, ...x }) => {
+  if (size === 'compact')
+    return <Text extraSmall css={{ fontWeight: 'bold' }} {...x} />
+  if (size === 'large') return <Subtitle large {...x} />
+  return <Subtitle {...x} />
+}
 
 let ButtonComponent = ({
   as: As = 'button',
@@ -36,7 +36,7 @@ let ButtonComponent = ({
     {...props}
   >
     <Flex alignItems="center">
-      <ButtonText {...{ compact, large }}>{children}</ButtonText>
+      <ButtonText size={compact && 'compact' || large && 'large'}>{children}</ButtonText>
       {icon && (
         <Icon
           icon={icon}
