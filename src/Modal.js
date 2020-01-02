@@ -4,6 +4,27 @@ import { observer } from 'mobx-react'
 import Portal from './Portal'
 import { openBinding, expandProp } from './utils'
 
+/*
+<Modal>
+  <ModalHeader>
+    hello world
+  </ModalHeader>
+  <ModalContent>
+    stuff
+  </ModalContent>
+  <ModalFooter>
+    <CloseButton onClick={updatePlaybooks} />
+    <SubmitButton />
+  </ModalFooter>
+</Modal>
+
+<Modal>
+  <h1>header</h1>
+  <div>stuff</div>
+  <button>click me</button>
+</Modal>
+*/
+
 let Modal = ({ isOpen, onClose, children, style = {}, className = '' }) => (
   <Portal>
     {isOpen && (
