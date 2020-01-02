@@ -7,6 +7,7 @@ import { observer } from 'mobx-react'
 import Portal from './Portal'
 import Box from './Box'
 import Flex from './Flex'
+import Icon from './Icon'
 import theme from './theme'
 import { Title, Text } from './Typography'
 import { openBinding, expandProp } from './utils'
@@ -36,8 +37,20 @@ let Modal = _.flow(
           variant="modal"
           p={2.5}
           onClick={e => e.stopPropagation()}
-          css={{ minWidth: 400, maxWidth: 600 }}
+          css={{ minWidth: 400, maxWidth: 600, position: 'relative' }}
         >
+          <Icon
+            icon="close"
+            style={{
+              position: 'absolute',
+              top: theme.spaces.sm,
+              right: theme.spaces.sm,
+              cursor: 'pointer',
+              padding: theme.spaces.xs
+            }}
+            size={3}
+            onClick={onClose}
+          />
           {children}
         </Box>
       </Flex>
@@ -73,8 +86,8 @@ Modal.Content = props => (
       paddingRight: '20%',
       '& > *:first-child': { marginTop: 0 },
       overflowY: 'auto',
-      maxHeight: `min(600px, 60vh)`
+      maxHeight: `min(600px, 60vh)`,
     }}
     {...props}
-  /> // 432px wide
+  />
 )
