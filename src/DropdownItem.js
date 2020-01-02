@@ -2,6 +2,7 @@
 import { jsx } from '@emotion/core'
 import { Text } from './Typography'
 import Icon from './Icon'
+import Tooltip from './Tooltip'
 import theme from './theme'
 
 let DropdownItem = ({
@@ -43,9 +44,11 @@ let DropdownItem = ({
           overflow: 'hidden',
         }
       }
+      data-tip={truncate ? children : null}
     >
       {children}
     </Text>
+    {truncate && <Tooltip />}
   </div>
 )
 
