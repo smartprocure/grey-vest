@@ -5,7 +5,7 @@ import { Modal, Button, Dropdown, DropdownItem, Text } from '.'
 import decorator from './stories/decorator'
 
 export default {
-  title: 'Components|Modal',
+  title: 'Modal',
   component: Modal,
   decorators: [decorator],
 }

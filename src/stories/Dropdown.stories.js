@@ -1,13 +1,12 @@
 import React from 'react'
 import F from 'futil'
 import { observable } from 'mobx'
-import { Button, Dropdown, Popover, DropdownItem } from '..'
-import Divider from '../Divider'
+import { Button, Dropdown, DropdownItem, Divider } from '..'
 import decorator from './decorator'
 
 export default {
   title: 'Dropdown',
-  component: Popover,
+  component: Dropdown,
   decorators: [decorator],
 }
 
