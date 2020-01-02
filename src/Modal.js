@@ -72,8 +72,8 @@ Modal.Footer = ({ children }) => (
     justifyContent="flex-end"
     css={{
       marginTop: theme.space(2.5),
-      '& > button': { marginRight: theme.spaces.sm },
-      '& > button:last-child': { marginRight: 0 },
+      '& > *': { marginRight: theme.spaces.sm },
+      '& > *:last-child': { marginRight: 0 },
     }}
   >
     {children}
@@ -86,6 +86,9 @@ Modal.Content = props => (
       paddingRight: '20%',
       '& > *:first-child': { marginTop: 0 },
       overflowY: 'auto',
+      // According to our style guide, the max height is supposed to belong to the modal,
+      // not the content, so it has been reduced a bit (from 800px/80vh) to compensate.
+      // This greatly simplifies the implementation and has about the same visual effect.
       maxHeight: `min(600px, 60vh)`,
     }}
     {...props}
