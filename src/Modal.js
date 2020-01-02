@@ -1,67 +1,80 @@
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
 import React from 'react'
 import _ from 'lodash/fp'
+import { setDisplayName } from 'recompose'
 import { observer } from 'mobx-react'
 import Portal from './Portal'
+import Box from './Box'
+import Flex from './Flex'
+import theme from './theme'
+import { Title, Text } from './Typography'
 import { openBinding, expandProp } from './utils'
 
-/*
-<Modal>
-  <ModalHeader>
-    hello world
-  </ModalHeader>
-  <ModalContent>
-    stuff
-  </ModalContent>
-  <ModalFooter>
-    <CloseButton onClick={updatePlaybooks} />
-    <SubmitButton />
-  </ModalFooter>
-</Modal>
-
-<Modal>
-  <h1>header</h1>
-  <div>stuff</div>
-  <button>click me</button>
-</Modal>
-*/
-
-let Modal = ({ isOpen, onClose, children, style = {}, className = '' }) => (
+let Modal = _.flow(
+  setDisplayName('Modal'),
+  expandProp('open', openBinding),
+  observer
+)(({ isOpen, onClose, children, style = {}, className = '' }) => (
   <Portal>
     {isOpen && (
-      <div
+      <Flex
         style={{
           position: 'fixed',
           top: 0,
           bottom: 0,
           left: 0,
           right: 0,
-          backgroundColor: 'rgba(0,0,0,0.3)',
-          padding: 50,
-          overflowY: 'auto',
+          backgroundColor: `${theme.colors.secondaries[1]}99`, // 0.6 opacity
           zIndex: 1000,
-          display: 'flex',
-          justifyContent: 'space-around',
-          alignItems: 'flex-start',
         }}
+        justifyContent="center"
+        alignItems="center"
         onClick={onClose}
-        className={`default-modal-bg ${className}`}
       >
-        <div
-          style={{
-            backgroundColor: '#fff',
-            ...style,
-          }}
+        <Box
+          variant="modal"
+          p={2.5}
           onClick={e => e.stopPropagation()}
-          className="default-modal-wrap"
+          css={{ minWidth: 400, maxWidth: 600 }}
         >
           {children}
-        </div>
-      </div>
+        </Box>
+      </Flex>
     )}
   </Portal>
+))
+
+export default Modal
+
+Modal.Header = ({ children }) => (
+  <Title small css={{ marginBottom: theme.spaces.xs }}>
+    {children}
+  </Title>
 )
 
-export default _.flow(
-  expandProp('open', openBinding),
-  observer
-)(Modal)
+Modal.Footer = ({ children }) => (
+  <Flex
+    alignItems="center"
+    justifyContent="flex-end"
+    css={{
+      marginTop: theme.space(2.5),
+      '& > button': { marginRight: theme.spaces.sm },
+      '& > button:last-child': { marginRight: 0 },
+    }}
+  >
+    {children}
+  </Flex>
+)
+
+Modal.Content = props => (
+  <div
+    css={{
+      paddingRight: '20%',
+      '& > *:first-child': { marginTop: 0 },
+      overflowY: 'auto',
+      maxHeight: `min(600px, 60vh)`
+    }}
+    {...props}
+  /> // 432px wide
+)
