@@ -1,8 +1,5 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
-import React from 'react'
-import F from 'futil'
-import { observer } from 'mobx-react'
 import { Text } from './Typography'
 import Icon from './Icon'
 import theme from './theme'

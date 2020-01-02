@@ -1,11 +1,10 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
-import styled from '@emotion/styled'
 import ReactTooltip from 'react-tooltip'
 import { Text } from './Typography'
 import theme from './theme'
 
-let Tooltip = ({ children, ...props }) => (
+let Tooltip = props => (
   <ReactTooltip
     css={{
       backgroundColor: `${theme.colors.secondaries[1]} !important`,

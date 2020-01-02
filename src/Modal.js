@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
-import React from 'react'
 import _ from 'lodash/fp'
 import { setDisplayName } from 'recompose'
 import { observer } from 'mobx-react'
@@ -9,14 +8,14 @@ import Box from './Box'
 import Flex from './Flex'
 import Icon from './Icon'
 import theme from './theme'
-import { Title, Text } from './Typography'
+import { Title } from './Typography'
 import { openBinding, expandProp } from './utils'
 
 let Modal = _.flow(
   setDisplayName('Modal'),
   expandProp('open', openBinding),
   observer
-)(({ isOpen, onClose, children, style = {}, className = '' }) => (
+)(({ isOpen, onClose, children, ...props }) => (
   <Portal>
     {isOpen && (
       <Flex
@@ -38,6 +37,7 @@ let Modal = _.flow(
           p={2.5}
           onClick={e => e.stopPropagation()}
           css={{ minWidth: 400, maxWidth: 600, position: 'relative' }}
+          {...props}
         >
           <Icon
             icon="close"
@@ -46,7 +46,7 @@ let Modal = _.flow(
               top: theme.spaces.sm,
               right: theme.spaces.sm,
               cursor: 'pointer',
-              padding: theme.spaces.xs
+              padding: theme.spaces.xs,
             }}
             size={3}
             onClick={onClose}

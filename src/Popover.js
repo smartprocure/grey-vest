@@ -12,7 +12,7 @@ let makePopover = padding =>
     expandProp('open', openBinding),
     observer
   )(
-    ({ isOpen, onClose = _.noop, children, style }) =>
+    ({ isOpen, onClose = _.noop, ...props }) =>
       isOpen && (
         <OutsideClickHandler onOutsideClick={_.debounce(0, onClose)}>
           <Box
@@ -23,9 +23,8 @@ let makePopover = padding =>
               maxWidth: theme.space(35), // 280px
               minWidth: theme.space(16), // 128px
             }}
-          >
-            {children}
-          </Box>
+            {...props}
+          />
         </OutsideClickHandler>
       )
   )
