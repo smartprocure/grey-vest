@@ -39,18 +39,7 @@ let Checkbox = ({
   >
     <input
       type="checkbox"
-      style={{
-        border: 0,
-        clip: 'rect(0 0 0 0)',
-        clippath: 'inset(50%)',
-        height: 1,
-        margin: '-1px',
-        overflow: 'hidden',
-        padding: 0,
-        position: 'absolute',
-        whiteSpace: 'nowrap',
-        width: 1,
-      }}
+      style={{ display: 'none' }}
       {...{ checked, onChange }}
     />
     {checked ? (
