@@ -10,23 +10,19 @@ export default {
   component: Select,
 }
 
-let options = [
-  { label: 'Nulla et fringilla nisl', value: 1 },
-  { label: 'Aliquam eu bibendum eros', value: 2 },
-  {
-    label:
-      'Mauris auctor scelerisque erat quis imperdiet. Nulla consequat, velit tincidunt accumsan laoreet, metus est euismod libero, eget euismod nisl eros eget metus.',
-    value: 3,
-  },
-  { label: 'Phasellus at efficitur quam', disabled: true, value: 4 },
-]
+let options = F.mapIndexed((label, value) => ({ label, value }), [
+  'Nulla et fringilla nisl',
+  'Aliquam eu bibendum eros',
+  'Mauris auctor scelerisque erat quis imperdiet. Nulla consequat, velit tincidunt accumsan laoreet, metus est euismod libero, eget euismod nisl eros eget metus.',
+  'Phasellus at efficitur quam',
+])
 
 export let native = () => {
   let value = React.useState('')
   return (
     <Grid gap={2}>
-      <Text>
-        Selected: <b>{F.view(value) || 'none'}</b>
+      <Text small>
+        Selected: <i>{_.getOr('none', [F.view(value), 'label'], options)}</i>
       </Text>
       <Select
         value={1}
@@ -36,3 +32,5 @@ export let native = () => {
     </Grid>
   )
 }
+
+export let disabled = () => <Select options={options} disabled />

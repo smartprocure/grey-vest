@@ -119,6 +119,10 @@ export let inputStyle = {
   // width: '100%',
   // maxWidth: theme.breakpoints.popupMax,
   ...fonts.Text,
+  '&:disabled': {
+    borderColor: theme.colors.neutrals[2],
+    backgroundColor: theme.colors.neutrals[2],
+  },
 }
 
 // allows the use of p, px and py props to control padding (borrowed from styled-system)

@@ -9,13 +9,7 @@ let { colors } = theme
 let TextInput = ({ type = 'text', disabled, ...props }, ref) => (
   <input
     {...{ type, ref, disabled, ...props }}
-    css={[
-      inputStyle,
-      disabled && {
-        borderColor: colors.neutrals[2],
-        backgroundColor: colors.neutrals[2],
-      },
-    ]}
+    css={inputStyle}
   />
 )
 
