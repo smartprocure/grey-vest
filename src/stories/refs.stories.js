@@ -1,21 +1,37 @@
-import { storiesOf } from '@storybook/react'
 import React from 'react'
-import { Button, TextInput, Textarea, Select } from '..'
+import F from 'futil'
+import { Button, TextInput, Textarea, Select, Grid, Divider } from '..'
 import decorator from './decorator'
 
 let input
 let select
 let textArea
 
-storiesOf('Components|Refs', module)
-  .addDecorator(decorator)
-  .add('story', () => (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <TextInput ref={e => (input = e)} />
-      <Textarea ref={e => (textArea = e)} />
-      <Select ref={e => (select = e)} />
-      <Button onClick={() => input.focus()}>Focus Input</Button>
-      <Button onClick={() => textArea.focus()}>Focus Text Area</Button>
-      <Button onClick={() => select.focus()}>Focus Select</Button>
-    </div>
-  ))
+export default {
+  title: 'Refs',
+  decorators: [decorator],
+}
+
+export let story = () => (
+  <Grid gap={1}>
+    <TextInput ref={e => (input = e)} placeholder="Text input" />
+    <Textarea ref={e => (textArea = e)} placeholder="Textarea" />
+    <Select
+      ref={e => (select = e)}
+      placeholder="Select"
+      options={F.autoLabelOptions(['Option 1', 'Option 2'])}
+    />
+    <Divider />
+    <Grid columns={3} gap="md">
+      <Button large onClick={() => input.focus()}>
+        Focus Input
+      </Button>
+      <Button large onClick={() => textArea.focus()}>
+        Focus Text Area
+      </Button>
+      <Button large onClick={() => select.focus()}>
+        Focus Select
+      </Button>
+    </Grid>
+  </Grid>
+)

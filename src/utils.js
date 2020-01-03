@@ -23,3 +23,5 @@ export let findKeys = _.curry((predicate, data) =>
     _.keys
   )(data)
 )
+
+export let coalesce = _.find(F.isNotNil)
