@@ -5,7 +5,7 @@ import { Button, Popover } from '..'
 import decorator from './decorator'
 
 export default {
-  title: 'Components|Popover',
+  title: 'Popover',
   component: Popover,
   decorators: [decorator],
 }

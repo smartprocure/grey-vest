@@ -1,8 +1,8 @@
 import React from 'react'
 import F from 'futil'
-import { useLensObject } from './utils'
-import { Modal, Button, Dropdown, DropdownItem, Text } from '.'
-import decorator from './stories/decorator'
+import { useLensObject } from '../utils'
+import { Modal, Button, Dropdown, DropdownItem, Text } from '..'
+import decorator from './decorator'
 
 export default {
   title: 'Modal',
