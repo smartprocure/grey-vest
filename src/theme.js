@@ -13,6 +13,7 @@ let theme = {
   breakpoints: _.mapValues(space, {
     modalWidth: 75,
     popupMax: 35,
+    calendarWidth: 39,
     popupMin: 16,
   }),
   colors: {
@@ -37,6 +38,13 @@ let theme = {
   fontSizes: [12, 14, 16, 18, 30, 48],
   lineHeights: [1, 1.25, 1.5, 1.7, 1.75],
   fonts: { primary: 'Lato' },
+  borderRadius: 3,
+}
+theme.boxShadows = {
+  normal: `0 2px 10px 0 ${theme.colors.neutrals[8]}19`,
+  modal: `0 2px 10px 0 ${theme.colors.secondaries[1]}7f`,
+  popup: `0 8px 16px -4px ${theme.colors.secondaries[1]}4c,
+          0 0 1px 0 ${theme.colors.secondaries[1]}4c`,
 }
 export default theme
 
@@ -47,7 +55,6 @@ export let fonts = {
     fontSize: theme.fontSizes[4],
     lineHeight: theme.lineHeights[1],
     fontWeight: 300,
-    // color: theme.colors.secondaries[0],
     letterSpacing: 'normal',
     variants: {
       // Extra large numerical callouts
@@ -60,7 +67,7 @@ export let fonts = {
       small: {
         fontSize: theme.fontSizes[3],
         lineHeight: theme.lineHeights[4],
-        fontWeight: 'bold',
+        fontWeight: 600,
       },
     },
   },
@@ -69,15 +76,14 @@ export let fonts = {
     fontFamily: theme.fonts.primary,
     fontSize: theme.fontSizes[1],
     lineHeight: theme.lineHeights[0],
-    fontWeight: 'bold',
-    // color: theme.colors.secondaries[0],
+    fontWeight: 600,
     letterSpacing: 2,
     textTransform: 'uppercase',
     variants: {
       // Section headers, subsections within pages, large buttons
       large: {
         fontSize: theme.fontSizes[3],
-        lineHeight: theme.lineHeights[2],
+        lineHeight: theme.lineHeights[1],
       },
     },
   },
@@ -86,8 +92,7 @@ export let fonts = {
     fontFamily: theme.fonts.primary,
     fontSize: theme.fontSizes[2],
     lineHeight: theme.lineHeights[4],
-    fontWeight: 'normal',
-    // color: theme.colors.neutrals[8],
+    fontWeight: 400,
     letterSpacing: 'normal',
     variants: {
       // Table header & footer, field labels, dropdown items, compact buttons, pagination, banner copy
@@ -105,7 +110,7 @@ export let fonts = {
 }
 
 export let inputStyle = {
-  borderRadius: 3,
+  borderRadius: theme.borderRadius,
   border: `2px solid ${theme.colors.neutrals[3]}`,
   padding: `${theme.spaces.xs}px ${theme.spaces.sm}px`,
   outline: 'none',
