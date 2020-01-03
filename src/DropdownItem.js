@@ -1,28 +1,55 @@
-import F from 'futil'
-import React from 'react'
-import { observer } from 'mobx-react'
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
+import { Text } from './Typography'
+import Icon from './Icon'
+import Tooltip from './Tooltip'
+import theme from './theme'
 
-export let DropdownItem = ({ style = {}, ...props }) => {
-  let hovering = React.useState(false)
-  return (
-    <div
-      style={{
+let DropdownItem = ({
+  icon,
+  disabled = false,
+  truncate = false,
+  children,
+  ...props
+}) => (
+  <div
+    css={[
+      {
         cursor: 'pointer',
-        padding: '2.5px 5px',
-        whiteSpace: 'nowrap',
-        fontSize: 13,
-        color: 'initial',
+        marginTop: theme.spaces.xs,
+        marginBottom: theme.spaces.xs,
+        marginLeft: icon ? theme.spaces.sm : theme.spaces.md,
+        marginRight: theme.spaces.md,
         display: 'grid',
-        gridGap: '5px',
+        gridGap: theme.spaces.sm,
         gridTemplateColumns: 'auto 1fr',
         alignItems: 'center',
-        ...(F.view(hovering) && { color: '#0076de' }),
-        ...style,
-      }}
-      {...F.domLens.hover(hovering)}
-      {...props}
-    />
-  )
-}
+      },
+      disabled
+        ? {
+            opacity: '50%',
+            cursor: 'not-allowed',
+          }
+        : { '&:hover > *': { color: theme.colors.primaries[0] } },
+    ]}
+    {...props}
+  >
+    {icon && <Icon icon={icon} style={{ color: theme.colors.primaries[0] }} />}
+    <Text
+      small
+      css={
+        truncate && {
+          whiteSpace: 'nowrap',
+          textOverflow: 'ellipsis',
+          overflow: 'hidden',
+        }
+      }
+      data-tip={truncate ? children : null}
+    >
+      {children}
+    </Text>
+    {truncate && <Tooltip />}
+  </div>
+)
 
-export default observer(DropdownItem)
+export default DropdownItem

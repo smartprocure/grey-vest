@@ -290,14 +290,7 @@ export default () => (
       .gv-tab:hover {
         background-color: rgba(147,149,160, 0.5);
       }
-
-      .popover {
-        border-radius: 3px;
-        box-shadow: 0 2px 10px 0 rgba(39, 44, 65, 0.1);
-        border: solid 1px #f1f1f1;
-        padding: 5px;
-      }
-
+      
       /* this is part of NestedPicker */
       .panel-tree-picker {
         max-height: 640px;
@@ -371,14 +364,6 @@ export default () => (
         box-shadow: 0 2px 10px 0 rgba(39, 44, 65, 0.1);
         padding: 15px;
         width: 400px !important;
-      }
-
-      /* Modals */
-      .default-modal-wrap {
-        width: auto;
-        max-width: 800px;
-        border: 30px solid white;
-        overflow: auto;
       }
     `}
   </style>

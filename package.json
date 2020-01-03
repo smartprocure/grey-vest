@@ -1,6 +1,6 @@
 {
   "name": "grey-vest",
-  "version": "3.0.0-alpha.3",
+  "version": "3.0.0-alpha.4",
   "description": "GreyVest component library",
   "main": "dist/index.js",
   "scripts": {
@@ -116,6 +116,7 @@
     "prop-types": "^15.7.2",
     "react-date-picker": "^7.2.0",
     "react-outside-click-handler": "^1.2.3",
+    "react-tooltip": "^3.11.1",
     "recompose": "^0.30.0"
   },
   "readme": "README.mdx"

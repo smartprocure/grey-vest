@@ -1,9 +1,11 @@
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
 import F from 'futil'
 import _ from 'lodash/fp'
 
 let spaces = { xs: 4, sm: 8, md: 16, lg: 32 }
 
-export default {
+let theme = {
   spaces,
   space: F.ifElse(_.isNumber, n => n * 8, F.aliasIn(spaces)),
   colors: {
@@ -28,4 +30,26 @@ export default {
   fontSizes: [12, 14, 16, 18, 30, 48],
   lineHeights: [1, 1.25, 1.5, 1.7, 1.75],
   fonts: { primary: 'Lato' },
+}
+export default theme
+
+// rip ??
+let coalesce = _.find(F.isNotNil)
+
+// allows the use of p, px and py props to control padding (borrowed from styled-system)
+// usage: withPadding({ p: 1 })(Component)
+//        <Component px={2} py={3} />
+export let withPadding = ({
+  px: pxDefault,
+  py: pyDefault,
+  p: pDefault,
+}) => Component => ({ p, px, py, ...props }) => {
+  let xPadding = coalesce([px, p, pxDefault, pDefault, 0])
+  let yPadding = coalesce([py, p, pyDefault, pDefault, 0])
+  return (
+    <Component
+      css={{ padding: `${theme.space(yPadding)}px ${theme.space(xPadding)}px` }}
+      {...props}
+    />
+  )
 }

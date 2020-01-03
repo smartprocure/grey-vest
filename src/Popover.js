@@ -1,34 +1,37 @@
-import React from 'react'
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
 import _ from 'lodash/fp'
 import OutsideClickHandler from 'react-outside-click-handler'
 import { observer } from 'mobx-react'
+import Box from './Box'
+import theme from './theme'
 import { openBinding, expandProp } from './utils'
 
-// Simple popover
-let Popover = ({ isOpen, onClose, children, style }) =>
-  isOpen && (
-    <OutsideClickHandler onOutsideClick={_.debounce(0, onClose)}>
-      <div style={{ position: 'relative' }}>
-        <div
-          className="popover"
-          style={{
-            position: 'absolute',
-            Index: 100,
-            fontWeight: 'normal',
-            textAlign: 'left',
-            background: 'white',
-            border: '1px solid #ebebeb',
-            zIndex: 20,
-            ...style,
-          }}
-        >
-          {children}
-        </div>
-      </div>
-    </OutsideClickHandler>
+let makePopover = padding =>
+  _.flow(
+    expandProp('open', openBinding),
+    observer
+  )(
+    ({ isOpen, onClose = _.noop, ...props }) =>
+      isOpen && (
+        <OutsideClickHandler onOutsideClick={_.debounce(0, onClose)}>
+          <Box
+            variant="popup"
+            {...padding}
+            css={{
+              position: 'absolute',
+              maxWidth: theme.space(35), // 280px
+              minWidth: theme.space(16), // 128px
+            }}
+            {...props}
+          />
+        </OutsideClickHandler>
+      )
   )
 
-export default _.flow(
-  expandProp('open', openBinding),
-  observer
-)(Popover)
+let Popover = makePopover({ px: 2, py: 1 })
+Popover.displayName = 'Popover'
+export default Popover
+
+export let Dropdown = makePopover({ p: 0 })
+Dropdown.displayName = 'Dropdown'
