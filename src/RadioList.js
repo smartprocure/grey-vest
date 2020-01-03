@@ -1,53 +1,72 @@
-import React from 'react'
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
 import _ from 'lodash/fp'
 import { observer } from 'mobx-react'
+import Flex from './Flex'
+import Grid from './Grid'
+import { Text } from './Typography'
+import theme from './theme'
 
-let RadioList = ({
-  options,
-  value,
-  onChange,
-  className = '',
-  native = false,
-  ...props
-}) => (
-  <div className={`gv-radio-list ${className}`} {...props}>
+let RadioButton = ({ native, option, value, onChange, ...props }) => (
+  <div {...props}>
+    <input
+      type="radio"
+      css={{
+        display: native ? 'inline-block' : 'none',
+        width: 'auto',
+        height: 'auto',
+      }}
+      onChange={() => onChange(option.value)}
+      value={option.value}
+      checked={value === option.value}
+    />
+    {!native && (
+      <div
+        css={[
+          {
+            width: theme.spaces.md,
+            height: theme.spaces.md,
+            minWidth: theme.spaces.md,
+            minHeight: theme.spaces.md,
+            boxSizing: 'border-box',
+            background: theme.colors.neutrals[0],
+            border: `2px solid ${theme.colors.neutrals[6]}`,
+            borderRadius: '50%',
+          },
+          value === option.value && {
+            border: `5px solid ${theme.colors.primaries[0]}`,
+          },
+          // kludge to fix baseline alignment
+          { marginBottom: -3 },
+        ]}
+      />
+    )}
+  </div>
+)
+
+let RadioList = ({ options, value, onChange, native = false, ...props }) => (
+  <Grid gap={1} {...props}>
     {_.map(
       option => (
-        <label
-          className="gv-radio-option"
+        <Flex
+          as="label"
+          alignItems="baseline"
           key={option.value}
-          style={{ cursor: 'pointer', marginRight: 25 }}
+          css={[
+            { cursor: 'pointer' },
+            option.disabled && { opacity: 0.5, cursor: 'not-allowed' },
+          ]}
         >
-          <input
-            type="radio"
-            style={{
-              marginRight: 10,
-              display: native ? 'inline-block' : 'none',
-              width: 'auto',
-              height: 'auto',
-            }}
-            onChange={() => onChange(option.value)}
-            value={option.value}
-            checked={value === option.value}
+          <RadioButton
+            {...{ native, value, option }}
+            onChange={option.disabled ? _.noop : onChange}
+            css={{ marginRight: theme.spaces.sm }}
           />
-          {native ? (
-            option.label
-          ) : (
-            <>
-              <div className="gv-radio">
-                <div
-                  className={`gv-radio-dot ${
-                    value === option.value ? 'active' : ''
-                  }`}
-                />
-              </div>
-              <div className="gv-radio-label">{option.label}</div>
-            </>
-          )}
-        </label>
+          <Text small>{option.label}</Text>
+        </Flex>
       ),
       options
     )}
-  </div>
+  </Grid>
 )
 export default observer(RadioList)

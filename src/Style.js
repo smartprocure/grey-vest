@@ -101,25 +101,6 @@ export default () => (
         cursor: pointer;
       }
 
-      /* Checkbox */
-      .gv-checkbox {
-        height: 20px;
-        width: 20px;
-        min-height: 20px;
-        min-width: 20px;
-        max-height: 20px;
-        max-width: 20px;
-        border-radius: 3px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-      }
-      .gv-checkbox i {
-        font-size: 14px;
-        font-weight: bold;
-      }
-
       /* CheckButton */
       .gv-button.check-button {
         padding: 5px 23px 5px 10px;
@@ -138,37 +119,6 @@ export default () => (
         background-color: transparent;
         border-color: transparent;
       }
-
-      /* Radio Buttons */
-      .gv-radio {
-        width: 16px;
-        height: 16px;
-        background: #FFFFFF;
-        border: 2px solid #EDEDED;
-        border-radius: 50%;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .gv-radio-dot.active {
-        width: 14px;
-        height: 14px;
-        background: #007AFF;
-        border-radius: 50%;
-      }
-      .gv-radio-label {
-        padding-left: 10px;
-      }
-      .gv-radio-option {
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        margin-right: 25px;
-      }
-      .gv-radio-list {
-        display: flex;
-      }
-
 
       /* Tags Input */
       .tags-input {
@@ -303,11 +253,6 @@ export default () => (
       }
       .gv-search-toolbar .gv-text-button:last-child {
         margin-right: 0;
-      }
-
-      /* Min Height here is to align better in QueryBuilder */
-       .gv-radio-list {
-        min-height: 40px;
       }
 
       /* Tabs */
