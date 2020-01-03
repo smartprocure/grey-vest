@@ -11,32 +11,7 @@ able to kill this file.
 export default () => (
   <style>
     {`
-      /* Globals? */
-      body {
-        margin: 0;
-        background: #f6f6f6;
-        font-family: Lato;
-        font-size: 14px;
-        color: #454545;
-      }
-      h1 {
-        font-family: Lato;
-        font-size: 18px;
-        font-weight: bold;
-        line-height: 1.3;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        /*font-size: 22px;*/
-        margin: 30px 0;
-      }
-
       /* Button */
-      .gv-button-radio > .gv-button {
-        margin-right: 20px;
-      }
-      .gv-button-radio > .gv-button:last-child {
-        margin-right: 0;
-      }
       .gv-link-button {
         /* Same as a contexture-themed link */
         color: #0076DE;
@@ -73,32 +48,6 @@ export default () => (
       /* Nested Table */
       .gv-table .expanded, .gv-table .expanded + tr {
         background: rgba(237, 237, 237, 0.5)
-      }
-
-      input.gv-input, textarea.gv-input {
-        padding: 10px;
-      }
-      .gv-input, select, input {
-        outline: none;
-        font-size: 16px;
-        font-family: Lato;
-
-        border: solid 2px #EDEDED;
-        background: #fff;
-
-        display: block;
-        width: 100%;
-        min-width: 0;
-
-        box-sizing: border-box;
-        height: 40px;
-      }
-
-      select, input, textarea {
-        border-radius: 4px;
-      }
-      select {
-        cursor: pointer;
       }
 
       /* CheckButton */
