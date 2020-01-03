@@ -34,7 +34,7 @@ let ButtonComponent = ({
     ]}
     {...props}
   >
-    <Flex alignItems="center">
+    <Flex alignItems="center" justifyContent="center">
       <ButtonText size={(compact && 'compact') || (large && 'large')}>
         {children}
       </ButtonText>
