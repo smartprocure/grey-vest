@@ -1,6 +1,6 @@
 import React from 'react'
 import { Flex, Subtitle } from '../..'
-import { fonts } from '../../Typography'
+import { fonts } from '../../theme'
 import decorator from '../decorator'
 import SizeInfo from './SizeInfo'
 
