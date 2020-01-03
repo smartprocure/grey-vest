@@ -34,7 +34,7 @@ let Modal = _.flow(
       >
         <Box
           variant="modal"
-          p={2.5}
+          p={3}
           onClick={e => e.stopPropagation()}
           css={{ minWidth: 400, maxWidth: 600, position: 'relative' }}
           {...props}
@@ -71,7 +71,7 @@ Modal.Footer = ({ children }) => (
     alignItems="center"
     justifyContent="flex-end"
     css={{
-      marginTop: theme.space(2.5),
+      marginTop: theme.space(3),
       '& > *': { marginRight: theme.spaces.sm },
       '& > *:last-child': { marginRight: 0 },
     }}

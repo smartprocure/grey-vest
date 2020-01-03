@@ -2,7 +2,7 @@
 import { jsx } from '@emotion/core'
 import theme from './theme'
 
-let Divider = ({ vertical = false, m = 1 }) => (
+let Divider = ({ vertical = false, margin = 1 }) => (
   <div
     css={[
       {
@@ -11,13 +11,13 @@ let Divider = ({ vertical = false, m = 1 }) => (
       vertical
         ? {
             width: 1,
-            marginLeft: theme.space(m),
-            marginRight: theme.space(m),
+            marginLeft: theme.space(margin),
+            marginRight: theme.space(margin),
           }
         : {
             height: 1,
-            marginTop: theme.space(m),
-            marginBottom: theme.space(m),
+            marginTop: theme.space(margin),
+            marginBottom: theme.space(margin),
           },
     ]}
   />

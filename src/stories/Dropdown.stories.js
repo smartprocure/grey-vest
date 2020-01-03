@@ -36,7 +36,7 @@ export let fullExample = () => {
         <DropdownItem disabled>
           Aliquam nec fermentum lorem, vel facilisis nulla
         </DropdownItem>
-        <Divider m={0.5} />
+        <Divider margin={0.5} />
         <DropdownItem icon="eco">Etiam vitae mi elit</DropdownItem>
         <DropdownItem icon="face">In eu maximus felis</DropdownItem>
         <DropdownItem truncate icon="favorite">
