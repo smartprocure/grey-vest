@@ -3,8 +3,7 @@ import { jsx } from '@emotion/core'
 import React from 'react'
 import { observer } from 'mobx-react'
 import _ from 'lodash/fp'
-import theme, { inputStyle } from './theme'
-let { colors } = theme
+import { inputStyle } from './theme'
 
 let TextInput = ({ type = 'text', disabled, ...props }, ref) => (
   <input

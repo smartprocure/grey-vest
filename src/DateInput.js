@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
-import React from 'react'
 import { observer } from 'mobx-react'
 import moment from 'moment'
 import DatePicker from 'react-datetime-picker'

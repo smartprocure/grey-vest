@@ -2,7 +2,6 @@ import React from 'react'
 import { action } from '@storybook/addon-actions'
 import { DateInput, Grid, Text } from '..'
 import moment from 'moment'
-import F from 'futil'
 import _ from 'lodash/fp'
 import decorator from './decorator'
 

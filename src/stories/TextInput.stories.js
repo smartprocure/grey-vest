@@ -1,6 +1,5 @@
 import React from 'react'
 import { TextInput } from '..'
-import F from 'futil'
 import decorator from './decorator'
 
 export default {

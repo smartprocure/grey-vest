@@ -1,7 +1,6 @@
-import { storiesOf } from '@storybook/react'
 import React from 'react'
 import F from 'futil'
-import { Button, TextInput, Textarea, Select, Grid, Flex, Divider } from '..'
+import { Button, TextInput, Textarea, Select, Grid, Divider } from '..'
 import decorator from './decorator'
 
 let input

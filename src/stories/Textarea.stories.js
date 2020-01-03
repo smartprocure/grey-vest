@@ -1,6 +1,5 @@
 import React from 'react'
 import { Textarea } from '..'
-import F from 'futil'
 import decorator from './decorator'
 
 export default {
