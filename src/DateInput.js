@@ -3,31 +3,19 @@ import { jsx } from '@emotion/core'
 import React from 'react'
 import { observer } from 'mobx-react'
 import moment from 'moment'
-import DatePicker from 'react-datetime-picker' // /dist/entry.nostyle'
+import DatePicker from 'react-datetime-picker'
 import _ from 'lodash/fp'
 import theme, { inputStyle, fonts } from './theme'
 
 let NativeDateInput = ({ value, onChange = _.noop, ...props }) => (
   <input
     type="datetime-local"
-    value={value ? moment(value).format('YYYY-MM-DD') : undefined}
+    value={value ? moment(value).format('YYYY-MM-DD') : ''}
     onChange={e => onChange(new Date(e.target.value))}
     {...props}
     css={inputStyle}
   />
 )
-
-let buildClassname = root =>
-  _.flow(
-    _.concat(root),
-    _.join('__')
-  )
-let dtClass = buildClassname('.react-datetime-picker')
-let dtClasses = (...args) =>
-  _.flow(
-    _.map(dtClass),
-    _.join(', ')
-  )(args)
 
 let ReactDatePickerInput = ({
   value,
@@ -36,23 +24,25 @@ let ReactDatePickerInput = ({
   ...props
 }) => (
   <DatePicker
+    disableClock // the clock is ugly and not interactible anyway
     calendarType={'US'}
     calendarIcon={calendarIcon}
     clearIcon={clearIcon}
-    value={_.isDate(value) || _.isEmpty(value) ? value : null}
+    value={_.isDate(value) || _.isEmpty(value) ? value : ''}
     css={[
       {
-        [dtClass('wrapper')]: _.pick(
-          ['border', 'borderRadius', 'padding', 'height', 'boxSizing'],
-          inputStyle
-        ),
-        [dtClasses(
-          ['inputGroup', 'input'],
-          ['inputGroup', 'leadingZero'],
-          ['inputGroup', 'divider']
-        )]: {
-          border: 'none',
-          ...fonts.Text,
+        '.react-datetime-picker': {
+          '&__wrapper': _.pick(
+            ['border', 'borderRadius', 'padding', 'height', 'boxSizing'],
+            inputStyle
+          ),
+          '&__inputGroup': {
+            '&__input, &__leadingZero, &__divider': {
+              border: 'none',
+              outline: 'none',
+              ...fonts.Text,
+            },
+          },
         },
         '.react-calendar': {
           width: `${theme.breakpoints.calendarWidth}px !important`,
@@ -64,9 +54,7 @@ let ReactDatePickerInput = ({
             height: 'auto',
             marginBottom: theme.spaces.sm,
             ...fonts.Text,
-            '& button': {
-              borderRadius: theme.borderRadius,
-            },
+            '& button': { borderRadius: theme.borderRadius },
             '&__label': {
               ...fonts.Text.variants.small,
               fontWeight: 500,
@@ -105,15 +93,13 @@ let ReactDatePickerInput = ({
             },
           },
           '&__month-view': {
-            '&__days__day--neighboringMonth': {
-              opacity: 0.6,
-            },
+            '&__days__day--neighboringMonth': { opacity: 0.6 },
             '&__weekdays__weekday': {
               ...fonts.Text,
               ...fonts.Text.variants.extraSmall,
-              '& abbr': { textDecoration: 'none', }
-            }
-          }
+              '& abbr': { textDecoration: 'none' },
+            },
+          },
         },
       },
     ]}
