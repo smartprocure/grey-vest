@@ -84,7 +84,7 @@ Modal.Content = props => (
   <div
     css={{
       paddingRight: '20%',
-      '& > *:first-child': { marginTop: 0 },
+      '& > *:first-of-type': { marginTop: 0 },
       overflowY: 'auto',
       // According to our style guide, the max height is supposed to belong to the modal,
       // not the content, so it has been reduced a bit (from 800px/80vh) to compensate.

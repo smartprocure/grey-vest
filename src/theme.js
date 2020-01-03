@@ -2,6 +2,7 @@
 import { jsx } from '@emotion/core'
 import F from 'futil'
 import _ from 'lodash/fp'
+import { coalesce } from './utils'
 
 let spaces = { xs: 4, sm: 8, md: 16, lg: 32 }
 let space = F.ifElse(_.isNumber, n => n * 8, F.aliasIn(spaces))
@@ -112,11 +113,13 @@ export let inputStyle = {
   transition: 'border-color 0.2s ease-in',
   '::placeholder': { color: theme.colors.neutrals[8], opacity: 0.5 },
   color: theme.colors.neutrals[8],
+  backgroundColor: theme.colors.neutrals[0],
+  height: 40,
+  boxSizing: 'border-box',
+  width: '100%',
+  maxWidth: theme.breakpoints.popupMax,
   ...fonts.Text,
 }
-
-// rip ??
-let coalesce = _.find(F.isNotNil)
 
 // allows the use of p, px and py props to control padding (borrowed from styled-system)
 // usage: withPadding({ p: 1 })(Component)
