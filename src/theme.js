@@ -116,8 +116,8 @@ export let inputStyle = {
   backgroundColor: theme.colors.neutrals[0],
   height: 40,
   boxSizing: 'border-box',
-  width: '100%',
-  maxWidth: theme.breakpoints.popupMax,
+  // width: '100%',
+  // maxWidth: theme.breakpoints.popupMax,
   ...fonts.Text,
 }
 
