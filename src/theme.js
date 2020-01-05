@@ -1,8 +1,5 @@
-/** @jsx jsx */
-import { jsx } from '@emotion/core'
 import F from 'futil'
 import _ from 'lodash/fp'
-import { coalesce } from './utils'
 
 let spaces = { xs: 4, sm: 8, md: 16, lg: 32 }
 let space = F.ifElse(_.isNumber, n => n * 8, F.aliasIn(spaces))
