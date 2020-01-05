@@ -1,4 +1,44 @@
+# 3.0.0
+
+## Changes
+
+* Lots of new stories! 📖✨
+* Stories are no longer co-located with components (GreyVest alone is much smaller and flatter than contexture-react, so it makes more sense to keep them separate)
+* New typography components: **Text**, **Title** and **Subtitle**
+* Other new components: **Dropdown** (a zero-padding variant of Popover intended to be used with DropdownItem), **Tooltip**, and **Divider**
+* Changes to **Button**:
+  * New component-level variants: **Button.Primary**, **Button.Secondary** (same as regular Button), **Button.Tertiary**, **Button.Danger**, and **Button.Ghost**
+  * New props: `compact` and `large` flags for size variants, and `icon` (same as the Icon component's `icon` prop)
+* Changes to **Box**:
+  * New component-level variants: **Box.Modal** and **Box.Popup** (different shadow styles)
+  * New props: `p`, `px`, and `py`
+* New props on **DropdownItem**: `disabled`, `truncate`, and `icon` (same as the Icon component's `icon` prop)
+* Changes to **Modal**:
+  * New subcomponents: **Modal.Header**, **Modal.Content**, and **Modal.Footer**
+  * Modals now have a close button and can additionally be closed with the `Esc` key
+* Changes to **TextInput**, **Textarea**, and **Select**:
+  * Now properly handle the `disabled` prop
+  * No longer default to 100% width
+* Expanded the `options` prop API (for **CheckboxList**, **RadioList**, and **Select**): in addition to `label` and `value`, each element now also accepts a boolean `disabled` property
+* **DateInput** now includes a time picker (now uses `react-datetime-picker` internally instead of `react-date-picker`)
+
+### Spacing props
+
+Component props that control whitespace now take spacing values from GreyVest's design system instead of pixel measurements. These props can take either a number which is multiplied by `8` to produce a size in pixels, or one of the following string aliases:
+
+* `xs`: 4px
+* `sm`: 8px
+* `md`: 16px
+* `lg`: 32px
+
+| Component | Prop(s)                                            | Status                                           |
+| --------- | -------------------------------------------------- | ------------------------------------------------ |
+| Grid      | `gap`                                              | formerly pixel measurement (**breaking change**) |
+| Box       | `padding`, `paddingX`, `paddingY`, `p`, `px`, `py` | new in 3.0                                       |
+| Divider   | `margin`, `m`                                      | new in 3.0                                       |
+
 #### 3.0.0-alpha.5
+
 * Update TextInput, DateInput, Select and Textarea for new design system
 * Add stories for TextInput, DateInput, Select and Textarea
 
@@ -17,7 +57,7 @@
 #### 3.0.0-alpha.1
 * Update Box for new design system
 
-# 3.0.0-alpha.0
+#### 3.0.0-alpha.0
 * Implement new design system
 
 ## 2.10.0
