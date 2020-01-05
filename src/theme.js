@@ -129,21 +129,3 @@ export let inputStyle = {
     backgroundColor: theme.colors.neutrals[2],
   },
 }
-
-// allows the use of p, px and py props to control padding (borrowed from styled-system)
-// usage: withPadding({ p: 1 })(Component)
-//        <Component px={2} py={3} />
-export let withPadding = ({
-  px: pxDefault,
-  py: pyDefault,
-  p: pDefault,
-}) => Component => ({ p, px, py, ...props }) => {
-  let xPadding = coalesce([px, p, pxDefault, pDefault, 0])
-  let yPadding = coalesce([py, p, pyDefault, pDefault, 0])
-  return (
-    <Component
-      css={{ padding: `${theme.space(yPadding)}px ${theme.space(xPadding)}px` }}
-      {...props}
-    />
-  )
-}
