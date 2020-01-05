@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import theme from './theme'
+import { withAliasProps } from './utils'
 
 let Divider = ({ vertical = false, margin = 1 }) => (
   <div
@@ -23,4 +24,4 @@ let Divider = ({ vertical = false, margin = 1 }) => (
   />
 )
 
-export default Divider
+export default withAliasProps({ m: 'margin' })(Divider)

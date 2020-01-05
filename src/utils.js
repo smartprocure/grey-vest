@@ -1,6 +1,6 @@
 import _ from 'lodash/fp'
 import * as F from 'futil'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { mapProps } from 'recompose'
 
 export let useLensObject = _.mapValues(useState)
@@ -25,3 +25,11 @@ export let findKeys = _.curry((predicate, data) =>
 )
 
 export let coalesce = _.find(F.isNotNil)
+
+// ({ r: 'red', b: 'blue' g: 'green' }) -> Component<{ red, blue, green }> -> Component<{ red, blue, green, r, g, b }>
+export let withAliasProps = aliases => Component => props => (
+  <Component {..._.mapKeys(F.aliasIn(aliases), props)} />
+)
+// possible futil method?
+// ({ r: 'red', b: 'blue' }) -> ({ r: 5, green: 1 }) -> ({ red: 5, green: 1 })
+// let aliasKeys = aliases => _.mapKeys(F.aliasIn(aliases))

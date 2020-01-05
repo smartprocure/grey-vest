@@ -3,10 +3,14 @@ import { jsx } from '@emotion/core'
 import styled from '@emotion/styled'
 import _ from 'lodash/fp'
 import F from 'futil'
-import { coalesce } from './utils'
+import { setDisplayName } from 'recompose'
+import { coalesce, withAliasProps } from './utils'
 import theme from './theme'
 
-let Box = ({ as: As = 'div', p = 2, px, py, ...props }) => (
+let Box = _.flow(
+  setDisplayName('Box'),
+  withAliasProps({ padding: 'p', paddingX: 'px', paddingY: 'py' })
+)(({ as: As = 'div', p = 2, px, py, ...props }) => (
   <As
     css={{
       borderRadius: theme.borderRadius,
@@ -19,7 +23,8 @@ let Box = ({ as: As = 'div', p = 2, px, py, ...props }) => (
     }}
     {...props}
   />
-)
+))
+
 F.extendOn(
   Box,
   F.arrayToObject(
