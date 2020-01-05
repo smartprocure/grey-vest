@@ -20,7 +20,13 @@ let Box = ({ as: As = 'div', p = 2, px, py, ...props }) => (
     {...props}
   />
 )
-Box.Popup = styled(Box)({ boxShadow: theme.boxShadows.popup })
-Box.Modal = styled(Box)({ boxShadow: theme.boxShadows.modal })
+F.extendOn(
+  Box,
+  F.arrayToObject(
+    _.capitalize,
+    variant => styled(Box)({ boxShadow: theme.boxShadows[variant] }),
+    ['popup', 'modal']
+  )
+)
 
 export default Box
