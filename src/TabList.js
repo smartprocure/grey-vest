@@ -1,7 +1,5 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
-import styled from '@emotion/styled'
-import React from 'react'
 import { Text } from './Typography'
 import _ from 'lodash/fp'
 import { observer } from 'mobx-react'

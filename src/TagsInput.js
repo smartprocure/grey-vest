@@ -1,11 +1,9 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
-import React from 'react'
 import _ from 'lodash/fp'
 import { observable } from 'mobx'
 import { observer, inject, useLocalStore } from 'mobx-react'
 import Flex from './Flex'
-import TextInput from './TextInput'
 import DefaultTag from './Tag'
 import theme, { inputStyle } from './theme'
 
@@ -19,7 +17,6 @@ let TagsInput = ({
   tagStyle,
   placeholder = 'Search...',
   splitCommas,
-  style,
   onBlur = _.noop,
   onInputChange = _.noop,
   onTagClick = _.noop,
@@ -77,7 +74,7 @@ let TagsInput = ({
             border: 'none',
             outline: 'none',
             flex: 1,
-            marginLeft: theme.spaces.xs
+            marginLeft: theme.spaces.xs,
           }}
           onChange={e => {
             state.currentInput = e.target.value

@@ -8,16 +8,7 @@ import Icon from './Icon'
 import { Text } from './Typography'
 import theme from './theme'
 
-let RemoveTagIcon = props => <Icon icon="close" size={2} {...props} />
-
-let Tag = ({
-  value,
-  removeTag,
-  RemoveIcon = RemoveTagIcon,
-  tagStyle,
-  onClick,
-  ...props
-}) => {
+let Tag = ({ value, removeTag, tagStyle, onClick, ...props }) => {
   let closeHover = React.useState(false)
   return (
     <Flex
