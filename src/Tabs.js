@@ -33,6 +33,7 @@ export let Tabs = ({
   TabsList = TabList,
   TabPanel = Box,
   defaultValue,
+  transparent = false,
   ...props
 }) => {
   let childrenArray = React.Children.toArray(children)
@@ -67,7 +68,7 @@ export let Tabs = ({
 
   return (
     <>
-      <TabsList value={value} onChange={handleChange} options={options} />
+      <TabsList {...{ value, options, transparent }} onChange={handleChange} />
       <TabPanel>{content}</TabPanel>
     </>
   )
