@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import _ from 'lodash/fp'
 import F from 'futil'
-import TabList from './TabList'
+import DefaultTabList from './TabList'
 import Box from './Box'
 
 /* Usage */
@@ -30,7 +30,7 @@ export let Tab = () => {}
 export let Tabs = ({
   children,
   onChange = _.noop,
-  TabsList = TabList,
+  TabList = DefaultTabList,
   TabPanel = Box,
   defaultValue,
   transparent = false,
