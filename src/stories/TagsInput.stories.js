@@ -1,5 +1,5 @@
 import React from 'react'
-import { TagsInput } from '..'
+import { TagsInput, Divider } from '..'
 import _ from 'lodash/fp'
 import F from 'futil'
 import decorator from './decorator'
@@ -16,8 +16,8 @@ export let baseUsage = () => {
     "so we don't have to add them fresh every time",
     'hello world',
     'tag',
-    'extra tag',
-    'gosh wow this is a lot of tags'
+    'another tag',
+    'Multiline tag! Praesent auctor rhoncus erat eu porta. Aliquam erat volutpat. Nulla tellus justo, ultricies vel interdum eu, accumsan vitae sem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.'
   ])
   return (
     <>
@@ -26,7 +26,8 @@ export let baseUsage = () => {
         addTag={tag => setTags(F.push(tag))}
         removeTag={tag => setTags(_.pull(tag))}
       />
-      <pre>Tags: {JSON.stringify(tags, 0, 2)}</pre>
+      <Divider m={2} />
+      <code>{JSON.stringify(tags)}</code>
     </>
   )
 }
