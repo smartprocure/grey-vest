@@ -68,7 +68,7 @@ export let Tabs = ({
 
   return (
     <>
-      <TabsList {...{ value, options, transparent }} onChange={handleChange} />
+      <TabList {...{ value, options, transparent }} onChange={handleChange} />
       <TabPanel>{content}</TabPanel>
     </>
   )
