@@ -130,23 +130,6 @@ export default () => (
         color: #fff;
       }
 
-
-      /* Button Group Border Radii */
-      .gv-button-group {
-        border-radius: 3px;
-        display: flex;
-        overflow: hidden;
-      }
-      .gv-button-group > :first-child {
-        border-top-right-radius: 0px;
-        border-bottom-right-radius: 0px;
-      }
-      .gv-button-group > :last-child {
-        border-top-left-radius: 0px;
-        border-bottom-left-radius: 0px;
-      }
-
-
       /* Search Bar + Button */
       .gv-search-bar {
         display: grid;
@@ -214,16 +197,6 @@ export default () => (
       }
       .labeled-checkbox > span {
         padding-left: 10px;
-      }
-      
-      /* GV BOX it up */
-      .react-calendar {
-        border: 2px solid #ededed;
-        border-radius: 4px;
-        background-color: #fff;
-        box-shadow: 0 2px 10px 0 rgba(39, 44, 65, 0.1);
-        padding: 15px;
-        width: 400px !important;
       }
     `}
   </style>
