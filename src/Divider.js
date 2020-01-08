@@ -1,10 +1,12 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import theme from './theme'
-import { withAliasProps } from './utils'
+import GridItem from './GridItem'
+import { renameProps } from 'recompose'
 
-let Divider = ({ vertical = false, margin = 1 }) => (
-  <div
+let Divider = ({ vertical = false, margin = 1, ...props }) => (
+  <GridItem
+  place={vertical ? "stretch center" : "center stretch"}
     css={[
       {
         backgroundColor: theme.colors.neutrals[3],
@@ -21,7 +23,8 @@ let Divider = ({ vertical = false, margin = 1 }) => (
             marginBottom: theme.space(margin),
           },
     ]}
+    {...props}
   />
 )
 
-export default withAliasProps({ m: 'margin' })(Divider)
+export default renameProps({ m: 'margin' })(Divider)

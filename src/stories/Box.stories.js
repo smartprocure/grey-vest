@@ -53,15 +53,15 @@ export let controlledPadding = () => {
   )
   return (
     <Grid gap={2}>
-      <GreyPaddingBox px={4}>
-        horizontal padding overridden to {theme.space(4)}px
+      <GreyPaddingBox paddingX={4} paddingY="sm">
+        {theme.space(4)}px by {theme.space('sm')}px padding
       </GreyPaddingBox>
-      <GreyPaddingBox py={4}>
-        vertical padding overridden to {theme.space(4)}px
+      <GreyPaddingBox px={1} py="lg">
+        {theme.space(1)}px by {theme.spaces.lg}px padding
       </GreyPaddingBox>
       {_.map(
         padding => (
-          <GreyPaddingBox p={padding}>
+          <GreyPaddingBox padding={padding}>
             {theme.space(padding)}px padding
           </GreyPaddingBox>
         ),

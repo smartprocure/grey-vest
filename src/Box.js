@@ -3,13 +3,13 @@ import { jsx } from '@emotion/core'
 import styled from '@emotion/styled'
 import _ from 'lodash/fp'
 import F from 'futil'
-import { setDisplayName } from 'recompose'
+import { setDisplayName, renameProps } from 'recompose'
 import { coalesce, withAliasProps } from './utils'
 import theme from './theme'
 
 let Box = _.flow(
   setDisplayName('Box'),
-  withAliasProps({ padding: 'p', paddingX: 'px', paddingY: 'py' })
+  renameProps({ padding: 'p', paddingX: 'px', paddingY: 'py' })
 )(({ as: As = 'div', p = 2, px, py, ...props }) => (
   <As
     css={{
