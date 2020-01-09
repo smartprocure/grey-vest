@@ -1,6 +1,6 @@
 import _ from 'lodash/fp'
 import * as F from 'futil'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { mapProps } from 'recompose'
 
 export let useLensObject = _.mapValues(useState)
