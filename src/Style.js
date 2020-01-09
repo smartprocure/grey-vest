@@ -69,41 +69,6 @@ export default () => (
         border-color: transparent;
       }
 
-      /* PagerItem */
-      .gv-pager-item {
-        padding: 5px;
-        width: 30px;
-        background: white;
-        border-radius: 2px;
-        cursor: pointer;
-        display: inline-block;
-        box-sizing: border-box;
-        text-align: center;
-        margin: 0 2.5px;
-        color: #9b9b9b;
-      }
-      .gv-pager-item:hover {
-         background: #f5f5f5;
-      }
-      .gv-pager-item.active {
-        background-color: #0076de;
-        color: #fff;
-      }
-      .gv-pager-item.disabled {
-        cursor: not-allowed;
-        pointer-events: none;
-      }
-      .gv-pager-item:first-child {
-        margin-right: 20px;
-      }
-      .gv-pager-item:last-child {
-        margin-left: 20px;
-      }
-      .gv-pager-item:first-child.disabled,
-      .gv-pager-item:last-child.disabled {
-        display: none;
-      }
-
       /* Text Button */
       .gv-text-button {
         border-radius: 100px;
