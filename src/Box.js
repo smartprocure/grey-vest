@@ -4,7 +4,7 @@ import styled from '@emotion/styled'
 import _ from 'lodash/fp'
 import F from 'futil'
 import { setDisplayName, renameProps } from 'recompose'
-import { coalesce, withAliasProps } from './utils'
+import { coalesce } from './utils'
 import theme from './theme'
 
 let Box = _.flow(
@@ -24,14 +24,7 @@ let Box = _.flow(
     {...props}
   />
 ))
-
-F.extendOn(
-  Box,
-  F.arrayToObject(
-    _.capitalize,
-    variant => styled(Box)({ boxShadow: theme.boxShadows[variant] }),
-    ['popup', 'modal']
-  )
-)
+Box.Popup = styled(Box)({ boxShadow: theme.boxShadows.popup })
+Box.Modal = styled(Box)({ boxShadow: theme.boxShadows.modal })
 
 export default Box
