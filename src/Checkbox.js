@@ -24,7 +24,10 @@ let Checkbox = ({
         borderRadius: 3,
         backgroundColor: theme.colors.neutrals[0],
         border: `2px solid ${theme.colors.neutrals[6]}`,
-        '& *': { color: theme.colors.primaries[0] },
+        transition: 'all 0.5s ease',
+        '& i': { 
+          color: checked ? theme.colors.primaries[0] : 'transparent',
+        },
       },
       disabled && {
         borderColor: theme.colors.neutrals[5],
@@ -42,11 +45,11 @@ let Checkbox = ({
       style={{ display: 'none' }}
       {...{ checked, onChange }}
     />
-    {checked ? (
-      <Icon icon="check" size={0} style={{ fontWeight: 900 }} />
-    ) : (
-      String.fromCharCode(160) // non-breaking space
-    )}
+    <Icon
+      icon="check"
+      size={0}
+      style={{ fontWeight: 'bold' }}
+    />
   </Flex>
 )
 export default Checkbox

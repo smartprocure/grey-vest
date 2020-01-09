@@ -1,7 +1,8 @@
 import React from 'react'
-import { Box, Grid } from '..'
+import { Box, Grid, Text } from '..'
 import _ from 'lodash/fp'
 import decorator from './decorator'
+import theme from '../theme'
 
 export default {
   title: 'Box',
@@ -22,18 +23,50 @@ let Backgrounds = ({ children }) => (
 
 export let normalBox = () => (
   <Backgrounds>
-    <Box>Box Contents</Box>
+    <Box>
+      <Text>Box Contents</Text>
+    </Box>
   </Backgrounds>
 )
 
 export let modalBox = () => (
   <Backgrounds>
-    <Box variant="modal">Box Contents</Box>
+    <Box.Modal>
+      <Text>Box Contents</Text>
+    </Box.Modal>
   </Backgrounds>
 )
 
 export let popupBox = () => (
   <Backgrounds>
-    <Box variant="popup">Box Contents</Box>
+    <Box.Popup>
+      <Text>Box Contents</Text>
+    </Box.Popup>
   </Backgrounds>
 )
+
+export let controlledPadding = () => {
+  let GreyPaddingBox = ({ children, ...props }) => (
+    <Box style={{ background: 'lightgrey' }} {...props}>
+      <Text style={{ background: 'white' }}>{children}</Text>
+    </Box>
+  )
+  return (
+    <Grid gap={2}>
+      <GreyPaddingBox paddingX={4} paddingY="sm">
+        {theme.space(4)}px by {theme.space('sm')}px padding
+      </GreyPaddingBox>
+      <GreyPaddingBox px={1} py="lg">
+        {theme.space(1)}px by {theme.spaces.lg}px padding
+      </GreyPaddingBox>
+      {_.map(
+        padding => (
+          <GreyPaddingBox padding={padding}>
+            {theme.space(padding)}px padding
+          </GreyPaddingBox>
+        ),
+        _.range(0, 5)
+      )}
+    </Grid>
+  )
+}

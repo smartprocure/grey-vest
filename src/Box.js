@@ -1,17 +1,30 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
+import styled from '@emotion/styled'
 import _ from 'lodash/fp'
-import theme, { withPadding } from './theme'
+import F from 'futil'
+import { setDisplayName, renameProps } from 'recompose'
+import { coalesce } from './utils'
+import theme from './theme'
 
-let Box = ({ as: As = 'div', variant = 'normal', ...props }) => (
+let Box = _.flow(
+  setDisplayName('Box'),
+  renameProps({ padding: 'p', paddingX: 'px', paddingY: 'py' })
+)(({ as: As = 'div', p = 2, px, py, ...props }) => (
   <As
     css={{
       borderRadius: theme.borderRadius,
       backgroundColor: theme.colors.neutrals[0],
-      boxShadow: _.get(variant, theme.boxShadows),
+      boxShadow: theme.boxShadows.normal,
+      padding: _.flow(
+        F.flowMap(theme.space, F.append('px')),
+        _.join(' ')
+      )([coalesce([py, p]), coalesce([px, p])]),
     }}
     {...props}
   />
-)
+))
+Box.Popup = styled(Box)({ boxShadow: theme.boxShadows.popup })
+Box.Modal = styled(Box)({ boxShadow: theme.boxShadows.modal })
 
-export default withPadding({ p: 2 })(Box)
+export default Box

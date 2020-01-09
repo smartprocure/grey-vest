@@ -32,8 +32,7 @@ let Modal = _.flow(
         alignItems="center"
         onClick={onClose}
       >
-        <Box
-          variant="modal"
+        <Box.Modal
           p={3}
           onClick={e => e.stopPropagation()}
           css={{ minWidth: 400, maxWidth: 600, position: 'relative' }}
@@ -52,7 +51,7 @@ let Modal = _.flow(
             onClick={onClose}
           />
           {children}
-        </Box>
+        </Box.Modal>
       </Flex>
     )}
   </Portal>

@@ -3,9 +3,9 @@ import F from 'futil'
 import { Dynamic, TextButton } from '.'
 import theme from './theme'
 
-let SmallIcon = ({ icon, style, size = 2, ...props }) => (
+let SmallIcon = ({ icon, style, size = 2, className, ...props }) => (
   <i
-    className="material-icons"
+    className={`material-icons ${className}`}
     style={{ fontSize: F.alias(size, theme.fontSizes), ...style }}
     {...props}
   >
