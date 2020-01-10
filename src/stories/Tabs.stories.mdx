@@ -7,7 +7,7 @@ import {
   Tab,
   TabLabel,
   TabContent,
-  TabList,
+  TabsList,
   ButtonRadio,
   Button,
 } from '..'
@@ -49,25 +49,25 @@ A tab control which switches out content dynamically. `Tabs` is used with one or
 <Preview>
   <Story name="Transparent variant">
     <div style={{ backgroundColor: '#f9f9f9', padding: 20 }}>
-      <Tabs transparent>
+      <Tabs.Transparent>
         <Tab label="Tab One">Tab One Contents</Tab>
         <Tab label="Tab Two">Tab Two Contents</Tab>
         <Tab label="Tab Three">Tab Three Contents</Tab>
-      </Tabs>
+      </Tabs.Transparent>
     </div>
   </Story>
 </Preview>
 
-### Classic TabList style
+### Classic TabsList style
 
 <Preview>
-  <Story name="Classic TabList style">
+  <Story name="Classic TabsList style">
     <div style={{ backgroundColor: '#f9f9f9', padding: 20 }}>
-      <Tabs TabList={TabList.Classic}>
+      <Tabs.Classic>
         <Tab label="Tab One">Tab One Contents</Tab>
         <Tab label="Tab Two">Tab Two Contents</Tab>
         <Tab label="Tab Three">Tab Three Contents</Tab>
-      </Tabs>
+      </Tabs.Classic>
     </div>
   </Story>
 </Preview>
@@ -160,10 +160,10 @@ A tab control which switches out content dynamically. `Tabs` is used with one or
   </Story>
 </Preview>
 
-### Custom TabList and TabPanel
+### Custom TabsList and TabPanel
 
 <Preview>
-  <Story name="Custom TabList and TabPanel">
+  <Story name="Custom TabsList and TabPanel">
     <Tabs TabsList={ButtonRadio} TabPanel={React.Fragment}>
       <Tab value="results" label="Results">
         Results Tables

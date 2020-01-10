@@ -23,9 +23,8 @@
 * **DateInput** now includes a time picker (now uses `react-datetime-picker` internally instead of `react-date-picker`)
 * 🚨 **Tag** no longer accepts a RemoveIcon component prop
 * Changes to **Tabs**/**TabList**:
-  * New prop: the `transparent` flag renders the tabs with a transparent background
-  * 🚨 **Tabs**' `TabsList` component prop has been renamed to `TabList`
-  * The old styling for TabList has been preseved as the component-level variant **TabList.Classic**, and can be used with the Tabs component by overriding its **TabList** prop: `<Tabs TabList={TabList.Classic} />`
+  * 🚨 **TabList** component has been renamed to **TabsList** (plural "tabs") for parity with the `TabsList` component prop on Tabs
+  * New component-level variants: **Tabs.Transparent** and **Tabs.Classic** (corresponding to **Tabslist.Transparent** and **TabsList.Classic**)
 
 ### Spacing props
 

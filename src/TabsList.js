@@ -3,6 +3,7 @@ import { jsx } from '@emotion/core'
 import { Text } from './Typography'
 import _ from 'lodash/fp'
 import { observer } from 'mobx-react'
+import { defaultProps } from 'recompose'
 import theme from './theme'
 let { colors } = theme
 
@@ -67,7 +68,7 @@ let regular = {
   '&:last-child': { borderTopRightRadius: theme.borderRadius },
 }
 
-let BaseTabList = ({ value, onChange = () => {}, tabStyle, options }) => (
+let BaseTabsList = ({ value, onChange = () => {}, tabStyle, options }) => (
   <div>
     {_.map(
       x => (
@@ -93,9 +94,8 @@ let BaseTabList = ({ value, onChange = () => {}, tabStyle, options }) => (
   </div>
 )
 
-let TabList = ({ transparent = false, ...props }) => (
-  <BaseTabList tabStyle={transparent ? floating : regular} {...props} />
-)
-TabList.Classic = props => <BaseTabList tabStyle={classic} {...props} />
+let TabsList = props => <BaseTabsList tabStyle={regular} {...props} />
+TabsList.Transparent = props => <BaseTabsList tabStyle={floating} {...props} />
+TabsList.Classic = props => <BaseTabsList tabStyle={classic} {...props} />
 
-export default observer(TabList)
+export default observer(TabsList)
