@@ -1,4 +1,5 @@
 import React from 'react'
+import _ from 'lodash/fp'
 import { Flex } from '..'
 import decorator from './decorator'
 
@@ -20,12 +21,12 @@ export let asButton = () => (
         maxWidth: 300,
       }}
     >
-      <div>Item1</div>
-      <div>Item2</div>
-      <div>Item2</div>
-      <div>Item4</div>
-      <div>Item5</div>
-      <div>Item6</div>
+      {_.map(
+        i => (
+          <div>Item{i}</div>
+        ),
+        _.range(1, 7)
+      )}
     </Flex>
   </Flex>
 )
