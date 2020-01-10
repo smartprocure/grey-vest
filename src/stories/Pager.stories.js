@@ -12,6 +12,13 @@ export default {
 export let story = () => {
   let [currentPage, setCurrentPage] = React.useState(1)
   return (
-  <Pager pages={10} page={currentPage} onChange={setCurrentPage} />
+  <Pager pageCount={10} value={currentPage} onChange={setCurrentPage} />
+  )
+}
+
+export let singlePage = () => {
+  let [currentPage, setCurrentPage] = React.useState(1)
+  return (
+  <Pager pageCount={1} value={currentPage} onChange={setCurrentPage} />
   )
 }
