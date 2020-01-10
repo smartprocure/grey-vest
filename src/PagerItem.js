@@ -2,11 +2,11 @@
 import { jsx } from '@emotion/core'
 import React from 'react'
 import { observer } from 'mobx-react'
-import { Text } from './Typography'
+import { Text, Flex } from './Typography'
 import theme from './theme'
 
 let PagerItem = ({ active, disabled, ...props }) => (
-  <Text small as="span"
+  <Text small
     css={[
       {
         paddingLeft: theme.spaces.sm,
@@ -18,18 +18,23 @@ let PagerItem = ({ active, disabled, ...props }) => (
         display: 'inline-block',
         boxSizing: 'border-box',
         textAlign: 'center',
-        color: '#9b9b9b',
+        color: theme.colors.neutrals[8],
+        opacity: 0.5,
         '&:hover': {
-          background: '#f5f5f5',
-        }
+          background: theme.colors.neutrals[4],
+        },
+        '& > *': { verticalAlign: 'middle' },
       },
       active && {
-        backgroundColor: '#0076de',
-        color: '#fff',
+        opacity: 1,
+        backgroundColor: theme.colors.primaries[0],
+        '&:hover': { backgroundColor: theme.colors.primaries[1] },
+        color: theme.colors.neutrals[0],
       },
       disabled && {
         cursor: 'not-allowed',
         pointerEvents: 'none',
+        opacity: 0.25,
       },
     ]}
     {...props}
