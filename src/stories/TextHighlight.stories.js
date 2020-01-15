@@ -1,8 +1,6 @@
 import React from 'react'
 import F from 'futil'
-import { storiesOf } from '@storybook/react'
-import { observer } from 'mobx-react'
-import { TextHighlight, TextInput, Text, Grid, Divider } from '..'
+import { TextHighlight, TextInput, Text, Grid } from '..'
 import decorator from './decorator'
 
 export default {

@@ -1,8 +1,6 @@
 import React from 'react'
 import { Divider, Text, Flex, Grid } from '..'
-import _ from 'lodash/fp'
 import decorator from './decorator'
-import theme from '../theme'
 
 export default {
   title: 'Divider',

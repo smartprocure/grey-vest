@@ -1,6 +1,5 @@
 import React from 'react'
-import _ from 'lodash/fp'
-import { PagerItem, Pager } from '..'
+import { Pager } from '..'
 import decorator from './decorator'
 
 export default {

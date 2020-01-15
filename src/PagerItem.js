@@ -1,8 +1,7 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
-import React from 'react'
 import { observer } from 'mobx-react'
-import { Text, Flex } from './Typography'
+import { Text } from './Typography'
 import theme from './theme'
 
 let PagerItem = ({ active, disabled, ...props }) => (

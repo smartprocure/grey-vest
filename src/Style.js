@@ -1,7 +1,5 @@
 import React from 'react'
 
-let tableCellPadding = 8
-
 /*
 Component styles for the Grey Vest library. Each of these should be associated
 with a specific omponent in the lib. The css/emotion refactor will move each of
