@@ -28,28 +28,6 @@ export default () => (
         text-decoration: none;
       }
 
-      /* Table */
-      .gv-table {
-        border-collapse: collapse;
-        width: 100%;
-      }
-      .gv-table tbody tr {
-        border-bottom: solid 2px rgba(237, 237, 237, 0.43);
-      }
-      .gv-table td, .gv-table th {
-        padding: ${tableCellPadding}px;
-        text-align: left;
-      }
-      .gv-table th > span {
-        display: flex;
-        align-items: center;
-      }
-
-      /* Nested Table */
-      .gv-table .expanded, .gv-table .expanded + tr {
-        background: rgba(237, 237, 237, 0.5)
-      }
-
       /* CheckButton */
       .gv-button.check-button {
         padding: 5px 23px 5px 10px;
