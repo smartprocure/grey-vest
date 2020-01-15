@@ -3,7 +3,6 @@ import { jsx } from '@emotion/core'
 import { Text } from './Typography'
 import _ from 'lodash/fp'
 import { observer } from 'mobx-react'
-import { defaultProps } from 'recompose'
 import theme from './theme'
 let { colors } = theme
 
