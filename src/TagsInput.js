@@ -1,29 +1,28 @@
-import React from 'react'
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
 import _ from 'lodash/fp'
 import { observable } from 'mobx'
 import { observer, inject, useLocalStore } from 'mobx-react'
 import Flex from './Flex'
 import DefaultTag from './Tag'
+import theme, { inputStyle } from './theme'
 
 let isValidInput = (tag, tags) => !_.isEmpty(tag) && !_.includes(tag, tags)
 
 let TagsInput = ({
   tags,
-  addTag,
+  addTag = _.noop,
   removeTag,
   submit = _.noop,
   tagStyle,
   placeholder = 'Search...',
   splitCommas,
-  style,
   onBlur = _.noop,
   onInputChange = _.noop,
   onTagClick = _.noop,
   Tag = DefaultTag,
   ...props
 }) => {
-  let containerRef = React.useRef()
-  let inputRef = React.useRef()
   let state = useLocalStore(() => ({ currentInput: '' }))
   addTag = splitCommas
     ? _.flow(
@@ -39,21 +38,28 @@ let TagsInput = ({
         addTag
       )
   return (
-    <div className={'tags-input'} ref={containerRef} style={{ ...style }}>
+    <div>
       <Flex
         wrap
         alignItems="center"
-        style={{
-          cursor: 'text',
-          height: '100%',
-          padding: 2,
-        }}
+        css={[
+          { cursor: 'text' },
+          _.pick(
+            ['border', 'borderRadius', 'padding', 'boxSizing'],
+            inputStyle
+          ),
+        ]}
       >
         {_.map(
           t => (
             <Tag
               key={t}
               value={t}
+              css={{
+                marginTop: theme.spaces.xs / 2,
+                marginBottom: theme.spaces.xs / 2,
+                marginRight: theme.spaces.xs,
+              }}
               {...{ removeTag, tagStyle }}
               onClick={() => onTagClick(t)}
             />
@@ -61,14 +67,15 @@ let TagsInput = ({
           tags
         )}
         <input
-          style={{
+          css={{
+            ...inputStyle,
+            padding: 0,
+            height: 'auto',
             border: 'none',
             outline: 'none',
             flex: 1,
-            margin: 3,
-            minWidth: 120,
+            marginLeft: theme.spaces.xs,
           }}
-          ref={inputRef}
           onChange={e => {
             state.currentInput = e.target.value
             onInputChange()

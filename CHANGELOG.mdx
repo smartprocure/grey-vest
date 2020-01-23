@@ -18,9 +18,13 @@
   * Modals now have a close button and can additionally be closed with the `Esc` key
 * Changes to **TextInput**, **Textarea**, and **Select**:
   * Now properly handle the `disabled` prop
-  * No longer default to 100% width
+  * 🚨 No longer default to 100% width
 * Expanded the `options` prop API (for **CheckboxList**, **RadioList**, and **Select**): in addition to `label` and `value`, each element now also accepts a boolean `disabled` property
 * **DateInput** now includes a time picker (now uses `react-datetime-picker` internally instead of `react-date-picker`)
+* 🚨 **Tag** no longer accepts a RemoveIcon component prop
+* Changes to **Tabs**/**TabList**:
+  * 🚨 **TabList** component has been renamed to **TabsList** (plural "tabs") for parity with the `TabsList` component prop on Tabs
+  * New component-level variants: **Tabs.Transparent** and **Tabs.Classic** (corresponding to **Tabslist.Transparent** and **TabsList.Classic**)
 
 ### Spacing props
 
@@ -36,6 +40,10 @@ Component props that control whitespace now take spacing values from GreyVest's 
 | Grid      | `gap`                                              | formerly pixel measurement (**breaking change**) |
 | Box       | `padding`, `paddingX`, `paddingY`, `p`, `px`, `py` | new in 3.0                                       |
 | Divider   | `margin`, `m`                                      | new in 3.0                                       |
+
+#### 3.0.0-alpha.7
+* Update Tag, TagsInput, Tabs and TabList for new design system
+* Add stories for Tag and TagsInput
 
 #### 3.0.0-alpha.6
 * Add `withAliasProps` HOC to utils

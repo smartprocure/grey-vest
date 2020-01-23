@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import _ from 'lodash/fp'
 import F from 'futil'
-import TabList from './TabList'
+import { defaultProps } from 'recompose'
+import GVTabsList from './TabsList'
 import Box from './Box'
 
 /* Usage */
@@ -30,9 +31,10 @@ export let Tab = () => {}
 export let Tabs = ({
   children,
   onChange = _.noop,
-  TabsList = TabList,
+  TabsList = GVTabsList,
   TabPanel = Box,
   defaultValue,
+  transparent = false,
   ...props
 }) => {
   let childrenArray = React.Children.toArray(children)
@@ -67,8 +69,10 @@ export let Tabs = ({
 
   return (
     <>
-      <TabsList value={value} onChange={handleChange} options={options} />
+      <TabsList {...{ value, options, transparent }} onChange={handleChange} />
       <TabPanel>{content}</TabPanel>
     </>
   )
 }
+Tabs.Transparent = defaultProps({ TabsList: GVTabsList.Transparent })(Tabs)
+Tabs.Classic = defaultProps({ TabsList: GVTabsList.Classic })(Tabs)

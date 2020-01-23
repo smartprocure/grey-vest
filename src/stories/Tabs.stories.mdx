@@ -2,10 +2,18 @@ import { Meta, Preview, Story } from '@storybook/addon-docs/blocks'
 import { action } from '@storybook/addon-actions'
 import { observable } from 'mobx'
 import { Observer } from 'mobx-react'
-import { Tabs, Tab, TabLabel, TabContent, ButtonRadio, Button } from '..'
+import {
+  Tabs,
+  Tab,
+  TabLabel,
+  TabContent,
+  TabsList,
+  ButtonRadio,
+  Button,
+} from '..'
 import decorator from './decorator'
 
-<Meta title="Components|Tabs" component={Tabs} decorators={[decorator]} />
+<Meta title="Tabs" component={Tabs} decorators={[decorator]} />
 
 # Tabs
 
@@ -26,10 +34,41 @@ A tab control which switches out content dynamically. `Tabs` is used with one or
 
 <Preview>
   <Story name="Base usage">
-    <Tabs>
-      <Tab label="Tab One">Tab One Contents</Tab>
-      <Tab label="Tab Two">Tab Two Contents</Tab>
-    </Tabs>
+    <div style={{ backgroundColor: '#f9f9f9', padding: 20 }}>
+      <Tabs>
+        <Tab label="Tab One">Tab One Contents</Tab>
+        <Tab label="Tab Two">Tab Two Contents</Tab>
+        <Tab label="Tab Three">Tab Three Contents</Tab>
+      </Tabs>
+    </div>
+  </Story>
+</Preview>
+
+### Transparent Variant
+
+<Preview>
+  <Story name="Transparent variant">
+    <div style={{ backgroundColor: '#f9f9f9', padding: 20 }}>
+      <Tabs.Transparent>
+        <Tab label="Tab One">Tab One Contents</Tab>
+        <Tab label="Tab Two">Tab Two Contents</Tab>
+        <Tab label="Tab Three">Tab Three Contents</Tab>
+      </Tabs.Transparent>
+    </div>
+  </Story>
+</Preview>
+
+### Classic TabsList style
+
+<Preview>
+  <Story name="Classic TabsList style">
+    <div style={{ backgroundColor: '#f9f9f9', padding: 20 }}>
+      <Tabs.Classic>
+        <Tab label="Tab One">Tab One Contents</Tab>
+        <Tab label="Tab Two">Tab Two Contents</Tab>
+        <Tab label="Tab Three">Tab Three Contents</Tab>
+      </Tabs.Classic>
+    </div>
   </Story>
 </Preview>
 
@@ -121,10 +160,10 @@ A tab control which switches out content dynamically. `Tabs` is used with one or
   </Story>
 </Preview>
 
-### Custom TabList and TabPanel
+### Custom TabsList and TabPanel
 
 <Preview>
-  <Story name="Custom TabList and TabPanel">
+  <Story name="Custom TabsList and TabPanel">
     <Tabs TabsList={ButtonRadio} TabPanel={React.Fragment}>
       <Tab value="results" label="Results">
         Results Tables

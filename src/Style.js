@@ -69,24 +69,6 @@ export default () => (
         border-color: transparent;
       }
 
-      /* Tags Input */
-      .tags-input {
-        border: 2px solid #EBEBEB;
-        border-radius: 4px;
-        background: #fff;
-      }
-
-      .tags-input > * {
-        box-sizing: border-box;
-      }
-      .tags-input input {
-        height: 30px;
-      }
-      .tags-input-tag-remove {
-        font-size: 12px;
-        padding: 8px;
-      }
-
       /* PagerItem */
       .gv-pager-item {
         padding: 5px;
@@ -204,41 +186,6 @@ export default () => (
         margin-right: 0;
       }
 
-      /* Tabs */
-      .gv-tab-container .gv-tab {
-        display: inline-block;
-        padding: 15px 20px;
-        background-color: #e0e0e3;
-        font-size: 14px;
-        font-weight: bold;
-        cursor: pointer;
-        vertical-align: bottom;
-        border-left: solid 1px #c4c5ca;
-        transition: background-color 0.1s linear;
-        text-align: center;
-      }
-      .gv-tab.active + .gv-tab {
-        border-left: none;
-      }
-      .gv-tab:last-child {
-        border-radius: 0 4px 0 0;
-      }
-      .gv-tab:first-child {
-        border-radius: 4px 0 0 0;
-        border-left: none;
-      }
-      .gv-tab.active, .gv-tab.active:hover {
-        background-color: #fff;
-        font-size: 16px;
-        padding: 15px 30px;
-        border-radius: 4px 4px 0 0 !important;
-        /* white box shadow trick from http://dev.housetrip.com/2012/06/15/good-looking-css-tabs/ */
-        box-shadow: 0 10px 0 0 #fff, 0 2px 10px 0 rgba(39, 44, 65, 0.1);
-        border-left: none;
-      }
-      .gv-tab:hover {
-        background-color: rgba(147,149,160, 0.5);
-      }
       
       /* this is part of NestedPicker */
       .panel-tree-picker {
@@ -268,7 +215,6 @@ export default () => (
       .labeled-checkbox > span {
         padding-left: 10px;
       }
-
       
       /* GV BOX it up */
       .react-calendar {

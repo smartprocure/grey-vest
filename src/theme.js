@@ -33,7 +33,7 @@ let theme = {
     warning: '#ffab00',
   },
   fontSizes: [12, 14, 16, 18, 30, 48],
-  lineHeights: [1, 1.25, 1.5, 1.7, 1.75],
+  lineHeights: [1, 1.15, 1.25, 1.5, 1.7, 1.75],
   fonts: { primary: 'Lato' },
   borderRadius: 3,
 }
@@ -50,7 +50,7 @@ export let fonts = {
     // Page titles
     fontFamily: theme.fonts.primary,
     fontSize: theme.fontSizes[4],
-    lineHeight: theme.lineHeights[1],
+    lineHeight: theme.lineHeights[2],
     fontWeight: 300,
     letterSpacing: 'normal',
     variants: {
@@ -63,7 +63,7 @@ export let fonts = {
       // Modal & tab titles
       small: {
         fontSize: theme.fontSizes[3],
-        lineHeight: theme.lineHeights[4],
+        lineHeight: theme.lineHeights[5],
         fontWeight: 600,
       },
     },
@@ -80,7 +80,7 @@ export let fonts = {
       // Section headers, subsections within pages, large buttons
       large: {
         fontSize: theme.fontSizes[3],
-        lineHeight: theme.lineHeights[1],
+        lineHeight: theme.lineHeights[2],
       },
     },
   },
@@ -88,19 +88,19 @@ export let fonts = {
     // Default body copy, table copy, general text
     fontFamily: theme.fonts.primary,
     fontSize: theme.fontSizes[2],
-    lineHeight: theme.lineHeights[4],
+    lineHeight: theme.lineHeights[5],
     fontWeight: 400,
     letterSpacing: 'normal',
     variants: {
       // Table header & footer, field labels, dropdown items, compact buttons, pagination, banner copy
       small: {
         fontSize: theme.fontSizes[1],
-        lineHeight: theme.lineHeights[3],
+        lineHeight: theme.lineHeights[4],
       },
       // Tooltips, validation messages
       extraSmall: {
         fontSize: theme.fontSizes[0],
-        lineHeight: theme.lineHeights[2],
+        lineHeight: theme.lineHeights[3],
       },
     },
   },
