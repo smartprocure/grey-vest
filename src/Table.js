@@ -7,7 +7,7 @@ let Table = x => (
       css={{
         borderCollapse: 'collapse',
         width: '100%',
-        'tbody tr': {
+        'tr': {
           borderBottom: 'solid 2px rgba(237, 237, 237, 0.43)',
         },
         'td, th': {
