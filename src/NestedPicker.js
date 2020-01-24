@@ -1,3 +1,5 @@
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
 import React from 'react'
 import F from 'futil'
 import _ from 'lodash/fp'
@@ -84,8 +86,14 @@ let PanelTreePicker = inject((store, { onChange, options }) => {
 })(
   observer(({ selectAtLevel, state, nestedOptions }) => (
     <div
-      className="panel-tree-picker"
-      style={{ display: 'inline-flex', width: '100%', overflow: 'auto' }}
+      css={{
+        display: 'inline-flex', width: '100%', overflow: 'auto',
+        maxHeight: 640,
+        '> div': {
+          borderRight: 'solid 1px #eef0f1',
+          ':last-child': { borderRight: 'none' },
+        }
+      }}
     >
       <Section
         options={nestedOptions}

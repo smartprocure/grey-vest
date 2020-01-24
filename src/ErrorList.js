@@ -1,17 +1,27 @@
+import styled from '@emotion/styled'
 import React from 'react'
 import F from 'futil'
 import _ from 'lodash/fp'
-import { Flex } from '.'
+import Flex from './Flex'
+import Icon from './Icon'
+import { Text } from './Typography'
+import theme from './theme'
 
-let ErrorText = ({ children }) => (
-  <div className="gv-text-error">{children}</div>
-)
+/*
+.gv-block-error {
+  margin: 15px 0;
+  color: #D75050;
+  background-color: #D7505011;
+  padding: 12px;
+  border-radius: 5px;
+}
+*/
+
+let ErrorText = styled(Text)({ color: theme.colors.errors[1] })
 
 let ErrorBlock = ({ children, ...props }) => (
-  <Flex className="gv-block-error" alignItems="center" {...props}>
-    <i className="material-icons" style={{ marginRight: 8 }}>
-      warning
-    </i>
+  <Flex alignItems="center" {...props}>
+    <Icon icon="warning" />
     <div>
       <ErrorList>{children}</ErrorList>
     </div>
