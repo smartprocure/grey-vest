@@ -86,20 +86,51 @@ export let fromPopover = () => {
   let open = useLensObject({ modal: false, popover: false })
   return (
     <div style={{ paddingBottom: 32 }}>
-      <Text small style={{ marginBottom: 16 }}>
-        Demonstrates how to use modals inside of popovers. Ideally, the modal
-        component should live outside the popover even if its opener is inside
-        the popover, but in cases where it's absolutely necessary, modals can
-        survive inside of popovers as long as steps are taken to keep the
-        popover open as long as the modal is.
+      <Text small>
+        <p>
+          This story and the next one demonstrate how to use modals inside of
+          self-closing popup components.
+        </p>
+        <p>
+          Ideally, the modal component itself should live outside the popover
+          even if the component that toggles its state is inside the popover. In
+          this case, we don't have to worry about the modal disappearing or its
+          state resetting when the popover is closed.
+        </p>
       </Text>
-      <Button onClick={F.on(open.popover)}>Open Popover</Button>
+      <Button onClick={F.on(open.popover)}>
+        Open Popover (with modal outside)
+      </Button>
+      <Dropdown isOpen={F.view(open.popover)} onClose={F.off(open.popover)}>
+        <DropdownItem onClick={F.on(open.modal)}>Open Modal</DropdownItem>
+      </Dropdown>
+      <Modal open={open.modal}>Modal outside the popover</Modal>
+    </div>
+  )
+}
+
+export let insidePopover = () => {
+  let open = useLensObject({ modal: false, popover: false })
+  return (
+    <div style={{ paddingBottom: 32 }}>
+      <Text small>
+        <p>
+          If necessary, modals can also live inside of self-closing popup
+          components: the trick is to manually prevent the popover from closing
+          as long as the modal is open. Note, however, that the <i>state</i> for
+          whether the modal is open or closed should still live outside of the
+          popover.
+        </p>
+      </Text>
+      <Button onClick={F.on(open.popover)}>
+        Open Popover (with modal inside)
+      </Button>
       <Dropdown
         isOpen={F.view(open.popover)}
         onClose={() => !F.view(open.modal) && F.off(open.popover)()}
       >
         <DropdownItem onClick={F.on(open.modal)}>Open Modal</DropdownItem>
-        <Modal open={open.modal}>Some modal content</Modal>
+        <Modal open={open.modal}>Modal inside the popover</Modal>
       </Dropdown>
     </div>
   )
