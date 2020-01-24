@@ -1,6 +1,6 @@
 import React from 'react'
 import _ from 'lodash/fp'
-import { Flex } from '..'
+import { Flex, Text, Box } from '..'
 import decorator from './decorator'
 
 export default {
@@ -21,11 +21,11 @@ export let asButton = () => (
         maxWidth: 300,
       }}
     >
-      {_.map(
+      {_.times(
         i => (
-          <div>Item{i}</div>
+          <div>Item{i + 1}</div>
         ),
-        _.range(1, 7)
+        6
       )}
     </Flex>
   </Flex>
@@ -34,5 +34,43 @@ export let asButton = () => (
 export let noChildren = () => (
   <Flex column alignItems="center">
     <Flex />
+  </Flex>
+)
+
+export let gap = () => (
+  <>
+    <Text>hello</Text>
+    <Flex wrap gap={2} as={Box}>
+      {_.times(
+        () => (
+          <div
+            style={{
+              backgroundColor: 'cyan',
+              height: 30,
+              width: _.random(10, 100),
+            }}
+          />
+        ),
+        40
+      )}
+    </Flex>
+    <Text>goodbye</Text>
+  </>
+)
+
+export let columnGap = () => (
+  <Flex column gap={2} style={{ backgroundColor: 'yellow' }}>
+    {_.times(
+      () => (
+        <div
+          style={{
+            background: 'cyan',
+            height: _.random(10, 30),
+            width: _.random(50, 200),
+          }}
+        />
+      ),
+      6
+    )}
   </Flex>
 )
