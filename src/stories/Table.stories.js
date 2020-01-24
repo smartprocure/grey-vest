@@ -1,6 +1,5 @@
 import React from 'react'
 import { Table } from '..'
-import PagedTable from '../PagedTable'
 import _ from 'lodash/fp'
 import decorator from './decorator'
 
@@ -34,24 +33,4 @@ export let baseUsage = () => (
       users
     )}
   </Table>
-)
-
-export let pagedTable = () => (
-  <PagedTable>
-    <tr>
-      <th>Name</th>
-      <th>Age</th>
-      <th>Active</th>
-    </tr>
-    {_.map(
-      ({ user, age, active }) => (
-        <tr>
-          <td>{user}</td>
-          <td>{age}</td>
-          <td>{active ? 'yes' : 'no'}</td>
-        </tr>
-      ),
-      users
-    )}
-  </PagedTable>
 )
