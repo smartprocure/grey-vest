@@ -1,6 +1,6 @@
 import React from 'react'
 import _ from 'lodash/fp'
-import { Flex, Text, Box } from '..'
+import { Flex } from '..'
 import decorator from './decorator'
 
 export default {
@@ -38,28 +38,42 @@ export let noChildren = () => (
 )
 
 export let gap = () => (
-  <>
-    <Text>hello</Text>
-    <Flex wrap gap={2} as={Box}>
-      {_.times(
-        () => (
-          <div
-            style={{
-              backgroundColor: 'cyan',
-              height: 30,
-              width: _.random(10, 100),
-            }}
-          />
-        ),
-        40
-      )}
-    </Flex>
-    <Text>goodbye</Text>
-  </>
+  <Flex gap={2} style={{ backgroundColor: 'yellow' }}>
+    {_.times(
+      () => (
+        <div
+          style={{
+            backgroundColor: 'cyan',
+            height: 50,
+            width: _.random(10, 100),
+          }}
+        />
+      ),
+      5
+    )}
+  </Flex>
+)
+
+export let wrappedGap = () => (
+  <Flex wrap gap={2} style={{ backgroundColor: 'yellow' }}>
+    {_.times(
+      () => (
+        <div
+          style={{
+            backgroundColor: 'cyan',
+            height: 30,
+            minWidth: _.random(10, 100),
+            flex: 1,
+          }}
+        />
+      ),
+      40
+    )}
+  </Flex>
 )
 
 export let columnGap = () => (
-  <Flex column gap={2} style={{ backgroundColor: 'yellow' }}>
+  <Flex inline column gap={2} style={{ backgroundColor: 'yellow' }}>
     {_.times(
       () => (
         <div

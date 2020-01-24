@@ -1,16 +1,21 @@
-import styled from '@emotion/styled'
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
 import theme from './theme'
 
-let Flex = styled.div(
-  ({
-    gap = 0,
-    alignItems,
-    alignContent,
-    justifyContent,
-    wrap = false,
-    column = false,
-    inline = false,
-  }) => [
+let Flex = ({
+  as: As = 'div',
+  alignItems,
+  alignContent,
+  justifyContent,
+  wrap = false,
+  column = false,
+  inline = false,
+  children,
+  gap = 0,
+  ...props
+}) => {
+  let m = theme.space(gap)
+  let flexStyle = [
     {
       display: `${inline ? 'inline-' : ''}flex`,
       flexWrap: wrap && 'wrap',
@@ -21,20 +26,21 @@ let Flex = styled.div(
     },
     wrap
       ? {
-          '> *': {
-            marginBottom: theme.space(gap),
-            marginRight: theme.space(gap),
-          },
-          marginBottom: -theme.space(gap),
-          marginRight: -theme.space(gap),
-          overflow: 'hidden',
+          '> *': { marginBottom: m, marginRight: m },
+          marginBottom: -m,
+          marginRight: -m,
         }
-      : {
-          '& > * + *': {
-            [`margin${column ? 'Top' : 'Left'}`]: theme.space(gap),
-          },
-        },
+      : { '& > * + *': { [`margin${column ? 'Top' : 'Left'}`]: m } },
   ]
-)
+  return wrap ? (
+    <As css={{ overflow: 'hidden' }} {...props}>
+      <div css={flexStyle}>{children}</div>
+    </As>
+  ) : (
+    <As css={flexStyle} {...props}>
+      {children}
+    </As>
+  )
+}
 
 export default Flex
