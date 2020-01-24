@@ -13,7 +13,11 @@ let Pager = ({
   Icon = GVIcon,
 }) =>
   pageCount > 1 && (
-    <Flex justifyContent="center" alignItems="center">
+    <Flex
+      justifyContent="center"
+      alignItems="center"
+      css={{ '> *': { margin: 2 } }}
+    >
       <PagerItem disabled={!(value > 1)} onClick={() => onChange(value - 1)}>
         <Icon icon="PreviousPage" />
       </PagerItem>
@@ -54,7 +58,10 @@ let Pager = ({
           <Icon icon="Next5Pages" />
         </PagerItem>
       )}
-      <PagerItem disabled={!(value < pageCount)} onClick={() => onChange(value + 1)}>
+      <PagerItem
+        disabled={!(value < pageCount)}
+        onClick={() => onChange(value + 1)}
+      >
         <Icon icon="NextPage" />
       </PagerItem>
     </Flex>

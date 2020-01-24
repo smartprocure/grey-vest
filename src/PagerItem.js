@@ -10,7 +10,7 @@ let PagerItem = ({ active, disabled, ...props }) => (
       {
         paddingLeft: theme.spaces.sm,
         paddingRight: theme.spaces.sm,
-        margin: `0 ${theme.space(0.25)}px`,
+        lineHeight: `${theme.space(3)}px`,
         background: theme.colors.neutrals[0],
         borderRadius: theme.borderRadius,
         cursor: 'pointer',
