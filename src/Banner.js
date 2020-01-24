@@ -19,9 +19,7 @@ let BaseBanner = ({ children, icon = 'priority_high', ...props }) => (
       icon={icon}
       style={{ marginRight: theme.spaces.xs, verticalAlign: 'text-bottom' }}
     />
-    <Text small as="span">
-      {children}
-    </Text>
+    <Text small>{children}</Text>
   </Flex>
 )
 

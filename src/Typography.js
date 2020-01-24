@@ -11,7 +11,7 @@ let getVariants = (props, variants) =>
     _.values
   )(variants)
 
-let toComponent = ({ variants, ...styles }) => ({ as: As = 'div', ...props }) => (
+let toComponent = ({ variants, ...styles }) => ({ as: As = 'span', ...props }) => (
   <As css={[styles, ...getVariants(props, variants)]} {...props} />
 )
 

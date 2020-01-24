@@ -26,12 +26,12 @@ export let vertical = () => (
 
 export let withGrid = () => (
   <Grid columns={3} style={{ textAlign: 'center' }}>
-    <Text as="span">head</Text>
+    <Text>head</Text>
     <Divider vertical />
-    <Text as="span">shoulders</Text>
+    <Text>shoulders</Text>
     <Divider width={3} style={{ display: 'inline', textAlign: 'center' }} />
-    <Text as="span">knees</Text>
+    <Text>knees</Text>
     <Divider vertical />
-    <Text as="span">toes</Text>
+    <Text>toes</Text>
   </Grid>
 )
