@@ -1,12 +1,7 @@
 import React from 'react'
 import { Tooltip, DropdownItem, Button, Grid } from '..'
-import decorator from './decorator'
 
-export default {
-  title: 'Tooltip',
-  component: Tooltip,
-  decorators: [decorator],
-}
+export default { title: 'Tooltip', component: Tooltip }
 
 export let basicUsage = () => (
   <Grid gap={1} placeItems="start">

@@ -2,13 +2,9 @@ import React from 'react'
 import _ from 'lodash/fp'
 import F from 'futil'
 import theme from '../theme'
-import decorator from './decorator'
 import { Flex, Title, Text } from '..'
 
-export default {
-  title: 'Design System | Colors',
-  decorators: [decorator],
-}
+export default { title: 'Design System | Colors' }
 
 let Swatch = ({ color, size = 120 }) => (
   <Flex inline column alignItems="center" style={{ margin: 8 }}>

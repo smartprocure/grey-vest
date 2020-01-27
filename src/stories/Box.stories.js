@@ -1,14 +1,9 @@
 import React from 'react'
 import { Box, Grid, Text } from '..'
 import _ from 'lodash/fp'
-import decorator from './decorator'
 import theme from '../theme'
 
-export default {
-  title: 'Box',
-  decorators: [decorator],
-  component: Box,
-}
+export default { title: 'Box', component: Box }
 
 let Backgrounds = ({ children }) => (
   <Grid columns={3}>

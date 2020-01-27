@@ -1,12 +1,7 @@
 import React from 'react'
 import { Divider, Text, Flex, Grid } from '..'
-import decorator from './decorator'
 
-export default {
-  title: 'Divider',
-  decorators: [decorator],
-  component: Divider,
-}
+export default { title: 'Divider', component: Divider }
 
 export let divider = () => (
   <>

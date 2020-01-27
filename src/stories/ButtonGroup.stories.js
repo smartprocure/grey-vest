@@ -1,13 +1,8 @@
 import React from 'react'
 import _ from 'lodash/fp'
 import { Button, ButtonGroup, Grid } from '..'
-import decorator from './decorator'
 
-export default {
-  title: 'ButtonGroup',
-  component: ButtonGroup,
-  decorators: [decorator],
-}
+export default { title: 'ButtonGroup', component: ButtonGroup }
 
 export let story = () => {
   let listButtons = Component =>

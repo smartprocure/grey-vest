@@ -2,13 +2,8 @@ import React from 'react'
 import { Select, Grid, Text } from '..'
 import F from 'futil'
 import _ from 'lodash/fp'
-import decorator from './decorator'
 
-export default {
-  title: 'Select',
-  decorators: [decorator],
-  component: Select,
-}
+export default { title: 'Select', component: Select }
 
 let options = F.mapIndexed((label, value) => ({ label, value }), [
   'Nulla et fringilla nisl',

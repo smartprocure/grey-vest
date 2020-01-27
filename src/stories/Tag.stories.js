@@ -1,13 +1,8 @@
 import React from 'react'
 import { Tag, Grid } from '..'
 import _ from 'lodash/fp'
-import decorator from './decorator'
 
-export default {
-  title: 'Tag',
-  decorators: [decorator],
-  component: Tag,
-}
+export default { title: 'Tag', component: Tag }
 
 export let baseUsage = () => <Tag value="hello world!" />
 

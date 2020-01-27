@@ -1,12 +1,7 @@
 import React from 'react'
 import { Textarea } from '..'
-import decorator from './decorator'
 
-export default {
-  title: 'Textarea',
-  decorators: [decorator],
-  component: Textarea,
-}
+export default { title: 'Textarea', component: Textarea }
 
 export let baseUsage = () => <Textarea placeholder="Enter some text..." />
 

@@ -3,13 +3,8 @@ import { action } from '@storybook/addon-actions'
 import { DateInput, Grid, Text } from '..'
 import moment from 'moment'
 import _ from 'lodash/fp'
-import decorator from './decorator'
 
-export default {
-  title: 'DateInput',
-  decorators: [decorator],
-  component: DateInput,
-}
+export default { title: 'DateInput', component: DateInput }
 
 export let baseStory = () => {
   let [date, setDate] = React.useState(new Date('2019-12-31T23:59'))

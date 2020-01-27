@@ -1,12 +1,10 @@
 import React from 'react'
 import { Flex, Subtitle } from '../..'
 import { fonts } from '../../theme'
-import decorator from '../decorator'
 import SizeInfo from './SizeInfo'
 
 export default {
   title: 'Design System | Typography / Subtitle',
-  decorators: [decorator],
   component: Subtitle,
 }
 
