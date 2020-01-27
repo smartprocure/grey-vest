@@ -9,8 +9,8 @@ let theme = {
   space,
   breakpoints: _.mapValues(space, {
     modalWidth: 75,
-    popupMax: 35,
     calendarWidth: 39,
+    popupMax: 35,
     popupMin: 16,
   }),
   colors: {

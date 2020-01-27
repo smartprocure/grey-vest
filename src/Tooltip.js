@@ -10,7 +10,7 @@ let Tooltip = props => (
       backgroundColor: `${theme.colors.secondaries[1]} !important`,
       color: `${theme.colors.neutrals[0]} !important`,
       padding: `0 ${theme.spaces.sm}px 2px !important`,
-      maxWidth: theme.space(35),
+      maxWidth: theme.breakpoints.popupMax,
       // '&:after': { display: 'none' }, // <-- hide the arrow
     }}
     {...props}
