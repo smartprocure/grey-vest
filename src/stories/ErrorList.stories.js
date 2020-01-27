@@ -1,29 +1,27 @@
 import React from 'react'
-import { Flex, Box, ErrorList, TextInput } from '..'
+import { Flex, Box, ErrorList, TextInput, Title, Text } from '..'
 import decorator from './decorator'
 
 export default {
-  title: 'Components|ErrorList',
+  title: 'ErrorList',
   decorators: [decorator],
   component: ErrorList,
 }
 
 export let formDemo = () => (
   <Box>
-    <h1 style={{ margin: '15px 0' }}>Header</h1>
+    <Title>Header</Title>
     <ErrorList block>Block error</ErrorList>
-    <Flex column style={{ marginBottom: 25 }}>
+    <Flex column>
       <Flex as="label" column style={{ flex: 1 }}>
-        <div className="filter-field-label" style={{ marginBottom: 14 }}>
-          Label
-        </div>
-        <TextInput style={{ borderColor: '#D75050' }} />
+        <Text>Label</Text>
+        <TextInput error />
       </Flex>
       <ErrorList>Text error</ErrorList>
     </Flex>
   </Box>
 )
-export let text = () => <ErrorList>I am an error</ErrorList>
+export let text = () => <ErrorList>Type <b>nodetype</b> is not supported (for key <i>nodekey</i>)</ErrorList>
 export let block = () => (
   <ErrorList block>
     {['Error 1', 'Error 2', ['Error 3A', 'Error 3B']]}

@@ -1,42 +1,42 @@
 import styled from '@emotion/styled'
-import React from 'react'
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
 import F from 'futil'
 import _ from 'lodash/fp'
 import Flex from './Flex'
+import Box from './Box'
 import Icon from './Icon'
 import { Text } from './Typography'
 import theme from './theme'
 
-/*
-.gv-block-error {
-  margin: 15px 0;
-  color: #D75050;
-  background-color: #D7505011;
-  padding: 12px;
-  border-radius: 5px;
-}
-*/
-
 let ErrorText = styled(Text)({ color: theme.colors.errors[1] })
 
 let ErrorBlock = ({ children, ...props }) => (
-  <Flex alignItems="center" {...props}>
+  <Flex
+    as={Box}
+    px={1.5}
+    py={1}
+    gap={1}
+    alignItems="center"
+    css={{
+      color: theme.colors.errors[1],
+      backgroundColor: `${theme.colors.errors[3]}7F`,
+    }}
+    {...props}
+  >
     <Icon icon="warning" />
-    <div>
-      <ErrorList>{children}</ErrorList>
-    </div>
+    {F.mapIndexed(
+      (child, i) => (
+        <ErrorText key={i}>{child}</ErrorText>
+      ),
+      _.castArray(children)
+    )}
   </Flex>
 )
 
-let ErrorList = ({ block = false, children }) =>
-  F.mapIndexed(
-    (e, i) =>
-      block ? (
-        <ErrorBlock key={i}>{e}</ErrorBlock>
-      ) : (
-        <ErrorText key={i}>{e}</ErrorText>
-      ),
-    _.castArray(children)
-  )
+let ErrorList = ({ children, block = false, ...props }) => {
+  let Component = block ? ErrorBlock : ErrorText
+  return <Component {...props}>{children}</Component>
+}
 
 export default ErrorList
