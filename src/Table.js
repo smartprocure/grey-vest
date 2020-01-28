@@ -8,7 +8,7 @@ let Table = x => (
       css={{
         borderCollapse: 'collapse',
         width: '100%',
-        'tr:nth-child(2n+3)': {
+        'tbody tr:nth-child(2n)': {
           backgroundColor: `${theme.colors.neutrals[6]}19`,
         },
         'td, th': {
