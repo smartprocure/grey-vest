@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
-import theme, { fonts } from './theme'
+import theme from './theme'
 
 let Table = x => (
   <div style={{ overflow: 'auto' }}>
@@ -13,10 +13,10 @@ let Table = x => (
         },
         'td, th': {
           padding: theme.spaces.sm,
-          ...fonts.Text,
+          ...theme.fonts.Text,
         },
         th: {
-          ...fonts.Text.variants.small,
+          ...theme.fonts.Text.variants.small,
           fontWeight: 600,
           textAlign: 'left',
           borderBottom: `1px solid ${theme.colors.neutrals[4]}`,

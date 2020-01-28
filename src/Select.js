@@ -4,11 +4,11 @@ import React from 'react'
 import ReactSelect from 'react-select'
 import { observer } from 'mobx-react'
 import _ from 'lodash/fp'
-import { inputStyle } from './theme'
+import theme from './theme'
 
 let Select = ({ options, native = true, placeholder = 'Please Select...', ...props }, ref) =>
   native ? (
-    <select {...props} ref={ref} css={[inputStyle, { height: 40 }]}>
+    <select {...props} ref={ref} css={[theme.inputStyle, { height: 40 }]}>
       {placeholder && <option value="">{placeholder}</option>}
       {_.map(
         x => (

@@ -3,14 +3,14 @@ import { jsx } from '@emotion/core'
 import React from 'react'
 import { observer } from 'mobx-react'
 import _ from 'lodash/fp'
-import { inputStyle } from './theme'
+import theme from './theme'
 
 let Textarea = (props, ref) => (
   <textarea
     {...props}
     ref={ref}
     rows={4}
-    css={[inputStyle, { height: 'auto' }]}
+    css={[theme.inputStyle, { height: 'auto' }]}
   />
 )
 

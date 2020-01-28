@@ -1,7 +1,8 @@
 import React from 'react'
 import { Flex, Text } from '../..'
-import { fonts } from '../../theme'
+import theme from '../../theme'
 import SizeInfo from './SizeInfo'
+let { fonts } = theme
 
 export default {
   title: 'Design System | Typography / Text',

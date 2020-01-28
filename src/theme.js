@@ -43,9 +43,8 @@ theme.boxShadows = {
   popup: `0 8px 16px -4px ${theme.colors.secondaries[1]}4c,
           0 0 1px 0 ${theme.colors.secondaries[1]}4c`,
 }
-export default theme
 
-export let fonts = {
+theme.fonts = {
   Title: {
     // Page titles
     fontFamily: theme.fonts.primary,
@@ -106,7 +105,7 @@ export let fonts = {
   },
 }
 
-export let inputStyle = {
+theme.inputStyle = {
   borderRadius: theme.borderRadius,
   border: `2px solid ${theme.colors.neutrals[3]}`,
   padding: `${theme.spaces.xs}px ${theme.spaces.sm}px`,
@@ -120,9 +119,11 @@ export let inputStyle = {
   boxSizing: 'border-box',
   // width: '100%',
   // maxWidth: theme.breakpoints.popupMax,
-  ...fonts.Text,
+  ...theme.fonts.Text,
   '&:disabled': {
     borderColor: theme.colors.neutrals[2],
     backgroundColor: theme.colors.neutrals[2],
   },
 }
+
+export default theme

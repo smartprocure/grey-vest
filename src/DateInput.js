@@ -4,7 +4,8 @@ import { observer } from 'mobx-react'
 import moment from 'moment'
 import DatePicker from 'react-datetime-picker'
 import _ from 'lodash/fp'
-import theme, { inputStyle, fonts } from './theme'
+import theme from './theme'
+let { inputStyle, fonts } = theme
 
 let NativeDateInput = ({ value, onChange = _.noop, ...props }) => (
   <input

@@ -5,7 +5,7 @@ import { observable } from 'mobx'
 import { observer, inject, useLocalStore } from 'mobx-react'
 import Flex from './Flex'
 import DefaultTag from './Tag'
-import theme, { inputStyle } from './theme'
+import theme from './theme'
 
 let isValidInput = (tag, tags) => !_.isEmpty(tag) && !_.includes(tag, tags)
 
@@ -46,7 +46,7 @@ let TagsInput = ({
           { cursor: 'text' },
           _.pick(
             ['border', 'borderRadius', 'padding', 'boxSizing'],
-            inputStyle
+            theme.inputStyle
           ),
         ]}
       >
@@ -68,7 +68,7 @@ let TagsInput = ({
         )}
         <input
           css={{
-            ...inputStyle,
+            ...theme.inputStyle,
             padding: 0,
             height: 'auto',
             border: 'none',

@@ -1,4 +1,3 @@
-import styled from '@emotion/styled'
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import F from 'futil'
@@ -9,7 +8,7 @@ import Icon from './Icon'
 import { Text } from './Typography'
 import theme from './theme'
 
-let ErrorText = styled(Text)({ color: theme.colors.errors[1] })
+let ErrorText = props => <Text css={{ color: theme.colors.errors[1] }} {...props} />
 
 let ErrorBlock = ({ children, ...props }) => (
   <Flex

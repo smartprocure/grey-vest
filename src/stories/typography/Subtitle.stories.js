@@ -1,6 +1,6 @@
 import React from 'react'
 import { Flex, Subtitle } from '../..'
-import { fonts } from '../../theme'
+import theme from '../../theme'
 import SizeInfo from './SizeInfo'
 
 export default {
@@ -10,7 +10,7 @@ export default {
 
 export let regular = () => (
   <Flex alignItems="center">
-    <SizeInfo config={fonts.Subtitle} />
+    <SizeInfo config={theme.fonts.Subtitle} />
     <Subtitle>
       Regular subtitle. Used for buttons and navigation elements. Vestibulum
       dapibus maximus magna, id suscipit massa lobortis sit amet.
@@ -20,7 +20,7 @@ export let regular = () => (
 
 export let largeVariant = () => (
   <Flex alignItems="center">
-    <SizeInfo config={fonts.Subtitle.variants.large} />
+    <SizeInfo config={theme.fonts.Subtitle.variants.large} />
     <Subtitle large>
       Large subtitle. Used for section headers, subsections within pages, and
       large buttons. Cras non nulla sit amet metus facilisis lacinia at vel
