@@ -5,7 +5,7 @@
 * Lots of new stories! 📖✨
 * Stories are no longer co-located with components (GreyVest alone is much smaller and flatter than contexture-react, so it makes more sense to keep them separate)
 * New typography components: **Text**, **Title** and **Subtitle**
-* Other new components: **Dropdown** (a zero-padding variant of Popover intended to be used with DropdownItem), **Tooltip**, and **Divider**
+* Other new components: **Dropdown** (a zero-padding variant of Popover intended to be used with DropdownItem), **Tooltip**, **Banner**, **Pager**, **TableFooter**, and **Divider**
 * Changes to **Button**:
   * New component-level variants: **Button.Primary**, **Button.Secondary** (same as regular Button), **Button.Tertiary**, **Button.Danger**, and **Button.Ghost**
   * New props: `compact` and `large` flags for size variants, and `icon` (same as the Icon component's `icon` prop)
@@ -38,15 +38,22 @@ Component props that control whitespace now take spacing values from GreyVest's 
 | Component | Prop(s)                                            | Status                                           |
 | --------- | -------------------------------------------------- | ------------------------------------------------ |
 | Grid      | `gap`                                              | formerly pixel measurement (**breaking change**) |
+| Flex      | `gap`                                              | new in 3.0                                       |
 | Box       | `padding`, `paddingX`, `paddingY`, `p`, `px`, `py` | new in 3.0                                       |
 | Divider   | `margin`, `m`                                      | new in 3.0                                       |
+
+#### 3.0.0-alpha.8
+* Add Pager, PageSize and TableFooter components and stories
+* Update PagerItem, ButtonGroup, LinkButton, ErrorList, and Awaiter stories
+* Add stories for Divider & Table
+* Add `gap` prop to Flex component API
+* Awaiter: now better handles different kinds of error formats (eg objects with a `message` key)
 
 #### 3.0.0-alpha.7
 * Update Tag, TagsInput, Tabs and TabList for new design system
 * Add stories for Tag and TagsInput
 
 #### 3.0.0-alpha.6
-* Add `withAliasProps` HOC to utils
 * Add prop aliases: `m` -> `margin` in Divider, `padding` -> `p`, `paddingX` -> `px`, `paddingY` -> `py` in Box
 * Add list of changes in 3.0.0 to changelog
 

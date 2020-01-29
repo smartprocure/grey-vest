@@ -1,11 +1,17 @@
-import React from 'react'
-import F from 'futil'
+import styled from '@emotion/styled'
+import theme from './theme'
 
-let LinkButton = ({ className = '', ...props }) => (
-  <button
-    className={F.compactJoin(' ', ['gv-link-button', className])}
-    {...props}
-  />
-)
+let LinkButton = styled.button({
+  color: theme.colors.primaries[0],
+  backgroundColor: 'transparent',
+  border: 'none',
+  cursor: 'pointer',
+  textDecoration: 'underline',
+  display: 'inline',
+  margin: 0,
+  padding: 0,
+  outline: 'none',
+  '&:hover, &:focus': { textDecoration: 'none' },
+})
 
 export default LinkButton

@@ -1,10 +1,10 @@
 import React from 'react'
 import { fromPromise } from 'mobx-utils'
-import { Awaiter, Button, Box } from '..'
+import { Awaiter, Button, Box, Grid, GridItem } from '..'
 import decorator from './decorator'
 
 export default {
-  title: 'Components|Awaiter',
+  title: 'Awaiter',
   decorators: [decorator],
   component: Awaiter,
 }
@@ -19,14 +19,12 @@ export let story = () => {
     })
   )
   return (
-    <>
-      <Box>
+    <Grid inline gap={1} columns={2}>
+      <GridItem as={Box} width={2}>
         <Awaiter promise={p}>{x => <div>{x}</div>}</Awaiter>
-      </Box>
-      <Button onClick={() => resolve('async value')} style={{ marginRight: 8 }}>
-        Resolve
-      </Button>
+      </GridItem>
+      <Button onClick={() => resolve('async value')}>Resolve</Button>
       <Button onClick={() => reject('some error')}>Reject</Button>
-    </>
+    </Grid>
   )
 }
