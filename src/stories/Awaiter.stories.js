@@ -1,13 +1,8 @@
 import React from 'react'
 import { fromPromise } from 'mobx-utils'
 import { Awaiter, Button, Box, Grid, GridItem } from '..'
-import decorator from './decorator'
 
-export default {
-  title: 'Awaiter',
-  decorators: [decorator],
-  component: Awaiter,
-}
+export default { title: 'Awaiter', component: Awaiter }
 
 export let story = () => {
   let resolve

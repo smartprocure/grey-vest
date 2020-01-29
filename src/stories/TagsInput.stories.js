@@ -2,13 +2,8 @@ import React from 'react'
 import { TagsInput, Divider } from '..'
 import _ from 'lodash/fp'
 import F from 'futil'
-import decorator from './decorator'
 
-export default {
-  title: 'TagsInput',
-  decorators: [decorator],
-  component: TagsInput,
-}
+export default { title: 'TagsInput', component: TagsInput }
 
 export let baseUsage = () => {
   let [tags, setTags] = React.useState([
@@ -17,7 +12,7 @@ export let baseUsage = () => {
     'hello world',
     'tag',
     'another tag',
-    'Multiline tag! Praesent auctor rhoncus erat eu porta. Aliquam erat volutpat. Nulla tellus justo, ultricies vel interdum eu, accumsan vitae sem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.'
+    'Multiline tag! Praesent auctor rhoncus erat eu porta. Aliquam erat volutpat. Nulla tellus justo, ultricies vel interdum eu, accumsan vitae sem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.',
   ])
   return (
     <>

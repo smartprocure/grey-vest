@@ -1,12 +1,7 @@
 import React from 'react'
 import { Flex, Box, ErrorList, TextInput, Title, Text } from '..'
-import decorator from './decorator'
 
-export default {
-  title: 'ErrorList',
-  decorators: [decorator],
-  component: ErrorList,
-}
+export default { title: 'ErrorList', component: ErrorList }
 
 export let formDemo = () => (
   <Box>
@@ -21,7 +16,11 @@ export let formDemo = () => (
     </Flex>
   </Box>
 )
-export let text = () => <ErrorList>Type <b>nodetype</b> is not supported (for key <i>nodekey</i>)</ErrorList>
+export let text = () => (
+  <ErrorList>
+    Type <b>nodetype</b> is not supported (for key <i>nodekey</i>)
+  </ErrorList>
+)
 export let block = () => (
   <ErrorList block>
     {['Error 1', 'Error 2', ['Error 3A', 'Error 3B']]}

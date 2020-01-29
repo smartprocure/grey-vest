@@ -1,12 +1,10 @@
 import React from 'react'
 import { Flex, Title } from '../..'
 import { fonts } from '../../theme'
-import decorator from '../decorator'
 import SizeInfo from './SizeInfo'
 
 export default {
   title: 'Design System | Typography / Title',
-  decorators: [decorator],
   component: Title,
 }
 

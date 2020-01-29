@@ -1,13 +1,8 @@
 import React from 'react'
 import { Checkbox } from '..'
 import F from 'futil'
-import decorator from './decorator'
 
-export default {
-  title: 'Checkbox',
-  decorators: [decorator],
-  component: Checkbox,
-}
+export default { title: 'Checkbox', component: Checkbox }
 
 export let interactible = () => {
   let checked = React.useState(false)

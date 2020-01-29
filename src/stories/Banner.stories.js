@@ -1,12 +1,7 @@
 import React from 'react'
 import { Banner } from '..'
-import decorator from './decorator'
 
-export default {
-  title: 'Banner',
-  decorators: [decorator],
-  component: Banner,
-}
+export default { title: 'Banner', component: Banner }
 
 export let basicBanner = () => (
   <Banner>
@@ -24,8 +19,8 @@ export let warningBanner = () => (
 
 export let errorBanner = () => (
   <Banner.Error>
-    Lorem ipsum massa sapien amet.{' '}
-    <a href="#">Click here</a> eu velit at consectetur.
+    Lorem ipsum massa sapien amet. <a href="#">Click here</a> eu velit at
+    consectetur.
   </Banner.Error>
 )
 

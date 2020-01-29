@@ -1,13 +1,8 @@
 import React from 'react'
 import _ from 'lodash/fp'
 import { Flex } from '..'
-import decorator from './decorator'
 
-export default {
-  title: 'Flex',
-  component: Flex,
-  decorators: [decorator],
-}
+export default { title: 'Flex', component: Flex }
 
 export let asButton = () => (
   <Flex column alignItems="center">

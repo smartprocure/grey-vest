@@ -1,13 +1,8 @@
 import React from 'react'
 import { action } from '@storybook/addon-actions'
 import { Button, Grid } from '..'
-import decorator from './decorator'
 
-export default {
-  title: 'Button',
-  component: Button,
-  decorators: [decorator],
-}
+export default { title: 'Button', component: Button }
 
 let clickAction = () => action('clicked')()
 

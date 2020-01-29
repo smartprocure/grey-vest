@@ -1,13 +1,8 @@
 import React from 'react'
 import { CheckboxList } from '..'
 import F from 'futil'
-import decorator from './decorator'
 
-export default {
-  title: 'CheckboxList',
-  decorators: [decorator],
-  component: CheckboxList,
-}
+export default { title: 'CheckboxList', component: CheckboxList }
 
 export let baseStory = () => {
   let values = React.useState([])
@@ -22,7 +17,7 @@ export let baseStory = () => {
             'Mauris auctor scelerisque erat quis imperdiet. Nulla consequat, velit tincidunt accumsan laoreet, metus est euismod libero, eget euismod nisl eros eget metus.',
           value: 3,
         },
-        { label: 'Phasellus at efficitur quam', value: 4 }
+        { label: 'Phasellus at efficitur quam', value: 4 },
       ]}
     />
   )

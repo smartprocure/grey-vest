@@ -1,13 +1,8 @@
 import React from 'react'
 import F from 'futil'
 import { TableFooter, TextInput, Text, Grid, Divider } from '..'
-import decorator from './decorator'
 
-export default {
-  title: 'TableFooter',
-  decorators: [decorator],
-  component: TableFooter,
-}
+export default { title: 'TableFooter', component: TableFooter }
 
 export let story = () => {
   let [page, onChangePage] = React.useState(1)

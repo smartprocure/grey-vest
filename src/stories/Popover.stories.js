@@ -2,13 +2,8 @@ import React from 'react'
 import F from 'futil'
 import { observable } from 'mobx'
 import { Button, Popover } from '..'
-import decorator from './decorator'
 
-export default {
-  title: 'Popover',
-  component: Popover,
-  decorators: [decorator],
-}
+export default { title: 'Popover', component: Popover }
 
 export let withOpenProp = () => {
   let open = observable.box(false)

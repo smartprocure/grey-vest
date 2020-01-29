@@ -1,4 +1,6 @@
 import React from 'react'
+import { Global } from '@emotion/core'
+import { fonts } from './theme'
 
 let Fonts = () => (
   <>
@@ -20,6 +22,7 @@ let Fonts = () => (
       href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css"
       rel="stylesheet"
     />
+    <Global styles={{ body: fonts.Text }} />
   </>
 )
 export default Fonts

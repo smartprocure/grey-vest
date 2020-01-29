@@ -1,16 +1,12 @@
 import React from 'react'
 import F from 'futil'
 import { Button, TextInput, Textarea, Select, Grid, Divider } from '..'
-import decorator from './decorator'
 
 let input
 let select
 let textArea
 
-export default {
-  title: 'Refs',
-  decorators: [decorator],
-}
+export default { title: 'Refs' }
 
 export let story = () => (
   <Grid gap={1}>

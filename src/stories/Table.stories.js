@@ -1,13 +1,8 @@
 import React from 'react'
 import { Table } from '..'
 import _ from 'lodash/fp'
-import decorator from './decorator'
 
-export default {
-  title: 'Table',
-  decorators: [decorator],
-  component: Table,
-}
+export default { title: 'Table', component: Table }
 
 let users = [
   { user: 'barney', age: 36, active: true },
@@ -15,7 +10,7 @@ let users = [
   { user: 'pebbles', age: 1, active: true },
 ]
 
-export let baseUsage = () => (
+export let story = () => (
   <Table>
     <tr>
       <th>Name</th>

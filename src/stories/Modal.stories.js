@@ -2,13 +2,8 @@ import React from 'react'
 import F from 'futil'
 import { useLensObject } from '../utils'
 import { Modal, Button, Dropdown, DropdownItem, Text } from '..'
-import decorator from './decorator'
 
-export default {
-  title: 'Modal',
-  component: Modal,
-  decorators: [decorator],
-}
+export default { title: 'Modal', component: Modal }
 
 export let withHeaderAndFooter = () => {
   let open = React.useState(false)

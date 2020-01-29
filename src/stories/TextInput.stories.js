@@ -1,12 +1,7 @@
 import React from 'react'
 import { TextInput } from '..'
-import decorator from './decorator'
 
-export default {
-  title: 'TextInput',
-  decorators: [decorator],
-  component: TextInput,
-}
+export default { title: 'TextInput', component: TextInput }
 
 export let baseUsage = () => <TextInput placeholder="Enter some text..." />
 

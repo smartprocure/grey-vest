@@ -2,13 +2,8 @@ import React from 'react'
 import F from 'futil'
 import { observable } from 'mobx'
 import { Button, Dropdown, DropdownItem, Divider } from '..'
-import decorator from './decorator'
 
-export default {
-  title: 'Dropdown',
-  component: Dropdown,
-  decorators: [decorator],
-}
+export default { title: 'Dropdown', component: Dropdown }
 
 let ButtonDropdown = ({ children }) => {
   let open = observable.box(false)
