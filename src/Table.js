@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
-import theme, { fonts } from './theme'
+import theme from './theme'
 
 let Table = x => (
   <div style={{ overflow: 'auto' }}>
@@ -8,15 +8,15 @@ let Table = x => (
       css={{
         borderCollapse: 'collapse',
         width: '100%',
-        'tr:nth-child(2n+3)': {
+        'tbody tr:nth-child(2n)': {
           backgroundColor: `${theme.colors.neutrals[6]}19`,
         },
         'td, th': {
-          padding: theme.spaces.sm,
-          ...fonts.Text,
+          padding: `${theme.spaces.sm}px ${theme.spaces.md}px`,
+          ...theme.fonts.Text,
         },
         th: {
-          ...fonts.Text.variants.small,
+          ...theme.fonts.Text.variants.small,
           fontWeight: 600,
           textAlign: 'left',
           borderBottom: `1px solid ${theme.colors.neutrals[4]}`,

@@ -2,12 +2,12 @@
 import { jsx } from '@emotion/core'
 import _ from 'lodash/fp'
 import { findKeys } from './utils'
-import { fonts } from './theme'
+import theme from './theme'
 
 
 let getVariants = (props, variants) =>
   _.flow(
-    _.pick(findKeys(x => x === true, props)),
+    _.pick(findKeys(_.eq(true), props)),
     _.values
   )(variants)
 
@@ -16,5 +16,5 @@ let toComponent = ({ variants, ...styles }) => ({ as: As = 'span', ...props }) =
 )
 
 // these have to be statically declared so they can be named exports :(
-let { Text, Subtitle, Title } = _.mapValues(toComponent, fonts)
+let { Text, Subtitle, Title } = _.mapValues(toComponent, theme.fonts)
 export { Text, Subtitle, Title }

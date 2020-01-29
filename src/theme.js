@@ -34,21 +34,21 @@ let theme = {
   },
   fontSizes: [12, 14, 16, 18, 30, 48],
   lineHeights: [1, 1.15, 1.25, 1.5, 1.7, 1.75],
-  fonts: { primary: 'Lato' },
+  fontFamily: 'Lato',
   borderRadius: 3,
 }
+
 theme.boxShadows = {
   normal: `0 2px 10px 0 ${theme.colors.neutrals[8]}19`,
   modal: `0 2px 10px 0 ${theme.colors.secondaries[1]}7f`,
   popup: `0 8px 16px -4px ${theme.colors.secondaries[1]}4c,
           0 0 1px 0 ${theme.colors.secondaries[1]}4c`,
 }
-export default theme
 
-export let fonts = {
+theme.fonts = {
   Title: {
     // Page titles
-    fontFamily: theme.fonts.primary,
+    fontFamily: theme.fontFamily,
     fontSize: theme.fontSizes[4],
     lineHeight: theme.lineHeights[2],
     fontWeight: 300,
@@ -70,7 +70,7 @@ export let fonts = {
   },
   Subtitle: {
     // Regular size buttons, main nav section
-    fontFamily: theme.fonts.primary,
+    fontFamily: theme.fontFamily,
     fontSize: theme.fontSizes[1],
     lineHeight: theme.lineHeights[0],
     fontWeight: 600,
@@ -86,7 +86,7 @@ export let fonts = {
   },
   Text: {
     // Default body copy, table copy, general text
-    fontFamily: theme.fonts.primary,
+    fontFamily: theme.fontFamily,    
     fontSize: theme.fontSizes[2],
     lineHeight: theme.lineHeights[5],
     fontWeight: 400,
@@ -106,7 +106,7 @@ export let fonts = {
   },
 }
 
-export let inputStyle = {
+theme.inputStyle = {
   borderRadius: theme.borderRadius,
   border: `2px solid ${theme.colors.neutrals[3]}`,
   padding: `${theme.spaces.xs}px ${theme.spaces.sm}px`,
@@ -120,9 +120,11 @@ export let inputStyle = {
   boxSizing: 'border-box',
   // width: '100%',
   // maxWidth: theme.breakpoints.popupMax,
-  ...fonts.Text,
+  ...theme.fonts.Text,
   '&:disabled': {
     borderColor: theme.colors.neutrals[2],
     backgroundColor: theme.colors.neutrals[2],
   },
 }
+
+export default theme

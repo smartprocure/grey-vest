@@ -15,6 +15,7 @@ let DropdownItem = ({
   <div
     css={[
       {
+        color: theme.colors.neutrals[8],
         cursor: 'pointer',
         marginTop: theme.spaces.xs,
         marginBottom: theme.spaces.xs,

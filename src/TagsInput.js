@@ -5,7 +5,7 @@ import { observable } from 'mobx'
 import { observer, inject, useLocalStore } from 'mobx-react'
 import Flex from './Flex'
 import DefaultTag from './Tag'
-import theme, { inputStyle } from './theme'
+import theme from './theme'
 
 let isValidInput = (tag, tags) => !_.isEmpty(tag) && !_.includes(tag, tags)
 
@@ -42,11 +42,12 @@ let TagsInput = ({
       <Flex
         wrap
         alignItems="center"
+        gap="xs"
         css={[
           { cursor: 'text' },
           _.pick(
             ['border', 'borderRadius', 'padding', 'boxSizing'],
-            inputStyle
+            theme.inputStyle
           ),
         ]}
       >
@@ -55,11 +56,6 @@ let TagsInput = ({
             <Tag
               key={t}
               value={t}
-              css={{
-                marginTop: theme.spaces.xs / 2,
-                marginBottom: theme.spaces.xs / 2,
-                marginRight: theme.spaces.xs,
-              }}
               {...{ removeTag, tagStyle }}
               onClick={() => onTagClick(t)}
             />
@@ -68,7 +64,7 @@ let TagsInput = ({
         )}
         <input
           css={{
-            ...inputStyle,
+            ...theme.inputStyle,
             padding: 0,
             height: 'auto',
             border: 'none',

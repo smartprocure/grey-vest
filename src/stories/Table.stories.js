@@ -12,20 +12,24 @@ let users = [
 
 export let story = () => (
   <Table>
-    <tr>
-      <th>Name</th>
-      <th>Age</th>
-      <th>Active</th>
-    </tr>
-    {_.map(
-      ({ user, age, active }) => (
-        <tr>
-          <td>{user}</td>
-          <td>{age}</td>
-          <td>{active ? 'yes' : 'no'}</td>
-        </tr>
-      ),
-      users
-    )}
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Active</th>
+      </tr>
+    </thead>
+    <tbody>
+      {_.map(
+        ({ user, age, active }) => (
+          <tr>
+            <td>{user}</td>
+            <td>{age}</td>
+            <td>{active ? 'yes' : 'no'}</td>
+          </tr>
+        ),
+        users
+      )}
+    </tbody>
   </Table>
 )

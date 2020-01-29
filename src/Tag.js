@@ -8,7 +8,7 @@ import Icon from './Icon'
 import { Text } from './Typography'
 import theme from './theme'
 
-let Tag = ({ value, removeTag, tagStyle, onClick, ...props }) => {
+let Tag = ({ value, removeTag, tagStyle, ...props }) => {
   let closeHover = React.useState(false)
   return (
     <Flex
@@ -16,12 +16,12 @@ let Tag = ({ value, removeTag, tagStyle, onClick, ...props }) => {
       css={{
         backgroundColor: theme.colors.neutrals[3],
         color: theme.colors.neutrals[8],
-        display: 'inline-block',
         cursor: 'pointer',
         borderRadius: theme.borderRadius,
-        wordBreak: 'break-all',
         '.remove-button': { opacity: 0.5 },
         transition: 'all 0.2s ease-out',
+        paddingLeft: theme.spaces.sm,
+        paddingRight: removeTag ? theme.spaces.xs : theme.spaces.sm,
         '&:hover': {
           backgroundColor: F.view(closeHover)
             ? theme.colors.errors[3]
@@ -34,20 +34,10 @@ let Tag = ({ value, removeTag, tagStyle, onClick, ...props }) => {
         ...F.callOrReturn(tagStyle, value),
       }}
       alignItems="center"
-      onClick={onClick}
+      gap="xs"
       {...props}
     >
-      <Text
-        small
-        css={{
-          lineHeight: theme.lineHeights[1],
-          padding: theme.spaces.xs,
-          paddingLeft: theme.spaces.sm,
-          paddingRight: removeTag ? theme.spaces.xs : theme.spaces.sm,
-        }}
-      >
-        {value}
-      </Text>
+      <Text small>{value}</Text>
       {removeTag && (
         <Icon
           icon="close"
@@ -56,10 +46,6 @@ let Tag = ({ value, removeTag, tagStyle, onClick, ...props }) => {
           onClick={e => {
             e.stopPropagation()
             removeTag(value)
-          }}
-          css={{
-            verticalAlign: 'middle',
-            padding: `0 ${theme.spaces.xs}px`,
           }}
           {...F.domLens.hover(closeHover)}
         />
