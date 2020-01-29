@@ -1,7 +1,6 @@
 import React from 'react'
 import { Select, Grid, Text } from '..'
 import F from 'futil'
-import _ from 'lodash/fp'
 
 export default { title: 'Select', component: Select }
 
@@ -12,18 +11,26 @@ let options = F.mapIndexed((label, value) => ({ label, value }), [
   'Phasellus at efficitur quam',
 ])
 
-export let native = () => {
-  let value = React.useState('')
+export let baseUsage = () => {
+  let [value, setValue] = React.useState(1)
   return (
     <Grid gap={2}>
       <Text small>
-        Selected: <i>{_.getOr('none', [F.view(value), 'label'], options)}</i>
+        Selected: <i>{value}</i>
       </Text>
-      <Select
-        value={1}
-        {...F.domLens.targetBinding('value')(value)}
-        options={options}
-      />
+      <Select {...F.domLens.value([value, setValue])} options={options} />
+    </Grid>
+  )
+}
+
+export let native = () => {
+  let selected = React.useState(1)
+  return (
+    <Grid gap={2}>
+      <Text small>
+        Selected: <i>{F.view(selected)}</i>
+      </Text>
+      <Select native {...F.domLens.value(selected)} options={options} />
     </Grid>
   )
 }
