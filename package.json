@@ -1,6 +1,6 @@
 {
   "name": "grey-vest",
-  "version": "3.0.0-alpha.10",
+  "version": "3.0.0-alpha.11",
   "description": "GreyVest component library",
   "main": "dist/index.js",
   "scripts": {
@@ -96,6 +96,7 @@
     "eslint": "^4.12.1",
     "eslint-config-smartprocure": "^1.1.0",
     "jest": "^24.7.1",
+    "lorem-ipsum": "^2.0.3",
     "mobx": "^4.3.1",
     "mobx-react": "^6.1.1",
     "mobx-utils": "^5.0.0",

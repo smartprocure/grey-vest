@@ -1,4 +1,5 @@
 import React from 'react'
+import { loremIpsum } from 'lorem-ipsum'
 import { Flex, Subtitle } from '../..'
 import theme from '../../theme'
 import SizeInfo from './SizeInfo'
@@ -12,8 +13,7 @@ export let regular = () => (
   <Flex alignItems="center">
     <SizeInfo config={theme.fonts.Subtitle} />
     <Subtitle>
-      Regular subtitle. Used for buttons and navigation elements. Vestibulum
-      dapibus maximus magna, id suscipit massa lobortis sit amet.
+      Regular subtitle. Used for buttons and navigation elements. {loremIpsum()}
     </Subtitle>
   </Flex>
 )
@@ -23,8 +23,7 @@ export let largeVariant = () => (
     <SizeInfo config={theme.fonts.Subtitle.variants.large} />
     <Subtitle large>
       Large subtitle. Used for section headers, subsections within pages, and
-      large buttons. Cras non nulla sit amet metus facilisis lacinia at vel
-      sapien.
+      large buttons. {loremIpsum()}
     </Subtitle>
   </Flex>
 )

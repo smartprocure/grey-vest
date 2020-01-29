@@ -1,24 +1,22 @@
 import React from 'react'
-import { CheckboxList } from '..'
+import { loremIpsum } from 'lorem-ipsum'
+import _ from 'lodash/fp'
 import F from 'futil'
+import { CheckboxList, Grid } from '..'
 
 export default { title: 'CheckboxList', component: CheckboxList }
 
-export let baseStory = () => {
+let choices = _.times(loremIpsum, 5)
+let options = F.mapIndexed((label, value) => ({ label, value }), choices)
+
+export let story = () => {
   let values = React.useState([])
   return (
-    <CheckboxList
-      {...F.domLens.targetBinding('value')(values)}
-      options={[
-        { label: 'Nulla et fringilla nisl', value: 1 },
-        { label: 'Aliquam eu bibendum eros', value: 2 },
-        {
-          label:
-            'Mauris auctor scelerisque erat quis imperdiet. Nulla consequat, velit tincidunt accumsan laoreet, metus est euismod libero, eget euismod nisl eros eget metus.',
-          value: 3,
-        },
-        { label: 'Phasellus at efficitur quam', value: 4 },
-      ]}
-    />
+    <Grid gap={1}>
+      <div>
+        Selected: <b>[{_.join(', ', F.view(values))}]</b>
+      </div>
+      <CheckboxList {...F.domLens.value(values)} options={options} />
+    </Grid>
   )
 }
