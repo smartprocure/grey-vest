@@ -47,7 +47,7 @@ let ReactSelect = ({ value, options, ...props }) => (
       }),
     }}
     {...{ options, ...props }}
-    value={_.find(value, options)}
+    value={_.find({ value }, options)}
     onChange={option => props.onChange(option.value)}
   />
 )
