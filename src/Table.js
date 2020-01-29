@@ -12,7 +12,7 @@ let Table = x => (
           backgroundColor: `${theme.colors.neutrals[6]}19`,
         },
         'td, th': {
-          padding: theme.spaces.sm,
+          padding: `${theme.spaces.sm}px ${theme.spaces.md}px`,
           ...theme.fonts.Text,
         },
         th: {
