@@ -42,6 +42,7 @@ let TagsInput = ({
       <Flex
         wrap
         alignItems="center"
+        gap="xs"
         css={[
           { cursor: 'text' },
           _.pick(
@@ -55,11 +56,6 @@ let TagsInput = ({
             <Tag
               key={t}
               value={t}
-              css={{
-                marginTop: theme.spaces.xs / 2,
-                marginBottom: theme.spaces.xs / 2,
-                marginRight: theme.spaces.xs,
-              }}
               {...{ removeTag, tagStyle }}
               onClick={() => onTagClick(t)}
             />
