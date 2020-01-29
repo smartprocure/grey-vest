@@ -1,19 +1,22 @@
 import React from 'react'
+import { loremIpsum } from 'lorem-ipsum'
 import { TagsInput, Divider } from '..'
 import _ from 'lodash/fp'
 import F from 'futil'
 
 export default { title: 'TagsInput', component: TagsInput }
 
+let initialTags = [
+  'populate some tags to start with',
+  "so we don't have to add them fresh every time",
+  'hello world',
+  'tag',
+  'another tag',
+  `Multiline tag! ${loremIpsum({ count: 4 })}`,
+]
+
 export let baseUsage = () => {
-  let [tags, setTags] = React.useState([
-    'populate some tags to start with',
-    "so we don't have to add them fresh every time",
-    'hello world',
-    'tag',
-    'another tag',
-    'Multiline tag! Praesent auctor rhoncus erat eu porta. Aliquam erat volutpat. Nulla tellus justo, ultricies vel interdum eu, accumsan vitae sem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.',
-  ])
+  let [tags, setTags] = React.useState(initialTags)
   return (
     <>
       <TagsInput

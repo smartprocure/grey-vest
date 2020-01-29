@@ -1,16 +1,21 @@
 import React from 'react'
-import { Tag, Grid } from '..'
+import { loremIpsum } from 'lorem-ipsum'
 import _ from 'lodash/fp'
+import { Tag, Grid } from '..'
 
 export default { title: 'Tag', component: Tag }
 
 export let baseUsage = () => <Tag value="hello world!" />
 
-export let withRemoveButton = () => (
+export let removeButton = () => (
   <Tag value="Removable tag" removeTag={() => alert('remove tag')} />
 )
 
-export let withTagStyle = () => {
+export let longTag = () => (
+  <Tag value={loremIpsum({ count: 4 })} removeTag={() => alert('remove tag')} />
+)
+
+export let styling = () => {
   let colorFromValue = value => ({ color: value })
   return (
     <Grid placeItems="start" gap={1}>
