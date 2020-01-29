@@ -34,9 +34,10 @@ let theme = {
   },
   fontSizes: [12, 14, 16, 18, 30, 48],
   lineHeights: [1, 1.15, 1.25, 1.5, 1.7, 1.75],
-  fonts: { primary: 'Lato' },
+  fontFamily: 'Lato',
   borderRadius: 3,
 }
+
 theme.boxShadows = {
   normal: `0 2px 10px 0 ${theme.colors.neutrals[8]}19`,
   modal: `0 2px 10px 0 ${theme.colors.secondaries[1]}7f`,
@@ -47,7 +48,7 @@ theme.boxShadows = {
 theme.fonts = {
   Title: {
     // Page titles
-    fontFamily: theme.fonts.primary,
+    fontFamily: theme.fontFamily,
     fontSize: theme.fontSizes[4],
     lineHeight: theme.lineHeights[2],
     fontWeight: 300,
@@ -69,7 +70,7 @@ theme.fonts = {
   },
   Subtitle: {
     // Regular size buttons, main nav section
-    fontFamily: theme.fonts.primary,
+    fontFamily: theme.fontFamily,
     fontSize: theme.fontSizes[1],
     lineHeight: theme.lineHeights[0],
     fontWeight: 600,
@@ -85,7 +86,7 @@ theme.fonts = {
   },
   Text: {
     // Default body copy, table copy, general text
-    fontFamily: theme.fonts.primary,
+    fontFamily: theme.fontFamily,    
     fontSize: theme.fontSizes[2],
     lineHeight: theme.lineHeights[5],
     fontWeight: 400,
