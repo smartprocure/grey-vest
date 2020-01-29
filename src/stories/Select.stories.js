@@ -1,23 +1,21 @@
 import React from 'react'
-import { Select, Grid, Text } from '..'
 import F from 'futil'
+import _ from 'lodash/fp'
+import { loremIpsum } from 'lorem-ipsum'
+import { Select, Grid } from '..'
 
 export default { title: 'Select', component: Select }
 
-let options = F.mapIndexed((label, value) => ({ label, value }), [
-  'Nulla et fringilla nisl',
-  'Aliquam eu bibendum eros',
-  'Mauris auctor scelerisque erat quis imperdiet. Nulla consequat, velit tincidunt accumsan laoreet, metus est euismod libero, eget euismod nisl eros eget metus.',
-  'Phasellus at efficitur quam',
-])
+let choices = _.times(loremIpsum, 5)
+let options = F.mapIndexed((label, value) => ({ label, value }), choices)
 
-export let baseUsage = () => {
+export let usage = () => {
   let [value, setValue] = React.useState(1)
   return (
-    <Grid gap={2}>
-      <Text small>
-        Selected: <i>{value}</i>
-      </Text>
+    <Grid gap={1}>
+      <div>
+        Selected: <b>{value}</b>
+      </div>
       <Select {...F.domLens.value([value, setValue])} options={options} />
     </Grid>
   )
@@ -26,10 +24,10 @@ export let baseUsage = () => {
 export let native = () => {
   let selected = React.useState(1)
   return (
-    <Grid gap={2}>
-      <Text small>
-        Selected: <i>{F.view(selected)}</i>
-      </Text>
+    <Grid gap={1}>
+      <div>
+        Selected: <b>{F.view(selected)}</b>
+      </div>
       <Select native {...F.domLens.value(selected)} options={options} />
     </Grid>
   )

@@ -1,39 +1,34 @@
 import React from 'react'
-import { RadioList } from '..'
+import { loremIpsum } from 'lorem-ipsum'
+import _ from 'lodash/fp'
+import { RadioList, Grid } from '..'
 import F from 'futil'
 
 export default { title: 'RadioList', component: RadioList }
 
-let options = [
-  { label: 'Nulla et fringilla nisl', value: 1 },
-  { label: 'Aliquam eu bibendum eros', value: 2 },
-  {
-    label:
-      'Mauris auctor scelerisque erat quis imperdiet. Nulla consequat, velit tincidunt accumsan laoreet, metus est euismod libero, eget euismod nisl eros eget metus.',
-    value: 3,
-  },
-  { label: 'Phasellus at efficitur quam', disabled: true, value: 4 },
-]
+let choices = _.times(loremIpsum, 5)
+let options = F.mapIndexed((label, value) => ({ label, value }), choices)
 
 export let baseStory = () => {
-  let values = React.useState([])
+  let value = React.useState(1)
   return (
-    <RadioList
-      value={1}
-      {...F.domLens.targetBinding('value')(values)}
-      options={options}
-    />
+    <Grid gap={1}>
+      <div>
+        Selected: <b>{F.view(value)}</b>
+      </div>
+      <RadioList {...F.domLens.value(value)} options={options} />
+    </Grid>
   )
 }
 
 export let native = () => {
-  let values = React.useState([])
+  let value = React.useState(1)
   return (
-    <RadioList
-      native
-      value={1}
-      {...F.domLens.targetBinding('value')(values)}
-      options={options}
-    />
+    <Grid gap={1}>
+      <div>
+        Selected: <b>{F.view(value)}</b>
+      </div>
+      <RadioList native {...F.domLens.value(value)} options={options} />
+    </Grid>
   )
 }
