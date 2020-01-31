@@ -27,7 +27,8 @@ let ReactSelect = ({ value, options, ...props }) => (
       control: (provided, state) => ({
         display: 'flex',
         outline: 'none',
-        minWidth: theme.breakpoints.popupMax,
+        minWidth: theme.widths.formField.min,
+        maxWidth: theme.widths.formField.max,
         ..._.omit(['padding'], theme.inputStyle),
         ...(state.isFocused && theme.inputStyle['&:focus']),
       }),

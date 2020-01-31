@@ -45,7 +45,7 @@ let ReactDatePickerInput = ({
           },
         },
         '.react-calendar': {
-          width: `${theme.breakpoints.calendarWidth}px !important`,
+          width: `${theme.widths.calendar}px !important`,
           border: 0,
           padding: theme.spaces.md,
           borderRadius: theme.borderRadius,
@@ -73,10 +73,14 @@ let ReactDatePickerInput = ({
             ...fonts.Text.variants.small,
             color: theme.colors.secondaries[0],
             '& abbr': { opacity: 0.5 },
-            '&:hover abbr': { opacity: 1 },
+            '&:hover': {
+              backgroundColor: theme.colors.neutrals[4],
+              '& abbr': { opacity: 1 },
+            },
             padding: 0,
             height: theme.spaces.lg,
             borderRadius: theme.borderRadius,
+            // primary-colored underline on current day
             '&--now abbr': {
               width: 24,
               opacity: 1,

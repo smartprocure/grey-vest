@@ -1,17 +1,26 @@
 import F from 'futil'
 import _ from 'lodash/fp'
+import { deep } from './utils'
 
 let spaces = { xs: 4, sm: 8, md: 16, lg: 32 }
 let space = F.ifElse(_.isNumber, n => n * 8, F.aliasIn(spaces))
+let widths = {
+  modal: 75, // 600
+  calendar: 39, // 312
+  lg: 54, // 432 - maximum for table column, form field
+  md: 35, // 280 - used for table column & form field; maximum for popup
+  sm: 25, // 200 - used for form field
+  xs: 16, // 128 - minimum for popup, table column, form field
+}
 
 let theme = {
   spaces,
   space,
-  breakpoints: _.mapValues(space, {
-    modalWidth: 75,
-    calendarWidth: 39,
-    popupMax: 35,
-    popupMin: 16,
+  widths: _.mapValues(deep(space), {
+    ...widths,
+    popup: { max: widths.md, min: widths.xs },
+    tableColumn: { max: widths.lg, min: widths.xs },
+    formField: { max: widths.lg, min: widths.xs },
   }),
   colors: {
     primaries: ['#0076de', '#0061b6', '#004c8e', '#b9d9f6'],
@@ -86,7 +95,7 @@ theme.fonts = {
   },
   Text: {
     // Default body copy, table copy, general text
-    fontFamily: theme.fontFamily,    
+    fontFamily: theme.fontFamily,
     fontSize: theme.fontSizes[2],
     lineHeight: theme.lineHeights[5],
     fontWeight: 400,
@@ -116,10 +125,10 @@ theme.inputStyle = {
   '::placeholder': { color: theme.colors.neutrals[8], opacity: 0.5 },
   color: theme.colors.neutrals[8],
   backgroundColor: theme.colors.neutrals[0],
-  height: 40,
+  height: theme.space(5),
   boxSizing: 'border-box',
-  // width: '100%',
-  // maxWidth: theme.breakpoints.popupMax,
+  minWidth: theme.widths.formField.min,
+  maxWidth: theme.widths.formField.max,
   ...theme.fonts.Text,
   '&:disabled': {
     borderColor: theme.colors.neutrals[2],
