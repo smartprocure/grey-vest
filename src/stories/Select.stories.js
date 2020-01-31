@@ -3,11 +3,11 @@ import F from 'futil'
 import _ from 'lodash/fp'
 import { loremIpsum } from 'lorem-ipsum'
 import { Select, Grid } from '..'
+import { optionsFromArray } from '../utils'
 
 export default { title: 'Select', component: Select }
 
-let choices = _.times(loremIpsum, 5)
-let options = F.mapIndexed((label, value) => ({ label, value }), choices)
+let options = optionsFromArray(_.times(loremIpsum, 5))
 
 export let usage = () => {
   let [value, setValue] = React.useState(1)
@@ -20,6 +20,14 @@ export let usage = () => {
     </Grid>
   )
 }
+
+export let shortOptions = () => (
+  <Select
+    options={optionsFromArray(_.times(() => loremIpsum({ units: 'words' }), 8))}
+  />
+)
+
+export let noOptions = () => <Select options={[]} />
 
 export let native = () => {
   let selected = React.useState(1)
