@@ -7,12 +7,12 @@ import F from 'futil'
 export default { title: 'TagsInput', component: TagsInput }
 
 let initialTags = [
+  `Multiline tag! ${loremIpsum({ count: 4 })}`,
   'populate some tags to start with',
   "so we don't have to add them fresh every time",
   'hello world',
   'tag',
   'another tag',
-  `Multiline tag! ${loremIpsum({ count: 4 })}`,
 ]
 
 export let baseUsage = () => {
