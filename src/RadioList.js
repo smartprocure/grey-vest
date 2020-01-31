@@ -8,13 +8,14 @@ import { Text } from './Typography'
 import theme from './theme'
 
 let RadioButton = ({ native, option, value, onChange, ...props }) => (
-  <div {...props}>
+  <div css={{ lineHeight: 0 }} {...props}>
     <input
       type="radio"
       css={{
         display: native ? 'inline-block' : 'none',
-        width: 'auto',
-        height: 'auto',
+        width: theme.spaces.md,
+        height: theme.spaces.md,
+        margin: 0,
       }}
       onChange={() => onChange(option.value)}
       value={option.value}
@@ -56,11 +57,11 @@ let RadioList = ({ options, value, onChange, native = false, ...props }) => (
             { cursor: 'pointer' },
             option.disabled && { opacity: 0.5, cursor: 'not-allowed' },
           ]}
+          gap="sm"
         >
           <RadioButton
             {...{ native, value, option }}
             onChange={option.disabled ? _.noop : onChange}
-            css={{ marginRight: theme.spaces.sm }}
           />
           <Text small>{option.label}</Text>
         </Flex>
