@@ -1,27 +1,26 @@
 import F from 'futil'
 import _ from 'lodash/fp'
-import { deep } from './utils'
 
 let spaces = { xs: 4, sm: 8, md: 16, lg: 32 }
 let space = F.ifElse(_.isNumber, n => n * 8, F.aliasIn(spaces))
 let widths = {
-  modal: 75, // 600
-  calendar: 39, // 312
-  lg: 54, // 432 - maximum for table column, form field
-  md: 35, // 280 - used for table column & form field; maximum for popup
-  sm: 25, // 200 - used for form field
-  xs: 16, // 128 - minimum for popup, table column, form field
+  modal: 600,
+  calendar: 312,
+  lg: 432, // maximum for table column, form field
+  md: 280, // used for table column & form field; maximum for popup
+  sm: 200, // used for form field
+  xs: 128, // minimum for popup, table column, form field
 }
 
 let theme = {
   spaces,
   space,
-  widths: _.mapValues(deep(space), {
+  widths: {
     ...widths,
     popup: { max: widths.md, min: widths.xs },
     tableColumn: { max: widths.lg, min: widths.xs },
     formField: { max: widths.lg, min: widths.xs },
-  }),
+  },
   colors: {
     primaries: ['#0076de', '#0061b6', '#004c8e', '#b9d9f6'],
     secondaries: ['#3a3f52', '#272c41', '#202536'],
