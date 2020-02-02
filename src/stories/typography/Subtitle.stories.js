@@ -7,6 +7,7 @@ import SizeInfo from './SizeInfo'
 export default {
   title: 'Design System | Typography / Subtitle',
   component: Subtitle,
+  parameters: { componentSubtitle: <>Uppercase text component with wide letter-spacing and a <tt>large</tt> variant</> },
 }
 
 export let regular = () => (

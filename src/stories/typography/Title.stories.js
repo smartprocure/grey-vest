@@ -8,6 +8,7 @@ let { fonts } = theme
 export default {
   title: 'Design System | Typography / Title',
   component: Title,
+  parameters: { componentSubtitle: <>Header text component with <tt>large</tt> and <tt>small</tt> variants</> },
 }
 
 let lipsum = count => loremIpsum({ count })
