@@ -5,7 +5,7 @@
 * Lots of new stories! 📖✨
 * Stories are no longer co-located with components (GreyVest alone is much smaller and flatter than contexture-react, so it makes more sense to keep them separate)
 * New typography components: **Text**, **Title** and **Subtitle**
-* Other new components: **Dropdown** (a zero-padding variant of Popover intended to be used with DropdownItem), **Tooltip**, **Banner**, **Pager**, **TableFooter**, and **Divider**
+* Other new components: **Dropdown** (a zero-padding variant of Popover intended to be used with DropdownItem), **Tooltip**, **Banner**, **Pager**, **TableFooter**, **Divider**, and **FormField**
 * Changes to **Button**:
   * New component-level variants: **Button.Primary**, **Button.Secondary** (same as regular Button), **Button.Tertiary**, **Button.Danger**, and **Button.Ghost**
   * New props: `compact` and `large` flags for size variants, and `icon` (same as the Icon component's `icon` prop)
@@ -25,6 +25,7 @@
 * Changes to **Tabs**/**TabList**:
   * 🚨 **TabList** component has been renamed to **TabsList** (plural "tabs") for parity with the `TabsList` component prop on Tabs
   * New component-level variants: **Tabs.Transparent** and **Tabs.Classic** (corresponding to **Tabslist.Transparent** and **TabsList.Classic**)
+* New props on **SpacedList**: `gap`, `columnCount`, `columnWidth`, and `columnGap` (SpacedList now supports CSS columns!)
 
 ### Spacing props
 
@@ -35,12 +36,21 @@ Component props that control whitespace now take spacing values from GreyVest's 
 * `md`: 16px
 * `lg`: 32px
 
-| Component | Prop(s)                                            | Status                                           |
-| --------- | -------------------------------------------------- | ------------------------------------------------ |
-| Grid      | `gap`                                              | formerly pixel measurement (**breaking change**) |
-| Flex      | `gap`                                              | new in 3.0                                       |
-| Box       | `padding`, `paddingX`, `paddingY`, `p`, `px`, `py` | new in 3.0                                       |
-| Divider   | `margin`, `m`                                      | new in 3.0                                       |
+| Component  | Prop(s)                                            | Status             |
+| ---------- | -------------------------------------------------- | -------------------|
+| Grid       | `gap`, `rowGap`, `columnGap`                       | 🚨**BREAKING** 🚨 |
+| Flex       | `gap`                                              | new in 3.0         |
+| SpacedList | `gap`, `columnGap`                                 | new in 3.0         |
+| Box        | `padding`, `paddingX`, `paddingY`, `p`, `px`, `py` | new in 3.0         |
+| Divider    | `margin`, `m`                                      | new in 3.0         |
+
+#### 3.0.0-alpha.12
+* More styling improvements for a bunch of components (Select in particular)
+* Overhaul SpacedList:
+  * Add a `gap` prop (that takes theme spacing units) instead of the thing it was doing with applying its `style` prop to children
+  * Add support for the css columns API with `columnCount`, `columnWidth`, and `columnGap` props
+* Add a FormField component that handles `label`, `tooltip`, `required`, and `error` props, plus GridItem's API (since most forms are grids)
+* Add a demo story showing how to build forms according to the style guide (with the correct spacing, etc)
 
 #### 3.0.0-alpha.11
 * Storybook improvements: add generated lorem-ipsum dummy text to stories for Select, CheckboxList, RadioList, TextHighlight, Tag, TagsInput, and the typography components
