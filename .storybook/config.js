@@ -1,7 +1,6 @@
 import { configure, addDecorator } from '@storybook/react'
 import { addParameters } from '@storybook/client-api'
 import { DocsPage } from '@storybook/addon-docs/blocks'
-import F from 'futil'
 import Fonts from '../src/Fonts'
 import React from 'react'
 
