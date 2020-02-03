@@ -1,0 +1,112 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Developer Notes | Storybook API" />
+
+# Storybook API reference
+
+GreyVest's documentation is written using Storybook 5.2's [Docs addon](https://github.com/storybookjs/storybook/blob/next/addons/docs/docs/docspage.md) with stories in [CSF format](https://medium.com/storybookjs/component-story-format-66f4c32366df).
+
+CSF stories declare a configuration object as their default export. The API looks like this:
+
+```js
+export default {
+  title,
+  component,
+  decorators,
+  parameters: {
+    componentSubtitle,
+    info,
+    props
+  },
+}
+```
+
+### A note on customizations
+
+Storybook docs are supposed to automatically parse PropTypes and JSDocs into data for the description and props table, but this is not ideal for us for two reasons:
+
+1. Our widespread use of HOCs such as mobx-react's `observer` means that Storybook has trouble parsing metadata for a lot of our components (this will likely be ironed out as Storybook Docs matures, but we'd rather not wait for that to happen)
+2. We haven't historically used PropTypes and would have to add the data in some format to each of our components or stories anyway - and for documentation only, using PropTypes is less flexible than manually specifying the arguments to PropTable
+
+As a result, our storybook configuration is customized to pass the values from the `props` and `info` properties in `parameters` directly into Storybook's PropsTable and Description components, respectively.
+
+
+## Subtitle
+
+`componentSubtitle` is a built-in Storybook property for the subtitle of a DocsPage. It supports JSX expressions.
+
+### Example
+
+```jsx
+{
+  componentSubtitle: <>Button with <tt>large</tt> and <tt>compact</tt> variants</>
+}
+```
+
+
+## Description
+
+You can supply a description for the story with the `info` property. It takes only strings, but supports markdown formatting.
+
+### Example
+
+```js
+{
+  info:
+"
+GreyVest's `Button` features **five** component-level styling variants: `Primary`, `Secondary`, `Tertiary`, `Danger`, and `Ghost`. The variants are subcomponents of Button.
+"
+}
+```
+
+
+## Props
+
+The `props` property accepts an object with two keys, `rows` and `sections`. Only one of these is used; if `sections` has a value, it overrides `rows`.
+
+| Property | Value  |
+| --- | --- |
+| `rows` | an array of prop definitions |
+| `sections` | an object where each key is a section heading, and each value is an array of prop definitions |
+
+A prop definition has the following shape (see Storybook's [PropDef](https://github.com/storybookjs/storybook/blob/next/lib/components/src/blocks/PropsTable/PropDef.ts) type for reference):
+
+```js
+{
+    name,
+    required, // defaults to false
+    description,
+    type: { summary, detail },
+    defaultValue: { summary, detail },
+  }
+```
+
+### Example
+
+```js
+let flagDef = {
+  type: { summary: 'boolean' },
+  defaultValue: { summary: 'false' },
+}
+
+let props = {
+  sections: {
+    flags: [
+      { name: 'compact', ...flagDef },
+      { name: 'large', ...flagDef },
+    ],
+    other: [
+      {
+        name: 'onClick',
+        description: 'click handler for button',
+        type: { summary: 'function' }
+      }
+    ]
+  },
+}
+
+export default {
+  title: 'Button',
+  parameters: { docs: { props } },
+}
+```
