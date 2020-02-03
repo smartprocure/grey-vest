@@ -73,7 +73,6 @@ let ReactSelect = ({ value, options, ...props }) => (
         />
       ),
     }}
-    menuIsOpen={true}
   />
 )
 
