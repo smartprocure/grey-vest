@@ -5,33 +5,37 @@ import GridItem from './GridItem'
 import Icon from './Icon'
 import Tooltip from './Tooltip'
 import { Text } from './Typography'
+import DateInput from './DateInput'
+import TextInput from './TextInput'
+import Textarea from './Textarea'
+import CheckboxList from './CheckboxList'
+import Select from './Select'
+import RadioList from './RadioList'
+import TagsInput from './TagsInput'
 import theme from './theme'
 
-// - form field: same api as autoform field config?
-// - label (startcased?)
-// - component (type?) - string 'text/date/radio/select/etc' (autoform types?)
-// - tooltip/info/help
-// - error - display underneath - singular or plural? mobx autoform is plural
-
-// props for component
-// - error - passes through to act as flag (component should do red border if truthy)
-// - placeholder
-// - value
-// - options
-// - 'props' prop? no, this is unnecessary, let's spread it in autoform
-// - ...etc (anything else passed in)
+let types = {
+  date: DateInput,
+  text: TextInput,
+  textarea: Textarea,
+  checkboxList: CheckboxList,
+  select: Select,
+  radioList: RadioList,
+  tags: TagsInput,
+}
 
 let gridItemProps = ['as', 'column', 'row', 'area', 'width', 'height', 'place']
 
 let FormField = ({
   label,
-  component: As,
+  type = 'text',
+  component: As = types[type],
   tooltip,
   required,
   error,
   ...props
 }) => (
-  <GridItem {..._.pick(gridItemProps, props)}>
+  <Flex column as={GridItem} {..._.pick(gridItemProps, props)}>
     <Flex alignItems="center" gap="xs">
       <Text small style={{ fontWeight: 600 }}>
         {label}{' '}
@@ -69,7 +73,7 @@ let FormField = ({
       </Flex>
     )}
     <Tooltip place="right" effect="solid" />
-  </GridItem>
+  </Flex>
 )
 
 export default FormField
