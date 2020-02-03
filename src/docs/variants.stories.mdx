@@ -1,0 +1,81 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Design System | Variants" />
+
+# Variants
+
+Several GreyVest components have multiple options for coloration, size, or other properties -- for example, each typography component has at least one alternate text size in addition to the default. 
+
+Our design system uses three different types of variants: component-level variants, subcomponent-level variants, and flag-level variants.
+
+## Component-level variants
+
+Component-level variants are completely separate components that are variations of each other or of a common parent.
+
+### Examples
+
+- The three typography components (`Text`, `Subtitle`, and `Title`) are essentially component-level variants.
+- The `Dropdown` component is a variant of the `Popover` component without any inner padding.
+
+## Subcomponent-level variants
+
+Subcomponents are components that are properties of another component, and can be accessed in JSX with dot notation, eg: 
+
+```jsx
+<Button.Primary>Click me</Button.Primary>
+```
+
+Subcomponent-level variants are technically completely separate components, but because they are properties of the main component, they don't need to be imported separately:
+
+```jsx
+import { Button } from 'grey-vest'
+
+<>
+  <Button>Cancel</Button>
+  <Button.Primary>Submit</Button.Primary>
+</>
+```
+
+### Examples
+
+| Component | Subcomponent-level variants | Differences |
+| --- | --- | --- |
+| Button | Primary, Secondary, Tertiary, Danger, Ghost | background and text colors |
+| Tabs | Transparent, Classic | TabsList styling |
+| Box | Popup, Modal | box-shadow styling |
+| Banner | Warning, Error | background color and icon |
+
+
+## Flag-level variants
+
+A flag-level variant is simply a boolean prop on a component. With React's [prop shorthand](https://reactjs.org/docs/jsx-in-depth.html#props-default-to-true), a flag prop can be set to true simply by passing its name:
+
+```jsx
+<Title>This is a normal-sized title</Title>
+
+<Title large>This is a large title</Title>
+```
+
+In contrast to component- and subcomponent-level variants, flag-level variants are *not* mutually exclusive. This is useful when a single component has multiple types of variations, such as Button's color and size variants. If the size variants were also represented with subcomponents, we'd need one subcomponent for each combination of color and size (eg `Button.PrimaryLarge`). But with flag variants, we can do this instead:
+
+```jsx
+<Button.Primary large>I am a large primary button</Button.Primary>
+```
+
+### Examples
+
+| Component | Flag-level variants | Differences |
+| --- | --- | --- |
+| Button | `compact`, `large` | padding and text size |
+| Text | `small`, `extraSmall` | font size and line height |
+| Subtitle | `large` | font size and line height |
+| Title | `large`, `small` | font size and line height |
+| ErrorList | `block` | uses block styling |
+
+In addition to these, there are some common flags in GreyVest that are supported by multiple components, and could be considered to be variants:
+
+| Flag | Supported components | Purpose |
+| --- | --- | --- |
+| `native` | DateInput, RadioList, Select | Use native form elements instead of JS implementations |
+| `active` | Button, PagerItem, PickerItem | Update styling to convey that the item is currently active |
+| `disabled` | Button, Checkbox, DropdownItem, PagerItem, PickerItem | Disable input and events on the component, and update styling to convey that the item is disabled |
