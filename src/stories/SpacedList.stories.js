@@ -4,17 +4,47 @@ import _ from 'lodash/fp'
 import { loremIpsum } from 'lorem-ipsum'
 import { Divider, Flex, SpacedList, FormField } from '..'
 import { useLensObject } from '../utils'
+import { spacingValue, cssValue } from './commonProps'
+import theme from '../theme'
+
+let props = {
+  rows: [
+    {
+      ...spacingValue,
+      name: 'gap',
+      description:
+        'vertical spacing between each element in the list',
+    },
+    {
+      ...spacingValue,
+      name: 'columnGap',
+      description: 'horizontal spacing between columns',
+    },
+    {
+      name: 'columnCount',
+      description: '_maximum_ number of columns',
+      type: { summary: 'number' },
+      defaultValue: { summary: 1 },
+    },
+    {
+      ...cssValue,
+      name: 'columnWidth',
+      description: '_minimum_ width of each column',
+      defaultValue: { summary: theme.widths.xs },
+    },
+  ],
+}
 
 export default {
   title: 'SpacedList',
   component: SpacedList,
-  parameters: { props: { rows: [] } },
+  parameters: { props },
 }
 
 let content = _.times(loremIpsum, 30)
 
 let makeFields = F.mapIndexed((lens, key) => (
-  <FormField label={key} type="text" {...F.domLens.value(lens)} />
+  <FormField label={key} type="number" {...F.domLens.value(lens)} />
 ))
 
 export let story = () => {
@@ -32,7 +62,7 @@ export let story = () => {
         {..._.mapValues(
           _.flow(
             F.view,
-            _.toInteger
+            _.toNumber
           ),
           state
         )}
