@@ -1,8 +1,31 @@
 import React from 'react'
 import { action } from '@storybook/addon-actions'
 import { Button, Grid } from '..'
+import { flag, asProp } from './commonProps'
 
-export default { title: 'Button', component: Button }
+let props = {
+  sections: {
+    'size flags': [{ name: 'compact', ...flag }, { name: 'large', ...flag }],
+    other: [
+      {
+        name: 'onClick',
+        description: 'Click handler for button',
+        type: { summary: 'function' },
+        defaultValue: { summary: '() => {}' },
+      },
+      { ...asProp, defaultValue: { summary: `'button'` }},
+    ],
+  },
+}
+
+export default {
+  title: 'Button',
+  component: Button,
+  parameters: {
+    componentSubtitle: 'Features five color variations and three sizes',
+    props,
+  },
+}
 
 let clickAction = () => action('clicked')()
 
@@ -42,7 +65,10 @@ export let secondary = () => (
     <Button.Secondary compact>Compact</Button.Secondary>
   </Container>
 )
-secondary.story = { name: 'Secondary (default)' }
+secondary.story = {
+  name: 'Secondary (default)',
+  parameters: { docs: { storyDescription: 'hello' } },
+}
 
 export let tertiary = () => (
   <Container>
