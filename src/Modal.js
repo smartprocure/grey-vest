@@ -60,7 +60,7 @@ let Modal = _.flow(
 export default Modal
 
 Modal.Header = ({ children }) => (
-  <Title small css={{ marginBottom: theme.spaces.xs }}>
+  <Title small as="div" css={{ marginBottom: theme.spaces.xs }}>
     {children}
   </Title>
 )
