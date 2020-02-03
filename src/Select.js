@@ -35,6 +35,7 @@ let ReactSelect = ({ value, options, ...props }) => (
         outline: 'none',
         ..._.omit(['padding', 'minWidth', 'maxWidth'], theme.inputStyle),
         ...(state.isFocused && theme.inputStyle['&:focus']),
+        ...(props.error && { borderColor: theme.colors.errors[2] }),
       }),
       input: provided => ({ ...provided, margin: 0 }),
       menu: () => ({

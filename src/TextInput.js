@@ -5,10 +5,10 @@ import { observer } from 'mobx-react'
 import _ from 'lodash/fp'
 import theme from './theme'
 
-let TextInput = ({ type = 'text', disabled, ...props }, ref) => (
+let TextInput = ({ type = 'text', disabled, error, ...props }, ref) => (
   <input
     {...{ type, ref, disabled, ...props }}
-    css={theme.inputStyle}
+    css={[theme.inputStyle, error && { borderColor: theme.colors.errors[2] }]}
   />
 )
 
