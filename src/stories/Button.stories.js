@@ -22,8 +22,12 @@ export default {
   title: 'Button',
   component: Button,
   parameters: {
-    componentSubtitle: 'Features five color variations and three sizes',
+    componentSubtitle: 'With five color variations and three sizes',
     props,
+    info:
+`
+GreyVest's Button component features five styling variants: **primary**, **secondary**, **tertiary**, **danger**, and **ghost**. The variants are subcomponents of Button (eg \`Button.Primary\`).
+`
   },
 }
 
