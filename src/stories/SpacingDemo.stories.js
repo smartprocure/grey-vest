@@ -76,9 +76,14 @@ columns.story = {
     docs: {
       storyDescription: 
 `
-This story demonstrates the differences in the way the \`Grid\` and \`SpacedList\` components handle columns.
+This story demonstrates the differences in the way GreyVest's \`Grid\` and \`SpacedList\` components handle columns.
 
-
+| | Grid | SpacedList |
+| --- | --- | --- |
+| **rows** | has rows | does not have rows |
+| **gap API** | \`columnGap\` and \`rowGap\` control the gap between columns and rows respectively; \`gap\` is a shorthand to set both | \`gap\` controls the gap between elements, and \`columnGap\` controls the gap between columns |
+| **content ordering** | Left-to-right, then top-to-bottom | Top-to-bottom, then left-to-right |
+| **placement** | Each child element is placed inside a grid square, which is sized according to the largest element in the row | Content flows vertically within each column, then overflows to the next |
 `
     },
   },
