@@ -110,3 +110,20 @@ export default {
   parameters: { docs: { props } },
 }
 ```
+
+## Stories
+
+Stories in CSF are simply named exports. You can customize individual stories by adding properties to the story object; `story.name` controls the title of the story in the sidebar, and `story.parameters.docs.storyDescription` allows you to add a description that appears above that story in the DocsPage.
+
+```jsx
+export let secondary = () => <Button.Secondary>Click me</Button.Secondary>
+secondary.story = {
+  name: 'Secondary (default)',
+  parameters: {
+    docs: {
+      storyDescription:
+        'Since the secondary color variant is also the default styling for Button, it can be used with either `Button` or `Button.Secondary`.',
+    },
+  },
+}
+```

@@ -13,7 +13,7 @@ let props = {
         type: { summary: 'function' },
         defaultValue: { summary: '() => {}' },
       },
-      { ...asProp, defaultValue: { summary: `'button'` }},
+      { ...asProp, defaultValue: { summary: `'button'` } },
     ],
   },
 }
@@ -67,7 +67,12 @@ export let secondary = () => (
 )
 secondary.story = {
   name: 'Secondary (default)',
-  parameters: { docs: { storyDescription: 'hello' } },
+  parameters: {
+    docs: {
+      storyDescription:
+        'Since the secondary color variant is also the default styling for Button, it can be used with either `Button` or `Button.Secondary`.',
+    },
+  },
 }
 
 export let tertiary = () => (
