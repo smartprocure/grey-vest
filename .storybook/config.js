@@ -1,5 +1,4 @@
-import { configure, addDecorator } from '@storybook/react'
-import { addParameters } from '@storybook/client-api'
+import { configure, addParameters, addDecorator } from '@storybook/react'
 import { DocsPage } from '@storybook/addon-docs/blocks'
 import Fonts from '../src/Fonts'
 import React from 'react'
