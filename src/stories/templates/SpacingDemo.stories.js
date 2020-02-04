@@ -2,7 +2,7 @@ import React from 'react'
 import F from 'futil'
 import _ from 'lodash/fp'
 import { loremIpsum } from 'lorem-ipsum'
-import { Grid, Divider, Flex, SpacedList, Select, Dynamic } from '..'
+import { Grid, Divider, Flex, SpacedList, Select, Dynamic } from '../..'
 
 export default { title: 'Demos | Spacing' }
 

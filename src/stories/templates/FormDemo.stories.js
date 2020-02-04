@@ -1,7 +1,7 @@
 import React from 'react'
 import F from 'futil'
-import { FormField, TextInput, Button, Box } from '..'
-import Form from '../Form'
+import { FormField, TextInput, Button, Box } from '../..'
+import Form from '../../Form'
 
 export default { title: 'Demos | Form' }
 
