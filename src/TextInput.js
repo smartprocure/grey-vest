@@ -8,7 +8,7 @@ import theme from './theme'
 let TextInput = ({ type = 'text', disabled, error, ...props }, ref) => (
   <input
     {...{ type, ref, disabled, ...props }}
-    css={[theme.inputStyle, error && { borderColor: theme.colors.errors[2] }]}
+    css={[theme.inputStyle, error && { borderColor: theme.colors.errors[1] }]}
   />
 )
 
