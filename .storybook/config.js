@@ -11,6 +11,11 @@ addDecorator(Story => (
   </>
 ))
 
+// DocsPage's propsSlot supplies the data for its Props component, and extractComponentDescription
+// does the same for the Description slot. This customization tells storybook to pull data from
+// `parameters.props` for props and `parameters.info` for the description, rather than from JSDoc.
+// We do it this way because Storybook's PropTypes/JSDoc parser doesn't work very well with most
+// of our components.
 addParameters({
   docs: {
     page: () => (
