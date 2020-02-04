@@ -1,4 +1,5 @@
 import _ from 'lodash/fp'
+import { defaultProps } from 'recompose'
 import React from 'react'
 import Flex from './Flex'
 import GridItem from './GridItem'
@@ -17,6 +18,7 @@ import theme from './theme'
 let types = {
   date: DateInput,
   text: TextInput,
+  number: defaultProps({ type: 'number' })(TextInput),
   textarea: Textarea,
   checkboxList: CheckboxList,
   select: Select,

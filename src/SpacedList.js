@@ -15,8 +15,9 @@ let SpacedList = ({
       columnWidth,
       columnCount,
       columnGap: theme.space(columnGap),
+      '& > *': { breakInside: 'avoid-column' },
       // Targets every direct child with another direct child before it
-      '& > * + *': { marginTop: theme.space(gap), breakInside: 'avoid-column' },
+      '& > * + *': { marginTop: theme.space(gap) },
     }}
     {...props}
   >
