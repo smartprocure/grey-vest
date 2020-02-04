@@ -72,9 +72,9 @@ let buttonStyles = _.mapValues(
   ({ baseColor, hoverColor, activeColor, textColor }) =>
     styled(BaseButton)({
       backgroundColor: baseColor,
+      color: textColor,
       ':hover': { backgroundColor: hoverColor },
       ':active': { backgroundColor: activeColor },
-      '& *': { color: textColor },
     }),
   {
     Primary: {
