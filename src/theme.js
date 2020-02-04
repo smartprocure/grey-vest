@@ -127,7 +127,6 @@ theme.inputStyle = {
   height: theme.space(5),
   boxSizing: 'border-box',
   minWidth: theme.widths.formField.min,
-  maxWidth: theme.widths.formField.max,
   ...theme.fonts.Text,
   '&:disabled': {
     borderColor: theme.colors.neutrals[2],

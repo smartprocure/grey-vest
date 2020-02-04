@@ -2,7 +2,7 @@
 import { jsx } from '@emotion/core'
 import React from 'react'
 import F from 'futil'
-import { Flex, Button, Subtitle, Dropdown, DropdownItem } from '../..'
+import { Flex, Button, Subtitle, Dropdown, DropdownItem, Icon } from '../..'
 import theme from '../../theme'
 
 export default { title: 'Demos | Page Header' }
@@ -59,6 +59,7 @@ export let story = () => {
           <DropdownItem>Subsection item 2</DropdownItem>
           <DropdownItem>Subsection item 3</DropdownItem>
         </SubSection>
+        <Icon icon="TableColumnMenu" />
       </Flex>
 
       <Flex gap={1}>
