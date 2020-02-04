@@ -3,18 +3,19 @@ import { jsx } from '@emotion/core'
 import _ from 'lodash/fp'
 import { observer } from 'mobx-react'
 import Flex from './Flex'
-import Grid from './Grid'
+import SpacedList from './SpacedList'
 import { Text } from './Typography'
 import theme from './theme'
 
 let RadioButton = ({ native, option, value, onChange, ...props }) => (
-  <div {...props}>
+  <div css={{ lineHeight: 0 }} {...props}>
     <input
       type="radio"
       css={{
         display: native ? 'inline-block' : 'none',
-        width: 'auto',
-        height: 'auto',
+        width: theme.spaces.md,
+        height: theme.spaces.md,
+        margin: 0,
       }}
       onChange={() => onChange(option.value)}
       value={option.value}
@@ -45,7 +46,7 @@ let RadioButton = ({ native, option, value, onChange, ...props }) => (
 )
 
 let RadioList = ({ options, value, onChange, native = false, ...props }) => (
-  <Grid gap={1} {...props}>
+  <SpacedList gap={1} {...props}>
     {_.map(
       option => (
         <Flex
@@ -56,17 +57,17 @@ let RadioList = ({ options, value, onChange, native = false, ...props }) => (
             { cursor: 'pointer' },
             option.disabled && { opacity: 0.5, cursor: 'not-allowed' },
           ]}
+          gap="sm"
         >
           <RadioButton
             {...{ native, value, option }}
             onChange={option.disabled ? _.noop : onChange}
-            css={{ marginRight: theme.spaces.sm }}
           />
           <Text small>{option.label}</Text>
         </Flex>
       ),
       options
     )}
-  </Grid>
+  </SpacedList>
 )
 export default observer(RadioList)

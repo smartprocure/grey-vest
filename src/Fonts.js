@@ -22,7 +22,11 @@ let Fonts = () => (
       href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css"
       rel="stylesheet"
     />
-    <Global styles={{ body: theme.fonts.Text }} />
+    <Global
+      styles={{
+        body: { ...theme.fonts.Text, color: theme.colors.neutrals[8] },
+      }}
+    />
   </>
 )
 export default Fonts

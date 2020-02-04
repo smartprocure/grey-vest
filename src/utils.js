@@ -25,3 +25,5 @@ export let findKeys = _.curry((predicate, data) =>
 )
 
 export let coalesce = _.find(F.isNotNil)
+
+export let optionsFromArray = F.mapIndexed((label, value) => ({ label, value }))

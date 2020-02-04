@@ -5,10 +5,11 @@ import BaseReactSelect from 'react-select'
 import { observer } from 'mobx-react'
 import _ from 'lodash/fp'
 import theme from './theme'
+import Icon from './Icon'
 let { spaces, fonts, colors } = theme
 
 let NativeSelect = ({ placeholder, options, ...props }) => (
-  <select {...props} css={[theme.inputStyle, { height: 40 }]}>
+  <select {...props} css={theme.inputStyle}>
     {placeholder && <option value="">{placeholder}</option>}
     {_.map(
       x => (
@@ -24,15 +25,24 @@ let NativeSelect = ({ placeholder, options, ...props }) => (
 let ReactSelect = ({ value, options, ...props }) => (
   <BaseReactSelect
     styles={{
+      container: provided => ({
+        ...provided,
+        position: 'relative',
+        ..._.pick(['minWidth', 'maxWidth'], theme.inputStyle),
+      }),
       control: (provided, state) => ({
         display: 'flex',
         outline: 'none',
-        ..._.omit(['padding'], theme.inputStyle),
+        ..._.omit(['padding', 'minWidth', 'maxWidth'], theme.inputStyle),
         ...(state.isFocused && theme.inputStyle['&:focus']),
+        ...(props.error && { borderColor: theme.colors.errors[2] }),
       }),
       input: provided => ({ ...provided, margin: 0 }),
-      menu: provided => ({
-        ...provided,
+      menu: () => ({
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        backgroundColor: colors.neutrals[0],
         marginTop: spaces.xs,
         boxShadow: theme.boxShadows.popup,
         borderRadius: theme.borderRadius,
@@ -42,13 +52,28 @@ let ReactSelect = ({ value, options, ...props }) => (
         ...fonts.Text.variants.small,
         color: colors.neutrals[8],
         cursor: 'pointer',
-        margin: `${spaces.xs}px ${spaces.sm}px`,
-        '&:hover': { color: colors.primaries[0] },
+        padding: `${spaces.xs}px ${spaces.md}px`,
+        '&:hover': {
+          backgroundColor: colors.neutrals[2],
+          color: colors.primaries[1],
+        },
       }),
+      indicatorSeparator: () => ({}),
+      indicatorContainer: () => ({}),
+      dropdownIndicator: () => ({ padding: 8 }),
     }}
     {...{ options, ...props }}
     value={_.find({ value }, options)}
     onChange={option => props.onChange(option.value)}
+    components={{
+      DropdownIndicator: ({ isFocused }) => (
+        <Icon
+          icon="Expand"
+          size={3}
+          style={{ marginRight: spaces.sm, opacity: isFocused ? 1 : 0.5 }}
+        />
+      ),
+    }}
   />
 )
 
@@ -60,4 +85,7 @@ let Select = (
   return <Component {...{ options, placeholder, ref, ...props }} />
 }
 
-export default _.flow(React.forwardRef, observer)(Select)
+export default _.flow(
+  React.forwardRef,
+  observer
+)(Select)

@@ -16,6 +16,8 @@ let Grid = styled.div(
     rows,
     areas,
     gap,
+    rowGap,
+    columnGap,
     placeContent,
     placeItems,
     inline = false,
@@ -24,7 +26,8 @@ let Grid = styled.div(
     gridTemplateColumns: repeatNumber(columns),
     gridTemplateRows: repeatNumber(rows),
     gridTemplateAreas: formatAreas(areas),
-    gridGap: theme.space(gap),
+    gridRowGap: theme.space(rowGap || gap),
+    gridColumnGap: theme.space(columnGap || gap),
     placeContent,
     placeItems,
   })

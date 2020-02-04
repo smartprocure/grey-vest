@@ -45,10 +45,7 @@ let TagsInput = ({
         gap="xs"
         css={[
           { cursor: 'text' },
-          _.pick(
-            ['border', 'borderRadius', 'padding', 'boxSizing'],
-            theme.inputStyle
-          ),
+          _.omit(['height', 'maxWidth'], theme.inputStyle),
         ]}
       >
         {_.map(
@@ -70,6 +67,7 @@ let TagsInput = ({
             border: 'none',
             outline: 'none',
             flex: 1,
+            lineHeight: 0,
             marginLeft: theme.spaces.xs,
           }}
           onChange={e => {
