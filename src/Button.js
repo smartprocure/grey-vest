@@ -93,8 +93,8 @@ let buttonStyles = _.mapValues(
     },
     Tertiary: {
       baseColor: colors.secondaries[1],
-      hoverColor: colors.secondaries[0],
-      activeColor: colors.secondaries[2],
+      hoverColor: colors.secondaries[2],
+      activeColor: colors.secondaries[0],
       textColor: colors.neutrals[0],
     },
     Danger: {
