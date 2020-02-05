@@ -2,7 +2,16 @@
 import { jsx } from '@emotion/core'
 import React from 'react'
 import F from 'futil'
-import { Flex, Button, Subtitle, Dropdown, DropdownItem, Icon } from '../..'
+import {
+  Flex,
+  Button,
+  Subtitle,
+  Title,
+  Dropdown,
+  DropdownItem,
+  Icon,
+  IconButton,
+} from '../..'
 import theme from '../../theme'
 
 export default { title: 'Demos | Page Header' }
@@ -73,3 +82,22 @@ export let story = () => {
     </Flex>
   )
 }
+
+export let DetailHeader = () => (
+  <Flex
+    justifyContent="space-between"
+    style={{
+      backgroundColor: theme.colors.neutrals[1],
+      padding: `${theme.space(1)}px ${theme.space(2)}px`,
+      borderBottom: `1px solid ${theme.colors.neutrals[3]}`,
+    }}
+  >
+    <Title large>Page title</Title>
+    <Flex alignItems="center" gap={1}>
+      <Button.Primary>Primary</Button.Primary>
+      <IconButton icon="notifications" />
+      <IconButton icon="share" />
+      <IconButton icon="more_vert" />
+    </Flex>
+  </Flex>
+)
