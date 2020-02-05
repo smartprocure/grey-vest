@@ -4,13 +4,35 @@ import { Meta } from '@storybook/addon-docs/blocks'
 
 # Theme
 
-The theme object is the source of truth for colors, fonts, spacing values, and any other styling data needed by GreyVest. It is exported from GreyVest as `theme`.
+The theme object is the source of truth for colors, fonts, spacing values, and any other styling data needed by GreyVest. It is exported from GreyVest as `theme`. It is inspired by the [System UI theme specification](https://system-ui.com/theme/).
 
-This document examines the theme object, breaking down the different kinds of values. 
+This document examines the theme object, breaking down the different kinds of values.
 
+## Basic configuration
+
+```js
+let theme = {
+  fontSizes: [12, 14, 16, 18, 30, 48],
+  lineHeights: [1, 1.15, 1.25, 1.5, 1.7, 1.75],
+  fontFamily: 'Lato',
+  borderRadius: 3,
+}
 ```
-let spaces = { xs: 4, sm: 8, md: 16, lg: 32 }
-let space = F.ifElse(_.isNumber, n => n * 8, F.aliasIn(spaces))
+
+The `fontSizes` and `lineHeights` arrays are mostly used internally within the theme object. GreyVest's Icon component is one exception: its `size` prop takes an index to `fontSizes` to determine the font size of the icon.
+
+## Spaces
+
+```js
+theme.spaces = { xs: 4, sm: 8, md: 16, lg: 32 }
+theme.space = F.ifElse(_.isNumber, n => n * 8, F.aliasIn(theme.spaces))
+```
+
+GreyVest uses an 8-pixel grid for spacing. Instead of an array of valid spacing values, we provide a function in `theme.space` that multiplies its input by 8. This way, if we need more granularity than the 8px grid, we can simply pass decimal numbers to `theme.space` - though using increments smaller than 0.5 (4px) is ***strongly discouraged***.
+
+## Widths
+
+```js
 let widths = {
   modal: 600,
   calendar: 312,
@@ -19,17 +41,21 @@ let widths = {
   sm: 200, // used for form field
   xs: 128, // minimum for popup, table column, form field
 }
+theme.widths = {
+  ...widths,
+  popup: {max: widths.md, min: widths.xs },
+  tableColumn: { max: widths.lg, min: widths.xs },
+  formField: { max: widths.lg, min: widths.xs }
+}
+```
 
-let theme = {
-  spaces,
-  space,
-  widths: {
-    ...widths,
-    popup: { max: widths.md, min: widths.xs },
-    tableColumn: { max: widths.lg, min: widths.xs },
-    formField: { max: widths.lg, min: widths.xs },
-  },
-  colors: {
+Unlike spaces, widths are in raw pixel values. 
+
+
+## Colors
+
+```js
+theme.colors = {
     primaries: ['#0076de', '#0061b6', '#004c8e', '#b9d9f6'],
     secondaries: ['#3a3f52', '#272c41', '#202536'],
     neutrals: [
@@ -47,20 +73,29 @@ let theme = {
     successes: ['#5bb85b', '#4b974b', '#3a763a', '#a5d8a5'],
     infos: ['#6554c0', '#5243aa', '#403294', '#c0b6f2'],
     warning: '#ffab00',
-  },
-  fontSizes: [12, 14, 16, 18, 30, 48],
-  lineHeights: [1, 1.15, 1.25, 1.5, 1.7, 1.75],
-  fontFamily: 'Lato',
-  borderRadius: 3,
 }
+```
 
+See the Colors story under Design System for swatches.
+
+
+## Box shadows
+
+```js
 theme.boxShadows = {
   normal: `0 2px 10px 0 ${theme.colors.neutrals[8]}19`,
   modal: `0 2px 10px 0 ${theme.colors.secondaries[1]}7f`,
   popup: `0 8px 16px -4px ${theme.colors.secondaries[1]}4c,
           0 0 1px 0 ${theme.colors.secondaries[1]}4c`,
 }
+```
 
+Our design system specifies three levels of box-shadow. See the Box story for examples of each variant.
+
+
+## Fonts
+
+```js
 theme.fonts = {
   Title: {
     // Page titles
@@ -121,7 +156,13 @@ theme.fonts = {
     },
   },
 }
+```
 
+## Input styling
+
+Since GreyVest has so many different input components that have to be styled similarly, most of the styles for our inputs live here so they can be easily accessed.
+
+```js
 theme.inputStyle = {
   borderRadius: theme.borderRadius,
   border: `2px solid ${theme.colors.neutrals[3]}`,

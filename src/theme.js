@@ -1,8 +1,16 @@
 import F from 'futil'
 import _ from 'lodash/fp'
 
-let spaces = { xs: 4, sm: 8, md: 16, lg: 32 }
-let space = F.ifElse(_.isNumber, n => n * 8, F.aliasIn(spaces))
+let theme = {
+  fontSizes: [12, 14, 16, 18, 30, 48],
+  lineHeights: [1, 1.15, 1.25, 1.5, 1.7, 1.75],
+  fontFamily: 'Lato',
+  borderRadius: 3,
+}
+
+theme.spaces = { xs: 4, sm: 8, md: 16, lg: 32 }
+theme.space = F.ifElse(_.isNumber, n => n * 8, F.aliasIn(theme.spaces))
+
 let widths = {
   modal: 600,
   calendar: 312,
@@ -11,39 +19,31 @@ let widths = {
   sm: 200, // used for form field
   xs: 128, // minimum for popup, table column, form field
 }
+theme.widths = {
+  ...widths,
+  popup: { max: widths.md, min: widths.xs },
+  tableColumn: { max: widths.lg, min: widths.xs },
+  formField: { max: widths.lg, min: widths.xs },
+}
 
-let theme = {
-  spaces,
-  space,
-  widths: {
-    ...widths,
-    popup: { max: widths.md, min: widths.xs },
-    tableColumn: { max: widths.lg, min: widths.xs },
-    formField: { max: widths.lg, min: widths.xs },
-  },
-  colors: {
-    primaries: ['#0076de', '#0061b6', '#004c8e', '#b9d9f6'],
-    secondaries: ['#3a3f52', '#272c41', '#202536'],
-    neutrals: [
-      '#ffffff',
-      '#f9f9f9',
-      '#f4f4f4',
-      '#ededed',
-      '#e8e8e8',
-      '#d3d3d3',
-      '#aaaaaa',
-      '#777777',
-      '#454545',
-    ],
-    errors: ['#ff5630', '#de350b', '#bf2600', '#ffbdad'],
-    successes: ['#5bb85b', '#4b974b', '#3a763a', '#a5d8a5'],
-    infos: ['#6554c0', '#5243aa', '#403294', '#c0b6f2'],
-    warning: '#ffab00',
-  },
-  fontSizes: [12, 14, 16, 18, 30, 48],
-  lineHeights: [1, 1.15, 1.25, 1.5, 1.7, 1.75],
-  fontFamily: 'Lato',
-  borderRadius: 3,
+theme.colors = {
+  primaries: ['#0076de', '#0061b6', '#004c8e', '#b9d9f6'],
+  secondaries: ['#3a3f52', '#272c41', '#202536'],
+  neutrals: [
+    '#ffffff',
+    '#f9f9f9',
+    '#f4f4f4',
+    '#ededed',
+    '#e8e8e8',
+    '#d3d3d3',
+    '#aaaaaa',
+    '#777777',
+    '#454545',
+  ],
+  errors: ['#ff5630', '#de350b', '#bf2600', '#ffbdad'],
+  successes: ['#5bb85b', '#4b974b', '#3a763a', '#a5d8a5'],
+  infos: ['#6554c0', '#5243aa', '#403294', '#c0b6f2'],
+  warning: '#ffab00',
 }
 
 theme.boxShadows = {
