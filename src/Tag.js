@@ -14,7 +14,7 @@ let Tag = ({ value, removeTag, tagStyle, ...props }) => {
     <Flex
       inline
       css={{
-        backgroundColor: theme.colors.neutrals[3],
+        backgroundColor: theme.colors.neutrals[4],
         color: theme.colors.neutrals[8],
         cursor: 'pointer',
         borderRadius: theme.borderRadius,
@@ -25,7 +25,7 @@ let Tag = ({ value, removeTag, tagStyle, ...props }) => {
         '&:hover': {
           backgroundColor: F.view(closeHover)
             ? theme.colors.errors[3]
-            : theme.colors.neutrals[4],
+            : theme.colors.neutrals[5],
           '.remove-button': {
             opacity: 1,
             color: F.view(closeHover) && theme.colors.errors[2],

@@ -9,7 +9,7 @@ let Divider = ({ vertical = false, margin = 1, ...props }) => (
   place={vertical ? "stretch center" : "center stretch"}
     css={[
       {
-        backgroundColor: theme.colors.neutrals[3],
+        backgroundColor: theme.colors.neutrals[4],
       },
       vertical
         ? {
