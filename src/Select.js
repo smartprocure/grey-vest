@@ -55,8 +55,8 @@ let ReactSelect = ({ value, options, ...props }) => (
         cursor: 'pointer',
         padding: `${spaces.xs}px ${spaces.md}px`,
         '&:hover': {
-          backgroundColor: colors.neutrals[2],
-          color: colors.primaries[1],
+          backgroundColor: `${colors.neutrals[1]}`,
+          color: colors.primaries[0],
         },
       }),
       indicatorSeparator: () => ({}),

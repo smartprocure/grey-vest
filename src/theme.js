@@ -129,9 +129,11 @@ theme.inputStyle = {
   minWidth: theme.widths.formField.min,
   ...theme.fonts.Text,
   '&:disabled': {
-    borderColor: theme.colors.neutrals[2],
-    backgroundColor: theme.colors.neutrals[2],
-  },
+    borderColor: theme.colors.neutrals[4],
+    backgroundColor: theme.colors.neutrals[4],
+    color: theme.colors.secondaries[1],
+    opacity: 0.5,
+  }
 }
 
 export default theme
