@@ -43,7 +43,7 @@ let Checkbox = ({
     <input
       type="checkbox"
       style={{ display: 'none' }}
-      {...{ checked, onChange }}
+      {...{ checked, onChange: disabled ? () => {} : onChange }}
     />
     <Icon
       icon="check"
