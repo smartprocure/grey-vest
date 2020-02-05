@@ -45,7 +45,9 @@ let ButtonComponent = ({
             paddingLeft: spaces.xs,
             paddingRight: compact ? spaces.xs : spaces.sm,
             opacity: 0.5,
+            lineHeight: 0,
           }}
+          size={large ? 4 : compact ? 2 : 3}
         />
       )}
     </Flex>
@@ -102,7 +104,7 @@ let buttonStyles = _.mapValues(
       textColor: colors.neutrals[0],
     },
     Ghost: {
-      baseColor: colors.transparent,
+      baseColor: 'transparent',
       hoverColor: colors.neutrals[4],
       activeColor: colors.neutrals[5],
       textColor: colors.primaries[0],
