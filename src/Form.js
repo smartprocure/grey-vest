@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
-import { Grid, Button, Flex, Title, Text } from '.'
+import { Grid, Flex, Title, Text } from '.'
 import theme from './theme'
 
 let Form = props => (
@@ -21,10 +21,7 @@ Form.Header = ({ title, description, ...props }) => (
 Form.Content = props => <Grid rowGap={2} columnGap={3} {...props} />
 
 Form.Footer = props => (
-  <Flex gap={1} css={{ paddingTop: theme.space(1) }} {...props}>
-    <Button.Primary>Submit</Button.Primary>
-    <Button.Secondary>Cancel</Button.Secondary>
-  </Flex>
+  <Flex gap={1} css={{ paddingTop: theme.space(1) }} {...props} />
 )
 
 export default Form

@@ -1,5 +1,9 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
+// We use emotion in this story to style grid children, which means the React
+// import isn't needed - but storybook complains if it isn't there
+// eslint-disable-next-line no-unused-vars
+import React from 'react'
 import _ from 'lodash/fp'
 import { Grid, GridItem } from '..'
 
