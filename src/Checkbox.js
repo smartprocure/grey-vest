@@ -15,6 +15,7 @@ let Checkbox = ({
     as="label"
     css={[
       {
+        userSelect: 'none',
         boxSizing: 'border-box',
         cursor: 'pointer',
         height: theme.spaces.md,
