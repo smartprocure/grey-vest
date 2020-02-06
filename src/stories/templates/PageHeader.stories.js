@@ -41,7 +41,7 @@ export let story = () => {
     <Button
       css={{
         color: theme.colors.backgrounds[0],
-        backgroundColor: theme.colors.infos[1],
+        backgroundColor: theme.colors.infos[0],
         paddingTop: 1,
         paddingBottom: 1,
       }}
