@@ -4,6 +4,7 @@
 
 ### General 
 
+* Brand-new design system! Configuration lives in `theme.js` and follows the [System UI theme specification](https://system-ui.com/theme)
 * Lots of new stories! 📖✨
 * Stories are no longer co-located with components (GreyVest alone is much smaller and flatter than contexture-react, so it makes more sense to keep them separate)
 * Expanded the `options` prop API (for **CheckboxList**, **RadioList**, and **Select**): in addition to `label` and `value`, each element now also accepts a boolean `disabled` property
@@ -51,6 +52,10 @@ Component props that control whitespace now take spacing values from GreyVest's 
 | SpacedList | `gap`, `columnGap`                                 | new in 3.0         |
 | Box        | `padding`, `paddingX`, `paddingY`, `p`, `px`, `py` | new in 3.0         |
 | Divider    | `margin`, `m`                                      | new in 3.0         |
+
+#### 3.0.0-alpha.16
+* Refactor design system colors - reduced the number of colors from 29 to 16 and added an alias for every color (no more remembering array indices!)
+* Add polished CSS-in-JS utility library
 
 #### 3.0.0-alpha.15
 * Add Form component and update form demo story
