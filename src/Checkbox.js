@@ -27,7 +27,7 @@ let Checkbox = ({
         border: `2px solid ${theme.colors.neutrals[6]}`,
         transition: 'all 0.5s ease',
         '& i': { 
-          color: checked ? theme.colors.primaries[0] : 'transparent',
+          color: checked ? theme.colors.primary : 'transparent',
         },
       },
       disabled && {

@@ -5,7 +5,8 @@ import { Text } from './Typography'
 import theme from './theme'
 
 let PagerItem = ({ active, disabled, ...props }) => (
-  <Text small
+  <Text
+    small
     css={[
       {
         paddingLeft: theme.spaces.sm,
@@ -22,12 +23,12 @@ let PagerItem = ({ active, disabled, ...props }) => (
           background: theme.colors.neutrals[4],
           opacity: 1,
         },
+        transition: 'all 0.2s',
         '& > *': { verticalAlign: 'middle' },
       },
       active && {
         opacity: 1,
-        backgroundColor: theme.colors.primaries[0],
-        '&:hover': { backgroundColor: theme.colors.primaries[1] },
+        backgroundColor: `${theme.colors.primary} !important`,
         color: theme.colors.neutrals[0],
       },
       disabled && {

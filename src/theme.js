@@ -146,7 +146,7 @@ theme.inputStyle = {
   border: `2px solid ${theme.colors.neutrals[4]}`,
   padding: `${theme.spaces.xs}px ${theme.spaces.sm}px`,
   outline: 'none',
-  '&:focus': { borderColor: theme.colors.primaries[0] },
+  '&:focus': { borderColor: theme.colors.primary },
   // dimensions
   height: theme.space(5),
   boxSizing: 'border-box',

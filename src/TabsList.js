@@ -41,8 +41,8 @@ let floating = {
   transition: 'all 0.1s linear',
   '& > div': { fontWeight: 600 },
   '&.active, &.active:hover': {
-    color: colors.primaries[0],
-    borderColor: colors.primaries[0],
+    color: colors.primary,
+    borderColor: colors.primary,
   },
   '&:hover': { color: colors.secondary },
   '&:active': { backgroundColor: colors.neutrals[4] },

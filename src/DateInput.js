@@ -58,7 +58,7 @@ let ReactDatePickerInput = ({
             '&__label': {
               ...fonts.Text.variants.small,
               fontWeight: 500,
-              color: theme.colors.primaries[0],
+              color: theme.colors.primary,
               flex: 1,
             },
             '&__arrow': {
@@ -85,7 +85,7 @@ let ReactDatePickerInput = ({
               width: 24,
               opacity: 1,
               display: 'inline-block',
-              boxShadow: `0 2px 0 0 ${theme.colors.primaries[0]}`,
+              boxShadow: `0 2px 0 0 ${theme.colors.primary}`,
             },
             '&--active': {
               backgroundColor: `${theme.colors.secondary} !important`,

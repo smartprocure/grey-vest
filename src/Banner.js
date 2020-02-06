@@ -43,7 +43,7 @@ let bannerStyles = _.mapValues(convertBannerStyles, {
 })
 
 let Banner = convertBannerStyles({
-  backgroundColor: colors.primaries[0],
+  backgroundColor: colors.primary,
   textColor: colors.neutrals[0],
 })
 
