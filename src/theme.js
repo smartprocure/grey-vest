@@ -26,24 +26,51 @@ theme.widths = {
   formField: { max: widths.lg, min: widths.xs },
 }
 
-theme.colors = {
-  primaries: ['#0076de', '#0061b6', '#004c8e', '#b9d9f6'],
+let colors = {
+  // 2 is only used on button hover; 1 is also used on PagerItem hover
+  primaries: ['#0076de', '#0061b6', '#004c8e'],
+  // 2 is only for tertiary button active state, 0 is only used for tertiary button hover & dateinput
   secondaries: ['#3a3f52', '#272c41', '#202536'],
-  neutrals: [
-    '#ffffff',
-    '#f9f9f9',
-    '#f4f4f4',
-    '#ededed',
-    '#e8e8e8',
-    '#d3d3d3',
-    '#aaaaaa',
-    '#777777',
-    '#454545',
+  neutrals: {
+    0: '#ffffff',
+    1: '#f9f9f9', // page background only
+    4: '#eaeaea', // input borders, tag background, hovered fields like PagerItem, table header border, tab background
+    5: '#d3d3d3', // tag hover, secondary button hover, ghost button active, disabled checkbox color (0.5 opacity), tab borders & active background color, textButton active background color
+    6: '#aaaaaa', // radiobutton & checkbox borders, secondary button active
+    8: '#454545', // text color (0.5 opacity for some things, other opacity for tab titles)
+  },
+  errors: [
+    '#ff5630', // only error button active
+    '#de350b', // most error stuff
+    '#bf2600', // only error button hover
   ],
-  errors: ['#ff5630', '#de350b', '#bf2600', '#ffbdad'],
-  successes: ['#5bb85b', '#4b974b', '#3a763a', '#a5d8a5'],
-  infos: ['#6554c0', '#5243aa', '#403294', '#c0b6f2'],
+  successes: ['#5bb85b', '#4b974b', '#3a763a'], // none of these are used anywhere
+  infos: ['#6554c0', '#5243aa', '#403294'], // possible InfoButton
+}
+theme.colors = {
+  ...colors,
+  primary: colors.primaries[0],
+  text: colors.neutrals[8],
+  // secondaries
+  secondary: colors.secondaries[1],
+  secondaryLight: colors.secondaries[0], // we can probably kill this soon
+  // backgrounds
+  white: colors.neutrals[0],
+  pageBackground: colors.neutrals[1],
+  // neutrals
+  neutralLight: colors.neutrals[4],
+  neutral: colors.neutrals[5],
+  neutralDark: colors.neutrals[6],
+  // others
+  error: colors.errors[1],
+  info: colors.infos[0],
   warning: '#ffab00',
+  pastels: {
+    primary: '#b9d9f6',
+    error: '#ffbdad',
+    info: '#c0b6f2',
+    success: '#a5d8a5',
+  },
 }
 
 theme.boxShadows = {
@@ -115,25 +142,28 @@ theme.fonts = {
 }
 
 theme.inputStyle = {
+  ...theme.fonts.Text,
+  transition: 'border-color 0.2s ease-in',
+  // borders & padding
   borderRadius: theme.borderRadius,
-  border: `2px solid ${theme.colors.neutrals[3]}`,
+  border: `2px solid ${theme.colors.neutrals[4]}`,
   padding: `${theme.spaces.xs}px ${theme.spaces.sm}px`,
   outline: 'none',
   '&:focus': { borderColor: theme.colors.primaries[0] },
-  transition: 'border-color 0.2s ease-in',
-  '::placeholder': { color: theme.colors.neutrals[8], opacity: 0.5 },
-  color: theme.colors.neutrals[8],
-  backgroundColor: theme.colors.neutrals[0],
+  // dimensions
   height: theme.space(5),
   boxSizing: 'border-box',
   minWidth: theme.widths.formField.min,
-  ...theme.fonts.Text,
+  // colors
+  '::placeholder': { color: theme.colors.neutrals[8], opacity: 0.5 },
+  color: theme.colors.neutrals[8],
+  backgroundColor: theme.colors.neutrals[0],
   '&:disabled': {
     borderColor: theme.colors.neutrals[4],
     backgroundColor: theme.colors.neutrals[4],
     color: theme.colors.secondaries[1],
     opacity: 0.5,
-  }
+  },
 }
 
 export default theme

@@ -24,11 +24,11 @@ let Tag = ({ value, removeTag, tagStyle, ...props }) => {
         paddingRight: removeTag ? theme.spaces.xs : theme.spaces.sm,
         '&:hover': {
           backgroundColor: F.view(closeHover)
-            ? theme.colors.errors[3]
+            ? theme.colors.pastels.error
             : theme.colors.neutrals[5],
           '.remove-button': {
             opacity: 1,
-            color: F.view(closeHover) && theme.colors.errors[2],
+            color: F.view(closeHover) && theme.colors.errors[1],
           },
         },
         ...F.callOrReturn(tagStyle, value),
