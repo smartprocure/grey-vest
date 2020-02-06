@@ -77,7 +77,7 @@ let buttonStyles = _.mapValues(
       backgroundColor: base,
       color:
         text ||
-        readableColor(darken(0.16, base), colors.secondary, colors.white),
+        readableColor(darken(0.16, base), colors.secondary, colors.background),
       ':hover': { backgroundColor: hover || darken(0.08, base) },
       ':active': { backgroundColor: active || darken(0.16, base) },
     }),

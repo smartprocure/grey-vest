@@ -51,7 +51,7 @@ let colors = {
 }
 theme.colors = {
   ...colors,
-  white: colors.backgrounds[0],
+  background: colors.backgrounds[0],
   pageBackground: colors.backgrounds[1],
   neutralLight: colors.neutrals[0],
   neutral: colors.neutrals[1],
