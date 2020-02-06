@@ -1,12 +1,22 @@
 import React from 'react'
+import _ from 'lodash/fp'
 import { action } from '@storybook/addon-actions'
 import { Button, Grid, Flex } from '..'
 import { flag, asProp } from './commonProps'
 
+let flagProps = _.map(x => ({ name: x, ...flag }))
+
 let props = {
   rows: [],
   sections: {
-    'size flags': [{ name: 'compact', ...flag }, { name: 'large', ...flag }],
+    'size flags': flagProps(['compact', 'large']),
+    'color flags': flagProps([
+      'primary',
+      'secondary',
+      'tertiary',
+      'danger',
+      'ghost',
+    ]),
     other: [
       {
         name: 'onClick',
@@ -25,10 +35,9 @@ export default {
   parameters: {
     componentSubtitle: 'With five color variations and three sizes',
     props,
-    info:
-`
-GreyVest's Button component features five styling variants: **primary**, **secondary**, **tertiary**, **danger**, and **ghost**. The variants are subcomponents of Button (eg \`Button.Primary\`).
-`
+    info: `
+GreyVest's Button component features five styling variants: **primary**, **secondary**, **tertiary**, **danger**, and **ghost**. The variants are subcomponents of Button (eg \`Button primary\`).
+`,
   },
 }
 
@@ -57,59 +66,87 @@ export let regular = () => (
 
 export let primary = () => (
   <Container>
-    <Button.Primary>Regular</Button.Primary>
-    <Button.Primary large>Large</Button.Primary>
-    <Button.Primary compact>Compact</Button.Primary>
+    <Button primary>Regular</Button>
+    <Button primary large>
+      Large
+    </Button>
+    <Button primary compact>
+      Compact
+    </Button>
   </Container>
 )
 
 export let secondary = () => (
   <Container>
-    <Button.Secondary>Regular</Button.Secondary>
-    <Button.Secondary large>Large</Button.Secondary>
-    <Button.Secondary compact>Compact</Button.Secondary>
+    <Button secondary>Regular</Button>
+    <Button secondary large>
+      Large
+    </Button>
+    <Button secondary compact>
+      Compact
+    </Button>
   </Container>
 )
 secondary.story = {
-  name: 'Secondary (default)',
+  name: 'secondary (default)',
   parameters: {
     docs: {
       storyDescription:
-        'Since the secondary color variant is also the default styling for Button, it can be used with either `Button` or `Button.Secondary`.',
+        'Since the secondary color variant is also the default styling for Button, it can be used with either `Button` or `Button.secondary`.',
     },
   },
 }
 
 export let tertiary = () => (
   <Container>
-    <Button.Tertiary>Regular</Button.Tertiary>
-    <Button.Tertiary large>Large</Button.Tertiary>
-    <Button.Tertiary compact>Compact</Button.Tertiary>
+    <Button tertiary>Regular</Button>
+    <Button tertiary large>
+      Large
+    </Button>
+    <Button tertiary compact>
+      Compact
+    </Button>
   </Container>
 )
 
 export let danger = () => (
   <Container>
-    <Button.Danger>Regular</Button.Danger>
-    <Button.Danger large>Large</Button.Danger>
-    <Button.Danger compact>Compact</Button.Danger>
+    <Button danger>Regular</Button>
+    <Button danger large>
+      Large
+    </Button>
+    <Button danger compact>
+      Compact
+    </Button>
   </Container>
 )
 
 export let ghost = () => (
   <Container>
-    <Button.Ghost>Regular</Button.Ghost>
-    <Button.Ghost large>Large</Button.Ghost>
-    <Button.Ghost compact>Compact</Button.Ghost>
+    <Button ghost>Regular</Button>
+    <Button ghost large>
+      Large
+    </Button>
+    <Button ghost compact>
+      Compact
+    </Button>
   </Container>
 )
 
 export let disabled = () => (
   <Container cols={4}>
-    <Button.Primary disabled>Primary</Button.Primary>
-    <Button.Secondary disabled>Secondary</Button.Secondary>
-    <Button.Tertiary disabled>Tertiary</Button.Tertiary>
-    <Button.Danger disabled>Danger</Button.Danger>
+    <Button primary disabled>
+      primary
+    </Button>
+    <Button secondary disabled>
+      secondary
+    </Button>
+    <Button tertiary disabled>
+      tertiary
+    </Button>
+    <Button danger disabled>
+      danger
+    </Button>
   </Container>
 )
 
@@ -120,12 +157,20 @@ export let withIcon = () => (
       <Button icon="beach_access">Other</Button>
     </Flex>
     <Flex inline column gap={1} alignItems="flex-start">
-      <Button large icon="keyboard_arrow_down">Dropdown</Button>
-      <Button large icon="face">Other</Button>
+      <Button large icon="keyboard_arrow_down">
+        Dropdown
+      </Button>
+      <Button large icon="face">
+        Other
+      </Button>
     </Flex>
     <Flex inline column gap={1} alignItems="flex-start">
-      <Button compact icon="keyboard_arrow_down">Dropdown</Button>
-      <Button compact icon="eco">Other</Button>
+      <Button compact icon="keyboard_arrow_down">
+        Dropdown
+      </Button>
+      <Button compact icon="eco">
+        Other
+      </Button>
     </Flex>
   </Container>
 )
