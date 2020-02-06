@@ -89,7 +89,7 @@ let ReactDatePickerInput = ({
             },
             '&--active': {
               backgroundColor: `${theme.colors.secondary} !important`,
-              color: theme.colors.neutrals[0],
+              color: theme.colors.backgrounds[0],
               '& abbr': { opacity: 1 },
             },
           },

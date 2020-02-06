@@ -27,14 +27,12 @@ theme.widths = {
 }
 
 let colors = {
+  backgrounds: ['#ffffff', '#f9f9f9'],
   // 2 is only used on button hover; 1 is also used on PagerItem hover
   neutrals: {
-    0: '#ffffff',
-    1: '#f9f9f9', // page background only
     4: '#eaeaea', // input borders, tag background, hovered fields like PagerItem, table header border, tab background
     5: '#d3d3d3', // tag hover, secondary button hover, ghost button active, disabled checkbox color (0.5 opacity), tab borders & active background color, textButton active background color
     6: '#aaaaaa', // radiobutton & checkbox borders, secondary button active
-    8: '#454545', // text color (0.5 opacity for some things, other opacity for tab titles)
   },
   errors: [
     '#ff5630', // only error button active
@@ -51,8 +49,8 @@ theme.colors = {
   // secondaries
   secondary: '#272c41',
   // backgrounds
-  white: colors.neutrals[0],
-  pageBackground: colors.neutrals[1],
+  white: colors.backgrounds[0],
+  pageBackground: colors.backgrounds[1],
   // neutrals
   neutralLight: colors.neutrals[4],
   neutral: colors.neutrals[5],
@@ -153,7 +151,7 @@ theme.inputStyle = {
   // colors
   '::placeholder': { color: theme.colors.text, opacity: 0.5 },
   color: theme.colors.text,
-  backgroundColor: theme.colors.neutrals[0],
+  backgroundColor: theme.colors.backgrounds[0],
   '&:disabled': {
     borderColor: theme.colors.neutrals[4],
     backgroundColor: theme.colors.neutrals[4],

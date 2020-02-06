@@ -21,9 +21,9 @@ let classic = {
   },
   '&.active, &.active:hover': {
     padding: `${theme.space(1.5)}px ${theme.space(4)}px`,
-    backgroundColor: colors.neutrals[0],
+    backgroundColor: colors.backgrounds[0],
     // white box shadow trick from http://dev.housetrip.com/2012/06/15/good-looking-css-tabs/
-    boxShadow: `0 10px 0 0 ${colors.neutrals[0]}, ${theme.boxShadows.normal}`,
+    boxShadow: `0 10px 0 0 ${colors.backgrounds[0]}, ${theme.boxShadows.normal}`,
     '& > div': { fontSize: theme.fontSizes[2] },
     borderLeft: 'none',
   },
@@ -52,8 +52,8 @@ let regular = {
   ...floating,
   backgroundColor: colors.neutrals[4],
   '&.active': {
-    backgroundColor: colors.neutrals[0],
-    boxShadow: `0 10px 0 0 ${colors.neutrals[0]}, ${theme.boxShadows.normal}`,
+    backgroundColor: colors.backgrounds[0],
+    boxShadow: `0 10px 0 0 ${colors.backgrounds[0]}, ${theme.boxShadows.normal}`,
   },
   '&:active': {
     backgroundColor: colors.neutrals[5],

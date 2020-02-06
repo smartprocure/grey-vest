@@ -30,7 +30,7 @@ let RadioButton = ({ native, option, value, onChange, ...props }) => (
             minWidth: theme.spaces.md,
             minHeight: theme.spaces.md,
             boxSizing: 'border-box',
-            background: theme.colors.neutrals[0],
+            background: theme.colors.backgrounds[0],
             border: `2px solid ${theme.colors.neutrals[6]}`,
             borderRadius: '50%',
           },

@@ -43,7 +43,7 @@ let ReactSelect = ({ value, options, ...props }) => (
         left: 0,
         right: 0,
         zIndex: 99999,
-        backgroundColor: colors.neutrals[0],
+        backgroundColor: colors.backgrounds[0],
         marginTop: spaces.xs,
         boxShadow: theme.boxShadows.popup,
         borderRadius: theme.borderRadius,
@@ -55,7 +55,7 @@ let ReactSelect = ({ value, options, ...props }) => (
         cursor: 'pointer',
         padding: `${spaces.xs}px ${spaces.md}px`,
         '&:hover': {
-          backgroundColor: `${colors.neutrals[1]}`,
+          backgroundColor: `${colors.backgrounds[1]}`,
           color: colors.primary,
         },
       }),

@@ -23,7 +23,7 @@ let Checkbox = ({
         minWidth: theme.spaces.md,
         minHeight: theme.spaces.md,
         borderRadius: 3,
-        backgroundColor: theme.colors.neutrals[0],
+        backgroundColor: theme.colors.backgrounds[0],
         border: `2px solid ${theme.colors.neutrals[6]}`,
         transition: 'all 0.5s ease',
         '& i': { 

@@ -29,7 +29,7 @@ let PagerItem = ({ active, disabled, ...props }) => (
       active && {
         opacity: 1,
         backgroundColor: `${theme.colors.primary} !important`,
-        color: theme.colors.neutrals[0],
+        color: theme.colors.backgrounds[0],
       },
       disabled && {
         cursor: 'not-allowed',
