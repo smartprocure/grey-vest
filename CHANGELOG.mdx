@@ -2,30 +2,38 @@
 
 ## Changes
 
+### General 
+
 * Lots of new stories! 📖✨
 * Stories are no longer co-located with components (GreyVest alone is much smaller and flatter than contexture-react, so it makes more sense to keep them separate)
+* Expanded the `options` prop API (for **CheckboxList**, **RadioList**, and **Select**): in addition to `label` and `value`, each element now also accepts a boolean `disabled` property
+
+### Components
+
 * New typography components: **Text**, **Title** and **Subtitle**
-* Other new components: **Dropdown** (a zero-padding variant of Popover intended to be used with DropdownItem), **Tooltip**, **Banner**, **Pager**, **TableFooter**, **Divider**, and **FormField**
+* Other new components: **Dropdown** (a zero-padding variant of Popover intended to be used with DropdownItem), **Tooltip**, **Banner**, **Pager**, **TableFooter**, **Divider**, **FormField**, **Form**, and **IconButton**
 * Changes to **Button**:
   * New component-level variants: **Button.Primary**, **Button.Secondary** (same as regular Button), **Button.Tertiary**, **Button.Danger**, and **Button.Ghost**
   * New props: `compact` and `large` flags for size variants, and `icon` (same as the Icon component's `icon` prop)
 * Changes to **Box**:
   * New component-level variants: **Box.Modal** and **Box.Popup** (different shadow styles)
   * New props: `p`, `px`, and `py`
+* Changes to **CheckboxList** and **RadioList**:
+  * Both now support the `disabled` property on options (to mark that option as disabled)
+  * Both components now also support SpacedList props (`gap`, `columnCount`, `columnWidth`, and `columnGap`)
+* **DateInput** now includes a time picker (now uses `react-datetime-picker` internally instead of `react-date-picker`)
 * New props on **DropdownItem**: `disabled`, `truncate`, and `icon` (same as the Icon component's `icon` prop)
 * Changes to **Modal**:
   * New subcomponents: **Modal.Header**, **Modal.Content**, and **Modal.Footer**
   * Modals now have a close button and can additionally be closed with the `Esc` key
+* New props on **SpacedList**: `gap`, `columnCount`, `columnWidth`, and `columnGap` (SpacedList now supports CSS columns!)
 * Changes to **TextInput**, **Textarea**, and **Select**:
   * Now properly handle the `disabled` prop
   * 🚨 No longer default to 100% width
-* Expanded the `options` prop API (for **CheckboxList**, **RadioList**, and **Select**): in addition to `label` and `value`, each element now also accepts a boolean `disabled` property
-* **DateInput** now includes a time picker (now uses `react-datetime-picker` internally instead of `react-date-picker`)
 * 🚨 **Tag** no longer accepts a RemoveIcon component prop
 * Changes to **Tabs**/**TabList**:
   * 🚨 **TabList** component has been renamed to **TabsList** (plural "tabs") for parity with the `TabsList` component prop on Tabs
   * New component-level variants: **Tabs.Transparent** and **Tabs.Classic** (corresponding to **Tabslist.Transparent** and **TabsList.Classic**)
-* New props on **SpacedList**: `gap`, `columnCount`, `columnWidth`, and `columnGap` (SpacedList now supports CSS columns!)
 
 ### Spacing props
 
@@ -43,6 +51,16 @@ Component props that control whitespace now take spacing values from GreyVest's 
 | SpacedList | `gap`, `columnGap`                                 | new in 3.0         |
 | Box        | `padding`, `paddingX`, `paddingY`, `p`, `px`, `py` | new in 3.0         |
 | Divider    | `margin`, `m`                                      | new in 3.0         |
+
+#### 3.0.0-alpha.15
+* Add Form component and update form demo story
+* Add page header templates
+* Add IconButton component and update TextButton
+* Add theme object documentation
+* Add more icon examples to Button stories
+* Add support for disabled options to CheckboxList
+* Add disabled stories for CheckboxList & RadioList
+* More tweaks and fixes
 
 #### 3.0.0-alpha.14
 * Fix an import bug in our storybook config
