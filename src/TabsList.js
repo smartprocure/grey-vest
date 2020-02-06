@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
+import { transparentize } from 'polished'
 import { Text } from './Typography'
 import _ from 'lodash/fp'
 import { observer } from 'mobx-react'
@@ -35,7 +36,7 @@ let classic = {
 let floating = {
   padding: `${theme.space(0.25)}px ${theme.spaces.md}px`,
   borderBottom: `2px solid ${colors.neutrals[1]}`,
-  color: `${colors.text}7F`,
+  color: transparentize(0.5, colors.text),
   borderTopLeftRadius: theme.borderRadius,
   borderTopRightRadius: theme.borderRadius,
   transition: 'all 0.1s linear',

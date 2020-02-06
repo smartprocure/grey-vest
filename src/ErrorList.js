@@ -18,8 +18,8 @@ let ErrorBlock = ({ children, ...props }) => (
     gap={1}
     alignItems="center"
     css={{
-      color: theme.colors.errors[1],
-      backgroundColor: `${theme.colors.errors[3]}7F`,
+      color: theme.colors.error,
+      backgroundColor: theme.colors.pastels.error,
     }}
     {...props}
   >

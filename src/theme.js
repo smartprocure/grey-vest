@@ -1,5 +1,6 @@
 import F from 'futil'
 import _ from 'lodash/fp'
+import { transparentize } from 'polished'
 
 let theme = {
   fontSizes: [12, 14, 16, 18, 30, 48],
@@ -31,17 +32,17 @@ let colors = {
   secondary: '#272c41',
   text: '#454545',
   backgrounds: ['#ffffff', '#f9f9f9'],
-  // 2 is only used on button hover; 1 is also used on PagerItem hover
   neutrals: [
-    '#eaeaea', // input borders, tag background, hovered fields like PagerItem, table header border, tab background
-    '#d3d3d3', // tag hover, disabled checkbox color (0.5 opacity), tab borders & active background color, textButton active background color
-    '#aaaaaa', // radiobutton & checkbox borders, secondary button active
+    '#eaeaea', // Input borders, tag background, hovered fields like PagerItem, table header border-bottom, tab background
+    '#d3d3d3', // Tag hover, disabled checkbox color (0.5 opacity), tab borders & active background color, textButton active background color
+    '#aaaaaa', // Radiobutton & checkbox borders, secondary button active
   ],
   success: '#5bb85b', // not actually used anywhere in grey-vest
   error: '#ff5630',
   info: '#6554c0',
   warning: '#ffab00',
-  pastels: { // for tag backgrounds
+  pastels: {
+    // for tag backgrounds
     primary: '#b9d9f6',
     error: '#ffbdad',
     info: '#c0b6f2',
@@ -58,10 +59,10 @@ theme.colors = {
 }
 
 theme.boxShadows = {
-  normal: `0 2px 10px 0 ${theme.colors.text}19`,
-  modal: `0 2px 10px 0 ${theme.colors.secondary}7f`,
-  popup: `0 8px 16px -4px ${theme.colors.secondary}4c,
-          0 0 1px 0 ${theme.colors.secondary}4c`,
+  normal: `0 2px 10px 0 ${transparentize(0.1, theme.colors.text)}`,
+  modal: `0 2px 10px 0 ${transparentize(0.5, theme.colors.secondary)}`,
+  popup: `0 8px 16px -4px ${transparentize(0.3, theme.colors.secondary)},
+          0 0 1px 0 ${transparentize(0.3, theme.colors.secondary)}`,
 }
 
 theme.fonts = {
