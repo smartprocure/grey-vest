@@ -9,7 +9,7 @@ let { colors } = theme
 let classic = {
   padding: `${theme.space(1.5)}px ${theme.space(2.5)}px`,
   backgroundColor: colors.neutrals[4],
-  color: colors.neutrals[8],
+  color: colors.text,
   borderLeft: `solid 1px ${colors.neutrals[5]}`,
   transition: 'background-color 0.1s linear',
   '& > div': { fontWeight: 'bold', fontSize: theme.fontSizes[1] },
@@ -35,7 +35,7 @@ let classic = {
 let floating = {
   padding: `${theme.space(0.25)}px ${theme.spaces.md}px`,
   borderBottom: `2px solid ${colors.neutrals[5]}`,
-  color: `${colors.neutrals[8]}7F`,
+  color: `${colors.text}7F`,
   borderTopLeftRadius: theme.borderRadius,
   borderTopRightRadius: theme.borderRadius,
   transition: 'all 0.1s linear',

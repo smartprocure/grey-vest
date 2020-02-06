@@ -51,7 +51,7 @@ let ReactSelect = ({ value, options, ...props }) => (
       option: () => ({
         ...fonts.Text,
         ...fonts.Text.variants.small,
-        color: colors.neutrals[8],
+        color: colors.text,
         cursor: 'pointer',
         padding: `${spaces.xs}px ${spaces.md}px`,
         '&:hover': {

@@ -15,7 +15,7 @@ let Tag = ({ value, removeTag, tagStyle, ...props }) => {
       inline
       css={{
         backgroundColor: theme.colors.neutrals[4],
-        color: theme.colors.neutrals[8],
+        color: theme.colors.text,
         cursor: 'pointer',
         borderRadius: theme.borderRadius,
         '.remove-button': { opacity: 0.5 },

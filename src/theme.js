@@ -28,7 +28,6 @@ theme.widths = {
 
 let colors = {
   // 2 is only used on button hover; 1 is also used on PagerItem hover
-  primaries: ['#0076de', '#0061b6', '#004c8e'],
   neutrals: {
     0: '#ffffff',
     1: '#f9f9f9', // page background only
@@ -48,7 +47,7 @@ let colors = {
 theme.colors = {
   ...colors,
   primary: '#0076de',
-  text: colors.neutrals[8],
+  text: '#454545',
   // secondaries
   secondary: '#272c41',
   // backgrounds
@@ -71,7 +70,7 @@ theme.colors = {
 }
 
 theme.boxShadows = {
-  normal: `0 2px 10px 0 ${theme.colors.neutrals[8]}19`,
+  normal: `0 2px 10px 0 ${theme.colors.text}19`,
   modal: `0 2px 10px 0 ${theme.colors.secondary}7f`,
   popup: `0 8px 16px -4px ${theme.colors.secondary}4c,
           0 0 1px 0 ${theme.colors.secondary}4c`,
@@ -152,8 +151,8 @@ theme.inputStyle = {
   boxSizing: 'border-box',
   minWidth: theme.widths.formField.min,
   // colors
-  '::placeholder': { color: theme.colors.neutrals[8], opacity: 0.5 },
-  color: theme.colors.neutrals[8],
+  '::placeholder': { color: theme.colors.text, opacity: 0.5 },
+  color: theme.colors.text,
   backgroundColor: theme.colors.neutrals[0],
   '&:disabled': {
     borderColor: theme.colors.neutrals[4],

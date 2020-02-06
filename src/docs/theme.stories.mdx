@@ -83,7 +83,7 @@ See the Colors story under Design System for swatches.
 
 ```js
 theme.boxShadows = {
-  normal: `0 2px 10px 0 ${theme.colors.neutrals[8]}19`,
+  normal: `0 2px 10px 0 ${theme.colors.text}19`,
   modal: `0 2px 10px 0 ${theme.colors.secondary}7f`,
   popup: `0 8px 16px -4px ${theme.colors.secondary}4c,
           0 0 1px 0 ${theme.colors.secondary}4c`,
@@ -170,8 +170,8 @@ theme.inputStyle = {
   outline: 'none',
   '&:focus': { borderColor: theme.colors.primary },
   transition: 'border-color 0.2s ease-in',
-  '::placeholder': { color: theme.colors.neutrals[8], opacity: 0.5 },
-  color: theme.colors.neutrals[8],
+  '::placeholder': { color: theme.colors.text, opacity: 0.5 },
+  color: theme.colors.text,
   backgroundColor: theme.colors.neutrals[0],
   height: theme.space(5),
   boxSizing: 'border-box',
