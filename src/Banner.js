@@ -36,7 +36,7 @@ let bannerStyles = _.mapValues(convertBannerStyles, {
     icon: 'warning',
   },
   Error: {
-    backgroundColor: colors.errors[1],
+    backgroundColor: colors.error,
     textColor: colors.backgrounds[0],
     icon: 'report',
   },

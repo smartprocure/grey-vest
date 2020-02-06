@@ -8,7 +8,7 @@ import Icon from './Icon'
 import { Text } from './Typography'
 import theme from './theme'
 
-let ErrorText = props => <Text css={{ color: theme.colors.errors[1] }} {...props} />
+let ErrorText = props => <Text css={{ color: theme.colors.error }} {...props} />
 
 let ErrorBlock = ({ children, ...props }) => (
   <Flex

@@ -38,7 +38,7 @@ let colors = {
     '#aaaaaa', // Radiobutton & checkbox borders, secondary button active
   ],
   success: '#5bb85b', // not actually used anywhere in grey-vest
-  error: '#ff5630',
+  error: '#de350b',
   info: '#6554c0',
   warning: '#ffab00',
   pastels: {

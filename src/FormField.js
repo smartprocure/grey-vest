@@ -46,7 +46,7 @@ let FormField = ({
             style={{
               fontSize: theme.fontSizes[3],
               lineHeight: 0,
-              color: theme.colors.errors[1],
+              color: theme.colors.error,
               verticalAlign: 'middle',
             }}
           >
@@ -58,7 +58,7 @@ let FormField = ({
         <Icon
           icon="info"
           size={2}
-          style={{ color: theme.colors.infos[0], cursor: 'help' }}
+          style={{ color: theme.colors.info, cursor: 'help' }}
           data-tip={tooltip}
         />
       )}
@@ -68,7 +68,7 @@ let FormField = ({
       <Flex
         alignItems="center"
         gap="xs"
-        style={{ color: theme.colors.errors[1], marginTop: theme.spaces.xs }}
+        style={{ color: theme.colors.error, marginTop: theme.spaces.xs }}
       >
         <Icon icon="error_outline" size={2} />
         <Text extraSmall>{error}</Text>

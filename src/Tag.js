@@ -28,7 +28,7 @@ let Tag = ({ value, removeTag, tagStyle, ...props }) => {
             : theme.colors.neutrals[1],
           '.remove-button': {
             opacity: 1,
-            color: F.view(closeHover) && theme.colors.errors[1],
+            color: F.view(closeHover) && theme.colors.error,
           },
         },
         ...F.callOrReturn(tagStyle, value),

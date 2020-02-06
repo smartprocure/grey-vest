@@ -43,8 +43,8 @@ export let story = () => (
     <SwatchSet colors={[colors.backgrounds[0], colors.backgrounds[1]]} title="backgrounds" />
     <SwatchSet colors={[colors.neutrals[0], colors.neutrals[1], colors.neutrals[2]]} title="neutrals" />
     <SwatchSet colors={[colors.warning]} title="warning" />
-    <SwatchSet colors={[colors.infos[0]]} title="info" />
+    <SwatchSet colors={[colors.info]} title="info" />
     <SwatchSet colors={[colors.error]} title="error" />
-    <SwatchSet colors={[colors.successes[1]]} title="success" />
+    <SwatchSet colors={[colors.success]} title="success" />
   </Flex>
 )
