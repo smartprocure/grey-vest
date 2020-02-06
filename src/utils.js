@@ -1,5 +1,5 @@
 import _ from 'lodash/fp'
-import * as F from 'futil'
+import F from 'futil'
 import { useState } from 'react'
 import { mapProps } from 'recompose'
 
@@ -27,3 +27,9 @@ export let findKeys = _.curry((predicate, data) =>
 export let coalesce = _.find(F.isNotNil)
 
 export let optionsFromArray = F.mapIndexed((label, value) => ({ label, value }))
+
+export let getVariants = (props, variants) =>
+  _.flow(
+    _.pick(findKeys(_.eq(true), props)),
+    _.values
+  )(variants)
