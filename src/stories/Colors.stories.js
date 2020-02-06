@@ -37,14 +37,15 @@ let SwatchSet = ({ title, colors }) => (
 
 export let story = () => (
   <Flex wrap gap={4} justifyContent="space-around">
-    <SwatchSet colors={[colors.primary]} title="primary" />
-    <SwatchSet colors={[colors.secondary]} title="secondary" />
-    <SwatchSet colors={[colors.text]} title="text" />
-    <SwatchSet colors={[colors.backgrounds[0], colors.backgrounds[1]]} title="backgrounds" />
-    <SwatchSet colors={[colors.neutrals[0], colors.neutrals[1], colors.neutrals[2]]} title="neutrals" />
-    <SwatchSet colors={[colors.warning]} title="warning" />
-    <SwatchSet colors={[colors.info]} title="info" />
-    <SwatchSet colors={[colors.error]} title="error" />
-    <SwatchSet colors={[colors.success]} title="success" />
+    <SwatchSet colors={colors.primary} title="primary" />
+    <SwatchSet colors={colors.secondary} title="secondary" />
+    <SwatchSet colors={colors.text} title="text" />
+    <SwatchSet colors={colors.backgrounds} title="backgrounds" />
+    <SwatchSet colors={colors.neutrals} title="neutrals" />
+    <SwatchSet colors={colors.warning} title="warning" />
+    <SwatchSet colors={colors.info} title="info" />
+    <SwatchSet colors={colors.error} title="error" />
+    <SwatchSet colors={colors.success} title="success" />
+    <SwatchSet colors={_.values(colors.pastels)} title="pastels" />
   </Flex>
 )
