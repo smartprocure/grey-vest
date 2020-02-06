@@ -2,6 +2,7 @@
 import { jsx } from '@emotion/core'
 import F from 'futil'
 import _ from 'lodash/fp'
+import { rgba } from 'polished'
 import Flex from './Flex'
 import Box from './Box'
 import Icon from './Icon'
@@ -19,14 +20,14 @@ let ErrorBlock = ({ children, ...props }) => (
     alignItems="center"
     css={{
       color: theme.colors.error,
-      backgroundColor: theme.colors.pastels.error,
+      backgroundColor: rgba(theme.colors.error, 0.2),
     }}
     {...props}
   >
     <Icon icon="warning" />
     {F.mapIndexed(
       (child, i) => (
-        <ErrorText key={i}>{child}</ErrorText>
+        <Text key={i}>{child}</Text>
       ),
       _.castArray(children)
     )}

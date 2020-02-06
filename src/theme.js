@@ -1,6 +1,6 @@
 import F from 'futil'
 import _ from 'lodash/fp'
-import { transparentize } from 'polished'
+import { rgba } from 'polished'
 
 let theme = {
   fontSizes: [12, 14, 16, 18, 30, 48],
@@ -59,10 +59,11 @@ theme.colors = {
 }
 
 theme.boxShadows = {
-  normal: `0 2px 10px 0 ${transparentize(0.1, theme.colors.text)}`,
-  modal: `0 2px 10px 0 ${transparentize(0.5, theme.colors.secondary)}`,
-  popup: `0 8px 16px -4px ${transparentize(0.3, theme.colors.secondary)},
-          0 0 1px 0 ${transparentize(0.3, theme.colors.secondary)}`,
+  // transparentize 
+  normal: `0 2px 10px 0 ${rgba(theme.colors.text, 0.1)}`,
+  modal: `0 2px 10px 0 ${rgba(theme.colors.secondary, 0.5)}`,
+  popup: `0 8px 16px -4px ${rgba(theme.colors.secondary, 0.3)},
+          0 0 1px 0 ${rgba(theme.colors.secondary, 0.3)}`,
 }
 
 theme.fonts = {

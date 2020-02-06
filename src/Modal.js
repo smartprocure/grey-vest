@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
-import { transparentize } from 'polished'
+import { rgba } from 'polished'
 import _ from 'lodash/fp'
 import { setDisplayName } from 'recompose'
 import { observer } from 'mobx-react'
@@ -26,7 +26,7 @@ let Modal = _.flow(
           bottom: 0,
           left: 0,
           right: 0,
-          backgroundColor: transparentize(0.6, theme.colors.secondary),
+          backgroundColor: rgba(theme.colors.secondary, 0.6),
           zIndex: 1000,
         }}
         justifyContent="center"
