@@ -32,7 +32,7 @@ let convertBannerStyles = ({ backgroundColor, textColor, icon }) =>
 let bannerStyles = _.mapValues(convertBannerStyles, {
   Warning: {
     backgroundColor: colors.warning,
-    textColor: colors.secondaries[1],
+    textColor: colors.secondary,
     icon: 'warning',
   },
   Error: {

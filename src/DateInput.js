@@ -64,14 +64,14 @@ let ReactDatePickerInput = ({
             '&__arrow': {
               minWidth: theme.spaces.lg,
               fontSize: theme.fontSizes[2],
-              color: theme.colors.secondaries[1],
+              color: theme.colors.secondary,
               opacity: 0.5,
             },
           },
           '&__tile': {
             ...fonts.Text,
             ...fonts.Text.variants.small,
-            color: theme.colors.secondaries[1],
+            color: theme.colors.secondary,
             '& abbr': { opacity: 0.5 },
             '&:hover': {
               backgroundColor: theme.colors.neutrals[4],
@@ -88,7 +88,7 @@ let ReactDatePickerInput = ({
               boxShadow: `0 2px 0 0 ${theme.colors.primaries[0]}`,
             },
             '&--active': {
-              backgroundColor: `${theme.colors.secondaries[1]} !important`,
+              backgroundColor: `${theme.colors.secondary} !important`,
               color: theme.colors.neutrals[0],
               '& abbr': { opacity: 1 },
             },

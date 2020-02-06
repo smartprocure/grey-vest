@@ -44,7 +44,7 @@ let floating = {
     color: colors.primaries[0],
     borderColor: colors.primaries[0],
   },
-  '&:hover': { color: colors.secondaries[1] },
+  '&:hover': { color: colors.secondary },
   '&:active': { backgroundColor: colors.neutrals[4] },
 }
 

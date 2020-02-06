@@ -25,7 +25,7 @@ let Modal = _.flow(
           bottom: 0,
           left: 0,
           right: 0,
-          backgroundColor: `${theme.colors.secondaries[1]}99`, // 0.6 opacity
+          backgroundColor: `${theme.colors.secondary}99`, // 0.6 opacity
           zIndex: 1000,
         }}
         justifyContent="center"

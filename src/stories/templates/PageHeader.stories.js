@@ -23,7 +23,7 @@ export let story = () => {
       <div>
         <Button.Ghost
           compact
-          style={{ color: !active && theme.colors.secondaries[1] }}
+          style={{ color: !active && theme.colors.secondary }}
           icon={children && 'arrow_drop_down'}
           onClick={() => {
             F.flip(open)()

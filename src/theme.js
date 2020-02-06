@@ -29,8 +29,6 @@ theme.widths = {
 let colors = {
   // 2 is only used on button hover; 1 is also used on PagerItem hover
   primaries: ['#0076de', '#0061b6', '#004c8e'],
-  // 2 is only for tertiary button active state, 0 is only used for tertiary button hover & dateinput
-  secondaries: ['#3a3f52', '#272c41', '#202536'],
   neutrals: {
     0: '#ffffff',
     1: '#f9f9f9', // page background only
@@ -49,11 +47,10 @@ let colors = {
 }
 theme.colors = {
   ...colors,
-  primary: colors.primaries[0],
+  primary: '#0076de',
   text: colors.neutrals[8],
   // secondaries
-  secondary: colors.secondaries[1],
-  secondaryLight: colors.secondaries[0], // we can probably kill this soon
+  secondary: '#272c41',
   // backgrounds
   white: colors.neutrals[0],
   pageBackground: colors.neutrals[1],
@@ -75,9 +72,9 @@ theme.colors = {
 
 theme.boxShadows = {
   normal: `0 2px 10px 0 ${theme.colors.neutrals[8]}19`,
-  modal: `0 2px 10px 0 ${theme.colors.secondaries[1]}7f`,
-  popup: `0 8px 16px -4px ${theme.colors.secondaries[1]}4c,
-          0 0 1px 0 ${theme.colors.secondaries[1]}4c`,
+  modal: `0 2px 10px 0 ${theme.colors.secondary}7f`,
+  popup: `0 8px 16px -4px ${theme.colors.secondary}4c,
+          0 0 1px 0 ${theme.colors.secondary}4c`,
 }
 
 theme.fonts = {
@@ -161,7 +158,7 @@ theme.inputStyle = {
   '&:disabled': {
     borderColor: theme.colors.neutrals[4],
     backgroundColor: theme.colors.neutrals[4],
-    color: theme.colors.secondaries[1],
+    color: theme.colors.secondary,
     opacity: 0.5,
   },
 }
