@@ -41,8 +41,7 @@ let colors = {
   error: '#de350b',
   info: '#6554c0',
   warning: '#ffab00',
-  pastels: {
-    // for tag backgrounds
+  pastels: { // also not actually used in grey-vest
     primary: '#b9d9f6',
     error: '#ffbdad',
     info: '#c0b6f2',
@@ -59,7 +58,6 @@ theme.colors = {
 }
 
 theme.boxShadows = {
-  // transparentize 
   normal: `0 2px 10px 0 ${rgba(theme.colors.text, 0.1)}`,
   modal: `0 2px 10px 0 ${rgba(theme.colors.secondary, 0.5)}`,
   popup: `0 8px 16px -4px ${rgba(theme.colors.secondary, 0.3)},
