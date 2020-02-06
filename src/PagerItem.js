@@ -20,7 +20,7 @@ let PagerItem = ({ active, disabled, ...props }) => (
         color: theme.colors.text,
         opacity: 0.5,
         '&:hover': {
-          background: theme.colors.neutrals[4],
+          background: theme.colors.neutrals[0],
           opacity: 1,
         },
         transition: 'all 0.2s',

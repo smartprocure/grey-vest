@@ -27,44 +27,34 @@ theme.widths = {
 }
 
 let colors = {
+  primary: '#0076de',
+  secondary: '#272c41',
+  text: '#454545',
   backgrounds: ['#ffffff', '#f9f9f9'],
   // 2 is only used on button hover; 1 is also used on PagerItem hover
-  neutrals: {
-    4: '#eaeaea', // input borders, tag background, hovered fields like PagerItem, table header border, tab background
-    5: '#d3d3d3', // tag hover, secondary button hover, ghost button active, disabled checkbox color (0.5 opacity), tab borders & active background color, textButton active background color
-    6: '#aaaaaa', // radiobutton & checkbox borders, secondary button active
-  },
-  errors: [
-    '#ff5630', // only error button active
-    '#de350b', // most error stuff
-    '#bf2600', // only error button hover
+  neutrals: [
+    '#eaeaea', // input borders, tag background, hovered fields like PagerItem, table header border, tab background
+    '#d3d3d3', // tag hover, disabled checkbox color (0.5 opacity), tab borders & active background color, textButton active background color
+    '#aaaaaa', // radiobutton & checkbox borders, secondary button active
   ],
-  successes: ['#5bb85b', '#4b974b', '#3a763a'], // none of these are used anywhere
-  infos: ['#6554c0', '#5243aa', '#403294'], // possible InfoButton
-}
-theme.colors = {
-  ...colors,
-  primary: '#0076de',
-  text: '#454545',
-  // secondaries
-  secondary: '#272c41',
-  // backgrounds
-  white: colors.backgrounds[0],
-  pageBackground: colors.backgrounds[1],
-  // neutrals
-  neutralLight: colors.neutrals[4],
-  neutral: colors.neutrals[5],
-  neutralDark: colors.neutrals[6],
-  // others
-  error: colors.errors[1],
-  info: colors.infos[0],
+  success: '#5bb85b', // not actually used anywhere in grey-vest
+  error: '#ff5630',
+  info: '#6554c0',
   warning: '#ffab00',
-  pastels: {
+  pastels: { // for tag backgrounds
     primary: '#b9d9f6',
     error: '#ffbdad',
     info: '#c0b6f2',
     success: '#a5d8a5',
   },
+}
+theme.colors = {
+  ...colors,
+  white: colors.backgrounds[0],
+  pageBackground: colors.backgrounds[1],
+  neutralLight: colors.neutrals[0],
+  neutral: colors.neutrals[1],
+  neutralDark: colors.neutrals[2],
 }
 
 theme.boxShadows = {
@@ -140,7 +130,7 @@ theme.inputStyle = {
   transition: 'border-color 0.2s ease-in',
   // borders & padding
   borderRadius: theme.borderRadius,
-  border: `2px solid ${theme.colors.neutrals[4]}`,
+  border: `2px solid ${theme.colors.neutrals[0]}`,
   padding: `${theme.spaces.xs}px ${theme.spaces.sm}px`,
   outline: 'none',
   '&:focus': { borderColor: theme.colors.primary },
@@ -153,8 +143,8 @@ theme.inputStyle = {
   color: theme.colors.text,
   backgroundColor: theme.colors.backgrounds[0],
   '&:disabled': {
-    borderColor: theme.colors.neutrals[4],
-    backgroundColor: theme.colors.neutrals[4],
+    borderColor: theme.colors.neutrals[0],
+    backgroundColor: theme.colors.neutrals[0],
     color: theme.colors.secondary,
     opacity: 0.5,
   },

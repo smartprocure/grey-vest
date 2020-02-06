@@ -165,7 +165,7 @@ Since GreyVest has so many different input components that have to be styled sim
 ```js
 theme.inputStyle = {
   borderRadius: theme.borderRadius,
-  border: `2px solid ${theme.colors.neutrals[4]}`,
+  border: `2px solid ${theme.colors.neutrals[0]}`,
   padding: `${theme.spaces.xs}px ${theme.spaces.sm}px`,
   outline: 'none',
   '&:focus': { borderColor: theme.colors.primary },
@@ -179,8 +179,8 @@ theme.inputStyle = {
   maxWidth: theme.widths.formField.max,
   ...theme.fonts.Text,
   '&:disabled': {
-    borderColor: theme.colors.neutrals[4],
-    backgroundColor: theme.colors.neutrals[4],
+    borderColor: theme.colors.neutrals[0],
+    backgroundColor: theme.colors.neutrals[0],
     color: theme.colors.secondary,
     opacity: 0.5,
   },

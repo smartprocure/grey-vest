@@ -14,11 +14,11 @@ let TextButton = styled.div({
   backgroundColor: 'transparent',
   opacity: 0.5,
   ':hover': {
-    backgroundColor: theme.colors.neutrals[4],
+    backgroundColor: theme.colors.neutrals[0],
     opacity: 1,
   },
   '&:active, &.primary': {
-    backgroundColor: theme.colors.neutrals[5],
+    backgroundColor: theme.colors.neutrals[1],
   },
 })
 

@@ -41,7 +41,7 @@ export let story = () => (
     <SwatchSet colors={[colors.secondary]} title="secondary" />
     <SwatchSet colors={[colors.text]} title="text" />
     <SwatchSet colors={[colors.backgrounds[0], colors.backgrounds[1]]} title="backgrounds" />
-    <SwatchSet colors={[colors.neutrals[4], colors.neutrals[5], colors.neutrals[6]]} title="neutrals" />
+    <SwatchSet colors={[colors.neutrals[0], colors.neutrals[1], colors.neutrals[2]]} title="neutrals" />
     <SwatchSet colors={[colors.warning]} title="warning" />
     <SwatchSet colors={[colors.infos[0]]} title="info" />
     <SwatchSet colors={[colors.error]} title="error" />

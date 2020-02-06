@@ -56,7 +56,7 @@ export let story = () => {
       style={{
         backgroundColor: theme.colors.backgrounds[1],
         padding: `${theme.space(1)}px ${theme.space(2)}px`,
-        borderBottom: `1px solid ${theme.colors.neutrals[4]}`,
+        borderBottom: `1px solid ${theme.colors.neutrals[0]}`,
       }}
     >
       <Flex gap={1} alignItems="center">
@@ -89,7 +89,7 @@ export let DetailHeader = () => (
     style={{
       backgroundColor: theme.colors.backgrounds[1],
       padding: `${theme.space(1)}px ${theme.space(2)}px`,
-      borderBottom: `1px solid ${theme.colors.neutrals[4]}`,
+      borderBottom: `1px solid ${theme.colors.neutrals[0]}`,
     }}
   >
     <Title large>Page title</Title>

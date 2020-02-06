@@ -74,7 +74,7 @@ let ReactDatePickerInput = ({
             color: theme.colors.secondary,
             '& abbr': { opacity: 0.5 },
             '&:hover': {
-              backgroundColor: theme.colors.neutrals[4],
+              backgroundColor: theme.colors.neutrals[0],
               '& abbr': { opacity: 1 },
             },
             padding: 0,
