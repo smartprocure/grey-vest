@@ -5,6 +5,7 @@ import { Text } from './Typography'
 import _ from 'lodash/fp'
 import { observer } from 'mobx-react'
 import theme from './theme'
+import { getVariant } from './utils'
 let { colors } = theme
 
 let classic = {
@@ -24,7 +25,9 @@ let classic = {
     padding: `${theme.space(1.5)}px ${theme.space(4)}px`,
     backgroundColor: colors.backgrounds[0],
     // white box shadow trick from http://dev.housetrip.com/2012/06/15/good-looking-css-tabs/
-    boxShadow: `0 10px 0 0 ${colors.backgrounds[0]}, ${theme.boxShadows.normal}`,
+    boxShadow: `0 10px 0 0 ${colors.backgrounds[0]}, ${
+      theme.boxShadows.normal
+    }`,
     '& > div': { fontSize: theme.fontSizes[2] },
     borderLeft: 'none',
   },
@@ -32,8 +35,7 @@ let classic = {
     backgroundColor: colors.neutrals[1],
   },
 }
-
-let floating = {
+let transparent = {
   padding: `${theme.space(0.25)}px ${theme.spaces.md}px`,
   borderBottom: `2px solid ${colors.neutrals[1]}`,
   color: transparentize(0.5, colors.text),
@@ -48,13 +50,14 @@ let floating = {
   '&:hover': { color: colors.secondary },
   '&:active': { backgroundColor: colors.neutrals[0] },
 }
-
 let regular = {
-  ...floating,
+  ...transparent,
   backgroundColor: colors.neutrals[0],
   '&.active': {
     backgroundColor: colors.backgrounds[0],
-    boxShadow: `0 10px 0 0 ${colors.backgrounds[0]}, ${theme.boxShadows.normal}`,
+    boxShadow: `0 10px 0 0 ${colors.backgrounds[0]}, ${
+      theme.boxShadows.normal
+    }`,
   },
   '&:active': {
     backgroundColor: colors.neutrals[1],
@@ -64,8 +67,9 @@ let regular = {
   '&:first-child': { borderTopLeftRadius: theme.borderRadius },
   '&:last-child': { borderTopRightRadius: theme.borderRadius },
 }
+let variants = { classic, transparent, regular }
 
-let BaseTabsList = ({ value, onChange = () => {}, tabStyle, options }) => (
+let TabsList = ({ value, onChange = () => {}, options, ...props }) => (
   <div>
     {_.map(
       x => (
@@ -79,7 +83,7 @@ let BaseTabsList = ({ value, onChange = () => {}, tabStyle, options }) => (
               verticalAlign: 'bottom',
               textAlign: 'center',
             },
-            tabStyle,
+            getVariant(props, variants, 'regular'),
           ]}
           onClick={() => onChange(x.value, value)}
         >
@@ -90,9 +94,5 @@ let BaseTabsList = ({ value, onChange = () => {}, tabStyle, options }) => (
     )}
   </div>
 )
-
-let TabsList = props => <BaseTabsList tabStyle={regular} {...props} />
-TabsList.Transparent = props => <BaseTabsList tabStyle={floating} {...props} />
-TabsList.Classic = props => <BaseTabsList tabStyle={classic} {...props} />
 
 export default observer(TabsList)

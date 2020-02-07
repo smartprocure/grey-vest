@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import _ from 'lodash/fp'
 import F from 'futil'
-import { defaultProps } from 'recompose'
 import GVTabsList from './TabsList'
 import Box from './Box'
 
@@ -34,7 +33,7 @@ export let Tabs = ({
   TabsList = GVTabsList,
   TabPanel = Box,
   defaultValue,
-  transparent = false,
+  value: propValue,
   ...props
 }) => {
   let childrenArray = React.Children.toArray(children)
@@ -48,7 +47,7 @@ export let Tabs = ({
 
   let [value, setValue] = useState(defaultValue || options[0].value)
   // Allow controlled state
-  if (!_.isNil(props.value) && props.value !== value) setValue(props.value)
+  if (!_.isNil(propValue) && propValue !== value) setValue(propValue)
   let handleChange = (to, from) => {
     onChange(to, from)
     setValue(to)
@@ -69,10 +68,8 @@ export let Tabs = ({
 
   return (
     <>
-      <TabsList {...{ value, options, transparent }} onChange={handleChange} />
+      <TabsList {...{ ...props, value, options }} onChange={handleChange} />
       <TabPanel>{content}</TabPanel>
     </>
   )
 }
-Tabs.Transparent = defaultProps({ TabsList: GVTabsList.Transparent })(Tabs)
-Tabs.Classic = defaultProps({ TabsList: GVTabsList.Classic })(Tabs)
