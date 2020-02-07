@@ -116,7 +116,7 @@ export default {
 Stories in CSF are simply named exports. You can customize individual stories by adding properties to the story object; `story.name` controls the title of the story in the sidebar, and `story.parameters.docs.storyDescription` allows you to add a description that appears above that story in the DocsPage.
 
 ```jsx
-export let secondary = () => <Button.Secondary>Click me</Button.Secondary>
+export let secondary = () => <Button secondary>Click me</Button>
 secondary.story = {
   name: 'Secondary (default)',
   parameters: {

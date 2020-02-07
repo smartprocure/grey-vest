@@ -69,8 +69,8 @@ export let story = () => (
       />
     </Form.Content>
     <Form.Footer>
-      <Button.Primary>Submit</Button.Primary>
-      <Button.Secondary>Cancel</Button.Secondary>
+      <Button primary>Submit</Button>
+      <Button secondary>Cancel</Button>
     </Form.Footer>
   </Form>
 )

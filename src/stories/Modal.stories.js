@@ -45,7 +45,7 @@ export let withHeaderAndFooter = () => {
         </Modal.Content>
         <Modal.Footer>
           <Button onClick={F.off(open)}>cancel</Button>
-          <Button.Primary onClick={F.off(open)}>confirm</Button.Primary>
+          <Button primary onClick={F.off(open)}>confirm</Button>
         </Modal.Footer>
       </Modal>
       <Button onClick={F.on(open)}>Open Modal</Button>
