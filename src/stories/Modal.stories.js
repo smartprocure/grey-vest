@@ -1,7 +1,16 @@
 import React from 'react'
 import F from 'futil'
 import { useLensObject } from '../utils'
-import { Modal, Button, Dropdown, DropdownItem, Text } from '..'
+import {
+  Modal,
+  ModalHeader,
+  ModalFooter,
+  ModalContent,
+  Button,
+  Dropdown,
+  DropdownItem,
+  Text,
+} from '..'
 
 export default { title: 'Modal', component: Modal }
 
@@ -10,8 +19,8 @@ export let withHeaderAndFooter = () => {
   return (
     <>
       <Modal open={open}>
-        <Modal.Header>Hello world</Modal.Header>
-        <Modal.Content>
+        <ModalHeader>Hello world</ModalHeader>
+        <ModalContent>
           <Text as="p">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
             quis elit posuere, ornare sem mattis, lobortis nisl. Mauris ut neque
@@ -42,11 +51,11 @@ export let withHeaderAndFooter = () => {
             vel orci metus. Praesent mollis orci cursus, ultrices eros vitae,
             posuere magna.
           </Text>
-        </Modal.Content>
-        <Modal.Footer>
+        </ModalContent>
+        <ModalFooter>
           <Button onClick={F.off(open)}>cancel</Button>
           <Button primary onClick={F.off(open)}>confirm</Button>
-        </Modal.Footer>
+        </ModalFooter>
       </Modal>
       <Button onClick={F.on(open)}>Open Modal</Button>
     </>
