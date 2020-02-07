@@ -34,7 +34,7 @@ export let Modal = _.flow(
         onClick={onClose}
       >
         <Box.Modal
-          p={3}
+          padding={3}
           onClick={e => e.stopPropagation()}
           css={{ minWidth: 400, maxWidth: 600, position: 'relative' }}
           {...props}
