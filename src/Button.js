@@ -80,7 +80,7 @@ let Button = ({
       },
       icon && { paddingRight: 0 },
       disabled && { cursor: 'not-allowed', opacity: 0.5 },
-      ...getVariants({ secondary: true, ...props }, colorVariants),
+      ...getVariants(props, colorVariants, 'secondary'),
     ]}
     {...props}
   >

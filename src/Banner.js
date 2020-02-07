@@ -1,9 +1,8 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
-import _ from 'lodash/fp'
 import { Icon, Text, Flex } from '.'
 import theme from './theme'
-import { getVariants } from './utils'
+import { getVariant } from './utils'
 let { colors } = theme
 
 let styleFromVariant = ({ backgroundColor, textColor }) => ({
@@ -15,6 +14,7 @@ let variants = {
   regular: {
     backgroundColor: colors.primary,
     textColor: colors.backgrounds[0],
+    icon: 'priority_high',
   },
   warning: {
     backgroundColor: colors.warning,
@@ -28,19 +28,19 @@ let variants = {
   },
 }
 
-let Banner = ({ children, icon = 'priority_high', ...props }) => (
+let Banner = ({ children, icon, ...props }) => (
   <Flex
     alignItems="center"
     justifyContent="center"
     css={[
       { padding: theme.spaces.xs },
-      _.map(styleFromVariant, getVariants({ regular: true, ...props }, variants)),
+      styleFromVariant(getVariant(props, variants, 'regular')),
     ]}
     gap="xs"
     {...props}
   >
     <Icon
-      icon={getVariants(props, variants).icon || icon}
+      icon={icon || getVariant(props, variants, 'regular').icon}
       style={{ verticalAlign: 'text-bottom' }}
     />
     <Text small>{children}</Text>

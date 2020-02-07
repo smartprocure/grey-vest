@@ -28,8 +28,10 @@ export let coalesce = _.find(F.isNotNil)
 
 export let optionsFromArray = F.mapIndexed((label, value) => ({ label, value }))
 
-export let getVariants = (props, variants) =>
+export let getVariants = (props, variants, defaultKey) =>
   _.flow(
-    _.pick(findKeys(_.eq(true), props)),
+    _.pick(_.compact([defaultKey, ...findKeys(_.eq(true), props)])),
     _.values
   )(variants)
+
+export let getVariant = (...args) => _.last(getVariants(...args))

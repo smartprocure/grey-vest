@@ -10,7 +10,7 @@ let Box = ({ as: As = 'div', padding = 2, paddingX, paddingY, ...props }) => (
     css={{
       borderRadius: theme.borderRadius,
       backgroundColor: theme.colors.backgrounds[0],
-      boxShadow: getVariants({ normal: true, ...props }, theme.boxShadows),
+      boxShadow: getVariants(props, theme.boxShadows, 'normal'),
       padding: _.flow(
         F.flowMap(theme.space, F.append('px')),
         _.join(' ')
