@@ -24,7 +24,7 @@ export let withInlineContent = () => {
         options={F.autoLabelOptions(_.keys(components))}
         {...F.domLens.value(component)}
       />
-      <Divider m={2} />
+      <Divider margin={2} />
       <Dynamic component={components[F.view(component)]} gap={1}>
         {inlineContent}
       </Dynamic>
@@ -55,7 +55,7 @@ export let columns = () => {
         options={F.autoLabelOptions(_.keys(components))}
         {...F.domLens.value(component)}
       />
-      <Divider m={2} />
+      <Divider margin={2} />
       <Dynamic
         component={components[F.view(component)]}
         // both Grid and SpacedList
