@@ -26,17 +26,17 @@ export let normalBox = () => (
 
 export let modalBox = () => (
   <Backgrounds>
-    <Box.Modal>
+    <Box modal>
       <Text>Box Contents</Text>
-    </Box.Modal>
+    </Box>
   </Backgrounds>
 )
 
 export let popupBox = () => (
   <Backgrounds>
-    <Box.Popup>
+    <Box popup>
       <Text>Box Contents</Text>
-    </Box.Popup>
+    </Box>
   </Backgrounds>
 )
 

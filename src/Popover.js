@@ -15,7 +15,7 @@ let makePopover = padding =>
     ({ isOpen, onClose = _.noop, ...props }) =>
       isOpen && (
         <OutsideClickHandler onOutsideClick={_.debounce(0, onClose)}>
-          <Box.Popup
+          <Box popup
             {...padding}
             css={{
               position: 'absolute',

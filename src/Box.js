@@ -1,9 +1,8 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
-import styled from '@emotion/styled'
 import _ from 'lodash/fp'
 import F from 'futil'
-import { coalesce } from './utils'
+import { coalesce, getVariants } from './utils'
 import theme from './theme'
 
 let Box = ({ as: As = 'div', padding = 2, paddingX, paddingY, ...props }) => (
@@ -11,7 +10,7 @@ let Box = ({ as: As = 'div', padding = 2, paddingX, paddingY, ...props }) => (
     css={{
       borderRadius: theme.borderRadius,
       backgroundColor: theme.colors.backgrounds[0],
-      boxShadow: theme.boxShadows.normal,
+      boxShadow: getVariants({ normal: true, ...props }, theme.boxShadows),
       padding: _.flow(
         F.flowMap(theme.space, F.append('px')),
         _.join(' ')
@@ -20,7 +19,5 @@ let Box = ({ as: As = 'div', padding = 2, paddingX, paddingY, ...props }) => (
     {...props}
   />
 )
-Box.Popup = styled(Box)({ boxShadow: theme.boxShadows.popup })
-Box.Modal = styled(Box)({ boxShadow: theme.boxShadows.modal })
 
 export default Box
