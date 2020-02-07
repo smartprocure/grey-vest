@@ -11,17 +11,17 @@ export let basicBanner = () => (
 )
 
 export let warningBanner = () => (
-  <Banner.Warning>
+  <Banner warning>
     Lorem ipsum massa sapien amet, neque hendrerit ultrices.{' '}
     <a href="#">Click here</a> eu velit at consectetur.
-  </Banner.Warning>
+  </Banner>
 )
 
 export let errorBanner = () => (
-  <Banner.Error>
+  <Banner error>
     Lorem ipsum massa sapien amet. <a href="#">Click here</a> eu velit at
     consectetur.
-  </Banner.Error>
+  </Banner>
 )
 
 export let wrapped = () => (
