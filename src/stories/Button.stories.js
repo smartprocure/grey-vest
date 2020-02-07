@@ -10,13 +10,7 @@ let props = {
   rows: [],
   sections: {
     'size flags': flagProps(['compact', 'large']),
-    'color flags': flagProps([
-      'primary',
-      'secondary',
-      'tertiary',
-      'danger',
-      'ghost',
-    ]),
+    'color flags': flagProps(['primary', 'secondary', 'danger', 'ghost']),
     other: [
       {
         name: 'onClick',
@@ -35,9 +29,6 @@ export default {
   parameters: {
     componentSubtitle: 'With five color variations and three sizes',
     props,
-    info: `
-GreyVest's Button component features five styling variants: **primary**, **secondary**, **tertiary**, **danger**, and **ghost**. The variants are subcomponents of Button (eg \`Button primary\`).
-`,
   },
 }
 
@@ -87,27 +78,6 @@ export let secondary = () => (
     </Button>
   </Container>
 )
-secondary.story = {
-  name: 'secondary (default)',
-  parameters: {
-    docs: {
-      storyDescription:
-        'Since the secondary color variant is also the default styling for Button, it can be used with either `Button` or `Button.secondary`.',
-    },
-  },
-}
-
-export let tertiary = () => (
-  <Container>
-    <Button tertiary>Regular</Button>
-    <Button tertiary large>
-      Large
-    </Button>
-    <Button tertiary compact>
-      Compact
-    </Button>
-  </Container>
-)
 
 export let danger = () => (
   <Container>
@@ -135,14 +105,12 @@ export let ghost = () => (
 
 export let disabled = () => (
   <Container cols={4}>
+    <Button disabled>plain</Button>
     <Button primary disabled>
       primary
     </Button>
     <Button secondary disabled>
       secondary
-    </Button>
-    <Button tertiary disabled>
-      tertiary
     </Button>
     <Button danger disabled>
       danger

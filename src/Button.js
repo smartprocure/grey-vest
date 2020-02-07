@@ -15,6 +15,12 @@ let colorVariants = _.mapValues(
     ':active': { backgroundColor: active },
   }),
   {
+    plain: {
+      base: colors.neutralLight,
+      hover: colors.neutral,
+      active: colors.neutralDark,
+      text: colors.secondary,
+    },
     primary: {
       base: colors.primary,
       hover: darken(0.08, colors.primary),
@@ -22,12 +28,6 @@ let colorVariants = _.mapValues(
       text: colors.background,
     },
     secondary: {
-      base: colors.neutralLight,
-      hover: colors.neutral,
-      active: colors.neutralDark,
-      text: colors.secondary,
-    },
-    tertiary: {
       base: colors.secondary,
       hover: darken(0.16, colors.secondary),
       active: lighten(0.08, colors.secondary),
@@ -80,7 +80,7 @@ let Button = ({
       },
       icon && { paddingRight: 0 },
       disabled && { cursor: 'not-allowed', opacity: 0.5 },
-      ...getVariants(props, colorVariants, 'secondary'),
+      ...getVariants(props, colorVariants, 'plain'),
     ]}
     {...props}
   >
