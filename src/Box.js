@@ -1,11 +1,12 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
+import { forwardRef } from 'react'
 import _ from 'lodash/fp'
 import F from 'futil'
 import { coalesce, getVariants } from './utils'
 import theme from './theme'
 
-let Box = ({ as: As = 'div', padding = 2, paddingX, paddingY, ...props }) => (
+let Box = ({ as: As = 'div', padding = 2, paddingX, paddingY, ...props }, ref) => (
   <As
     css={{
       borderRadius: theme.borderRadius,
@@ -16,8 +17,8 @@ let Box = ({ as: As = 'div', padding = 2, paddingX, paddingY, ...props }) => (
         _.join(' ')
       )([coalesce([paddingY, padding]), coalesce([paddingX, padding])]),
     }}
-    {...props}
+    {...{ ref, ...props }}
   />
 )
 
-export default Box
+export default forwardRef(Box)

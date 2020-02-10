@@ -1,9 +1,10 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
+import { forwardRef } from 'react'
 import Icon from './Icon'
 import theme from './theme'
 
-let IconButton = ({ icon, ...props }) => (
+let IconButton = ({ icon, ...props }, ref) => (
   <div
     css={{
       width: theme.spaces.lg,
@@ -25,10 +26,10 @@ let IconButton = ({ icon, ...props }) => (
         backgroundColor: theme.colors.neutrals[1],
       },
     }}
-    {...props}
+    {...{ ref, ...props }}
   >
     <Icon icon={icon} />
   </div>
 )
 
-export default IconButton
+export default forwardRef(IconButton)

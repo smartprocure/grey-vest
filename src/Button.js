@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
+import { forwardRef } from 'react'
 import { darken, lighten } from 'polished'
 import _ from 'lodash/fp'
 import { Subtitle, Text, Icon, Flex } from './'
@@ -34,7 +35,7 @@ let colorVariants = _.mapValues(
     success: { base: colors.success },
     info: {
       base: colors.info,
-      active: lighten(0.04, colors.info)
+      active: lighten(0.04, colors.info),
     },
     ghost: {
       base: 'transparent',
@@ -55,15 +56,10 @@ let ButtonText = ({ size, ...x }) => {
 let getPadding = (size, ratio = 2) =>
   `${space(size)}px ${space(size * ratio)}px`
 
-let Button = ({
-  as: As = 'button',
-  compact,
-  large,
-  icon,
-  disabled,
-  children,
-  ...props
-}) => (
+let Button = (
+  { as: As = 'button', compact, large, icon, disabled, children, ...props },
+  ref
+) => (
   <As
     css={[
       {
@@ -79,7 +75,7 @@ let Button = ({
       disabled && { cursor: 'not-allowed', opacity: 0.5 },
       ...getVariants(props, colorVariants, 'regular'),
     ]}
-    {...props}
+    {...{ ref, ...props }}
   >
     <Flex alignItems="center" justifyContent="center">
       <ButtonText size={(compact && 'compact') || (large && 'large')}>
@@ -101,4 +97,4 @@ let Button = ({
   </As>
 )
 
-export default Button
+export default forwardRef(Button)
