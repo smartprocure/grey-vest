@@ -28,23 +28,23 @@ let variants = {
   },
 }
 
-let Banner = ({ children, icon, ...props }) => (
-  <Flex
-    alignItems="center"
-    justifyContent="center"
-    css={[
-      { padding: theme.spaces.xs },
-      styleFromVariant(getVariant(props, variants, 'regular')),
-    ]}
-    gap="xs"
-    {...props}
-  >
-    <Icon
-      icon={icon || getVariant(props, variants, 'regular').icon}
-      style={{ verticalAlign: 'text-bottom' }}
-    />
-    <Text small>{children}</Text>
-  </Flex>
-)
+let Banner = ({ children, icon, ...props }) => {
+  let variant = getVariant(props, variants, 'regular')
+  return (
+    <Flex
+      alignItems="center"
+      justifyContent="center"
+      css={[{ padding: theme.spaces.xs }, styleFromVariant(variant)]}
+      gap="xs"
+      {...props}
+    >
+      <Icon
+        icon={icon || variant.icon}
+        style={{ verticalAlign: 'text-bottom' }}
+      />
+      <Text small>{children}</Text>
+    </Flex>
+  )
+}
 
 export default Banner
