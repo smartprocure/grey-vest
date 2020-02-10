@@ -2,7 +2,7 @@ import React from 'react'
 import F from 'futil'
 import _ from 'lodash/fp'
 import { loremIpsum } from 'lorem-ipsum'
-import { Divider, Flex, SpacedList, FormField } from '..'
+import { Divider, Flex, ColumnList, FormField } from '..'
 import { useLensObject } from '../utils'
 import { spacingValue, cssValue } from './commonProps'
 import theme from '../theme'
@@ -36,8 +36,8 @@ let props = {
 }
 
 export default {
-  title: 'SpacedList',
-  component: SpacedList,
+  title: 'ColumnList',
+  component: ColumnList,
   parameters: { props },
 }
 
@@ -58,7 +58,7 @@ export let story = () => {
     <>
       <Flex gap={1}>{makeFields(state)}</Flex>
       <Divider margin={2} />
-      <SpacedList
+      <ColumnList
         {..._.mapValues(
           _.flow(
             F.view,
@@ -75,7 +75,7 @@ export let story = () => {
           ),
           content
         )}
-      </SpacedList>
+      </ColumnList>
     </>
   )
 }

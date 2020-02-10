@@ -111,7 +111,7 @@
 
 `...props` recipient: `select`
 
-## SpacedList
+## ColumnList
 
 `children`,
 `style`

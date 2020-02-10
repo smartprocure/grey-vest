@@ -2,7 +2,7 @@ import React from 'react'
 import F from 'futil'
 import _ from 'lodash/fp'
 import { loremIpsum } from 'lorem-ipsum'
-import { Grid, Divider, Flex, SpacedList, Select, Dynamic } from '../..'
+import { Grid, Divider, Flex, ColumnList, Select, Dynamic } from '../..'
 
 export default { title: 'Demos | Spacing' }
 
@@ -16,7 +16,7 @@ let inlineContent = F.mapIndexed(
 )
 
 export let withInlineContent = () => {
-  let components = { Flex, Grid, SpacedList }
+  let components = { Flex, Grid, ColumnList }
   let component = React.useState('Flex')
   return (
     <>
@@ -47,7 +47,7 @@ let columnContent = F.mapIndexed(
 )
 
 export let columns = () => {
-  let components = { Grid, SpacedList }
+  let components = { Grid, ColumnList }
   let component = React.useState('Grid')
   return (
     <>
@@ -58,11 +58,11 @@ export let columns = () => {
       <Divider margin={2} />
       <Dynamic
         component={components[F.view(component)]}
-        // both Grid and SpacedList
+        // both Grid and ColumnList
         gap={1}
         // Grid property
         columns={2}
-        // SpacedList properties
+        // ColumnList properties
         columnCount={2}
         columnGap={2}
       >
@@ -76,9 +76,9 @@ columns.story = {
     docs: {
       storyDescription: 
 `
-This story demonstrates the differences in the way GreyVest's \`Grid\` and \`SpacedList\` components handle columns.
+This story demonstrates the differences in the way GreyVest's \`Grid\` and \`ColumnList\` components handle columns.
 
-| | Grid | SpacedList |
+| | Grid | ColumnList |
 | --- | --- | --- |
 | **rows** | has rows | does not have rows |
 | **gap API** | \`columnGap\` and \`rowGap\` control the gap between columns and rows respectively; \`gap\` is a shorthand to set both | \`gap\` controls the gap between elements, and \`columnGap\` controls the gap between columns |

@@ -66,7 +66,7 @@ columns.story = {
   parameters: {
     docs: {
       storyDescription:
-        "RadioList uses SpacedList internally, so it also accepts all of that component's props (`columnCount`, `columnWidth`, `gap`, and `columnGap`).",
+        "RadioList uses ColumnList internally, so it also accepts all of that component's props (`columnCount`, `columnWidth`, `gap`, and `columnGap`).",
     },
   },
 }

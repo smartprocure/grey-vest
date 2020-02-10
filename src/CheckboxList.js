@@ -4,13 +4,13 @@ import _ from 'lodash/fp'
 import F from 'futil'
 import { observer } from 'mobx-react'
 import Checkbox from './Checkbox'
-import SpacedList from './SpacedList'
+import ColumnList from './ColumnList'
 import Flex from './Flex'
 import { Text } from './Typography'
 import theme from './theme'
 
 let CheckboxList = ({ options, value, onChange, ...props }) => (
-  <SpacedList gap={1} {...props}>
+  <ColumnList gap={1} {...props}>
     {_.map(
       option => (
         <Flex
@@ -31,7 +31,7 @@ let CheckboxList = ({ options, value, onChange, ...props }) => (
       ),
       options
     )}
-  </SpacedList>
+  </ColumnList>
 )
 
 export default observer(CheckboxList)

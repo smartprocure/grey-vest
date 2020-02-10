@@ -2,7 +2,7 @@
 import { jsx } from '@emotion/core'
 import theme from './theme'
 
-let SpacedList = ({
+let ColumnList = ({
   children,
   gap,
   columnWidth = theme.widths.xs,
@@ -25,4 +25,4 @@ let SpacedList = ({
   </div>
 )
 
-export default SpacedList
+export default ColumnList

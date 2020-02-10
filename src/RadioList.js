@@ -3,7 +3,7 @@ import { jsx } from '@emotion/core'
 import _ from 'lodash/fp'
 import { observer } from 'mobx-react'
 import Flex from './Flex'
-import SpacedList from './SpacedList'
+import ColumnList from './ColumnList'
 import { Text } from './Typography'
 import theme from './theme'
 
@@ -46,7 +46,7 @@ let RadioButton = ({ native, option, value, onChange, ...props }) => (
 )
 
 let RadioList = ({ options, value, onChange, native = false, ...props }) => (
-  <SpacedList gap={1} {...props}>
+  <ColumnList gap={1} {...props}>
     {_.map(
       option => (
         <Flex
@@ -68,6 +68,6 @@ let RadioList = ({ options, value, onChange, native = false, ...props }) => (
       ),
       options
     )}
-  </SpacedList>
+  </ColumnList>
 )
 export default observer(RadioList)
