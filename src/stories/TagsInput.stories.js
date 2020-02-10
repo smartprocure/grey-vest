@@ -24,7 +24,7 @@ export let baseUsage = () => {
         addTag={tag => setTags(F.push(tag))}
         removeTag={tag => setTags(_.pull(tag))}
       />
-      <Divider m={2} />
+      <Divider margin={2} />
       <code>{JSON.stringify(tags)}</code>
     </>
   )

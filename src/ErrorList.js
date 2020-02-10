@@ -14,8 +14,8 @@ let ErrorText = props => <Text css={{ color: theme.colors.error }} {...props} />
 let ErrorBlock = ({ children, ...props }) => (
   <Flex
     as={Box}
-    px={1.5}
-    py={1}
+    paddingX={1.5}
+    paddingY={1}
     gap={1}
     alignItems="center"
     css={{

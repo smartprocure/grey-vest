@@ -12,20 +12,20 @@
 ### Components
 
 * New typography components: **Text**, **Title** and **Subtitle**
-* Other new components: **Dropdown** (a zero-padding variant of Popover intended to be used with DropdownItem), **Tooltip**, **Banner**, **Pager**, **TableFooter**, **Divider**, **FormField**, **Form**, and **IconButton**
+* Other new components: **Dropdown** (a zero-padding variant of Popover intended to be used with DropdownItem), **Tooltip**, **Banner**, **Pager**, **TableFooter**, **Divider**, **FormField**, **Form**, **FormHeader**, **FormContent**, **FormFooter**, **ModalHeader**, **ModalContent**, **ModalFooter**, and **IconButton**
 * Changes to **Button**:
-  * New component-level variants: **Button.Primary**, **Button.Secondary** (same as regular Button), **Button.Tertiary**, **Button.Danger**, and **Button.Ghost**
-  * New props: `compact` and `large` flags for size variants, and `icon` (same as the Icon component's `icon` prop)
+  * New variants: `primary`, `secondary`, `danger`, and `ghost` colors/stylings, and `compact` and `large` sizes
+  * Now supports an `icon` prop (same API as the Icon component's `icon` prop)
 * Changes to **Box**:
-  * New component-level variants: **Box.Modal** and **Box.Popup** (different shadow styles)
-  * New props: `p`, `px`, and `py`
+  * New variants: `modal` and `popup`, with different shadow styles
+  * New props: `padding`, `paddingX`, and `paddingY`
 * Changes to **CheckboxList** and **RadioList**:
   * Both now support the `disabled` property on options (to mark that option as disabled)
   * Both components now also support SpacedList props (`gap`, `columnCount`, `columnWidth`, and `columnGap`)
 * **DateInput** now includes a time picker (now uses `react-datetime-picker` internally instead of `react-date-picker`)
 * New props on **DropdownItem**: `disabled`, `truncate`, and `icon` (same as the Icon component's `icon` prop)
 * Changes to **Modal**:
-  * New subcomponents: **Modal.Header**, **Modal.Content**, and **Modal.Footer**
+  * New components representing Modal sections: **ModalHeader**, **ModalContent**, and **ModalFooter** (available as top-level exports)
   * Modals now have a close button and can additionally be closed with the `Esc` key
 * New props on **SpacedList**: `gap`, `columnCount`, `columnWidth`, and `columnGap` (SpacedList now supports CSS columns!)
 * Changes to **TextInput**, **Textarea**, and **Select**:
@@ -33,8 +33,10 @@
   * 🚨 No longer default to 100% width
 * 🚨 **Tag** no longer accepts a RemoveIcon component prop
 * Changes to **Tabs**/**TabList**:
-  * 🚨 **TabList** component has been renamed to **TabsList** (plural "tabs") for parity with the `TabsList` component prop on Tabs
-  * New component-level variants: **Tabs.Transparent** and **Tabs.Classic** (corresponding to **Tabslist.Transparent** and **TabsList.Classic**)
+  * New variants for Tabs and TabsList: `transparent` and `classic`
+  * The look & feel of TabsList has been overhauled! (the old styling is preseved under the `classic` variant)
+  * 🚨 **TabList** component has been renamed to **TabsList** (added an 's') for parity with the `TabsList` component prop on Tabs
+  
 
 ### Spacing props
 
@@ -45,13 +47,20 @@ Component props that control whitespace now take spacing values from GreyVest's 
 * `md`: 16px
 * `lg`: 32px
 
-| Component  | Prop(s)                                            | Status             |
-| ---------- | -------------------------------------------------- | -------------------|
-| Grid       | `gap`, `rowGap`, `columnGap`                       | 🚨**BREAKING** 🚨 |
-| Flex       | `gap`                                              | new in 3.0         |
-| SpacedList | `gap`, `columnGap`                                 | new in 3.0         |
-| Box        | `padding`, `paddingX`, `paddingY`, `p`, `px`, `py` | new in 3.0         |
-| Divider    | `margin`, `m`                                      | new in 3.0         |
+| Component  | Prop(s)                           | Status            |
+| ---------- | --------------------------------- | ----------------- |
+| Grid       | `gap`, `rowGap`, `columnGap`      | 🚨**BREAKING** 🚨 |
+| Flex       | `gap`                             | new in 3.0        |
+| SpacedList | `gap`, `columnGap`                | new in 3.0        |
+| Box        | `padding`, `paddingX`, `paddingY` | new in 3.0        |
+| Divider    | `margin`                          | new in 3.0        |
+
+#### 3.0.0-alpha.17
+* Remove all subcomponents: convert subcomponent variants (Banner, Box, Button, Tabs) into flag variants, and actual subcomponents (Modal, Form) into separate exports
+* Box: replace the `secondary` variant's styling (formerly the same as the base button) with the `tertiary` styling (white text on secondary color), and remove the `tertiary` variant
+* Box: remove the `p`, `px`, and `py` alias props (use `padding`/`paddingX`/`paddingY` instead)
+* Divider: remove the `m` alias prop (use `margin` instead)
+* Update Storybook from 5.2.6 to 5.3.12
 
 #### 3.0.0-alpha.16
 * Refactor design system colors - reduced the number of colors from 29 to 16 and added an alias for every color (no more remembering array indices!)

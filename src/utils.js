@@ -1,5 +1,5 @@
 import _ from 'lodash/fp'
-import * as F from 'futil'
+import F from 'futil'
 import { useState } from 'react'
 import { mapProps } from 'recompose'
 
@@ -27,3 +27,15 @@ export let findKeys = _.curry((predicate, data) =>
 export let coalesce = _.find(F.isNotNil)
 
 export let optionsFromArray = F.mapIndexed((label, value) => ({ label, value }))
+
+// Picks values out of `variants` whose keys exist in `props` with a value of true.
+// Takes an optional third argument to supply a key to always use. Return an array.
+// ({ a: true, b: false }, { a: 'foo', b: 'bar', c: 'qux' }, 'c') -> ['qux', 'foo']
+export let getVariants = (props, variants, defaultKey) =>
+  _.flow(
+    _.pick(_.compact([defaultKey, ...findKeys(_.eq(true), props)])),
+    _.values
+  )(variants)
+
+// Returns only the last variant of getVariants
+export let getVariant = (...args) => _.last(getVariants(...args))

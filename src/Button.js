@@ -1,12 +1,52 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
-import { darken, lighten, readableColor } from 'polished'
-import F from 'futil'
+import { darken, lighten } from 'polished'
 import _ from 'lodash/fp'
-import styled from '@emotion/styled'
 import { Subtitle, Text, Icon, Flex } from './'
 import theme from './theme'
+import { getVariants } from './utils'
 let { spaces, space, colors } = theme
+
+let colorVariants = _.mapValues(
+  ({ base, hover, active, text }) => ({
+    backgroundColor: base,
+    color: text,
+    ':hover': { backgroundColor: hover },
+    ':active': { backgroundColor: active },
+  }),
+  {
+    plain: {
+      base: colors.neutralLight,
+      hover: colors.neutral,
+      active: colors.neutralDark,
+      text: colors.secondary,
+    },
+    primary: {
+      base: colors.primary,
+      hover: darken(0.08, colors.primary),
+      active: darken(0.16, colors.primary),
+      text: colors.background,
+    },
+    secondary: {
+      base: colors.secondary,
+      hover: darken(0.16, colors.secondary),
+      active: lighten(0.08, colors.secondary),
+      text: colors.background,
+    },
+    danger: {
+      base: colors.error,
+      hover: darken(0.08, colors.error),
+      active: lighten(0.04, colors.error),
+      text: colors.background,
+    },
+    ghost: {
+      base: 'transparent',
+      hover: colors.neutralLight,
+      active: colors.neutral,
+      text: colors.primary,
+    },
+  }
+)
 
 let ButtonText = ({ size, ...x }) => {
   if (size === 'compact')
@@ -18,11 +58,12 @@ let ButtonText = ({ size, ...x }) => {
 let getPadding = (size, ratio = 2) =>
   `${space(size)}px ${space(size * ratio)}px`
 
-let ButtonComponent = ({
+let Button = ({
   as: As = 'button',
-  compact = false,
-  large = false,
+  compact,
+  large,
   icon,
+  disabled,
   children,
   ...props
 }) => (
@@ -30,8 +71,16 @@ let ButtonComponent = ({
     css={[
       {
         padding: getPadding(large ? 2 : compact ? 0.5 : 1, large ? 1 : 2),
+        border: 'none',
+        outline: 'none',
+        cursor: 'pointer',
+        borderRadius: 3,
+        transition: 'background-color .2s linear',
+        ':active': { transition: 'none' },
       },
       icon && { paddingRight: 0 },
+      disabled && { cursor: 'not-allowed', opacity: 0.5 },
+      ...getVariants(props, colorVariants, 'plain'),
     ]}
     {...props}
   >
@@ -54,57 +103,5 @@ let ButtonComponent = ({
     </Flex>
   </As>
 )
-
-let BaseButton = styled(ButtonComponent)(
-  {
-    border: 'none',
-    outline: 'none',
-    cursor: 'pointer',
-    borderRadius: 3,
-    transition: 'background-color .2s linear',
-    ':active': { transition: 'none' },
-  },
-  ({ disabled }) =>
-    disabled && {
-      cursor: 'not-allowed',
-      opacity: 0.5,
-    }
-)
-
-let buttonStyles = _.mapValues(
-  ({ base, hover, active, text }) =>
-    styled(BaseButton)({
-      backgroundColor: base,
-      color:
-        text ||
-        readableColor(darken(0.16, base), colors.secondary, colors.background),
-      ':hover': { backgroundColor: hover || darken(0.08, base) },
-      ':active': { backgroundColor: active || darken(0.16, base) },
-    }),
-  {
-    Primary: { base: colors.primary },
-    Secondary: {
-      base: colors.neutralLight,
-      hover: colors.neutral,
-      active: colors.neutralDark,
-    },
-    Tertiary: {
-      base: colors.secondary,
-      hover: darken(0.16, colors.secondary),
-      active: lighten(0.08, colors.secondary),
-    },
-    Danger: { base: colors.error, active: lighten(0.04, colors.error) },
-    Ghost: {
-      base: 'transparent',
-      hover: colors.neutralLight,
-      active: colors.neutral,
-      text: colors.primary,
-    },
-  }
-)
-
-// default button is a secondary button
-let Button = buttonStyles.Secondary
-F.extendOn(Button, buttonStyles)
 
 export default Button

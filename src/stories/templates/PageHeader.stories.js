@@ -21,7 +21,7 @@ export let story = () => {
     let open = React.useState(false)
     return (
       <div>
-        <Button.Ghost
+        <Button ghost
           compact
           style={{ color: !active && theme.colors.secondary }}
           icon={children && 'arrow_drop_down'}
@@ -32,7 +32,7 @@ export let story = () => {
           {...props}
         >
           {title}
-        </Button.Ghost>
+        </Button>
         {children && <Dropdown open={open}>{children}</Dropdown>}
       </div>
     )
@@ -94,7 +94,7 @@ export let DetailHeader = () => (
   >
     <Title large>Page title</Title>
     <Flex alignItems="center" gap={1}>
-      <Button.Primary>Primary</Button.Primary>
+      <Button primary>Primary</Button>
       <IconButton icon="notifications" />
       <IconButton icon="share" />
       <IconButton icon="more_vert" />

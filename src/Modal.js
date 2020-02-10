@@ -12,7 +12,7 @@ import theme from './theme'
 import { Title } from './Typography'
 import { openBinding, expandProp } from './utils'
 
-let Modal = _.flow(
+export let Modal = _.flow(
   setDisplayName('Modal'),
   expandProp('open', openBinding),
   observer
@@ -33,8 +33,8 @@ let Modal = _.flow(
         alignItems="center"
         onClick={onClose}
       >
-        <Box.Modal
-          p={3}
+        <Box modal
+          padding={3}
           onClick={e => e.stopPropagation()}
           css={{ minWidth: 400, maxWidth: 600, position: 'relative' }}
           {...props}
@@ -52,21 +52,19 @@ let Modal = _.flow(
             onClick={onClose}
           />
           {children}
-        </Box.Modal>
+        </Box>
       </Flex>
     )}
   </Portal>
 ))
 
-export default Modal
-
-Modal.Header = ({ children }) => (
+export let ModalHeader = ({ children }) => (
   <Title small as="div" css={{ marginBottom: theme.spaces.xs }}>
     {children}
   </Title>
 )
 
-Modal.Footer = ({ children }) => (
+export let ModalFooter = ({ children }) => (
   <Flex
     alignItems="center"
     justifyContent="flex-end"
@@ -80,7 +78,7 @@ Modal.Footer = ({ children }) => (
   </Flex>
 )
 
-Modal.Content = props => (
+export let ModalContent = props => (
   <div
     css={{
       paddingRight: '20%',

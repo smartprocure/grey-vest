@@ -1,18 +1,17 @@
 import React from 'react'
 import F from 'futil'
-import { FormField, TextInput, Button, Box } from '../..'
-import Form from '../../Form'
+import { Form, FormHeader, FormContent, FormFooter, FormField, TextInput, Button, Box } from '../..'
 
 export default { title: 'Demos | Form' }
 
 export let story = () => (
   <Form as={Box}>
-    <Form.Header
+    <FormHeader
       title="Form title"
       description="Lorem ipsum massa odio euismod. Scelerisque Cras quam. Nibh. Lorem,
         pharetra ultricies dolor id nibh."
     />
-    <Form.Content columns={2}>
+    <FormContent columns={2}>
       <FormField
         label="First name"
         tooltip="this is a tooltip"
@@ -67,10 +66,10 @@ export let story = () => (
         value="This should still be legible"
         component={TextInput}
       />
-    </Form.Content>
-    <Form.Footer>
-      <Button.Primary>Submit</Button.Primary>
-      <Button.Secondary>Cancel</Button.Secondary>
-    </Form.Footer>
+    </FormContent>
+    <FormFooter>
+      <Button primary>Submit</Button>
+      <Button secondary>Cancel</Button>
+    </FormFooter>
   </Form>
 )

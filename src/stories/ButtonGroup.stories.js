@@ -1,19 +1,25 @@
 import React from 'react'
 import _ from 'lodash/fp'
+import { loremIpsum } from 'lorem-ipsum'
 import { Button, ButtonGroup, Grid } from '..'
 
 export default { title: 'ButtonGroup', component: ButtonGroup }
 
+let lipsum = () => loremIpsum({ units: 'word' })
+
 export let story = () => {
-  let listButtons = Component =>
-    _.map(n => <Component>{n}</Component>, ['One', 'Two', 'Three', 'Four'])
+  let listButtons = flag =>
+    _.map(
+      n => <Button {...{ [flag]: true }}>{n}</Button>,
+      _.times(lipsum, 4)
+    )
   return (
     <Grid inline gap={2}>
-      <ButtonGroup>{listButtons(Button)}</ButtonGroup>
-      <ButtonGroup>{listButtons(Button.Primary)}</ButtonGroup>
-      <ButtonGroup>{listButtons(Button.Tertiary)}</ButtonGroup>
-      <ButtonGroup>{listButtons(Button.Danger)}</ButtonGroup>
-      <ButtonGroup>{listButtons(Button.Ghost)}</ButtonGroup>
+      <ButtonGroup>{listButtons()}</ButtonGroup>
+      <ButtonGroup>{listButtons('primary')}</ButtonGroup>
+      <ButtonGroup>{listButtons('secondary')}</ButtonGroup>
+      <ButtonGroup>{listButtons('danger')}</ButtonGroup>
+      <ButtonGroup>{listButtons('ghost')}</ButtonGroup>
     </Grid>
   )
 }

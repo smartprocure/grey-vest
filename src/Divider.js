@@ -2,7 +2,6 @@
 import { jsx } from '@emotion/core'
 import theme from './theme'
 import GridItem from './GridItem'
-import { renameProps } from 'recompose'
 
 let Divider = ({ vertical = false, margin = 1, ...props }) => (
   <GridItem
@@ -27,4 +26,4 @@ let Divider = ({ vertical = false, margin = 1, ...props }) => (
   />
 )
 
-export default renameProps({ m: 'margin' })(Divider)
+export default Divider

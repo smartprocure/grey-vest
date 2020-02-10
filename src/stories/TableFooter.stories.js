@@ -24,7 +24,7 @@ export let story = () => {
           <TextInput {...F.domLens.value(totalRecordsLens)} />
         </div>
       </Grid>
-      <Divider m={2} />
+      <Divider margin={2} />
       <TableFooter
         {...{ page, pageSize, onChangePage, onChangePageSize }}
         totalRecords={totalRecordsLens[0]}
