@@ -67,16 +67,14 @@ export let Popover = ({
       onVisibilityChange={open => !open && onClose()}
       placement={`bottom-${side === 'right' ? 'end' : 'start'}`}
       modifiers={{
-        preventOverflow: {
-          boundariesElement: 'document',
-        },
+        preventOverflow: { boundariesElement: 'document' },
+        offset: { offset: `0, ${theme.spaces.xs}` },
       }}
       tooltip={({ tooltipRef, getTooltipProps }) => (
         <Box
           popup
           padding={0}
           css={{
-            marginTop: theme.spaces.xs,
             maxWidth: theme.widths.popup.max,
             minWidth: theme.widths.popup.min,
           }}
