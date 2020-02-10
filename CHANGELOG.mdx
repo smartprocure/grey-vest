@@ -1,8 +1,8 @@
 # 3.0.0
 
-## Changes
+Version 3.0.0 represents Grey Vest's first major release as an independent component library, rather than a part of contexture-react.
 
-### General
+## Changes
 
 - Brand-new design system! Configuration lives in `theme.js` and follows the [System UI theme specification](https://system-ui.com/theme)
 - Lots of new stories! 📖✨
@@ -30,6 +30,9 @@ A small number of components have been 🚨 **REMOVED** 🚨(or renamed):
 
 - **SpacedList** - upcycled into ColumnList
 - **TextButton** - removed in favor of IconButton
+- **ErrorList** - renamed to **ErrorText**
+- **LinkButton** - renamed to **Link**
+
 
 #### Changes to individual components
 
@@ -76,10 +79,12 @@ Component props that control whitespace now take spacing values from GreyVest's 
 #### 3.0.0-alpha.18
 
 - Rename SpacedList to ColumnList
+- Rename LinkButton to Link
+- Replace ErrorList with ErrorText (formerly internal to ErrorList)
 - Add CommandButton component and story
 - Add `success` and `info` Button variants
 - Rewrite Awaiter to use react-async
-- Remove TextButton
+- Remove TextButton and ButtonRadio
 
 #### 3.0.0-alpha.17
 
