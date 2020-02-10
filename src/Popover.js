@@ -55,12 +55,16 @@ export let Popover = ({
   trigger,
   label = 'dropdown',
   side = 'left',
+  isOpen,
+  onClose = () => {},
   children,
 }) => {
   let Trigger = trigger || Button
   return (
     <TooltipTrigger
       trigger="click"
+      tooltipShown={isOpen}
+      onVisibilityChange={open => !open && onClose()}
       placement={`bottom-${side === 'right' ? 'end' : 'start'}`}
       modifiers={{
         preventOverflow: {

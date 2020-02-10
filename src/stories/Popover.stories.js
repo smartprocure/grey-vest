@@ -20,8 +20,9 @@ export let withIsOpenOnCloseProps = () => {
   let [isOpen, setIsOpen] = React.useState(false)
   return (
     <>
-      <Button onClick={() => setIsOpen(true)}>Open Popover</Button>
-      <Popover isOpen={isOpen} onClose={() => setIsOpen(false)}>
+      <div>isOpen: {isOpen.toString()}</div>
+      <Button onClick={() => setIsOpen(x => !x)}>Open Popover</Button>
+      <Popover isOpen={isOpen} onClose={() => setIsOpen(false)} onChange={x => alert(`visibility changed to ${x}`)}>
         Some Popover Content
       </Popover>
     </>
