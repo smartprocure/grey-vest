@@ -1,14 +1,15 @@
 import React from 'react'
-import { Title, Dropdown, DropdownItem, Divider } from '..'
+import { Flex, Title, Dropdown, DropdownItem, Divider } from '..'
 
 export default { title: 'Dropdown', component: Dropdown }
 
+let Center = props => <Flex justifyContent="center" alignItems="center" {...props} />
+
+
 export let fullExample = () => (
-  <div style={{ height: 240 }}>
+  <Center>
     <Dropdown
-      trigger={({ getTriggerProps, triggerRef }) => (
-        <Title {...getTriggerProps({ ref: triggerRef })}>hello world</Title>
-      )}
+      trigger={Title}
       triggerProps={open => ({ primary: true, icon: open ? 'face' : 'eco' })}
     >
       <DropdownItem>
@@ -24,20 +25,20 @@ export let fullExample = () => (
         Pellentesque a elit sodales, gravida magna sit amet, lacinia odio
       </DropdownItem>
     </Dropdown>
-  </div>
+  </Center>
 )
 
 export let minWidth = () => (
-  <div style={{ height: 80 }}>
-    <Dropdown>
+  <Center>
+    <Dropdown label='hello world'>
       <DropdownItem>A</DropdownItem>
       <DropdownItem>B</DropdownItem>
     </Dropdown>
-  </div>
+  </Center>
 )
 
 export let maxWidth = () => (
-  <div style={{ height: 220 }}>
+  <Center>
     <Dropdown>
       <DropdownItem>
         Cras condimentum nulla massa, ut fermentum urna molestie eu. Phasellus
@@ -48,5 +49,5 @@ export let maxWidth = () => (
         Praesent purus mauris, laoreet non laoreet non, malesuada et urna.
       </DropdownItem>
     </Dropdown>
-  </div>
+  </Center>
 )

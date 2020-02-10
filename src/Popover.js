@@ -1,10 +1,11 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
-import { useState } from 'react'
+import { useState, forwardRef } from 'react'
 import F from 'futil'
 import Box from './Box'
 import Button from './Button'
 import IconButton from './IconButton'
+import theme from './theme'
 
 // import { Manager, Reference, Popper } from 'react-popper'
 
@@ -50,31 +51,42 @@ import IconButton from './IconButton'
 
 import TooltipTrigger from 'react-popper-tooltip'
 
-let Trigger = ({ getTriggerProps, triggerRef }) => (
-  <Button {...getTriggerProps({ ref: triggerRef })}>hello world</Button>
-)
-
 export let Popover = ({
-  trigger = Trigger,
+  trigger,
+  label = 'dropdown',
   side = 'left',
   children,
-}) => (
-  <TooltipTrigger
-    trigger="click"
-    placement={`bottom-${side === 'right' ? 'end' : 'start'}`}
-    tooltip={({ tooltipRef, getTooltipProps }) => (
-      <Box
-        popup
-        padding={0}
-        css={{ marginTop: 4 }}
-        {...getTooltipProps({ ref: tooltipRef })}
-      >
-        {children}
-      </Box>
-    )}
-  >
-    {trigger}
-  </TooltipTrigger>
-)
+}) => {
+  let Trigger = trigger || Button
+  return (
+    <TooltipTrigger
+      trigger="click"
+      placement={`bottom-${side === 'right' ? 'end' : 'start'}`}
+      modifiers={{
+        preventOverflow: {
+          boundariesElement: 'document',
+        },
+      }}
+      tooltip={({ tooltipRef, getTooltipProps }) => (
+        <Box
+          popup
+          padding={0}
+          css={{
+            marginTop: theme.spaces.xs,
+            maxWidth: theme.widths.popup.max,
+            minWidth: theme.widths.popup.min,
+          }}
+          {...getTooltipProps({ ref: tooltipRef })}
+        >
+          {children}
+        </Box>
+      )}
+    >
+      {({ getTriggerProps, triggerRef }) => (
+        <Trigger {...getTriggerProps({ ref: triggerRef, children: label })} />
+      )}
+    </TooltipTrigger>
+  )
+}
 
 export let Dropdown = Popover
