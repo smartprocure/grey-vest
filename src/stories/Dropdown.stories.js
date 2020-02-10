@@ -1,11 +1,16 @@
 import React from 'react'
-import { Dropdown, DropdownItem, Divider } from '..'
+import { Title, Dropdown, DropdownItem, Divider } from '..'
 
 export default { title: 'Dropdown', component: Dropdown }
 
 export let fullExample = () => (
   <div style={{ height: 240 }}>
-    <Dropdown label="test" trigger="icon" triggerProps={open => ({ primary: true, icon: open ? 'face' : 'eco'})}>
+    <Dropdown
+      trigger={({ getTriggerProps, triggerRef }) => (
+        <Title {...getTriggerProps({ ref: triggerRef })}>hello world</Title>
+      )}
+      triggerProps={open => ({ primary: true, icon: open ? 'face' : 'eco' })}
+    >
       <DropdownItem>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit
       </DropdownItem>
