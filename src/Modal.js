@@ -33,7 +33,8 @@ export let Modal = _.flow(
         alignItems="center"
         onClick={onClose}
       >
-        <Box modal
+        <Box
+          modal
           padding={3}
           onClick={e => e.stopPropagation()}
           css={{ minWidth: 400, maxWidth: 600, position: 'relative' }}
@@ -68,11 +69,8 @@ export let ModalFooter = ({ children }) => (
   <Flex
     alignItems="center"
     justifyContent="flex-end"
-    css={{
-      marginTop: theme.space(3),
-      '& > *': { marginRight: theme.spaces.sm },
-      '& > *:last-child': { marginRight: 0 },
-    }}
+    css={{ marginTop: theme.space(3) }}
+    gap={1}
   >
     {children}
   </Flex>
