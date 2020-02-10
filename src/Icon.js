@@ -1,6 +1,7 @@
 import React from 'react'
 import F from 'futil'
-import { Dynamic, TextButton } from '.'
+import Dynamic from './Dynamic'
+import TextButton from './TextButton'
 import theme from './theme'
 
 let SmallIcon = ({ icon, style, size = 2, className, ...props }) => (

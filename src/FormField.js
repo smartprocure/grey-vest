@@ -46,7 +46,7 @@ let FormField = ({
             style={{
               fontSize: theme.fontSizes[3],
               lineHeight: 0,
-              color: theme.colors.errors[2],
+              color: theme.colors.errors[1],
               verticalAlign: 'middle',
             }}
           >
@@ -68,7 +68,7 @@ let FormField = ({
       <Flex
         alignItems="center"
         gap="xs"
-        style={{ color: theme.colors.errors[2], marginTop: theme.spaces.xs }}
+        style={{ color: theme.colors.errors[1], marginTop: theme.spaces.xs }}
       >
         <Icon icon="error_outline" size={2} />
         <Text extraSmall>{error}</Text>

@@ -1,9 +1,10 @@
 import React from 'react'
 import { action } from '@storybook/addon-actions'
-import { Button, Grid } from '..'
+import { Button, Grid, Flex } from '..'
 import { flag, asProp } from './commonProps'
 
 let props = {
+  rows: [],
   sections: {
     'size flags': [{ name: 'compact', ...flag }, { name: 'large', ...flag }],
     other: [
@@ -113,7 +114,20 @@ export let disabled = () => (
 )
 
 export let withIcon = () => (
-  <Button icon="keyboard_arrow_right">Dropdown</Button>
+  <Container cols={3}>
+    <Flex inline column gap={1} alignItems="flex-start">
+      <Button icon="keyboard_arrow_down">Dropdown</Button>
+      <Button icon="beach_access">Other</Button>
+    </Flex>
+    <Flex inline column gap={1} alignItems="flex-start">
+      <Button large icon="keyboard_arrow_down">Dropdown</Button>
+      <Button large icon="face">Other</Button>
+    </Flex>
+    <Flex inline column gap={1} alignItems="flex-start">
+      <Button compact icon="keyboard_arrow_down">Dropdown</Button>
+      <Button compact icon="eco">Other</Button>
+    </Flex>
+  </Container>
 )
 
 export let asDiv = () => <Button as="div">Click</Button>

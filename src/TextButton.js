@@ -1,27 +1,24 @@
 import styled from '@emotion/styled'
+import theme from './theme'
 
 let TextButton = styled.div({
+  width: theme.spaces.lg,
+  height: theme.spaces.lg,
   borderRadius: 100,
-  padding: 5,
   cursor: 'pointer',
-  color: '#9b9b9b',
-  display: 'inline-block',
-  transition: 'background-color .1s linear, color .1s linear',
-  '> *': {
-    verticalAlign: 'middle',
-  },
-  i: {
-    width: 20,
-    height: 20,
-    fontSize: 20,
-  },
+  display: 'inline-flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  transition: 'all .1s linear',  
+  color: theme.colors.secondaries[1],
+  backgroundColor: 'transparent',
+  opacity: 0.5,
   ':hover': {
-    backgroundColor: 'rgba(216, 216, 216, 0.4)',
-    color: '#000',
+    backgroundColor: theme.colors.neutrals[4],
+    opacity: 1,
   },
   '&:active, &.primary': {
-    backgroundColor: '#0076de',
-    color: '#fff',
+    backgroundColor: theme.colors.neutrals[5],
   },
 })
 

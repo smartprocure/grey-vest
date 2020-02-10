@@ -19,8 +19,8 @@ let makePopover = padding =>
             {...padding}
             css={{
               position: 'absolute',
-              maxWidth: theme.space(35), // 280px
-              minWidth: theme.space(16), // 128px
+              maxWidth: theme.widths.popup.max,
+              minWidth: theme.widths.popup.min,
             }}
             {...props}
           />
