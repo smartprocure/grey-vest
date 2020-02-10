@@ -6,7 +6,7 @@ import Box from './Box'
 
 /* Usage */
 /*
-<Tabs tabControl={ButtonRadio} value="references">
+<Tabs TabsList={RadioList} value="references">
   <Tab value="references" label="References">
     <PO Table />
   </Tab>
