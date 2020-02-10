@@ -1,6 +1,6 @@
 {
   "name": "grey-vest",
-  "version": "3.0.0-alpha.16",
+  "version": "3.0.0-alpha.17",
   "description": "GreyVest component library",
   "main": "dist/index.js",
   "scripts": {
