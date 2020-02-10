@@ -30,12 +30,12 @@ let RadioButton = ({ native, option, value, onChange, ...props }) => (
             minWidth: theme.spaces.md,
             minHeight: theme.spaces.md,
             boxSizing: 'border-box',
-            background: theme.colors.neutrals[0],
-            border: `2px solid ${theme.colors.neutrals[6]}`,
+            background: theme.colors.backgrounds[0],
+            border: `2px solid ${theme.colors.neutrals[2]}`,
             borderRadius: '50%',
           },
           value === option.value && {
-            border: `5px solid ${theme.colors.primaries[0]}`,
+            border: `5px solid ${theme.colors.primary}`,
           },
           // kludge to fix baseline alignment
           { marginBottom: -3 },

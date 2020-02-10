@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
+import { darken, lighten, readableColor } from 'polished'
 import F from 'futil'
 import _ from 'lodash/fp'
 import styled from '@emotion/styled'
@@ -71,43 +72,33 @@ let BaseButton = styled(ButtonComponent)(
 )
 
 let buttonStyles = _.mapValues(
-  ({ baseColor, hoverColor, activeColor, textColor }) =>
+  ({ base, hover, active, text }) =>
     styled(BaseButton)({
-      backgroundColor: baseColor,
-      color: textColor,
-      ':hover': { backgroundColor: hoverColor },
-      ':active': { backgroundColor: activeColor },
+      backgroundColor: base,
+      color:
+        text ||
+        readableColor(darken(0.16, base), colors.secondary, colors.background),
+      ':hover': { backgroundColor: hover || darken(0.08, base) },
+      ':active': { backgroundColor: active || darken(0.16, base) },
     }),
   {
-    Primary: {
-      baseColor: colors.primaries[0],
-      hoverColor: colors.primaries[1],
-      activeColor: colors.primaries[2],
-      textColor: colors.neutrals[0],
-    },
+    Primary: { base: colors.primary },
     Secondary: {
-      baseColor: colors.neutrals[4],
-      hoverColor: colors.neutrals[5],
-      activeColor: colors.neutrals[6],
-      textColor: colors.secondaries[1],
+      base: colors.neutralLight,
+      hover: colors.neutral,
+      active: colors.neutralDark,
     },
     Tertiary: {
-      baseColor: colors.secondaries[1],
-      hoverColor: colors.secondaries[0],
-      activeColor: colors.secondaries[2],
-      textColor: colors.neutrals[0],
+      base: colors.secondary,
+      hover: darken(0.16, colors.secondary),
+      active: lighten(0.08, colors.secondary),
     },
-    Danger: {
-      baseColor: colors.errors[1],
-      hoverColor: colors.errors[2],
-      activeColor: colors.errors[0],
-      textColor: colors.neutrals[0],
-    },
+    Danger: { base: colors.error, active: lighten(0.04, colors.error) },
     Ghost: {
-      baseColor: 'transparent',
-      hoverColor: colors.neutrals[4],
-      activeColor: colors.neutrals[5],
-      textColor: colors.primaries[0],
+      base: 'transparent',
+      hover: colors.neutralLight,
+      active: colors.neutral,
+      text: colors.primary,
     },
   }
 )

@@ -1,6 +1,6 @@
 {
   "name": "grey-vest",
-  "version": "3.0.0-alpha.15",
+  "version": "3.0.0-alpha.16",
   "description": "GreyVest component library",
   "main": "dist/index.js",
   "scripts": {
@@ -100,6 +100,7 @@
     "mobx": "^4.3.1",
     "mobx-react": "^6.1.1",
     "mobx-utils": "^5.0.0",
+    "polished": "^3.4.4",
     "prettier": "^1.8.2",
     "raw-loader": "^2.0.0",
     "react": "^16.8.0",

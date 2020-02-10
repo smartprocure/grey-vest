@@ -32,19 +32,19 @@ let convertBannerStyles = ({ backgroundColor, textColor, icon }) =>
 let bannerStyles = _.mapValues(convertBannerStyles, {
   Warning: {
     backgroundColor: colors.warning,
-    textColor: colors.secondaries[1],
+    textColor: colors.secondary,
     icon: 'warning',
   },
   Error: {
-    backgroundColor: colors.errors[1],
-    textColor: colors.neutrals[0],
+    backgroundColor: colors.error,
+    textColor: colors.backgrounds[0],
     icon: 'report',
   },
 })
 
 let Banner = convertBannerStyles({
-  backgroundColor: colors.primaries[0],
-  textColor: colors.neutrals[0],
+  backgroundColor: colors.primary,
+  textColor: colors.backgrounds[0],
 })
 
 F.extendOn(Banner, bannerStyles)

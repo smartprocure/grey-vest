@@ -1,5 +1,6 @@
 import F from 'futil'
 import _ from 'lodash/fp'
+import { rgba } from 'polished'
 
 let theme = {
   fontSizes: [12, 14, 16, 18, 30, 48],
@@ -26,31 +27,41 @@ theme.widths = {
   formField: { max: widths.lg, min: widths.xs },
 }
 
-theme.colors = {
-  primaries: ['#0076de', '#0061b6', '#004c8e', '#b9d9f6'],
-  secondaries: ['#3a3f52', '#272c41', '#202536'],
+let colors = {
+  primary: '#0076de',
+  secondary: '#272c41',
+  text: '#454545',
+  backgrounds: ['#ffffff', '#f9f9f9'],
   neutrals: [
-    '#ffffff',
-    '#f9f9f9',
-    '#f4f4f4',
-    '#ededed',
-    '#e8e8e8',
-    '#d3d3d3',
-    '#aaaaaa',
-    '#777777',
-    '#454545',
+    '#eaeaea', // Input borders, tag background, hovered fields like PagerItem, table header border-bottom, tab background
+    '#d3d3d3', // Tag hover, disabled checkbox color (0.5 opacity), tab borders & active background color, textButton active background color
+    '#aaaaaa', // Radiobutton & checkbox borders, secondary button active
   ],
-  errors: ['#ff5630', '#de350b', '#bf2600', '#ffbdad'],
-  successes: ['#5bb85b', '#4b974b', '#3a763a', '#a5d8a5'],
-  infos: ['#6554c0', '#5243aa', '#403294', '#c0b6f2'],
+  success: '#5bb85b', // not actually used anywhere in grey-vest
+  error: '#de350b',
+  info: '#6554c0',
   warning: '#ffab00',
+  pastels: { // also not actually used in grey-vest
+    primary: '#b9d9f6',
+    error: '#ffbdad',
+    info: '#c0b6f2',
+    success: '#a5d8a5',
+  },
+}
+theme.colors = {
+  ...colors,
+  background: colors.backgrounds[0],
+  pageBackground: colors.backgrounds[1],
+  neutralLight: colors.neutrals[0],
+  neutral: colors.neutrals[1],
+  neutralDark: colors.neutrals[2],
 }
 
 theme.boxShadows = {
-  normal: `0 2px 10px 0 ${theme.colors.neutrals[8]}19`,
-  modal: `0 2px 10px 0 ${theme.colors.secondaries[1]}7f`,
-  popup: `0 8px 16px -4px ${theme.colors.secondaries[1]}4c,
-          0 0 1px 0 ${theme.colors.secondaries[1]}4c`,
+  normal: `0 2px 10px 0 ${rgba(theme.colors.text, 0.1)}`,
+  modal: `0 2px 10px 0 ${rgba(theme.colors.secondary, 0.5)}`,
+  popup: `0 8px 16px -4px ${rgba(theme.colors.secondary, 0.3)},
+          0 0 1px 0 ${rgba(theme.colors.secondary, 0.3)}`,
 }
 
 theme.fonts = {
@@ -115,22 +126,27 @@ theme.fonts = {
 }
 
 theme.inputStyle = {
+  ...theme.fonts.Text,
+  transition: 'border-color 0.2s ease-in',
+  // borders & padding
   borderRadius: theme.borderRadius,
-  border: `2px solid ${theme.colors.neutrals[3]}`,
+  border: `2px solid ${theme.colors.neutrals[0]}`,
   padding: `${theme.spaces.xs}px ${theme.spaces.sm}px`,
   outline: 'none',
-  '&:focus': { borderColor: theme.colors.primaries[0] },
-  transition: 'border-color 0.2s ease-in',
-  '::placeholder': { color: theme.colors.neutrals[8], opacity: 0.5 },
-  color: theme.colors.neutrals[8],
-  backgroundColor: theme.colors.neutrals[0],
+  '&:focus': { borderColor: theme.colors.primary },
+  // dimensions
   height: theme.space(5),
   boxSizing: 'border-box',
   minWidth: theme.widths.formField.min,
-  ...theme.fonts.Text,
+  // colors
+  '::placeholder': { color: theme.colors.text, opacity: 0.5 },
+  color: theme.colors.text,
+  backgroundColor: theme.colors.backgrounds[0],
   '&:disabled': {
-    borderColor: theme.colors.neutrals[2],
-    backgroundColor: theme.colors.neutrals[2],
+    borderColor: theme.colors.neutrals[0],
+    backgroundColor: theme.colors.neutrals[0],
+    color: theme.colors.secondary,
+    opacity: 0.5,
   },
 }
 

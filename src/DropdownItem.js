@@ -15,7 +15,7 @@ let DropdownItem = ({
   <div
     css={[
       {
-        color: theme.colors.neutrals[8],
+        color: theme.colors.text,
         cursor: 'pointer',
         marginTop: theme.spaces.xs,
         marginBottom: theme.spaces.xs,
@@ -31,11 +31,11 @@ let DropdownItem = ({
             opacity: '50%',
             cursor: 'not-allowed',
           }
-        : { '&:hover > *': { color: theme.colors.primaries[0] } },
+        : { '&:hover > *': { color: theme.colors.primary } },
     ]}
     {...props}
   >
-    {icon && <Icon icon={icon} style={{ color: theme.colors.primaries[0] }} />}
+    {icon && <Icon icon={icon} style={{ color: theme.colors.primary }} />}
     <Text
       small
       css={

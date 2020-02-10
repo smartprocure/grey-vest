@@ -23,7 +23,7 @@ export let story = () => {
       <div>
         <Button.Ghost
           compact
-          style={{ color: !active && theme.colors.secondaries[1] }}
+          style={{ color: !active && theme.colors.secondary }}
           icon={children && 'arrow_drop_down'}
           onClick={() => {
             F.flip(open)()
@@ -40,8 +40,8 @@ export let story = () => {
   let InfoButton = props => (
     <Button
       css={{
-        color: theme.colors.neutrals[0],
-        backgroundColor: theme.colors.infos[1],
+        color: theme.colors.backgrounds[0],
+        backgroundColor: theme.colors.infos[0],
         paddingTop: 1,
         paddingBottom: 1,
       }}
@@ -54,9 +54,9 @@ export let story = () => {
       alignItems="center"
       justifyContent="space-between"
       style={{
-        backgroundColor: theme.colors.neutrals[1],
+        backgroundColor: theme.colors.backgrounds[1],
         padding: `${theme.space(1)}px ${theme.space(2)}px`,
-        borderBottom: `1px solid ${theme.colors.neutrals[3]}`,
+        borderBottom: `1px solid ${theme.colors.neutrals[0]}`,
       }}
     >
       <Flex gap={1} alignItems="center">
@@ -87,9 +87,9 @@ export let DetailHeader = () => (
   <Flex
     justifyContent="space-between"
     style={{
-      backgroundColor: theme.colors.neutrals[1],
+      backgroundColor: theme.colors.backgrounds[1],
       padding: `${theme.space(1)}px ${theme.space(2)}px`,
-      borderBottom: `1px solid ${theme.colors.neutrals[3]}`,
+      borderBottom: `1px solid ${theme.colors.neutrals[0]}`,
     }}
   >
     <Title large>Page title</Title>

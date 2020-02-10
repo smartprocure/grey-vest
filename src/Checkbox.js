@@ -15,6 +15,7 @@ let Checkbox = ({
     as="label"
     css={[
       {
+        userSelect: 'none',
         boxSizing: 'border-box',
         cursor: 'pointer',
         height: theme.spaces.md,
@@ -22,16 +23,16 @@ let Checkbox = ({
         minWidth: theme.spaces.md,
         minHeight: theme.spaces.md,
         borderRadius: 3,
-        backgroundColor: theme.colors.neutrals[0],
-        border: `2px solid ${theme.colors.neutrals[6]}`,
+        backgroundColor: theme.colors.backgrounds[0],
+        border: `2px solid ${theme.colors.neutrals[2]}`,
         transition: 'all 0.5s ease',
         '& i': { 
-          color: checked ? theme.colors.primaries[0] : 'transparent',
+          color: checked ? theme.colors.primary : 'transparent',
         },
       },
       disabled && {
-        borderColor: theme.colors.neutrals[5],
-        backgroundColor: theme.colors.neutrals[5],
+        borderColor: theme.colors.neutrals[1],
+        backgroundColor: theme.colors.neutrals[1],
         opacity: 0.5,
         cursor: 'not-allowed',
       },

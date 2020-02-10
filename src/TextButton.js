@@ -10,15 +10,15 @@ let TextButton = styled.div({
   justifyContent: 'center',
   alignItems: 'center',
   transition: 'all .1s linear',  
-  color: theme.colors.secondaries[1],
+  color: theme.colors.secondary,
   backgroundColor: 'transparent',
   opacity: 0.5,
   ':hover': {
-    backgroundColor: theme.colors.neutrals[4],
+    backgroundColor: theme.colors.neutrals[0],
     opacity: 1,
   },
   '&:active, &.primary': {
-    backgroundColor: theme.colors.neutrals[5],
+    backgroundColor: theme.colors.neutrals[1],
   },
 })
 

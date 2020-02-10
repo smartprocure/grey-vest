@@ -26,16 +26,46 @@ export let story = () => (
         error="This is an error message that extends to the next line"
         component={TextInput}
       />
-      <FormField width={2} label="Phone number" type="number" />
+      <FormField width={2} label="Phone number" type="number" placeholder="(xxx)-xxx-xxxx" />
       <FormField
         width={2}
         label="Favorite color"
         tooltip="the other colors aren't important"
         required
         type="radioList"
-        options={F.autoLabelOptions(['red', 'blue', 'yellow', 'pink'])}
+        options={F.autoLabelOptions([
+          'red',
+          'blue',
+          'yellow',
+          'pink',
+          'green',
+          'orange',
+          'purple',
+          'black',
+          'white',
+        ])}
         error="This is an error message on a radio list"
+        columnCount={3}
+      />
+      <FormField
+        width={2}
+        label="Hobbies"
+        required
+        type="checkboxList"
+        value={['programming']}
+        options={[
+          { label: 'Programming', value: 'programming', disabled: true },
+          ...F.autoLabelOptions(['gaming', 'travel']),
+          { label: 'Sports', value: 'sports', disabled: true },
+        ]}
         columnCount={2}
+      />
+      <FormField
+        disabled
+        width={2}
+        label="Disabled field"
+        value="This should still be legible"
+        component={TextInput}
       />
     </Form.Content>
     <Form.Footer>

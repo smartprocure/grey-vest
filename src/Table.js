@@ -9,7 +9,7 @@ let Table = x => (
         borderCollapse: 'collapse',
         width: '100%',
         'tbody tr:nth-child(2n)': {
-          backgroundColor: `${theme.colors.neutrals[6]}19`,
+          backgroundColor: `${theme.colors.neutrals[2]}19`,
         },
         'td, th': {
           padding: `${theme.spaces.sm}px ${theme.spaces.md}px`,
@@ -19,7 +19,7 @@ let Table = x => (
           ...theme.fonts.Text.variants.small,
           fontWeight: 600,
           textAlign: 'left',
-          borderBottom: `1px solid ${theme.colors.neutrals[4]}`,
+          borderBottom: `1px solid ${theme.colors.neutrals[0]}`,
           '> span': {
             display: 'flex',
             alignItems: 'center',

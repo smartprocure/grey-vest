@@ -24,7 +24,7 @@ let Fonts = () => (
     />
     <Global
       styles={{
-        body: { ...theme.fonts.Text, color: theme.colors.neutrals[8] },
+        body: { ...theme.fonts.Text, color: theme.colors.text },
       }}
     />
   </>

@@ -35,7 +35,7 @@ let ReactSelect = ({ value, options, ...props }) => (
         outline: 'none',
         ..._.omit(['padding', 'minWidth', 'maxWidth'], theme.inputStyle),
         ...(state.isFocused && theme.inputStyle['&:focus']),
-        ...(props.error && { borderColor: theme.colors.errors[1] }),
+        ...(props.error && { borderColor: theme.colors.error }),
       }),
       input: provided => ({ ...provided, margin: 0 }),
       menu: () => ({
@@ -43,7 +43,7 @@ let ReactSelect = ({ value, options, ...props }) => (
         left: 0,
         right: 0,
         zIndex: 99999,
-        backgroundColor: colors.neutrals[0],
+        backgroundColor: colors.backgrounds[0],
         marginTop: spaces.xs,
         boxShadow: theme.boxShadows.popup,
         borderRadius: theme.borderRadius,
@@ -51,12 +51,12 @@ let ReactSelect = ({ value, options, ...props }) => (
       option: () => ({
         ...fonts.Text,
         ...fonts.Text.variants.small,
-        color: colors.neutrals[8],
+        color: colors.text,
         cursor: 'pointer',
         padding: `${spaces.xs}px ${spaces.md}px`,
         '&:hover': {
-          backgroundColor: colors.neutrals[2],
-          color: colors.primaries[1],
+          backgroundColor: `${colors.backgrounds[1]}`,
+          color: colors.primary,
         },
       }),
       indicatorSeparator: () => ({}),

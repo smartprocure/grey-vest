@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import theme from './theme'
 
 let LinkButton = styled.button({
-  color: theme.colors.primaries[0],
+  color: theme.colors.primary,
   backgroundColor: 'transparent',
   border: 'none',
   cursor: 'pointer',

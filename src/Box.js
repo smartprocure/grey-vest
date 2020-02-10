@@ -14,7 +14,7 @@ let Box = _.flow(
   <As
     css={{
       borderRadius: theme.borderRadius,
-      backgroundColor: theme.colors.neutrals[0],
+      backgroundColor: theme.colors.backgrounds[0],
       boxShadow: theme.boxShadows.normal,
       padding: _.flow(
         F.flowMap(theme.space, F.append('px')),

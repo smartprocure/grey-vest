@@ -1,8 +1,8 @@
 import React from 'react'
 import _ from 'lodash/fp'
-import F from 'futil'
 import theme from '../theme'
 import { Flex, Title, Text } from '..'
+let { colors } = theme
 
 export default { title: 'Design System | Colors' }
 
@@ -19,22 +19,33 @@ let Swatch = ({ color, size = 120 }) => (
   </Flex>
 )
 
-export let Colors = () =>
-  F.mapIndexed(
-    (value, key) => (
-      <div>
-        <Title style={{ marginTop: 32, marginBottom: 8, marginLeft: 8 }}>
-          {_.startCase(key)}
-        </Title>
-        <div>
-          {_.map(
-            color => (
-              <Swatch color={color} key={color} />
-            ),
-            _.castArray(value)
-          )}
-        </div>
-      </div>
-    ),
-    theme.colors
-  )
+let SwatchSet = ({ title, colors }) => (
+  <div>
+    <Title style={{ marginTop: 32, marginBottom: 8, marginLeft: 8 }}>
+      {_.startCase(title)}
+    </Title>
+    <div>
+      {_.map(
+        color => (
+          <Swatch color={color} key={color} />
+        ),
+        _.castArray(colors)
+      )}
+    </div>
+  </div>
+)
+
+export let story = () => (
+  <Flex wrap gap={4} justifyContent="space-around">
+    <SwatchSet colors={colors.primary} title="primary" />
+    <SwatchSet colors={colors.secondary} title="secondary" />
+    <SwatchSet colors={colors.text} title="text" />
+    <SwatchSet colors={colors.backgrounds} title="backgrounds" />
+    <SwatchSet colors={colors.neutrals} title="neutrals" />
+    <SwatchSet colors={colors.warning} title="warning" />
+    <SwatchSet colors={colors.info} title="info" />
+    <SwatchSet colors={colors.error} title="error" />
+    <SwatchSet colors={colors.success} title="success" />
+    <SwatchSet colors={_.values(colors.pastels)} title="pastels" />
+  </Flex>
+)

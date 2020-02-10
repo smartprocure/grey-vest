@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
+import { transparentize } from 'polished'
 import { Text } from './Typography'
 import _ from 'lodash/fp'
 import { observer } from 'mobx-react'
@@ -8,9 +9,9 @@ let { colors } = theme
 
 let classic = {
   padding: `${theme.space(1.5)}px ${theme.space(2.5)}px`,
-  backgroundColor: colors.neutrals[4],
-  color: colors.neutrals[8],
-  borderLeft: `solid 1px ${colors.neutrals[5]}`,
+  backgroundColor: colors.neutrals[0],
+  color: colors.text,
+  borderLeft: `solid 1px ${colors.neutrals[1]}`,
   transition: 'background-color 0.1s linear',
   '& > div': { fontWeight: 'bold', fontSize: theme.fontSizes[1] },
   '&.active + &': { borderLeft: 'none' },
@@ -21,45 +22,42 @@ let classic = {
   },
   '&.active, &.active:hover': {
     padding: `${theme.space(1.5)}px ${theme.space(4)}px`,
-    backgroundColor: colors.neutrals[0],
+    backgroundColor: colors.backgrounds[0],
     // white box shadow trick from http://dev.housetrip.com/2012/06/15/good-looking-css-tabs/
-    boxShadow: `0 10px 0 0 ${colors.neutrals[0]}, ${theme.boxShadows.normal}`,
+    boxShadow: `0 10px 0 0 ${colors.backgrounds[0]}, ${theme.boxShadows.normal}`,
     '& > div': { fontSize: theme.fontSizes[2] },
     borderLeft: 'none',
   },
   '&:hover': {
-    backgroundColor: colors.neutrals[5],
+    backgroundColor: colors.neutrals[1],
   },
 }
 
 let floating = {
   padding: `${theme.space(0.25)}px ${theme.spaces.md}px`,
-  borderBottom: `2px solid ${colors.neutrals[5]}`,
-  color: `${colors.neutrals[8]}7F`,
+  borderBottom: `2px solid ${colors.neutrals[1]}`,
+  color: transparentize(0.5, colors.text),
   borderTopLeftRadius: theme.borderRadius,
   borderTopRightRadius: theme.borderRadius,
   transition: 'all 0.1s linear',
   '& > div': { fontWeight: 600 },
   '&.active, &.active:hover': {
-    color: colors.primaries[0],
-    borderColor: colors.primaries[0],
+    color: colors.primary,
+    borderColor: colors.primary,
   },
-  '&:hover': { color: colors.secondaries[1] },
-  '&:active': {
-    backgroundColor: colors.neutrals[4],
-    color: colors.primaries[2],
-  },
+  '&:hover': { color: colors.secondary },
+  '&:active': { backgroundColor: colors.neutrals[0] },
 }
 
 let regular = {
   ...floating,
-  backgroundColor: colors.neutrals[4],
+  backgroundColor: colors.neutrals[0],
   '&.active': {
-    backgroundColor: colors.neutrals[0],
-    boxShadow: `0 10px 0 0 ${colors.neutrals[0]}, ${theme.boxShadows.normal}`,
+    backgroundColor: colors.backgrounds[0],
+    boxShadow: `0 10px 0 0 ${colors.backgrounds[0]}, ${theme.boxShadows.normal}`,
   },
   '&:active': {
-    backgroundColor: colors.neutrals[5],
+    backgroundColor: colors.neutrals[1],
   },
   borderTopLeftRadius: 0,
   borderTopRightRadius: 0,
