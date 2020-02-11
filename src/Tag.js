@@ -22,15 +22,12 @@ let Tag = ({ value, removeTag, tagStyle, ...props }) => {
         transition: 'all 0.2s ease-out',
         paddingLeft: theme.spaces.sm,
         paddingRight: removeTag ? theme.spaces.xs : theme.spaces.sm,
-        '&:hover': {
-          backgroundColor: F.view(closeHover)
-            ? theme.colors.pastels.error
-            : theme.colors.neutrals[1],
-          '.remove-button': {
-            opacity: 1,
-            color: F.view(closeHover) && theme.colors.error,
-          },
+        '&:hover': F.view(closeHover) && {
+          backgroundColor: theme.colors.pastels.error,
+          color: theme.colors.text,
+          '.remove-button': { color: theme.colors.error },
         },
+        '&:hover .remove-button': { opacity: 1 },
         ...F.callOrReturn(tagStyle, value),
       }}
       alignItems="center"
