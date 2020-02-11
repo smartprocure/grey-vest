@@ -1,54 +1,68 @@
 import React from 'react'
 import F from 'futil'
-import { observable } from 'mobx'
-import { Button, Popover } from '..'
+import { Button, Flex, Popover, Dialog } from '..'
+import { lipsum } from '../utils'
 
 export default { title: 'Popover', component: Popover }
 
+let Center = props => (
+  <Flex gap={2} justifyContent="space-around" alignItems="center" {...props} />
+)
+
+export let uncontrolled = () => (
+  <Popover
+    Trigger={Button}
+    label="Popover"
+    triggerProps={{ icon: 'arrow_drop_down' }}
+  >
+    Some Popover Content
+  </Popover>
+)
+
+export let minWidth = () => (
+  <Center>
+    <Dialog>._.</Dialog>
+  </Center>
+)
+
+export let maxWidth = () => (
+  <Center>
+    <Dialog>{lipsum(4)}</Dialog>
+  </Center>
+)
+
 export let withOpenProp = () => {
-  let open = observable.box(false)
+  let open = React.useState(false)
   return (
-    <>
-      <Button onClick={F.on(open)}>Open Popover</Button>
-      <Popover open={open}>Some Popover Content</Popover>
-    </>
+    <Flex justifyContent="space-between" alignItems="center">
+      <Button onClick={F.flip(open)}>
+        {F.view(open) ? 'Close' : 'Open'} Popover
+      </Button>
+      <Popover open={open} placement="left">
+        Some Popover Content
+      </Popover>
+    </Flex>
   )
 }
-withOpenProp.story = { name: "With 'open' prop" }
+withOpenProp.story = { name: "Controlled with 'open' prop" }
 
 export let withIsOpenOnCloseProps = () => {
   let [isOpen, setIsOpen] = React.useState(false)
   return (
-    <>
-      <div>isOpen: {isOpen.toString()}</div>
-      <Button onClick={() => setIsOpen(x => !x)}>Open Popover</Button>
+    <Flex justifyContent="space-between" alignItems="center">
+      <Button onClick={() => setIsOpen(x => !x)}>
+        {isOpen ? 'Close' : 'Open'} Popover
+      </Button>
       <Popover
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
-        onChange={x => alert(`visibility changed to ${x}`)}
+        placement="left"
       >
         Some Popover Content
       </Popover>
-    </>
+    </Flex>
   )
 }
-withIsOpenOnCloseProps.story = { name: "With 'isOpen'/'onClose' props" }
-
-export let anchor = () => {
-  let [isOpen, setIsOpen] = React.useState(true)
-  return (
-    <>
-      <div>isOpen: {isOpen.toString()}</div>
-      <Button onClick={() => setIsOpen(x => !x)}>Open Popover</Button>
-      <Popover
-        trigger={({ ref }) => <div ref={ref}>anchor of popover</div>}
-        isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
-        onChange={x => alert(`visibility changed to ${x}`)}
-      >
-        Some Popover Content
-      </Popover>
-      
-    </>
-  )
+withIsOpenOnCloseProps.story = {
+  name: "Controlled with 'isOpen'/'onClose' props",
 }
