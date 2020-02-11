@@ -27,8 +27,8 @@ let Flex = ({
     },
     wrap
       ? {
-          '> *': { marginBottom: m, marginRight: m },
-          marginBottom: -m,
+          '> *': { marginTop: m, marginRight: m },
+          marginTop: -m,
           marginRight: -m,
         }
       : { '& > * + *': { [`margin${column ? 'Top' : 'Left'}`]: m } },
