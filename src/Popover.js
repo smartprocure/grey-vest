@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
-import { useState, forwardRef } from 'react'
+import { useState, forwardRef, cloneElement } from 'react'
 import F from 'futil'
 import Box from './Box'
 import Button from './Button'
@@ -51,6 +51,9 @@ import theme from './theme'
 
 import TooltipTrigger from 'react-popper-tooltip'
 
+let PopupBox = forwardRef((props, ref) => (
+  <Box popup paddingX={2} paddingY={1} ref={ref} {...props} />
+))
 
 // TODO: expand the API for triggerProps and tooltipProps to include functions
 // of `isToggled` to props in addition to a props object
@@ -58,7 +61,9 @@ import TooltipTrigger from 'react-popper-tooltip'
 // Note: we use triggerProps and tooltipProps mostly because the component
 export let Popover = ({
   Trigger = 'div',
-  Popup = Box,
+  triggerProps = {},
+  Popup = PopupBox,
+  popupProps = {},
   placement = 'bottom',
   side = 'left',
   isOpen,
@@ -79,26 +84,34 @@ export let Popover = ({
       offset: { offset: `0, ${theme.spaces.xs}` },
     }}
     tooltip={({ tooltipRef, getTooltipProps }) => (
-      <Popup
-        popup
-        padding={0}
-        css={{
-          maxWidth: theme.widths.popup.max,
-          minWidth: theme.widths.popup.min,
-        }}
-        {...getTooltipProps({ ref: tooltipRef })}
-      >
+      <Popup {...getTooltipProps({ ...popupProps, ref: tooltipRef })}>
         {children}
       </Popup>
     )}
     {...props}
   >
     {({ getTriggerProps, triggerRef }) => (
-      <Trigger {...getTriggerProps({ ref: triggerRef })} />
+      <Trigger {...getTriggerProps({ ...triggerProps, ref: triggerRef })} />
     )}
   </TooltipTrigger>
 )
 
-// export let Dropdown = ({}) => (
-//   <Popover trigger={React.cloneElement(Button, {})} />
-// )
+export let Dropdown = ({
+  trigger = 'button',
+  label = 'dropdown',
+  icon,
+  buttonProps,
+  ...props
+}) => (
+  <Popover
+    Trigger={{ button: Button, icon: IconButton }[trigger]}
+    triggerProps={{
+      children: label,
+      icon: icon || { button: 'arrow_drop_down', icon: 'more_vert' }[trigger],
+      ...buttonProps,
+    }}
+    Popup={Box}
+    popupProps={{ popup: true, padding: 0 }}
+    {...props}
+  />
+)

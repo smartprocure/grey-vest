@@ -12,7 +12,7 @@ export let fullExample = () => {
   return (
     <Center>
       <i ref={ref}>test</i>
-      <Dropdown getTriggerRef={() => ref} trigger={() => <div>test</div>} isOpen>
+      <Dropdown trigger="button" isOpen>
         <DropdownItem>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit
         </DropdownItem>
