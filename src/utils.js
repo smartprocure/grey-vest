@@ -15,6 +15,7 @@ export let expandProp = _.flow(
 export let openBinding = (...lens) => ({
   isOpen: F.view(...lens),
   onClose: F.off(...lens),
+  onChange: x => F.set(x, ...lens)
 })
 
 // plural of _.findKey, returns an array of keys

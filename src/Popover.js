@@ -48,14 +48,14 @@ export let Popover = _.flow(
     side = placement ? '' : 'left',
     label = 'dropdown',
     isOpen,
-    onClose = _.noop,
+    onChange,
     children,
     ...props
   }) => (
     <TooltipTrigger
       trigger="click"
       tooltipShown={isOpen}
-      onVisibilityChange={onClose}
+      onVisibilityChange={onChange}
       placement={F.compactJoin('-', [
         placement || 'bottom',
         { left: 'start', right: 'end' }[side],
@@ -85,7 +85,7 @@ let parentProps = [
   'placement',
   'side',
   'isOpen',
-  'onClose',
+  'onChange',
   'open',
   'children',
 ]

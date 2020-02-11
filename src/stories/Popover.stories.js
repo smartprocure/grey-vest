@@ -31,11 +31,11 @@ export let maxWidth = () => (
   </Center>
 )
 
-export let withOpenProp = () => {
+export let controlledLens = () => {
   let open = React.useState(false)
   return (
     <Flex justifyContent="space-between" alignItems="center">
-      <Button onClick={F.flip(open)}>
+      <Button onClick={F.flip(open)} primary={!F.view(open)}>
         {F.view(open) ? 'Close' : 'Open'} Popover
       </Button>
       <Popover open={open} placement="left">
@@ -44,25 +44,35 @@ export let withOpenProp = () => {
     </Flex>
   )
 }
-withOpenProp.story = { name: "Controlled with 'open' prop" }
+controlledLens.story = { name: "Controlled with 'open' prop" }
 
-export let withIsOpenOnCloseProps = () => {
+export let controlled = () => {
   let [isOpen, setIsOpen] = React.useState(false)
   return (
     <Flex justifyContent="space-between" alignItems="center">
-      <Button onClick={() => setIsOpen(x => !x)}>
+      <Button onClick={() => setIsOpen(x => !x)} primary={!isOpen}>
         {isOpen ? 'Close' : 'Open'} Popover
       </Button>
-      <Popover
-        isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
-        placement="left"
-      >
+      <Popover isOpen={isOpen} onChange={setIsOpen} placement="left">
         Some Popover Content
       </Popover>
     </Flex>
   )
 }
-withIsOpenOnCloseProps.story = {
-  name: "Controlled with 'isOpen'/'onClose' props",
+controlled.story = {
+  name: "Controlled with 'isOpen'/'onChange' props",
+}
+
+export let controlledWithTrigger = () => {
+  let open = React.useState(false)
+  return (
+    <Flex justifyContent="space-between" alignItems="center">
+      <Button onClick={F.flip(open)} primary={!F.view(open)}>
+        {F.view(open) ? 'Close' : 'Open'} Popover
+      </Button>
+      <Popover open={open} Trigger={Button} placement="left" label="open me">
+        Some Popover Content
+      </Popover>
+    </Flex>
+  )
 }
