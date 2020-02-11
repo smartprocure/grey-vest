@@ -136,9 +136,9 @@ theme.inputStyle = {
   outline: 'none',
   '&:focus': { borderColor: theme.colors.primary },
   // dimensions
-  height: theme.space(5),
   boxSizing: 'border-box',
   minWidth: theme.widths.formField.min,
+  minHeight: theme.space(5),
   // colors
   '::placeholder': { color: theme.colors.text, opacity: 0.5 },
   color: theme.colors.text,
