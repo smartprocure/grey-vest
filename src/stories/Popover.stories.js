@@ -2,8 +2,58 @@ import React from 'react'
 import F from 'futil'
 import { Button, Flex, Popover, Dialog } from '..'
 import { lipsum } from '../utils'
+import { func } from './commonProps'
 
-export default { title: 'Popover', component: Popover }
+let props = {
+  sections: {
+    'controlled state': [
+      { name: 'isOpen' },
+      { ...func, name: 'onChange' },
+      { name: 'open', type: { summary: 'Lens' } },
+    ],
+    trigger: [
+      {
+        name: 'Trigger',
+        description:
+          'The component that the popup attaches to. Must support refs. Defaults to a 0px div.',
+        type: { summary: 'Component | string' },
+        defaultValue: { summary: 'EmptyTrigger' },
+      },
+      { name: 'triggerProps', type: { summary: 'object' } },
+      {
+        name: 'label',
+        description: 'Passed to `children` of the Trigger component',
+        type: { summary: 'string' },
+        defaultValue: { summary: "'dropdown'" },
+      },
+    ],
+    popup: [
+      {
+        name: 'Popup',
+        type: { summary: 'Component | string' },
+        defaultValue: { summary: 'PopupBox' },
+      },
+      { name: 'popupProps', type: { summary: 'object' } },
+      {
+        name: 'placement',
+        description:
+          'Which side of the trigger the popup appears on (as long as it has space)',
+        type: { summary: `'top' | 'bottom' | 'left' | 'right'` },
+        defaultValue: { summary: "'bottom'" },
+      },
+      {
+        name: 'side',
+        type: { summary: `left' | 'right'` },
+        defaultValue: { summary: "'left'" },
+      },
+      {
+        name: 'children',
+        description: 'Passed to `children` of the Popup component',
+      },
+    ],
+  },
+}
+export default { title: 'Popover', component: Popover, parameters: { props } }
 
 let Center = props => (
   <Flex gap={2} justifyContent="space-around" alignItems="center" {...props} />
