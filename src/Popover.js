@@ -51,44 +51,54 @@ import theme from './theme'
 
 import TooltipTrigger from 'react-popper-tooltip'
 
+
+// TODO: expand the API for triggerProps and tooltipProps to include functions
+// of `isToggled` to props in addition to a props object
+
+// Note: we use triggerProps and tooltipProps mostly because the component
 export let Popover = ({
-  trigger,
-  label = 'dropdown',
+  Trigger = 'div',
+  Popup = Box,
+  placement = 'bottom',
   side = 'left',
   isOpen,
   onClose = () => {},
   children,
-}) => {
-  let Trigger = trigger || Button
-  return (
-    <TooltipTrigger
-      trigger="click"
-      tooltipShown={isOpen}
-      onVisibilityChange={open => !open && onClose()}
-      placement={`bottom-${side === 'right' ? 'end' : 'start'}`}
-      modifiers={{
-        preventOverflow: { boundariesElement: 'document' },
-        offset: { offset: `0, ${theme.spaces.xs}` },
-      }}
-      tooltip={({ tooltipRef, getTooltipProps }) => (
-        <Box
-          popup
-          padding={0}
-          css={{
-            maxWidth: theme.widths.popup.max,
-            minWidth: theme.widths.popup.min,
-          }}
-          {...getTooltipProps({ ref: tooltipRef })}
-        >
-          {children}
-        </Box>
-      )}
-    >
-      {({ getTriggerProps, triggerRef }) => (
-        <Trigger {...getTriggerProps({ ref: triggerRef, children: label })} />
-      )}
-    </TooltipTrigger>
-  )
-}
+  ...props
+}) => (
+  <TooltipTrigger
+    trigger="click"
+    tooltipShown={isOpen}
+    onVisibilityChange={open => !open && onClose()}
+    placement={F.compactJoin('-', [
+      placement,
+      { left: 'start', right: 'end' }[side],
+    ])}
+    modifiers={{
+      preventOverflow: { boundariesElement: 'document' },
+      offset: { offset: `0, ${theme.spaces.xs}` },
+    }}
+    tooltip={({ tooltipRef, getTooltipProps }) => (
+      <Popup
+        popup
+        padding={0}
+        css={{
+          maxWidth: theme.widths.popup.max,
+          minWidth: theme.widths.popup.min,
+        }}
+        {...getTooltipProps({ ref: tooltipRef })}
+      >
+        {children}
+      </Popup>
+    )}
+    {...props}
+  >
+    {({ getTriggerProps, triggerRef }) => (
+      <Trigger {...getTriggerProps({ ref: triggerRef })} />
+    )}
+  </TooltipTrigger>
+)
 
-export let Dropdown = Popover
+// export let Dropdown = ({}) => (
+//   <Popover trigger={React.cloneElement(Button, {})} />
+// )

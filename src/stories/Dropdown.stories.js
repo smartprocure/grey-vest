@@ -3,34 +3,36 @@ import { Flex, Title, Dropdown, DropdownItem, Divider } from '..'
 
 export default { title: 'Dropdown', component: Dropdown }
 
-let Center = props => <Flex justifyContent="center" alignItems="center" {...props} />
-
-
-export let fullExample = () => (
-  <Center>
-    <Dropdown
-      trigger={Title}
-      triggerProps={open => ({ primary: true, icon: open ? 'face' : 'eco' })}
-    >
-      <DropdownItem>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit
-      </DropdownItem>
-      <DropdownItem disabled>
-        Aliquam nec fermentum lorem, vel facilisis nulla
-      </DropdownItem>
-      <Divider margin={0.5} />
-      <DropdownItem icon="eco">Etiam vitae mi elit</DropdownItem>
-      <DropdownItem icon="face">In eu maximus felis</DropdownItem>
-      <DropdownItem truncate icon="favorite">
-        Pellentesque a elit sodales, gravida magna sit amet, lacinia odio
-      </DropdownItem>
-    </Dropdown>
-  </Center>
+let Center = props => (
+  <Flex justifyContent="center" alignItems="center" {...props} />
 )
+
+export let fullExample = () => {
+  let ref = React.useRef()
+  return (
+    <Center>
+      <i ref={ref}>test</i>
+      <Dropdown getTriggerRef={() => ref} trigger={() => <div>test</div>} isOpen>
+        <DropdownItem>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit
+        </DropdownItem>
+        <DropdownItem disabled>
+          Aliquam nec fermentum lorem, vel facilisis nulla
+        </DropdownItem>
+        <Divider margin={0.5} />
+        <DropdownItem icon="eco">Etiam vitae mi elit</DropdownItem>
+        <DropdownItem icon="face">In eu maximus felis</DropdownItem>
+        <DropdownItem truncate icon="favorite">
+          Pellentesque a elit sodales, gravida magna sit amet, lacinia odio
+        </DropdownItem>
+      </Dropdown>
+    </Center>
+  )
+}
 
 export let minWidth = () => (
   <Center>
-    <Dropdown label='hello world'>
+    <Dropdown label="hello world" isOpen>
       <DropdownItem>A</DropdownItem>
       <DropdownItem>B</DropdownItem>
     </Dropdown>

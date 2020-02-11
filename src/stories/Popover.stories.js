@@ -22,10 +22,33 @@ export let withIsOpenOnCloseProps = () => {
     <>
       <div>isOpen: {isOpen.toString()}</div>
       <Button onClick={() => setIsOpen(x => !x)}>Open Popover</Button>
-      <Popover isOpen={isOpen} onClose={() => setIsOpen(false)} onChange={x => alert(`visibility changed to ${x}`)}>
+      <Popover
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        onChange={x => alert(`visibility changed to ${x}`)}
+      >
         Some Popover Content
       </Popover>
     </>
   )
 }
 withIsOpenOnCloseProps.story = { name: "With 'isOpen'/'onClose' props" }
+
+export let anchor = () => {
+  let [isOpen, setIsOpen] = React.useState(true)
+  return (
+    <>
+      <div>isOpen: {isOpen.toString()}</div>
+      <Button onClick={() => setIsOpen(x => !x)}>Open Popover</Button>
+      <Popover
+        trigger={({ ref }) => <div ref={ref}>anchor of popover</div>}
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        onChange={x => alert(`visibility changed to ${x}`)}
+      >
+        Some Popover Content
+      </Popover>
+      
+    </>
+  )
+}
