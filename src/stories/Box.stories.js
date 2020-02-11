@@ -43,7 +43,7 @@ export let popupBox = () => (
 export let controlledPadding = () => {
   let GreyPaddingBox = ({ children, ...props }) => (
     <Box style={{ background: 'lightgrey' }} {...props}>
-      <Text style={{ background: 'white' }}>{children}</Text>
+      <Text as="div" style={{ background: 'white' }}>{children}</Text>
     </Box>
   )
   return (
