@@ -1,16 +1,111 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
+import F from 'futil'
 import _ from 'lodash/fp'
-import { observable } from 'mobx'
-import { observer, inject, useLocalStore } from 'mobx-react'
+import { observer, useLocalStore } from 'mobx-react'
 import Flex from './Flex'
 import DefaultTag from './Tag'
 import theme from './theme'
 
 let isValidInput = (tag, tags) => !_.isEmpty(tag) && !_.includes(tag, tags)
 
+let TagsList = ({
+  Tag,
+  onTagClick,
+  removeTag,
+  tagStyle,
+  tags,
+  children,
+  ...props
+}) => (
+  <Flex
+    wrap
+    alignItems="center"
+    gap="xs"
+    css={{ cursor: 'text' }}
+    {...props}
+  >
+    {_.map(
+      t => (
+        <Tag
+          key={t}
+          value={t}
+          {...{ removeTag, tagStyle }}
+          onClick={() => onTagClick(t)}
+        />
+      ),
+      tags
+    )}
+    {children}
+  </Flex>
+)
+
+let Input = observer(
+  ({
+    tags,
+    addTag = _.noop,
+    removeTag,
+    submit = _.noop,
+    placeholder = 'Search...',
+    splitCommas,
+    onBlur = _.noop,
+    onChange = _.noop,
+    ...props
+  }) => {
+    let state = useLocalStore(() => ({ currentInput: '' }))
+    return (
+      <input
+        css={{
+          ...theme.inputStyle,
+          padding: 0,
+          height: 'auto',
+          minHeight: 0,
+          border: 'none',
+          outline: 'none',
+          flex: 1,
+          marginLeft: theme.spaces.xs,
+        }}
+        onChange={e => {
+          state.currentInput = e.target.value
+          onChange()
+        }}
+        onBlur={() => {
+          if (isValidInput(state.currentInput, tags)) {
+            addTag(state.currentInput)
+            state.currentInput = ''
+            onBlur()
+          }
+        }}
+        onKeyDown={e => {
+          if (e.key === 'Enter' && !state.currentInput) submit()
+          if (
+            (_.includes(e.key, ['Enter', 'Tab']) ||
+              (splitCommas && e.key === ',')) &&
+            isValidInput(state.currentInput, tags)
+          ) {
+            addTag(state.currentInput)
+            state.currentInput = ''
+            e.preventDefault()
+          }
+          if (e.key === 'Backspace' && !state.currentInput && tags.length) {
+            let last = _.last(tags)
+            removeTag(last)
+            state.currentInput = last
+            e.preventDefault()
+          }
+        }}
+        value={state.currentInput}
+        placeholder={placeholder}
+        {...props}
+      />
+    )
+  }
+)
+
 let TagsInput = ({
   tags,
+  flip,
+  hideInput,
   addTag = _.noop,
   removeTag,
   submit = _.noop,
@@ -23,7 +118,6 @@ let TagsInput = ({
   Tag = DefaultTag,
   ...props
 }) => {
-  let state = useLocalStore(() => ({ currentInput: '' }))
   addTag = splitCommas
     ? _.flow(
         _.split(','),
@@ -37,90 +131,35 @@ let TagsInput = ({
         _.trim,
         addTag
       )
+      let input = !hideInput && <Input
+      {...{
+        tags,
+        addTag,
+        removeTag,
+        submit,
+        placeholder,
+        splitCommas,
+        onBlur,
+        onInputChange,
+        css: !flip && { lineHeight: 0 }
+      }}
+    />
   return (
-    <div>
-      <Flex
-        wrap
-        alignItems="center"
-        gap="xs"
-        css={[
-          { cursor: 'text' },
-          _.omit(['height', 'maxWidth'], theme.inputStyle),
-        ]}
+    <Flex column css={theme.inputStyle} alignItems="stretch" justifyContent="center" {...props}>
+      {flip && input}
+      <TagsList
+        {...{
+          Tag,
+          onTagClick,
+          removeTag,
+          tagStyle,
+          tags: F.when(() => flip, _.reverse, tags),
+        }}
       >
-        {_.map(
-          t => (
-            <Tag
-              key={t}
-              value={t}
-              {...{ removeTag, tagStyle }}
-              onClick={() => onTagClick(t)}
-            />
-          ),
-          tags
-        )}
-        <input
-          css={{
-            ...theme.inputStyle,
-            padding: 0,
-            height: 'auto',
-            border: 'none',
-            outline: 'none',
-            flex: 1,
-            lineHeight: 0,
-            marginLeft: theme.spaces.xs,
-          }}
-          onChange={e => {
-            state.currentInput = e.target.value
-            onInputChange()
-          }}
-          onBlur={() => {
-            if (isValidInput(state.currentInput, tags)) {
-              addTag(state.currentInput)
-              state.currentInput = ''
-              onBlur()
-            }
-          }}
-          onKeyDown={e => {
-            if (e.key === 'Enter' && !state.currentInput) submit()
-            if (
-              (_.includes(e.key, ['Enter', 'Tab']) ||
-                (splitCommas && e.key === ',')) &&
-              isValidInput(state.currentInput, tags)
-            ) {
-              addTag(state.currentInput)
-              state.currentInput = ''
-              e.preventDefault()
-            }
-            if (e.key === 'Backspace' && !state.currentInput && tags.length) {
-              let last = _.last(tags)
-              removeTag(last)
-              state.currentInput = last
-              e.preventDefault()
-            }
-          }}
-          value={state.currentInput}
-          placeholder={placeholder}
-          {...props}
-        />
-      </Flex>
-    </div>
+        {!flip && input}
+      </TagsList>
+    </Flex>
   )
 }
-
-// Just uses an internal observable array
-export let MockTagsInput = inject(() => {
-  let tags = observable([])
-  return {
-    tags,
-    addTag(tag) {
-      tags.push(tag)
-    },
-    removeTag(tag) {
-      tags = _.without(tag, tags)
-    },
-  }
-})(TagsInput)
-MockTagsInput.displayName = 'MockTagsInput'
 
 export default observer(TagsInput)

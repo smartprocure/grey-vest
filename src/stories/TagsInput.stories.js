@@ -29,3 +29,34 @@ export let baseUsage = () => {
     </>
   )
 }
+
+export let empty = () => {
+  let [tags, setTags] = React.useState([])
+  return (
+    <>
+      <TagsInput
+        tags={tags}
+        addTag={tag => setTags(F.push(tag))}
+        removeTag={tag => setTags(_.pull(tag))}
+      />
+      <Divider margin={2} />
+      <code>{JSON.stringify(tags)}</code>
+    </>
+  )
+}
+
+export let flipped = () => {
+  let [tags, setTags] = React.useState(['input above', 'tags below'])
+  return (
+    <>
+      <TagsInput
+        flip
+        tags={tags}
+        addTag={tag => setTags(F.push(tag))}
+        removeTag={tag => setTags(_.pull(tag))}
+      />
+      <Divider margin={2} />
+      <code>{JSON.stringify(tags)}</code>
+    </>
+  )
+}
