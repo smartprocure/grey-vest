@@ -1,10 +1,10 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import { forwardRef } from 'react'
-import Icon from './Icon'
+import GVIcon from './Icon'
 import theme from './theme'
 
-let IconButton = ({ icon, ...props }, ref) => (
+let IconButton = ({ Icon = GVIcon, icon, ...props }, ref) => (
   <div
     css={{
       width: theme.spaces.lg,

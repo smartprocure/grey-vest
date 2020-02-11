@@ -3,7 +3,9 @@ import { jsx } from '@emotion/core'
 import { forwardRef } from 'react'
 import { darken, lighten } from 'polished'
 import _ from 'lodash/fp'
-import { Subtitle, Text, Icon, Flex } from './'
+import { Subtitle, Text } from './Typography'
+import GVIcon from './Icon'
+import Flex from './Flex'
 import theme from './theme'
 import { getVariants } from './utils'
 let { spaces, space, colors } = theme
@@ -57,7 +59,16 @@ let getPadding = (size, ratio = 2) =>
   `${space(size)}px ${space(size * ratio)}px`
 
 let Button = (
-  { as: As = 'button', compact, large, icon, disabled, children, ...props },
+  {
+    as: As = 'button',
+    Icon = GVIcon,
+    compact,
+    large,
+    icon,
+    disabled,
+    children,
+    ...props
+  },
   ref
 ) => (
   <As
