@@ -42,7 +42,7 @@ A small number of components have been 🚨 **REMOVED** 🚨(or renamed):
 
 #### Changes to individual components
 
-- 🚨 **Awaiter**'s `promise` prop has been renamed to `promiseFn` (for consistency with react-async)
+- **Awaiter** is now built on top of react-async's [Async component](https://docs.react-async.com/api/interfaces#async-component)
 - Changes to **Button**:
   - New variants: `primary`, `secondary`, `danger`, and `ghost` colors/stylings, and `compact` and `large` sizes
   - Now supports an `icon` prop (same API as the Icon component's `icon` prop)
@@ -54,6 +54,9 @@ A small number of components have been 🚨 **REMOVED** 🚨(or renamed):
   - Both components now also support ColumnList props (`gap`, `columnCount`, `columnWidth`, and `columnGap`)
 - **DateInput** now includes a time picker (now uses `react-datetime-picker` internally instead of `react-date-picker`)
 - New props on **DropdownItem**: `disabled`, `truncate`, and `icon` (same as the Icon component's `icon` prop)
+- Changes to **Icon**:
+  - Now supports a `size` prop that takes an index to `theme.fontSizes`
+  - 🚨 Removed support for contexture-react's custom icon keys (eg 'SortAscending', 'TableColumnMenu', etc) - the `icon` prop now only supports [material icon keys](https://material.io/resources/icons/) or components
 - Changes to **Modal**:
   - New components representing Modal sections: **ModalHeader**, **ModalContent**, and **ModalFooter** (available as top-level exports)
   - Modals now have a close button and can additionally be closed with the `Esc` key
@@ -90,16 +93,16 @@ Component props that control whitespace now take spacing values from GreyVest's 
 ## Migration Guide
 
 1. For all `gap` props on **Box** components that use numbers, divide the value by 8
-2. Rename all `promise` props on **Awaiter** components to `promiseFn`
-3. Convert all `onClose` props on **Popover** components to `onChange` (the callback receives the open/closed state of the popover as its argument)
-4. Replace all references to...
+2. Convert all `onClose` props on **Popover** components to `onChange` (the callback receives the open/closed state of the popover as its argument)
+3. Replace all references to...
    - **TabList** with **TabsList**
    - **SpacedList** with **ColumnList**
    - **TextButton** with **IconButton**
    - **ErrorList** with **ErrorText**
    - **LinkButton** with **Link**
-5. Remove all references to the **ButtonRadio**, **BarChart**, and **Style** components
-6. Remove any CSS targeting `gv-` classNames
+4. Remove all references to the **ButtonRadio**, **BarChart**, and **Style** components
+5. Remove any CSS targeting `gv-` classNames
+6. Update any **Icon** components using contexture-react icon keys to use a material icon key (or a custom component) instead
 7. Import and use the design system constants from GreyVest's theme file, rather than hard-coding spacing or color values
 
 <hr />
