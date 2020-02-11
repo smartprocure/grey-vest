@@ -18,13 +18,7 @@ let TagsList = ({
   children,
   ...props
 }) => (
-  <Flex
-    wrap
-    alignItems="center"
-    gap="xs"
-    css={{ cursor: 'text' }}
-    {...props}
-  >
+  <Flex wrap alignItems="center" gap="xs" css={{ cursor: 'text' }} {...props}>
     {_.map(
       t => (
         <Tag
@@ -103,6 +97,7 @@ let Input = observer(
 )
 
 let TagsInput = ({
+  autoFocus,
   tags,
   flip,
   hideInput,
@@ -131,7 +126,8 @@ let TagsInput = ({
         _.trim,
         addTag
       )
-      let input = !hideInput && <Input
+  let input = !hideInput && (
+    <Input
       {...{
         tags,
         addTag,
@@ -141,11 +137,19 @@ let TagsInput = ({
         splitCommas,
         onBlur,
         onInputChange,
-        css: !flip && { lineHeight: 0 }
+        autoFocus,
+        css: !flip && { lineHeight: 0 },
       }}
     />
+  )
   return (
-    <Flex column css={theme.inputStyle} alignItems="stretch" justifyContent="center" {...props}>
+    <Flex
+      column
+      css={theme.inputStyle}
+      alignItems="stretch"
+      justifyContent="center"
+      {...props}
+    >
       {flip && input}
       <TagsList
         {...{
