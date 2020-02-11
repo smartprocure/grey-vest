@@ -25,6 +25,13 @@ let PopupBox = forwardRef((props, ref) => (
   />
 ))
 
+let EmptyTrigger = forwardRef((props, ref) => (
+  <div
+    css={{ width: 0, height: 0, overflow: 'hidden' }}
+    {...{ ref, ...props }}
+  />
+))
+
 // TODO: expand the API for triggerProps and popupProps to include functions
 // of `isToggled` to props in addition to a props object
 export let Popover = _.flow(
@@ -33,12 +40,13 @@ export let Popover = _.flow(
   observer
 )(
   ({
-    Trigger = 'div',
-    triggerProps = {},
+    Trigger = EmptyTrigger,
     Popup = PopupBox,
+    triggerProps = {},
     popupProps = {},
-    placement = 'bottom',
-    side = 'left',
+    placement,
+    side = placement ? '' : 'left',
+    label = 'dropdown',
     isOpen,
     onClose = _.noop,
     children,
@@ -47,9 +55,9 @@ export let Popover = _.flow(
     <TooltipTrigger
       trigger="click"
       tooltipShown={isOpen}
-      onVisibilityChange={open => !open && onClose()}
+      onVisibilityChange={onClose}
       placement={F.compactJoin('-', [
-        placement,
+        placement || 'bottom',
         { left: 'start', right: 'end' }[side],
       ])}
       modifiers={{
@@ -64,24 +72,38 @@ export let Popover = _.flow(
       {...props}
     >
       {({ getTriggerProps, triggerRef }) => (
-        <Trigger {...getTriggerProps({ ...triggerProps, ref: triggerRef })} />
+        <Trigger {...getTriggerProps({ ...triggerProps, ref: triggerRef })}>
+          {label}
+        </Trigger>
       )}
     </TooltipTrigger>
   )
 )
 
-let parentProps = ['placement', 'side', 'children', 'isOpen', 'onClose', 'open']
+let parentProps = [
+  'label',
+  'placement',
+  'side',
+  'isOpen',
+  'onClose',
+  'open',
+  'children',
+]
 
-export let Dropdown = ({
+// We don't actually want to pass popupProps through to Dialog and Dropdown,
+// but we need it to customize Dropdown
+let buttonPopover = popupProps => ({
   trigger = 'button',
-  label = 'dropdown',
   icon = { button: 'arrow_drop_down', icon: 'more_vert' }[trigger],
   ...props
 }) => (
   <Popover
     Trigger={{ button: Button, icon: IconButton }[trigger]}
-    triggerProps={{ children: label, icon, ..._.omit(parentProps, props) }}
-    popupProps={{ popup: true, padding: 0 }}
-    {..._.pick(parentProps, props)}
+    triggerProps={{ icon, ..._.omit(parentProps, props) }}
+    {...{ popupProps, ..._.pick(parentProps, props) }}
   />
 )
+
+// These two are actually identical except for the padding inside the popup
+export let Dialog = buttonPopover()
+export let Dropdown = buttonPopover({ padding: 0 })
