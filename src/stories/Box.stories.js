@@ -54,6 +54,9 @@ export let controlledPadding = () => {
       <GreyPaddingBox paddingX={1} paddingY="lg">
         {theme.space(1)}px by {theme.spaces.lg}px padding
       </GreyPaddingBox>
+      <GreyPaddingBox padding={[0.5, 0.5]}>
+        {theme.space(0.5)}px by {theme.space(0.5)}px padding
+      </GreyPaddingBox>
       {_.map(
         padding => (
           <GreyPaddingBox padding={padding}>

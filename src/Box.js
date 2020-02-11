@@ -18,7 +18,10 @@ let Box = (
       ..._.flow(
         _.map(theme.space),
         _.apply(pad)
-      )([paddingY || padding, paddingX || padding]),
+      )([
+        paddingY || _.head(padding) || padding,
+        paddingX || _.last(padding) || padding,
+      ]),
     }}
     {...{ ref, ...props }}
   />
