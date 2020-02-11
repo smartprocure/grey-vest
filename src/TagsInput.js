@@ -138,7 +138,6 @@ let TagsInput = ({
         onBlur,
         onInputChange,
         autoFocus,
-        css: !flip && { lineHeight: 0 },
       }}
     />
   )
@@ -148,20 +147,23 @@ let TagsInput = ({
       css={theme.inputStyle}
       alignItems="stretch"
       justifyContent="center"
+      gap={1}
       {...props}
     >
       {flip && input}
-      <TagsList
-        {...{
-          Tag,
-          onTagClick,
-          removeTag,
-          tagStyle,
-          tags: F.when(() => flip, _.reverse, tags),
-        }}
-      >
-        {!flip && input}
-      </TagsList>
+      {!(flip && _.isEmpty(tags)) && (
+        <TagsList
+          {...{
+            Tag,
+            onTagClick,
+            removeTag,
+            tagStyle,
+            tags: F.when(() => flip, _.reverse, tags),
+          }}
+        >
+          {!flip && input}
+        </TagsList>
+      )}
     </Flex>
   )
 }
