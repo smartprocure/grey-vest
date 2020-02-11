@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
-import React from 'react'
+import _ from 'lodash/fp'
+import { forwardRef, useState } from 'react'
 import F from 'futil'
 import { observer } from 'mobx-react'
 import Flex from './Flex'
@@ -8,8 +9,8 @@ import Icon from './Icon'
 import { Text } from './Typography'
 import theme from './theme'
 
-let Tag = ({ value, removeTag, tagStyle, ...props }) => {
-  let closeHover = React.useState(false)
+let Tag = ({ value, removeTag, tagStyle, ...props }, ref) => {
+  let closeHover = useState(false)
   return (
     <Flex
       inline
@@ -32,7 +33,7 @@ let Tag = ({ value, removeTag, tagStyle, ...props }) => {
       }}
       alignItems="center"
       gap="xs"
-      {...props}
+      {...{ ref, ...props }}
     >
       <Text small>{value}</Text>
       {removeTag && (
@@ -51,4 +52,4 @@ let Tag = ({ value, removeTag, tagStyle, ...props }) => {
   )
 }
 
-export default observer(Tag)
+export default _.flow(forwardRef, observer)(Tag)
