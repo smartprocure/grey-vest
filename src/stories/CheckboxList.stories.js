@@ -1,13 +1,12 @@
 import React from 'react'
-import { loremIpsum } from 'lorem-ipsum'
 import _ from 'lodash/fp'
 import F from 'futil'
 import { CheckboxList, Grid } from '..'
-import { optionsFromArray } from '../utils'
+import { lipsum, optionsFromArray } from './utils'
 
 export default { title: 'CheckboxList', component: CheckboxList }
 
-let options = optionsFromArray(_.times(loremIpsum, 5))
+let options = optionsFromArray(_.times(lipsum, 5))
 
 export let story = () => {
   let values = React.useState([0, 1])

@@ -1,13 +1,12 @@
 import React from 'react'
 import F from 'futil'
 import _ from 'lodash/fp'
-import { loremIpsum } from 'lorem-ipsum'
 import { Select, Grid } from '..'
-import { optionsFromArray } from '../utils'
+import { lipsum, optionsFromArray } from './utils'
 
 export default { title: 'Select', component: Select }
 
-let options = optionsFromArray(_.times(loremIpsum, 5))
+let options = optionsFromArray(_.times(lipsum, 5))
 
 export let usage = () => {
   let [value, setValue] = React.useState(1)
@@ -23,7 +22,7 @@ export let usage = () => {
 
 export let shortOptions = () => (
   <Select
-    options={optionsFromArray(_.times(() => loremIpsum({ units: 'words' }), 8))}
+    options={optionsFromArray(_.times(() => lipsum(1, 'words'), 8))}
   />
 )
 

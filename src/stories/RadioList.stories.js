@@ -1,14 +1,13 @@
 import React from 'react'
-import { loremIpsum } from 'lorem-ipsum'
 import _ from 'lodash/fp'
 import { RadioList, Grid } from '..'
 import F from 'futil'
-import { optionsFromArray } from '../utils'
+import { lipsum, optionsFromArray } from './utils'
 
 export default { title: 'RadioList', component: RadioList }
 
-let options = optionsFromArray(_.times(loremIpsum, 5))
-let shortChoices = _.times(() => loremIpsum({ units: 'words' }), 30)
+let options = optionsFromArray(_.times(lipsum, 5))
+let shortOptions = optionsFromArray(_.times(() => lipsum(1, 'words'), 30))
 
 export let baseStory = () => {
   let value = React.useState(0)
@@ -56,7 +55,7 @@ export let columns = () => {
       </div>
       <RadioList
         {...F.domLens.value(value)}
-        options={optionsFromArray(shortChoices)}
+        options={shortOptions}
         columnCount={Infinity}
       />
     </Grid>
