@@ -1,18 +1,22 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
+import { padding } from 'polished'
 import theme from './theme'
 
-let Table = x => (
+let Table = ({ plain, ...props }) => (
   <div style={{ overflow: 'auto' }}>
     <table
       css={{
         borderCollapse: 'collapse',
         width: '100%',
         'tbody tr:nth-child(2n)': {
-          backgroundColor: `${theme.colors.neutrals[2]}19`,
+          backgroundColor: !plain && `${theme.colors.neutrals[2]}19`,
         },
         'td, th': {
-          padding: `${theme.spaces.sm}px ${theme.spaces.md}px`,
+          boxSizing: 'border-box',
+          ...padding(theme.spaces.sm, theme.spaces.md),
+          minWidth: theme.widths.tableColumn.min,
+          maxWidth: theme.widths.tableColumn.max,
           ...theme.fonts.Text,
         },
         th: {
@@ -27,7 +31,7 @@ let Table = x => (
         },
         'tr:hover': { zIndex: 20, boxShadow: theme.boxShadows.normal },
       }}
-      {...x}
+      {...props}
     />
   </div>
 )
