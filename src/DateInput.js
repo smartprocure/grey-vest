@@ -36,7 +36,7 @@ let NativeDateInput = ({ value, onChange = _.noop, ...props }) => (
     onChange={x => onChange(toDate(x.target.value))}
     value={toDateWith(toLocalISOString)(value)}
     {...props}
-    css={inputStyle}
+    css={[fonts.Text, inputStyle]}
   />
 )
 

@@ -1,7 +1,6 @@
 import React from 'react'
 import { action } from '@storybook/addon-actions'
 import { DateInput, Grid, Text } from '..'
-import moment from 'moment'
 import _ from 'lodash/fp'
 
 export default { title: 'DateInput', component: DateInput }
@@ -39,7 +38,7 @@ export let native = () => {
 export let withAllowedRange = () => (
   <DateInput
     onChange={action('date changed')}
-    minDate={new Date()}
-    maxDate={new Date(moment().add(2, 'weeks'))}
+    minDate={new Date(new Date().setDate(5))}
+    maxDate={new Date(new Date().setDate(15))}
   />
 )
