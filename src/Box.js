@@ -1,9 +1,10 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import _ from 'lodash/fp'
+import F from 'futil'
 import { forwardRef } from 'react'
 import { padding as pad } from 'polished'
-import { getVariants } from './utils'
+import { getVariants, coalesce } from './utils'
 import theme from './theme'
 
 let Box = (
@@ -16,11 +17,11 @@ let Box = (
       backgroundColor: theme.colors.backgrounds[0],
       boxShadow: getVariants(props, theme.boxShadows, 'normal'),
       ..._.flow(
-        _.map(theme.space),
+        F.flowMap(coalesce, theme.space),
         _.apply(pad)
       )([
-        paddingY || _.head(padding) || padding,
-        paddingX || _.last(padding) || padding,
+        [paddingY, _.head(padding), padding],
+        [paddingX, _.last(padding), padding],
       ]),
     }}
     {...{ ref, ...props }}
