@@ -94,14 +94,13 @@ let Button = (
       </ButtonText>
       {icon && (
         <Icon
-          icon={icon}
+          {...{ icon, large, small: compact }}
           style={{
             paddingLeft: spaces.xs,
             paddingRight: compact ? spaces.xs : spaces.sm,
             opacity: 0.5,
             lineHeight: 0,
           }}
-          size={large ? 4 : compact ? 2 : 3}
         />
       )}
     </Flex>

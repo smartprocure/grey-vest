@@ -142,29 +142,24 @@ export let disabled = () => (
   </Container>
 )
 
-export let withIcon = () => (
-  <Container cols={3}>
+export let withIcon = () => {
+  let IconDemo = props => (
     <Flex inline column gap={1} alignItems="flex-start">
-      <Button icon="keyboard_arrow_down">Dropdown</Button>
-      <Button icon="beach_access">Other</Button>
-    </Flex>
-    <Flex inline column gap={1} alignItems="flex-start">
-      <Button large icon="keyboard_arrow_down">
+      <Button {...props} icon="keyboard_arrow_down">
         Dropdown
       </Button>
-      <Button large icon="face">
+      <Button {...props} icon="free_breakfast">
         Other
       </Button>
     </Flex>
-    <Flex inline column gap={1} alignItems="flex-start">
-      <Button compact icon="keyboard_arrow_down">
-        Dropdown
-      </Button>
-      <Button compact icon="eco">
-        Other
-      </Button>
-    </Flex>
-  </Container>
-)
+  )
+  return (
+    <Container cols={3}>
+      <IconDemo />
+      <IconDemo large />
+      <IconDemo compact />
+    </Container>
+  )
+}
 
 export let asDiv = () => <Button as="div">Click</Button>
