@@ -127,7 +127,6 @@ theme.fonts = {
 }
 
 theme.inputStyle = {
-  ...theme.fonts.Text,
   transition: 'border-color 0.2s ease-in',
   // borders & padding
   borderRadius: theme.borderRadius,

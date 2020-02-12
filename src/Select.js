@@ -9,7 +9,7 @@ import Icon from './Icon'
 let { spaces, fonts, colors } = theme
 
 let NativeSelect = ({ placeholder, options, ...props }) => (
-  <select {...props} css={theme.inputStyle}>
+  <select {...props} css={[theme.inputStyle, fonts.Text]}>
     {placeholder && <option value="">{placeholder}</option>}
     {_.map(
       x => (

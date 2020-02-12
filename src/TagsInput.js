@@ -51,6 +51,7 @@ let Input = observer(
       <input
         css={{
           ...theme.inputStyle,
+          ...theme.fonts.Text,
           padding: 0,
           height: 'auto',
           minHeight: 0,
