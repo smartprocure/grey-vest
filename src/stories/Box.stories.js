@@ -43,7 +43,7 @@ export let popupBox = () => (
 export let controlledPadding = () => {
   let GreyPaddingBox = ({ children, ...props }) => (
     <Box style={{ background: 'lightgrey' }} {...props}>
-      <Text style={{ background: 'white' }}>{children}</Text>
+      <Text as="div" style={{ background: 'white' }}>{children}</Text>
     </Box>
   )
   return (
@@ -53,6 +53,12 @@ export let controlledPadding = () => {
       </GreyPaddingBox>
       <GreyPaddingBox paddingX={1} paddingY="lg">
         {theme.space(1)}px by {theme.spaces.lg}px padding
+      </GreyPaddingBox>
+      <GreyPaddingBox padding={[0.5, 0.5]}>
+        {theme.space(0.5)}px by {theme.space(0.5)}px padding
+      </GreyPaddingBox>
+      <GreyPaddingBox paddingX={0} padding={2}>
+        {theme.space(0)}px by {theme.space(2)}px padding
       </GreyPaddingBox>
       {_.map(
         padding => (

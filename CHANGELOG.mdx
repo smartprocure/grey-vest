@@ -2,19 +2,22 @@
 
 Version 3.0.0 represents Grey Vest's first major release as an independent component library, rather than a part of contexture-react.
 
+Breaking changes are marked with a siren emoji: 🚨
+
 ## Changes
 
 - Brand-new design system! Configuration lives in `theme.js` and follows the [System UI theme specification](https://system-ui.com/theme)
 - Lots of new stories! 📖✨
 - Stories are no longer co-located with components (GreyVest alone is much smaller and flatter than contexture-react, so it makes more sense to keep them separate)
 - Expanded the `options` prop API (for **CheckboxList**, **RadioList**, and **Select**): in addition to `label` and `value`, each element now also accepts a boolean `disabled` property
+- 🚨 Purged CSS: removed `gv-` classNames from all components, and killed the **Style** component 🚨
 
 ### Components
 
 Over a dozen new components have been added:
 
 - **Text**, **Title** and **Subtitle** - typography components
-- **Dropdown** - a zero-padding variant of Popover intended to be used with DropdownItem
+- **Dropdown** and **Dialog** - Popovers pre-rolled with trigger buttons and a simpler API
 - **Tooltip** - courtesy of react-tooltip
 - **Banner** - a brightly-colored box for text
 - **Pager** - a pagination control component meant to be used with tables
@@ -24,18 +27,22 @@ Over a dozen new components have been added:
 - **FormField** - a form input plus label, tooltip, error text, etc
 - **Form**, **FormHeader**, **FormContent**, **FormFooter** - helper components for bilding forms
 - **IconButton** - replaces TextButton, except it's just for icons
-- **ColumnList** - a container that supports spacing between children and CSS columns
+- **ColumnList** - a container that supports spacing between children, plus CSS columns
+- **CommandButton** - a stateful button that leverages futil's `command` aspect
 
 A small number of components have been 🚨 **REMOVED** 🚨(or renamed):
 
+- **Style** is dead and gone 🎊
 - **SpacedList** - upcycled into ColumnList
 - **TextButton** - removed in favor of IconButton
 - **ErrorList** - renamed to **ErrorText**
 - **LinkButton** - renamed to **LinkText**
-
+- **ButtonRadio** has been removed
+- **BarChart** is no longer exported
 
 #### Changes to individual components
 
+- 🚨 **Awaiter**'s `promise` prop has been renamed to `promiseFn` (for consistency with react-async)
 - Changes to **Button**:
   - New variants: `primary`, `secondary`, `danger`, and `ghost` colors/stylings, and `compact` and `large` sizes
   - Now supports an `icon` prop (same API as the Icon component's `icon` prop)
@@ -50,6 +57,10 @@ A small number of components have been 🚨 **REMOVED** 🚨(or renamed):
 - Changes to **Modal**:
   - New components representing Modal sections: **ModalHeader**, **ModalContent**, and **ModalFooter** (available as top-level exports)
   - Modals now have a close button and can additionally be closed with the `Esc` key
+- Changes to **Popover**:
+  - Completely overhauled component! Popover now supports passing a component to `Trigger` which serves as the anchor for the popup. This component can also control the Popover's state as long as it supports `onClick` and `ref`, which means Popover can now be uncontrolled in addition to supporting the `isOpen`/`onChange`/`open` API for controlled state.
+  - New props: `Trigger`, `Popup`, `triggerProps`, `popupProps`, `label`, `placement`, and `side`
+  - 🚨 `onClose` prop replaced with `onChange` (since Popover can now open itself as well as close itself)
 - Changes to **TextInput**, **Textarea**, and **Select**:
   - Now properly handle the `disabled` prop
   - 🚨 No longer default to 100% width
@@ -75,6 +86,30 @@ Component props that control whitespace now take spacing values from GreyVest's 
 | ColumnList | `gap`, `columnGap`                | new in 3.0        |
 | Box        | `padding`, `paddingX`, `paddingY` | new in 3.0        |
 | Divider    | `margin`                          | new in 3.0        |
+
+## Migration Guide
+
+1. For all `gap` props on **Box** components that use numbers, divide the value by 8
+2. Rename all `promise` props on **Awaiter** components to `promiseFn`
+3. Convert all `onClose` props on **Popover** components to `onChange` (the callback receives the open/closed state of the popover as its argument)
+4. Replace all references to...
+   - **TabList** with **TabsList**
+   - **SpacedList** with **ColumnList**
+   - **TextButton** with **IconButton**
+   - **ErrorList** with **ErrorText**
+   - **LinkButton** with **Link**
+5. Remove all references to the **ButtonRadio**, **BarChart**, and **Style** components
+6. Remove any CSS targeting `gv-` classNames
+7. Import and use the design system constants from GreyVest's theme file, rather than hard-coding spacing or color values
+
+<hr />
+
+#### 3.0.0-alpha.19
+
+- Overhaul Popover component (and Dropdown)! New library, new API, new stories (see the 3.0 changelog for more info)
+- Add Dialog component
+- Remove some unused imports (react-date-picker, react-outside-click-handler)
+- Box: improve handling of `padding`/`paddingX`/`paddingY` props (`padding` now also accepts a 2-element array)
 
 #### 3.0.0-alpha.18
 

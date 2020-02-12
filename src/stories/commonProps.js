@@ -32,3 +32,8 @@ number | string
 If string, units should be specified. */
 ` }
 }
+
+export let func = {
+  type: { summary: 'function' },
+  defaultValue: { summary: '() => {}' },
+}
