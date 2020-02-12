@@ -1,7 +1,7 @@
 import React from 'react'
 import _ from 'lodash/fp'
 import { Flex, Dropdown, DropdownItem } from '..'
-import { lipsum } from '../utils'
+import { lipsum } from './utils'
 
 export default { title: 'Dropdown', component: Dropdown }
 

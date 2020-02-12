@@ -2,7 +2,6 @@ import _ from 'lodash/fp'
 import F from 'futil'
 import { useState } from 'react'
 import { mapProps } from 'recompose'
-import { loremIpsum } from 'lorem-ipsum'
 
 export let useLensObject = _.mapValues(useState)
 
@@ -41,5 +40,3 @@ export let getVariants = (props, variants, defaultKey) =>
 
 // Returns only the last variant of getVariants
 export let getVariant = (...args) => _.last(getVariants(...args))
-
-export let lipsum = (count, units) => loremIpsum({ count, units })

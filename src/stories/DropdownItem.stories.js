@@ -1,6 +1,6 @@
 import React from 'react'
 import { DropdownItem, Box } from '..'
-import { lipsum } from '../utils'
+import { lipsum } from './utils'
 import theme from '../theme'
 
 export default { title: 'DropdownItem', component: DropdownItem }

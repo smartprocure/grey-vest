@@ -1,7 +1,7 @@
 import React from 'react'
 import F from 'futil'
 import { Button, Flex, Popover, Dialog } from '..'
-import { lipsum } from '../utils'
+import { lipsum } from './utils'
 import { func } from './commonProps'
 
 let props = {

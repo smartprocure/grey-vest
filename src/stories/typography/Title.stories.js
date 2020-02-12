@@ -1,8 +1,8 @@
 import React from 'react'
-import { loremIpsum } from 'lorem-ipsum'
 import { Flex, Title } from '../..'
 import theme from '../../theme'
 import SizeInfo from './SizeInfo'
+import { lipsum } from '../utils'
 let { fonts } = theme
 
 export default {
@@ -10,8 +10,6 @@ export default {
   component: Title,
   parameters: { componentSubtitle: <>Header text component with <tt>large</tt> and <tt>small</tt> variants</> },
 }
-
-let lipsum = count => loremIpsum({ count })
 
 export let regular = () => (
   <Flex alignItems="center">
