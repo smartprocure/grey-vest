@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import { observer } from 'mobx-react'
+import { margin } from 'polished'
 import DatePicker from 'react-datetime-picker'
 import F from 'futil'
 import _ from 'lodash/fp'
@@ -25,7 +26,7 @@ let toLocalISOString = date =>
   ])
 
 let toDateWith = f => value =>
-  F.ifElse(x => isNaN(Date.parse(x)), () => '', x => f(new Date(x)), value)
+  isNaN(Date.parse(value)) ? '' : f(new Date(value))
 
 let toDate = toDateWith(_.identity)
 
@@ -39,23 +40,25 @@ let NativeDateInput = ({ value, onChange = _.noop, ...props }) => (
   />
 )
 
-let ReactDatePickerInput = props => (
+let ReactDatePickerInput = ({ value, ...props }) => (
   <DatePicker
     showLeadingZeros={false}
     disableClock // the clock is ugly and not interactible anyway
     calendarType={'US'}
     calendarIcon={<Icon icon="calendar_today" />}
     clearIcon={null}
+    value={toDate(value)}
     css={[
       {
         '.react-datetime-picker': {
-          '&__wrapper': _.pick(
-            ['border', 'borderRadius', 'padding', 'height', 'boxSizing'],
-            inputStyle
-          ),
+          '&__wrapper': inputStyle,
+          '&__button': {
+            outline: 'none',
+            color: colors.neutralDark,
+          },
           '&__inputGroup': {
             display: 'flex',
-            alignItems: 'center',
+            alignItems: 'baseline',
             '&__input, &__leadingZero': {
               border: 'none',
               outline: 'none',
@@ -69,6 +72,7 @@ let ReactDatePickerInput = props => (
         '.react-calendar': {
           width: `${theme.widths.calendar}px !important`,
           border: 0,
+          ...margin(theme.spaces.xs, 0),
           padding: theme.spaces.md,
           borderRadius: theme.borderRadius,
           boxShadow: theme.boxShadows.popup,
