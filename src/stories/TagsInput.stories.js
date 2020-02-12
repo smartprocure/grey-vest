@@ -1,10 +1,43 @@
 import React from 'react'
 import { loremIpsum } from 'lorem-ipsum'
-import { TagsInput, Divider } from '..'
 import _ from 'lodash/fp'
 import F from 'futil'
+import { TagsInput, Divider } from '..'
+import { flag, func, element } from './commonProps'
 
-export default { title: 'TagsInput', component: TagsInput }
+let props = {
+  rows: [
+    { name: 'tags', type: { summary: 'string[]' } },
+    {
+      name: 'flipped',
+      ...flag,
+      description:
+        'Variant with the input above and tags in right-to-left order.',
+    },
+    { name: 'hideInput', ...flag },
+    { name: 'splitCommas', ...flag },
+    { name: 'autoFocus', ...flag, description: 'Passed through to the input.' },
+    { name: 'addTag', ...func },
+    { name: 'removeTag', ...func },
+    { name: 'submit', ...func },
+    { name: 'tagStyle', type: { summary: 'object' } },
+    {
+      name: 'placeholder',
+      type: { summary: 'string' },
+      defaultValue: { summary: "'Search...'" },
+    },
+    { name: 'onBlur', ...func },
+    { name: 'onInputChange', ...func },
+    { name: 'onTagClick', ...func },
+    { name: 'Tag', type: element },
+  ],
+}
+
+export default {
+  title: 'TagsInput',
+  component: TagsInput,
+  parameters: { props },
+}
 
 let initialTags = [
   `Multiline tag! ${loremIpsum({ count: 4 })}`,
