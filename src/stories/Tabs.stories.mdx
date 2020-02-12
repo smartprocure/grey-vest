@@ -8,7 +8,7 @@ import {
   TabLabel,
   TabContent,
   TabsList,
-  ButtonRadio,
+  RadioList,
   Button,
 } from '..'
 
@@ -163,7 +163,10 @@ A tab control which switches out content dynamically. `Tabs` is used with one or
 
 <Preview>
   <Story name="Custom TabsList and TabPanel">
-    <Tabs TabsList={ButtonRadio} TabPanel={React.Fragment}>
+    <Tabs
+      TabsList={props => <RadioList columnCount={2} {...props} />}
+      TabPanel={React.Fragment}
+    >
       <Tab value="results" label="Results">
         Results Tables
       </Tab>

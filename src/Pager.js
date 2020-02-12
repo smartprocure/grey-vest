@@ -14,18 +14,13 @@ let Pager = ({
   ...props
 }) =>
   pageCount > 1 && (
-    <Flex
-      justifyContent="center"
-      alignItems="center"
-      css={{ '> *': { margin: 2 } }}
-      {...props}
-    >
+    <Flex justifyContent="center" alignItems="center" gap="xs" {...props}>
       <PagerItem disabled={!(value > 1)} onClick={() => onChange(value - 1)}>
-        <Icon icon="PreviousPage" />
+        <Icon icon="chevron_left" />
       </PagerItem>
       {value > 3 && (
         <PagerItem onClick={() => onChange(_.max([0, value - 5]))}>
-          <Icon icon="Previous5Pages" />
+          ...
         </PagerItem>
       )}
       {_.reverse(
@@ -57,14 +52,14 @@ let Pager = ({
       )}
       {value + 2 < pageCount && (
         <PagerItem onClick={() => onChange(_.min([pageCount, value + 5]))}>
-          <Icon icon="Next5Pages" />
+          ...
         </PagerItem>
       )}
       <PagerItem
         disabled={!(value < pageCount)}
         onClick={() => onChange(value + 1)}
       >
-        <Icon icon="NextPage" />
+        <Icon icon="chevron_right" />
       </PagerItem>
     </Flex>
   )

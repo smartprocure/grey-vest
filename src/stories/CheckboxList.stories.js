@@ -46,7 +46,7 @@ columns.story = {
   parameters: {
     docs: {
       storyDescription:
-        "CheckboxList uses SpacedList internally, so it also accepts all of that component's props (`columnCount`, `columnWidth`, `gap`, and `columnGap`).",
+        "CheckboxList uses ColumnList internally, so it also accepts all of that component's props (`columnCount`, `columnWidth`, `gap`, and `columnGap`).",
     },
   },
 }

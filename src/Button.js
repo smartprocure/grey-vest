@@ -10,34 +10,31 @@ let { spaces, space, colors } = theme
 let colorVariants = _.mapValues(
   ({ base, hover, active, text }) => ({
     backgroundColor: base,
-    color: text,
-    ':hover': { backgroundColor: hover },
-    ':active': { backgroundColor: active },
+    color: text || colors.background,
+    ':hover': { backgroundColor: hover || darken(0.08, base) },
+    ':active': { backgroundColor: active || darken(0.16, base) },
   }),
   {
-    plain: {
+    regular: {
       base: colors.neutralLight,
       hover: colors.neutral,
       active: colors.neutralDark,
       text: colors.secondary,
     },
-    primary: {
-      base: colors.primary,
-      hover: darken(0.08, colors.primary),
-      active: darken(0.16, colors.primary),
-      text: colors.background,
-    },
+    primary: { base: colors.primary },
     secondary: {
       base: colors.secondary,
       hover: darken(0.16, colors.secondary),
       active: lighten(0.08, colors.secondary),
-      text: colors.background,
     },
     danger: {
       base: colors.error,
-      hover: darken(0.08, colors.error),
       active: lighten(0.04, colors.error),
-      text: colors.background,
+    },
+    success: { base: colors.success },
+    info: {
+      base: colors.info,
+      active: lighten(0.04, colors.info)
     },
     ghost: {
       base: 'transparent',
@@ -80,7 +77,7 @@ let Button = ({
       },
       icon && { paddingRight: 0 },
       disabled && { cursor: 'not-allowed', opacity: 0.5 },
-      ...getVariants(props, colorVariants, 'plain'),
+      ...getVariants(props, colorVariants, 'regular'),
     ]}
     {...props}
   >

@@ -103,6 +103,30 @@ export let ghost = () => (
   </Container>
 )
 
+export let success = () => (
+  <Container>
+    <Button success>Regular</Button>
+    <Button success large>
+      Large
+    </Button>
+    <Button success compact>
+      Compact
+    </Button>
+  </Container>
+)
+
+export let info = () => (
+  <Container>
+    <Button info>Regular</Button>
+    <Button info large>
+      Large
+    </Button>
+    <Button info compact>
+      Compact
+    </Button>
+  </Container>
+)
+
 export let disabled = () => (
   <Container cols={4}>
     <Button disabled>plain</Button>

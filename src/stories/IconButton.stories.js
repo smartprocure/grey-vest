@@ -1,16 +1,8 @@
 import React from 'react'
-import { Icon, TextButton, IconButton, Flex } from '..'
+import { IconButton } from '..'
 
 export default { title: 'IconButton', component: IconButton }
 
-export let story = () => (
-  <Flex justifyContent="space-around">
-    <Icon icon="TableColumnMenu" />
-    <Icon icon="more_vert" />
-    <TextButton>
-      <Icon icon="more_vert" />
-    </TextButton>
-    <IconButton icon="more_vert" />
-    <IconButton icon="TableColumnMenu" />
-  </Flex>
-)
+export let story = () => <IconButton icon="more_vert" />
+
+export let withCustomIcon = () => <IconButton icon={() => <div>💃</div>} />
