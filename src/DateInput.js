@@ -1,34 +1,51 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import { observer } from 'mobx-react'
-import moment from 'moment'
 import DatePicker from 'react-datetime-picker'
+import F from 'futil'
 import _ from 'lodash/fp'
+import Icon from './Icon'
 import theme from './theme'
-let { inputStyle, fonts } = theme
+let { inputStyle, fonts, colors } = theme
+
+let toLocalISOString = date =>
+  _.flow(
+    _.map(_.padCharsStart('0', 2)),
+    x => _.zip(x, ['-', '-', 'T', ':', ':', '.']),
+    _.flatten,
+    F.compactJoin('')
+  )([
+    date.getFullYear(),
+    date.getMonth() + 1,
+    date.getDate(),
+    date.getHours(),
+    date.getMinutes(),
+    date.getSeconds(),
+    (date.getMilliseconds() / 1000).toFixed(3).slice(2, 5),
+  ])
+
+let toDateWith = f => value =>
+  F.ifElse(x => isNaN(Date.parse(x)), () => '', x => f(new Date(x)), value)
+
+let toDate = toDateWith(_.identity)
 
 let NativeDateInput = ({ value, onChange = _.noop, ...props }) => (
   <input
     type="datetime-local"
-    value={value ? moment(value).format('YYYY-MM-DD') : ''}
-    onChange={e => onChange(new Date(e.target.value))}
+    onChange={x => onChange(toDate(x.target.value))}
+    value={toDateWith(toLocalISOString)(value)}
     {...props}
     css={inputStyle}
   />
 )
 
-let ReactDatePickerInput = ({
-  value,
-  calendarIcon = null,
-  clearIcon = null,
-  ...props
-}) => (
+let ReactDatePickerInput = props => (
   <DatePicker
+    showLeadingZeros={false}
     disableClock // the clock is ugly and not interactible anyway
     calendarType={'US'}
-    calendarIcon={calendarIcon}
-    clearIcon={clearIcon}
-    value={_.isDate(value) || _.isEmpty(value) ? value : ''}
+    calendarIcon={<Icon icon="calendar_today" />}
+    clearIcon={null}
     css={[
       {
         '.react-datetime-picker': {
@@ -37,9 +54,14 @@ let ReactDatePickerInput = ({
             inputStyle
           ),
           '&__inputGroup': {
-            '&__input, &__leadingZero, &__divider': {
+            display: 'flex',
+            alignItems: 'center',
+            '&__input, &__leadingZero': {
               border: 'none',
               outline: 'none',
+              paddingTop: 1,
+              paddingBottom: 1,
+              color: colors.text,
               ...fonts.Text,
             },
           },
@@ -58,23 +80,23 @@ let ReactDatePickerInput = ({
             '&__label': {
               ...fonts.Text.variants.small,
               fontWeight: 500,
-              color: theme.colors.primary,
+              color: colors.primary,
               flex: 1,
             },
             '&__arrow': {
               minWidth: theme.spaces.lg,
               fontSize: theme.fontSizes[2],
-              color: theme.colors.secondary,
+              color: colors.secondary,
               opacity: 0.5,
             },
           },
           '&__tile': {
             ...fonts.Text,
             ...fonts.Text.variants.small,
-            color: theme.colors.secondary,
+            color: colors.secondary,
             '& abbr': { opacity: 0.5 },
             '&:hover': {
-              backgroundColor: theme.colors.neutrals[0],
+              backgroundColor: colors.neutrals[0],
               '& abbr': { opacity: 1 },
             },
             padding: 0,
@@ -85,11 +107,11 @@ let ReactDatePickerInput = ({
               width: 24,
               opacity: 1,
               display: 'inline-block',
-              boxShadow: `0 2px 0 0 ${theme.colors.primary}`,
+              boxShadow: `0 2px 0 0 ${colors.primary}`,
             },
             '&--active': {
-              backgroundColor: `${theme.colors.secondary} !important`,
-              color: theme.colors.backgrounds[0],
+              backgroundColor: `${colors.secondary} !important`,
+              color: colors.backgrounds[0],
               '& abbr': { opacity: 1 },
             },
           },
