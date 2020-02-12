@@ -22,7 +22,7 @@ let NativeSelect = ({ placeholder, options, ...props }) => (
   </select>
 )
 
-let ReactSelect = ({ value, options, ...props }) => (
+let ReactSelect = ({ value, options, onChange, ...props }) => (
   <BaseReactSelect
     styles={{
       container: provided => ({
@@ -61,7 +61,7 @@ let ReactSelect = ({ value, options, ...props }) => (
       }),
       indicatorSeparator: () => ({}),
       indicatorContainer: () => ({}),
-      dropdownIndicator: () => ({ padding: 8 }),
+      dropdownIndicator: () => ({ padding: spaces.sm }),
       placeholder: provided => ({
         ...provided,
         ...theme.inputStyle['::placeholder'],
@@ -69,7 +69,7 @@ let ReactSelect = ({ value, options, ...props }) => (
     }}
     {...{ options, ...props }}
     value={_.find({ value }, options)}
-    onChange={option => props.onChange(option.value)}
+    onChange={option => onChange({ target: { value: option.value } })}
     components={{
       DropdownIndicator: ({ isFocused }) => (
         <Icon
