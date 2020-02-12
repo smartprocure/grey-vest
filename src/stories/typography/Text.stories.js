@@ -12,7 +12,7 @@ export default {
   parameters: { componentSubtitle: <>Body text component with <tt>small</tt> and <tt>extraSmall</tt> variants</> },
 }
 
-let lipsum = () => loremIpsum({ units: 'paragraphs' })
+let lipsum = size => loremIpsum({ size, units: 'paragraphs' })
 
 export let regular = () => (
   <Flex alignItems="center">
@@ -41,3 +41,10 @@ export let extraSmallVariant = () => (
 )
 
 export let asParagraph = _.times(() => <Text as="p">{lipsum()}</Text>, 3)
+
+export let weightAndItalicsVariants = () => (
+  <Flex column gap={2}>
+    <Text bold>{lipsum()}</Text>
+    <Text italic>{lipsum()}</Text>
+  </Flex>
+)
