@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import theme from './theme'
 
-let Link = styled.span({
+let LinkText = styled.span({
   color: theme.colors.primary,
   backgroundColor: 'transparent',
   border: 'none',
@@ -14,4 +14,4 @@ let Link = styled.span({
   '&:hover, &:focus': { textDecoration: 'none' },
 })
 
-export default Link
+export default LinkText
