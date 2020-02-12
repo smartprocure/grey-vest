@@ -38,6 +38,7 @@ A small number of components have been 🚨 **REMOVED** 🚨(or renamed):
 - **ErrorList** - renamed to **ErrorText**
 - **LinkButton** - renamed to **LinkText**
 - **ButtonRadio** has been removed
+- **ExpandableTagsInput** has been removed
 - **BarChart** is no longer exported
 
 #### Changes to individual components
@@ -67,11 +68,12 @@ A small number of components have been 🚨 **REMOVED** 🚨(or renamed):
 - Changes to **TextInput**, **Textarea**, and **Select**:
   - Now properly handle the `disabled` prop
   - 🚨 No longer default to 100% width
-- 🚨 **Tag** no longer accepts a RemoveIcon component prop
 - Changes to **Tabs**/**TabList**:
   - New variants for Tabs and TabsList: `transparent` and `classic`
   - The look & feel of TabsList has been overhauled! (the old styling is preseved under the `classic` variant)
   - 🚨 **TabList** component has been renamed to **TabsList** (added an 's') for parity with the `TabsList` component prop on Tabs
+- 🚨 **Tag** no longer accepts a RemoveIcon component prop
+- New props on **TagsInput**: `flipped` (variant with the input on top and the tags in reverse order), and `hideInput`
 
 ### Spacing props
 
@@ -100,7 +102,7 @@ Component props that control whitespace now take spacing values from GreyVest's 
    - **TextButton** with **IconButton**
    - **ErrorList** with **ErrorText**
    - **LinkButton** with **Link**
-4. Remove all references to the **ButtonRadio**, **BarChart**, and **Style** components
+4. Remove all references to the **ButtonRadio**, **BarChart**, **ExpandableTagsInput**, and **Style** components
 5. Remove any CSS targeting `gv-` classNames
 6. Update any **Icon** components using contexture-react icon keys to use a material icon key (or a custom component) instead
 7. Import and use the design system constants from GreyVest's theme file, rather than hard-coding spacing or color values

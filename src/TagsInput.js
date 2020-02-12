@@ -100,7 +100,7 @@ let Input = observer(
 let TagsInput = ({
   autoFocus,
   tags,
-  flip,
+  flipped,
   hideInput,
   addTag = _.noop,
   removeTag,
@@ -151,18 +151,18 @@ let TagsInput = ({
       gap={1}
       {...props}
     >
-      {flip && input}
-      {!(flip && _.isEmpty(tags)) && (
+      {flipped && input}
+      {!(flipped && _.isEmpty(tags)) && (
         <TagsList
           {...{
             Tag,
             onTagClick,
             removeTag,
             tagStyle,
-            tags: F.when(() => flip, _.reverse, tags),
+            tags: F.when(() => flipped, _.reverse, tags),
           }}
         >
-          {!flip && input}
+          {!flipped && input}
         </TagsList>
       )}
     </Flex>
