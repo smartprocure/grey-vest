@@ -1,7 +1,5 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
-import React from 'react'
-import F from 'futil'
 import {
   Flex,
   Button,
@@ -9,46 +7,25 @@ import {
   Title,
   Dropdown,
   DropdownItem,
-  Icon,
-  IconButton,
 } from '../..'
 import theme from '../../theme'
 
 export default { title: 'Demos | Page Header' }
 
 export let story = () => {
-  let SubSection = ({ active, title, onClick, children, ...props }) => {
-    let open = React.useState(false)
-    return (
-      <div>
-        <Button ghost
-          compact
-          style={{ color: !active && theme.colors.secondary }}
-          icon={children && 'arrow_drop_down'}
-          onClick={() => {
-            F.flip(open)()
-            onClick()
-          }}
-          {...props}
-        >
-          {title}
-        </Button>
-        {children && <Dropdown open={open}>{children}</Dropdown>}
-      </div>
+  let SubSection = ({ active, label, children, ...props }) => {
+    let buttonProps = {
+      ghost: true,
+      compact: true,
+      style: { color: !active && theme.colors.secondary },
+      ...props,
+    }
+    return children ? (
+      <Dropdown {...{ label, ...buttonProps }}>{children}</Dropdown>
+    ) : (
+      <Button {...buttonProps}>{label}</Button>
     )
   }
-  let InfoButton = props => (
-    <Button
-      css={{
-        color: theme.colors.backgrounds[0],
-        backgroundColor: theme.colors.infos[0],
-        paddingTop: 1,
-        paddingBottom: 1,
-      }}
-      {...props}
-    />
-  )
-
   return (
     <Flex
       alignItems="center"
@@ -61,23 +38,23 @@ export let story = () => {
     >
       <Flex gap={1} alignItems="center">
         <Subtitle large>Section</Subtitle>
-        <SubSection active title="Sub-section 1" />
-        <SubSection title="Sub-section 2" />
-        <SubSection title="Sub-section 3">
+        <SubSection active label="Sub-section 1" />
+        <SubSection label="Sub-section 2" />
+        <SubSection label="Sub-section 3">
           <DropdownItem>Subsection item 1</DropdownItem>
           <DropdownItem>Subsection item 2</DropdownItem>
           <DropdownItem>Subsection item 3</DropdownItem>
         </SubSection>
-        <Icon icon="TableColumnMenu" />
+        <Dropdown trigger="icon" />
       </Flex>
 
       <Flex gap={1}>
-        <InfoButton compact icon="map">
+        <Button info compact icon="map">
           Product Tour
-        </InfoButton>
-        <InfoButton compact icon="chat">
+        </Button>
+        <Button info compact icon="chat">
           Help Chat
-        </InfoButton>
+        </Button>
       </Flex>
     </Flex>
   )
@@ -95,9 +72,9 @@ export let DetailHeader = () => (
     <Title large>Page title</Title>
     <Flex alignItems="center" gap={1}>
       <Button primary>Primary</Button>
-      <IconButton icon="notifications" />
-      <IconButton icon="share" />
-      <IconButton icon="more_vert" />
+      <Dropdown trigger="icon" icon="notifications" />
+      <Dropdown trigger="icon" icon="share" />
+      <Dropdown trigger="icon" icon="more_vert" />
     </Flex>
   </Flex>
 )
