@@ -3,13 +3,13 @@ import { jsx } from '@emotion/core'
 import _ from 'lodash/fp'
 import F from 'futil'
 import { observer } from 'mobx-react'
-import GVCheckbox from './Checkbox'
+import Checkbox from './Checkbox'
 import ColumnList from './ColumnList'
 import Flex from './Flex'
 import { Text } from './Typography'
 import theme from './theme'
 
-let CheckboxList = ({ Checkbox = GVCheckbox, options, value, onChange, ...props }) => (
+let CheckboxList = ({ options, value, onChange, ...props }) => (
   <ColumnList gap={1} {...props}>
     {_.map(
       option => (
