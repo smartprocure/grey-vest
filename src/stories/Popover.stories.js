@@ -126,3 +126,14 @@ export let controlledWithTrigger = () => {
     </Flex>
   )
 }
+
+export let popupProps = () => (
+  <Popover
+    Trigger={Button}
+    label="click me"
+    placement="right"
+    popupProps={{ onClick: () => alert('You clicked the popup!') }}
+  >
+    Click me too!
+  </Popover>
+)
