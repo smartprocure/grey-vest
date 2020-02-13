@@ -101,7 +101,7 @@ let TagsInput = ({
   autoFocus,
   tags,
   flipped,
-  hideInput,
+  readOnly,
   addTag = _.noop,
   removeTag,
   submit = _.noop,
@@ -127,7 +127,7 @@ let TagsInput = ({
         _.trim,
         addTag
       )
-  let input = !hideInput && (
+  let input = !readOnly && (
     <Input
       {...{
         tags,

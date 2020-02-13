@@ -14,7 +14,7 @@ let props = {
       description:
         'Variant with the input above and tags in right-to-left order.',
     },
-    { name: 'hideInput', ...flag },
+    { name: 'readOnly', ...flag },
     { name: 'splitCommas', ...flag },
     { name: 'autoFocus', ...flag, description: 'Passed through to the input.' },
     { name: 'addTag', ...func },

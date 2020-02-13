@@ -73,7 +73,7 @@ A small number of components have been 🚨 **REMOVED** 🚨(or renamed):
   - The look & feel of TabsList has been overhauled! (the old styling is preseved under the `classic` variant)
   - 🚨 **TabList** component has been renamed to **TabsList** (added an 's') for parity with the `TabsList` component prop on Tabs
 - 🚨 **Tag** no longer accepts a RemoveIcon component prop
-- New props on **TagsInput**: `flipped` (variant with the input on top and the tags in reverse order), and `hideInput`
+- New props on **TagsInput**: `flipped` (variant with the input on top and the tags in reverse order), and `readOnly` (keeps the tags but hides the input)
 
 ### Spacing props
 
@@ -101,7 +101,7 @@ Component props that control whitespace now take spacing values from GreyVest's 
    - **SpacedList** with **ColumnList**
    - **TextButton** with **IconButton**
    - **ErrorList** with **ErrorText**
-   - **LinkButton** with **Link**
+   - **LinkButton** with **LinkText**
 4. Remove all references to the **ButtonRadio**, **BarChart**, **ExpandableTagsInput**, and **Style** components
 5. Remove any CSS targeting `gv-` classNames
 6. Update any **Icon** components using contexture-react icon keys to use a material icon key (or a custom component) instead
