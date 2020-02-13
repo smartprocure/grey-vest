@@ -1,13 +1,13 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import { forwardRef } from 'react'
-import { darken, lighten } from 'polished'
+import { darken, lighten, padding } from 'polished'
 import _ from 'lodash/fp'
 import { Subtitle, Text } from './Typography'
 import GVIcon from './Icon'
 import Flex from './Flex'
 import theme from './theme'
-import { getVariants } from './utils'
+import { getVariants, getVariant } from './utils'
 let { spaces, space, colors } = theme
 
 let colorVariants = _.mapValues(
@@ -48,33 +48,31 @@ let colorVariants = _.mapValues(
   }
 )
 
-let ButtonText = ({ size, ...x }) => {
-  if (size === 'small')
-    return <Text extraSmall bold {...x} />
-  if (size === 'large') return <Subtitle large {...x} />
-  return <Subtitle {...x} />
+let sizeVariants = {
+  small: {
+    text: x => <Text extraSmall bold {...x} />,
+    padding: [0.5, 1],
+  },
+  large: {
+    text: x => <Subtitle large {...x} />,
+    padding: [2, 2],
+  },
+  regular: {
+    text: x => <Subtitle {...x} />,
+    padding: [1, 2],
+  },
 }
 
-let getPadding = (size, ratio = 2) =>
-  `${space(size)}px ${space(size * ratio)}px`
-
 let Button = (
-  {
-    as: As = 'button',
-    Icon = GVIcon,
-    small,
-    large,
-    icon,
-    disabled,
-    children,
-    ...props
-  },
+  { as: As = 'button', Icon = GVIcon, icon, disabled, children, ...props },
   ref
 ) => (
   <As
     css={[
       {
-        padding: getPadding(large ? 2 : small ? 0.5 : 1, large ? 1 : 2),
+        ...padding(
+          ..._.map(space, getVariant(props, sizeVariants, 'regular').padding)
+        ),
         border: 'none',
         outline: 'none',
         cursor: 'pointer',
@@ -89,15 +87,13 @@ let Button = (
     {...{ ref, ...props }}
   >
     <Flex alignItems="center" justifyContent="center">
-      <ButtonText size={(small && 'small') || (large && 'large')}>
-        {children}
-      </ButtonText>
+      {getVariant(props, sizeVariants, 'regular').text({ children })}
       {icon && (
         <Icon
-          {...{ icon, large, small }}
+          {...{ icon, ..._.pick(['large', 'small'], props) }}
           style={{
             paddingLeft: spaces.xs,
-            paddingRight: small ? spaces.xs : spaces.sm,
+            paddingRight: props.small ? spaces.xs : spaces.sm,
             opacity: 0.5,
             lineHeight: 0,
           }}
