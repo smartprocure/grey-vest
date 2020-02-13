@@ -159,7 +159,7 @@ let TagsInput = ({
             onTagClick,
             removeTag,
             tagStyle,
-            tags: F.when(() => flipped, _.reverse, tags),
+            tags: F.when(flipped, _.reverse, tags),
           }}
         >
           {!flipped && input}
