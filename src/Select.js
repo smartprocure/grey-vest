@@ -73,8 +73,7 @@ let ReactSelect = ({ value, options, onChange, ...props }) => (
     components={{
       DropdownIndicator: ({ isFocused }) => (
         <Icon
-          icon="keyboard_arrow_down"
-          size={3}
+          icon="arrow_drop_down"
           style={{ marginRight: spaces.sm, opacity: isFocused ? 1 : 0.5 }}
         />
       ),
