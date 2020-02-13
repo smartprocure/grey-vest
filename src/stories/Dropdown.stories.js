@@ -27,9 +27,24 @@ export let withIconTrigger = () => (
 
 export let withButtonProps = () => (
   <Center>
-    <Dropdown secondary large icon="face">
+    <Dropdown secondary large icon="local_bar">
       {generateDropdownItems(5)}
     </Dropdown>
-    <Dropdown trigger="icon" icon="beach_access">{generateDropdownItems(5)}</Dropdown>
+    <Dropdown trigger="icon" icon="beach_access">
+      {generateDropdownItems(5)}
+    </Dropdown>
+  </Center>
+)
+
+export let closingFromDropdownItem = () => (
+  <Center>
+    <Dropdown label="dropdown with 'keepopen'" keepOpen>
+      <DropdownItem icon="tag_faces">
+        Clicking this item does nothing
+      </DropdownItem>
+      <DropdownItem closePopup icon="close">
+        Clicking this item closes the popup
+      </DropdownItem>
+    </Dropdown>
   </Center>
 )

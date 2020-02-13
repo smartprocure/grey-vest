@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
-import { forwardRef, useState } from 'react'
+import { forwardRef, useState, createContext } from 'react'
 import TooltipTrigger from 'react-popper-tooltip'
 import { setDisplayName } from 'recompose'
 import { observer } from 'mobx-react'
@@ -32,6 +32,8 @@ let EmptyTrigger = forwardRef((props, ref) => (
   />
 ))
 
+export let PopoverContext = createContext()
+
 // TODO: expand the API for triggerProps and popupProps to include functions
 // of `isToggled` to props in addition to a props object
 export let Popover = _.flow(
@@ -49,6 +51,7 @@ export let Popover = _.flow(
     label = 'dropdown',
     isOpen: controlledIsOpen,
     onChange: controlledOnChange,
+    keepOpen,
     children,
     ...props
   }) => {
@@ -57,6 +60,7 @@ export let Popover = _.flow(
       controlledIsOpen === undefined
         ? state
         : [controlledIsOpen, controlledOnChange]
+    let close = () => onChange(false)
     return (
       <TooltipTrigger
         trigger="click"
@@ -71,8 +75,16 @@ export let Popover = _.flow(
           offset: { offset: `0, ${theme.spaces.xs}` },
         }}
         tooltip={({ tooltipRef, getTooltipProps }) => (
-          <Popup {...getTooltipProps({ ...popupProps, ref: tooltipRef })}>
-            {children}
+          <Popup
+            {...getTooltipProps({
+              ...popupProps,
+              onClick: _.over([!keepOpen && close, popupProps.onClick]),
+              ref: tooltipRef,
+            })}
+          >
+            <PopoverContext.Provider value={[isOpen, onChange]}>
+              {F.callOrReturn(children, close)}
+            </PopoverContext.Provider>
           </Popup>
         )}
         {...props}
@@ -84,7 +96,7 @@ export let Popover = _.flow(
               ref: triggerRef,
             })}
           >
-            {label}
+            {F.callOrReturn(label, isOpen)}
           </Trigger>
         )}
       </TooltipTrigger>
@@ -99,6 +111,7 @@ let parentProps = [
   'isOpen',
   'onChange',
   'open',
+  'keepOpen',
   'children',
 ]
 
@@ -107,7 +120,7 @@ let parentProps = [
 let buttonPopover = popupProps => ({
   trigger = 'button',
   icon = open =>
-    ({ button: open ? 'arrow_drop_up' : 'arrow_drop_down', icon: 'more_vert' }[
+    ({ button: `arrow_drop_${open ? 'up' : 'down'}`, icon: 'more_vert' }[
       trigger
     ]),
   ...props

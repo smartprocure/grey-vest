@@ -1,7 +1,6 @@
 import React from 'react'
 import F from 'futil'
-import { Button, Flex, Popover, Dialog } from '..'
-import { lipsum } from './utils'
+import { Button, Flex, Popover } from '..'
 import { func } from './commonProps'
 
 let props = {
@@ -55,10 +54,6 @@ let props = {
 }
 export default { title: 'Popover', component: Popover, parameters: { props } }
 
-let Center = props => (
-  <Flex gap={2} justifyContent="space-around" alignItems="center" {...props} />
-)
-
 export let uncontrolled = () => (
   <Popover
     Trigger={Button}
@@ -67,18 +62,6 @@ export let uncontrolled = () => (
   >
     Some Popover Content
   </Popover>
-)
-
-export let minWidth = () => (
-  <Center>
-    <Dialog>._.</Dialog>
-  </Center>
-)
-
-export let maxWidth = () => (
-  <Center>
-    <Dialog>{lipsum(4)}</Dialog>
-  </Center>
 )
 
 export let controlledLens = () => {
@@ -127,7 +110,7 @@ export let controlledWithTrigger = () => {
   )
 }
 
-export let popupProps = () => (
+export let popupOnClick = () => (
   <Popover
     Trigger={Button}
     label="click me"
@@ -136,4 +119,41 @@ export let popupProps = () => (
   >
     Click me too!
   </Popover>
+)
+popupOnClick.story = { name: 'Popup onClick' }
+
+export let closingManually = () => (
+  <Flex justifyContent="space-evenly">
+    <Popover
+      Trigger={Button}
+      label="default behavior"
+      placement="top"
+      popupProps={{ style: { maxWidth: 'unset' } }}
+    >
+      <Flex
+        style={{ width: 400, height: 200 }}
+        alignItems="center"
+        justifyContent="center"
+      >
+        Click anywhere inside the popup to close it!
+      </Flex>
+    </Popover>
+    <Popover
+      Trigger={Button}
+      label="with keepOpen"
+      keepOpen
+      placement="top"
+      popupProps={{ style: { maxWidth: 'unset' } }}
+    >
+      {close => (
+        <Flex
+          style={{ width: 400, height: 200 }}
+          alignItems="center"
+          justifyContent="center"
+        >
+          <Button primary onClick={close}>Click me to close the popup</Button>
+        </Flex>
+      )}
+    </Popover>
+  </Flex>
 )
