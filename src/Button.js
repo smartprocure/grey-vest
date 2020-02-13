@@ -48,20 +48,14 @@ let colorVariants = _.mapValues(
   }
 )
 
-let sizeVariants = {
-  small: {
-    text: x => <Text extraSmall bold {...x} />,
-    padding: [0.5, 1],
-  },
-  large: {
-    text: x => <Subtitle large {...x} />,
-    padding: [2, 2],
-  },
-  regular: {
-    text: x => <Subtitle {...x} />,
-    padding: [1, 2],
-  },
+let textVariants = {
+  small: x => <Text extraSmall bold {...x} />,
+  large: x => <Subtitle large {...x} />,
+  regular: x => <Subtitle {...x} />,
 }
+
+let paddings = { small: [0.5, 1], large: [2, 2], regular: [1, 2] }
+let paddingVariants = _.mapValues(_.map(space), paddings)
 
 let Button = (
   { as: As = 'button', Icon = GVIcon, icon, disabled, children, ...props },
@@ -70,9 +64,7 @@ let Button = (
   <As
     css={[
       {
-        ...padding(
-          ..._.map(space, getVariant(props, sizeVariants, 'regular').padding)
-        ),
+        ...padding(...getVariant(props, paddingVariants, 'regular')),
         border: 'none',
         outline: 'none',
         cursor: 'pointer',
@@ -87,7 +79,7 @@ let Button = (
     {...{ ref, ...props }}
   >
     <Flex alignItems="center" justifyContent="center">
-      {getVariant(props, sizeVariants, 'regular').text({ children })}
+      {getVariant(props, textVariants, 'regular')({ children })}
       {icon && (
         <Icon
           {...{ icon, ..._.pick(['large', 'small'], props) }}
