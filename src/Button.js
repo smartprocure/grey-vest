@@ -18,7 +18,7 @@ let colorVariants = _.mapValues(
     ':active': { backgroundColor: active || darken(0.16, base) },
   }),
   {
-    regular: {
+    default: {
       base: colors.neutralLight,
       hover: colors.neutral,
       active: colors.neutralDark,
@@ -51,10 +51,10 @@ let colorVariants = _.mapValues(
 let textVariants = {
   small: x => <Text extraSmall bold {...x} />,
   large: x => <Subtitle large {...x} />,
-  regular: x => <Subtitle {...x} />,
+  default: x => <Subtitle {...x} />,
 }
 
-let paddings = { small: [0.5, 1], large: [2, 2], regular: [1, 2] }
+let paddings = { small: [0.5, 1], large: [2, 2], default: [1, 2] }
 let paddingVariants = _.mapValues(_.map(space), paddings)
 
 let Button = (
@@ -64,7 +64,7 @@ let Button = (
   <As
     css={[
       {
-        ...padding(...getVariant(props, paddingVariants, 'regular')),
+        ...padding(...getVariant(props, paddingVariants)),
         border: 'none',
         outline: 'none',
         cursor: 'pointer',
@@ -74,12 +74,12 @@ let Button = (
       },
       icon && { paddingRight: 0 },
       disabled && { cursor: 'not-allowed', opacity: 0.5 },
-      ...getVariants(props, colorVariants, 'regular'),
+      ...getVariants(props, colorVariants),
     ]}
     {...{ ref, ...props }}
   >
     <Flex alignItems="center" justifyContent="center">
-      {getVariant(props, textVariants, 'regular')({ children })}
+      {getVariant(props, textVariants)({ children })}
       {icon && (
         <Icon
           {...{ icon, ..._.pick(['large', 'small'], props) }}

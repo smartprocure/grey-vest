@@ -67,7 +67,7 @@ let regular = {
   '&:first-child': { borderTopLeftRadius: theme.borderRadius },
   '&:last-child': { borderTopRightRadius: theme.borderRadius },
 }
-let variants = { classic, transparent, regular }
+let variants = { classic, transparent, default: regular }
 
 let TabsList = ({ value, onChange = () => {}, options, ...props }) => (
   <div>
@@ -83,7 +83,7 @@ let TabsList = ({ value, onChange = () => {}, options, ...props }) => (
               verticalAlign: 'bottom',
               textAlign: 'center',
             },
-            getVariant(props, variants, 'regular'),
+            getVariant(props, variants),
           ]}
           onClick={() => onChange(x.value, value)}
         >

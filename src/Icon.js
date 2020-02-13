@@ -4,11 +4,8 @@ import _ from 'lodash/fp'
 import theme from './theme'
 import { getVariant } from './utils'
 
-let sizes = _.mapValues(F.getIn(theme.fontSizes), {
-  small: 1,
-  regular: 2,
-  large: 4,
-})
+let sizes = { default: 2, small: 1, large: 4 }
+let sizeVariants = _.mapValues(F.getIn(theme.fontSizes), sizes)
 
 let Icon = React.forwardRef(({ icon, style, className, ...props }, ref) =>
   _.isFunction(icon) ? (
@@ -16,7 +13,7 @@ let Icon = React.forwardRef(({ icon, style, className, ...props }, ref) =>
   ) : (
     <i
       className={`material-icons ${className}`}
-      style={{ fontSize: getVariant(props, sizes, 'regular'), ...style }}
+      style={{ fontSize: getVariant(props, sizeVariants), ...style }}
       {...{ ref, ...props }}
     >
       {icon}

@@ -11,7 +11,7 @@ let styleFromVariant = ({ backgroundColor, textColor }) => ({
 })
 
 let variants = {
-  regular: {
+  default: {
     backgroundColor: colors.primary,
     textColor: colors.backgrounds[0],
     icon: 'priority_high',
@@ -29,7 +29,7 @@ let variants = {
 }
 
 let Banner = ({ children, icon, ...props }) => {
-  let variant = getVariant(props, variants, 'regular')
+  let variant = getVariant(props, variants)
   return (
     <Flex
       alignItems="center"
