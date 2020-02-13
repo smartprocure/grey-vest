@@ -18,10 +18,10 @@ A flag prop is simply a boolean prop on a component. With React's [prop shorthan
 <Title large>This is a large title</Title>
 ```
 
-The main disadvantage of using standalone flags for each variant over enumerated properties like `type` or `size` is that flags are never mutually exclusive even when the variants should be, so applying multiple variant flags at once can have unintended consequences. However, we feel that the conciseness of the flag API makes up for this downside. (Contrast `<Button size="compact" type="primary">` with `<Button primary compact>`.)
+The main disadvantage of using standalone flags for each variant over enumerated properties like `type` or `size` is that flags are never mutually exclusive even when the variants should be, so applying multiple variant flags at once can have unintended consequences. However, we feel that the conciseness of the flag API makes up for this downside. (Contrast `<Button size="small" type="primary">` with `<Button primary small>`.)
 
 ```jsx
-<Button primary compact>I am a compact primary button</Button>
+<Button primary small>I am a small primary button</Button>
 ```
 
 ## Variants in GreyVest
@@ -31,7 +31,7 @@ The main disadvantage of using standalone flags for each variant over enumerated
 | Banner | `warning`, `error` | background color and icon |
 | Box | `popup`, `modal` | box-shadow styling |
 | Button | `primary`, `secondary`, `danger`, `ghost` | background and text colors |
-| Button | `compact`, `large` | padding, text size, and icon size |
+| Button | `small`, `large` | padding, text size, and icon size |
 | Icon | `small`, `large` | icon size |
 | IconButton | `small`, `large` | padding (on the `small` variant) and size (on the `large` variant) |
 | Subtitle | `large` | font size and line height |

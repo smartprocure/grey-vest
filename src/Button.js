@@ -49,8 +49,8 @@ let colorVariants = _.mapValues(
 )
 
 let ButtonText = ({ size, ...x }) => {
-  if (size === 'compact')
-    return <Text extraSmall css={{ fontWeight: 'bold' }} {...x} />
+  if (size === 'small')
+    return <Text extraSmall bold {...x} />
   if (size === 'large') return <Subtitle large {...x} />
   return <Subtitle {...x} />
 }
@@ -62,7 +62,7 @@ let Button = (
   {
     as: As = 'button',
     Icon = GVIcon,
-    compact,
+    small,
     large,
     icon,
     disabled,
@@ -74,7 +74,7 @@ let Button = (
   <As
     css={[
       {
-        padding: getPadding(large ? 2 : compact ? 0.5 : 1, large ? 1 : 2),
+        padding: getPadding(large ? 2 : small ? 0.5 : 1, large ? 1 : 2),
         border: 'none',
         outline: 'none',
         cursor: 'pointer',
@@ -89,15 +89,15 @@ let Button = (
     {...{ ref, ...props }}
   >
     <Flex alignItems="center" justifyContent="center">
-      <ButtonText size={(compact && 'compact') || (large && 'large')}>
+      <ButtonText size={(small && 'small') || (large && 'large')}>
         {children}
       </ButtonText>
       {icon && (
         <Icon
-          {...{ icon, large, small: compact }}
+          {...{ icon, large, small }}
           style={{
             paddingLeft: spaces.xs,
-            paddingRight: compact ? spaces.xs : spaces.sm,
+            paddingRight: small ? spaces.xs : spaces.sm,
             opacity: 0.5,
             lineHeight: 0,
           }}

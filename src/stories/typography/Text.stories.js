@@ -26,7 +26,7 @@ export let smallVariant = () => (
     <SizeInfo config={fonts.Text.variants.small} />
     <Text small>
       Small text. Used for table headers and footers, field labels, dropdown
-      items, compact buttons, pagination, and banner copy. {lipsum()}
+      items, small buttons, pagination, and banner copy. {lipsum()}
     </Text>
   </Flex>
 )

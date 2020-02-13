@@ -21,10 +21,10 @@ export let story = () => <Icon icon="weekend" />
 export let customIcons = () => (
   <Flex justifyContent="space-evenly" alignItems="center">
     <Icon icon={() => '💃'} />
-    <Icon icon={<Button compact>fancy</Button>} />
+    <Icon icon={<Button small>fancy</Button>} />
     <Icon
       icon={
-        <Button compact icon={() => '💃'}>
+        <Button small icon={() => '💃'}>
           extra fancy
         </Button>
       }

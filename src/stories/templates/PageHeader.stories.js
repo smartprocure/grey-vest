@@ -16,7 +16,7 @@ export let story = () => {
   let SubSection = ({ active, label, children, ...props }) => {
     let buttonProps = {
       ghost: true,
-      compact: true,
+      small: true,
       style: { color: !active && theme.colors.secondary },
       ...props,
     }
@@ -49,10 +49,10 @@ export let story = () => {
       </Flex>
 
       <Flex gap={1}>
-        <Button info compact icon="map">
+        <Button info small icon="map">
           Product Tour
         </Button>
-        <Button info compact icon="chat">
+        <Button info small icon="chat">
           Help Chat
         </Button>
       </Flex>

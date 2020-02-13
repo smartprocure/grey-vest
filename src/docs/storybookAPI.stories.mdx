@@ -39,7 +39,7 @@ As a result, our storybook configuration is customized to pass the values from t
 
 ```jsx
 {
-  componentSubtitle: <>Button with <tt>large</tt> and <tt>compact</tt> variants</>
+  componentSubtitle: <>Button with <tt>large</tt> and <tt>small</tt> variants</>
 }
 ```
 
@@ -92,7 +92,7 @@ let flagDef = {
 let props = {
   sections: {
     flags: [
-      { name: 'compact', ...flagDef },
+      { name: 'small', ...flagDef },
       { name: 'large', ...flagDef },
     ],
     other: [
