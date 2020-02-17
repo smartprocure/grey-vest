@@ -55,6 +55,7 @@ A small number of components have been 🚨 **REMOVED** 🚨(or renamed):
   - Both now support the `disabled` property on options (to mark that option as disabled)
   - Both components now also support ColumnList props (`gap`, `columnCount`, `columnWidth`, and `columnGap`)
 - New props on **DropdownItem**: `disabled`, `truncate`, and `icon` (same as the Icon component's `icon` prop)
+- Added a `gap` prop to **Flex** to control spacing between child elements using CSS selectors and margins. (Note that if `wrap` is set, this adds a `div` wrapper around the Flex component)
 - Changes to **Icon**:
   - New variants: `small` and `large`
   - 🚨 Removed support for contexture-react's custom icon keys (eg 'SortAscending', 'TableColumnMenu', etc) - the `icon` prop now only supports [material icon keys](https://material.io/resources/icons/) or components
@@ -77,37 +78,40 @@ A small number of components have been 🚨 **REMOVED** 🚨(or renamed):
 
 ### Spacing props
 
-Component props that control whitespace now take spacing values from GreyVest's design system instead of pixel measurements. These props can take either a number which is multiplied by `8` to produce a size in pixels, or one of the following string aliases:
+Component props that control whitespace now take the following spacing aliases from GreyVest's design system in addition to regular values:
 
 - `xs`: 4px
 - `sm`: 8px
 - `md`: 16px
 - `lg`: 32px
 
-| Component  | Prop(s)                           | Status            |
-| ---------- | --------------------------------- | ----------------- |
-| Grid       | `gap`, `rowGap`, `columnGap`      | 🚨**BREAKING** 🚨 |
-| Flex       | `gap`                             | new in 3.0        |
-| ColumnList | `gap`, `columnGap`                | new in 3.0        |
-| Box        | `padding`, `paddingX`, `paddingY` | new in 3.0        |
-| Divider    | `margin`                          | new in 3.0        |
+| Component  | Prop(s)                           | New? |
+| ---------- | --------------------------------- | ---- |
+| Grid       | `gap`, `rowGap`, `columnGap`      | no   |
+| Flex       | `gap`                             | yes  |
+| ColumnList | `gap`, `columnGap`                | yes  |
+| Box        | `padding`, `paddingX`, `paddingY` | yes  |
+| Divider    | `margin`                          | yes  |
 
 ## Migration Guide
 
-1. For all `gap` props on **Box** components that use numbers, divide the value by 8
-2. Convert all `onClose` props on **Popover** components to `onChange` (the callback receives the open/closed state of the popover as its argument)
-3. Replace all references to...
+1. Convert all `onClose` props on **Popover** components to `onChange` (the callback receives the open/closed state of the popover as its argument)
+2. Replace all references to...
    - **TabList** with **TabsList**
    - **SpacedList** with **ColumnList**
    - **TextButton** with **IconButton**
    - **ErrorList** with **ErrorText**
    - **LinkButton** with **LinkText**
-4. Remove all references to the **ButtonRadio**, **BarChart**, **ExpandableTagsInput**, and **Style** components
-5. Remove any CSS targeting `gv-` classNames
-6. Update any **Icon** components using contexture-react icon keys to use a material icon key (or a custom component) instead
-7. Import and use the design system constants from GreyVest's theme file, rather than hard-coding spacing or color values
+3. Remove all references to the **ButtonRadio**, **BarChart**, **ExpandableTagsInput**, and **Style** components
+4. Remove any CSS targeting `gv-` classNames
+5. Update any **Icon** components using contexture-react icon keys to use a material icon key (or a custom component) instead
+6. Import and use the design system constants from GreyVest's theme file, rather than hard-coding spacing or color values
 
 <hr />
+
+#### 3.0.0-alpha.21
+
+- Don't convert numeric values on spacing props to design system values
 
 #### 3.0.0-alpha.20
 

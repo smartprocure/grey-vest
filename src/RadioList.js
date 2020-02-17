@@ -46,7 +46,7 @@ let RadioButton = ({ native, option, value, onChange, ...props }) => (
 )
 
 let RadioList = ({ options, value, onChange, native = false, ...props }) => (
-  <ColumnList gap={1} {...props}>
+  <ColumnList gap="sm" {...props}>
     {_.map(
       option => (
         <Flex

@@ -30,7 +30,7 @@ export let largeVariant = () => (
 )
 
 export let weightAndItalicsVariants = () => (
-  <Flex column gap={2}>
+  <Flex column gap="md">
     <Subtitle normal>{lipsum()}</Subtitle>
     <Subtitle italic>{lipsum()}</Subtitle>
   </Flex>

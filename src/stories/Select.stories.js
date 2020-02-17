@@ -6,10 +6,19 @@ import { lipsum, optionsFromArray } from './utils'
 
 let props = {
   rows: [
-    { name: 'value'},
-    { name: 'options', type: { summary: 'Array<{ label: string, value: any, disabled: boolean }>'} },
-    { name: 'onChange', type: { summary: '(value: any) => any' }, description: "Called with the value of the selected option"}
-  ]
+    { name: 'value' },
+    {
+      name: 'options',
+      type: {
+        summary: 'Array<{ label: string, value: any, disabled: boolean }>',
+      },
+    },
+    {
+      name: 'onChange',
+      type: { summary: '(value: any) => any' },
+      description: 'Called with the value of the selected option',
+    },
+  ],
 }
 export default { title: 'Select', component: Select, parameters: { props } }
 
@@ -18,11 +27,21 @@ let options = optionsFromArray(_.times(lipsum, 5))
 export let usage = () => {
   let [value, setValue] = React.useState(1)
   return (
-    <Grid gap={1}>
+    <Grid gap="sm">
       <div>
         Selected: <b>{value}</b>
       </div>
-      <Select value={value} onChange={setValue} options={options} />
+      <Select
+        value={value}
+        onChange={setValue}
+        options={[
+          { label: '😂', value: 'joy' },
+          { label: '🦎', value: 'lizard' },
+          { label: '🌞', value: 'sun_with_face' },
+          { label: '👻', value: 'ghost' },
+          { label: '🍆', value: 'eggplant' },
+        ]}
+      />
     </Grid>
   )
 }
@@ -30,7 +49,7 @@ export let usage = () => {
 export let withDomLens = () => {
   let selected = React.useState(1)
   return (
-    <Grid gap={1}>
+    <Grid gap="sm">
       <div>
         Selected: <b>{F.view(selected)}</b>
       </div>
@@ -60,7 +79,7 @@ export let noOptions = () => <Select options={[]} />
 export let native = () => {
   let selected = React.useState(1)
   return (
-    <Grid gap={1}>
+    <Grid gap="sm">
       <div>
         Selected: <b>{F.view(selected)}</b>
       </div>

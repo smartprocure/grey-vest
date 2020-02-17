@@ -41,7 +41,7 @@ let props = {
 export default { title: 'Dialog', component: Dialog, parameters: { props } }
 
 let Center = props => (
-  <Flex gap={2} justifyContent="space-around" alignItems="center" {...props} />
+  <Flex gap="md" justifyContent="space-around" alignItems="center" {...props} />
 )
 
 export let usage = () => (

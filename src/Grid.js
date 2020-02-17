@@ -26,8 +26,8 @@ let Grid = styled.div(
     gridTemplateColumns: repeatNumber(columns),
     gridTemplateRows: repeatNumber(rows),
     gridTemplateAreas: formatAreas(areas),
-    gridRowGap: theme.space(rowGap || gap),
-    gridColumnGap: theme.space(columnGap || gap),
+    gridRowGap: F.alias(rowGap || gap, theme.spaces),
+    gridColumnGap: F.alias(columnGap || gap, theme.spaces),
     placeContent,
     placeItems,
   })

@@ -12,7 +12,7 @@ let shortOptions = optionsFromArray(_.times(() => lipsum(1, 'words'), 30))
 export let baseStory = () => {
   let value = React.useState(0)
   return (
-    <Grid gap={1}>
+    <Grid gap="sm">
       <div>
         Selected: <b>{F.view(value)}</b>
       </div>
@@ -30,7 +30,7 @@ export let baseStory = () => {
 export let native = () => {
   let value = React.useState(0)
   return (
-    <Grid gap={1}>
+    <Grid gap="sm">
       <div>
         Selected: <b>{F.view(value)}</b>
       </div>
@@ -49,7 +49,7 @@ export let native = () => {
 export let columns = () => {
   let value = React.useState()
   return (
-    <Grid gap={1}>
+    <Grid gap="sm">
       <div>
         Selected: <b>{F.view(value)}</b>
       </div>
@@ -73,7 +73,7 @@ columns.story = {
 export let disabled = () => {
   let value = React.useState(0)
   return (
-    <Grid gap={1}>
+    <Grid gap="sm">
       <div>
         Selected: <b>{F.view(value)}</b>
       </div>

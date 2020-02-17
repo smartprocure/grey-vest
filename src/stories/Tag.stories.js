@@ -18,7 +18,7 @@ export let longTag = () => (
 export let styling = () => {
   let colorFromValue = value => ({ color: value })
   return (
-    <Grid placeItems="start" gap={1}>
+    <Grid placeItems="start" gap="sm">
       <Tag value="magenta" tagStyle={colorFromValue} />
       <Tag value="limegreen" tagStyle={colorFromValue} />
       <Tag

@@ -8,7 +8,7 @@ import { getVariants, coalesce } from './utils'
 import theme from './theme'
 
 let Box = (
-  { as: As = 'div', padding = 2, paddingX, paddingY, ...props },
+  { as: As = 'div', padding = 'md', paddingX, paddingY, ...props },
   ref
 ) => (
   <As
@@ -17,11 +17,11 @@ let Box = (
       backgroundColor: theme.colors.backgrounds[0],
       boxShadow: getVariants(props, theme.boxShadows, 'normal'),
       ..._.flow(
-        F.flowMap(coalesce, theme.space),
+        F.flowMap(coalesce, F.aliasIn(theme.spaces)),
         _.apply(pad)
       )([
-        [paddingY, _.head(padding), padding],
-        [paddingX, _.last(padding), padding],
+        [paddingY, _.head(_.castArray(padding))],
+        [paddingX, _.last(_.castArray(padding))],
       ]),
     }}
     {...{ ref, ...props }}

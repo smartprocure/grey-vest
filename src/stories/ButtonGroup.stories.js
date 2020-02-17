@@ -14,7 +14,7 @@ export let story = () => {
       _.times(lipsum, 4)
     )
   return (
-    <Grid inline gap={2}>
+    <Grid inline gap="md">
       <ButtonGroup>{listButtons()}</ButtonGroup>
       <ButtonGroup>{listButtons('primary')}</ButtonGroup>
       <ButtonGroup>{listButtons('secondary')}</ButtonGroup>

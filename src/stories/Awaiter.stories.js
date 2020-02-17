@@ -12,7 +12,7 @@ export let story = () => {
       reject = _reject
     })
   return (
-    <Grid gap={1} columns={2}>
+    <Grid gap="sm" columns={2}>
       <GridItem as={Box} width={2}>
         <Awaiter promiseFn={p}>{x => <div>{x}</div>}</Awaiter>
       </GridItem>

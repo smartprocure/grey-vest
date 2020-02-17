@@ -15,7 +15,7 @@ export let story = () => {
       })
   )
   return (
-    <Grid gap={1} columns={2}>
+    <Grid gap="sm" columns={2}>
       <GridItem style={{ textAlign: 'center' }} as={Box} width={2}>
         <CommandButton command={command} icon="access_time">
           Async thing

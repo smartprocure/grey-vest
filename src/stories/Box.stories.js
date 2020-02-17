@@ -43,30 +43,32 @@ export let popupBox = () => (
 export let controlledPadding = () => {
   let GreyPaddingBox = ({ children, ...props }) => (
     <Box style={{ background: 'lightgrey' }} {...props}>
-      <Text as="div" style={{ background: 'white' }}>{children}</Text>
+      <Text as="div" style={{ background: 'white' }}>
+        {children}
+      </Text>
     </Box>
   )
   return (
-    <Grid gap={2}>
-      <GreyPaddingBox paddingX={4} paddingY="sm">
-        {theme.space(4)}px by {theme.space('sm')}px padding
+    <Grid gap="md">
+      <GreyPaddingBox paddingX="lg" paddingY="sm">
+        {theme.space('lg')}px by {theme.space('sm')}px padding
       </GreyPaddingBox>
-      <GreyPaddingBox paddingX={1} paddingY="lg">
-        {theme.space(1)}px by {theme.spaces.lg}px padding
+      <GreyPaddingBox padding="sm" paddingY="lg">
+        {theme.spaces.sm}px by {theme.spaces.lg}px padding
       </GreyPaddingBox>
-      <GreyPaddingBox padding={[0.5, 0.5]}>
-        {theme.space(0.5)}px by {theme.space(0.5)}px padding
+      <GreyPaddingBox padding={['xs', 'xs']}>
+        {theme.space(0.5)}px by {theme.spaces.xs}px padding
       </GreyPaddingBox>
-      <GreyPaddingBox paddingX={0} padding={2}>
-        {theme.space(0)}px by {theme.space(2)}px padding
+      <GreyPaddingBox paddingX={0} padding={20}>
+        0px by 20px padding
       </GreyPaddingBox>
       {_.map(
-        padding => (
-          <GreyPaddingBox padding={padding}>
-            {theme.space(padding)}px padding
+        p => (
+          <GreyPaddingBox padding={p} key={p}>
+            {theme.space(p)}px padding
           </GreyPaddingBox>
         ),
-        _.range(0, 5)
+        ['xs', 'sm', 'md', 'lg']
       )}
     </Grid>
   )

@@ -1,11 +1,13 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
+import F from 'futil'
+import { margin as getMargin } from 'polished'
 import theme from './theme'
 import GridItem from './GridItem'
 
-let Divider = ({ vertical = false, margin = 1, ...props }) => (
+let Divider = ({ vertical = false, margin = 'sm', ...props }) => (
   <GridItem
-  place={vertical ? "stretch center" : "center stretch"}
+    place={vertical ? 'stretch center' : 'center stretch'}
     css={[
       {
         backgroundColor: theme.colors.neutrals[0],
@@ -13,13 +15,11 @@ let Divider = ({ vertical = false, margin = 1, ...props }) => (
       vertical
         ? {
             width: 1,
-            marginLeft: theme.space(margin),
-            marginRight: theme.space(margin),
+            ...getMargin(0, F.alias(margin, theme.spaces)),
           }
         : {
             height: 1,
-            marginTop: theme.space(margin),
-            marginBottom: theme.space(margin),
+            ...getMargin(F.alias(margin, theme.spaces), 0),
           },
     ]}
     {...props}

@@ -19,7 +19,7 @@ let PopupBox = forwardRef((props, ref) => (
       minWidth: theme.widths.popup.min,
       maxWidth: theme.widths.popup.max,
     }}
-    padding={[1, 2]}
+    padding={['sm', 'md']}
     ref={ref}
     {...props}
   />

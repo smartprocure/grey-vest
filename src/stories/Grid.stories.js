@@ -12,7 +12,7 @@ export default { title: 'Grid', component: Grid }
 export let grailDemo = () => (
   <>
     <Grid
-      gap={3}
+      gap="md"
       areas={[
         'header header header',
         'left main right',
@@ -71,7 +71,7 @@ export let gridItemPositioning = () => (
 )
 
 export let rowsColumnsShorthand = () => (
-  <Grid columns={5} gap={1}>
+  <Grid columns={5} gap="sm">
     {_.times(
       n => (
         <div style={{ border: '2px solid black' }}>{n}</div>

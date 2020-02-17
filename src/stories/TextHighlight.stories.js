@@ -11,7 +11,7 @@ let text = _.times(() => loremIpsum({ units: 'paragraph' }), 3)
 export let usage = () => {
   let filter = React.useState('')
   return (
-    <Grid gap={1}>
+    <Grid gap="sm">
       <TextInput
         placeholder="Enter text to highlight..."
         {...F.domLens.value(filter)}

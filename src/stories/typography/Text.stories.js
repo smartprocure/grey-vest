@@ -43,7 +43,7 @@ export let extraSmallVariant = () => (
 export let asParagraph = _.times(() => <Text as="p">{lipsum()}</Text>, 3)
 
 export let weightAndItalicsVariants = () => (
-  <Flex column gap={2}>
+  <Flex column gap="md">
     <Text bold>{lipsum()}</Text>
     <Text italic>{lipsum()}</Text>
   </Flex>

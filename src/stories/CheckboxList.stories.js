@@ -11,7 +11,7 @@ let options = optionsFromArray(_.times(lipsum, 5))
 export let story = () => {
   let values = React.useState([0, 1])
   return (
-    <Grid gap={1}>
+    <Grid gap="sm">
       <div>
         Selected: <b>[{_.join(', ', F.view(values))}]</b>
       </div>
@@ -29,7 +29,7 @@ export let story = () => {
 export let columns = () => {
   let values = React.useState()
   return (
-    <Grid gap={1}>
+    <Grid gap="sm">
       <div>
         Selected: <b>[{_.join(', ', F.view(values))}]</b>
       </div>
@@ -53,7 +53,7 @@ columns.story = {
 export let disabled = () => {
   let values = React.useState([0, 1])
   return (
-    <Grid gap={1}>
+    <Grid gap="sm">
       <div>
         Selected: <b>[{_.join(', ', F.view(values))}]</b>
       </div>

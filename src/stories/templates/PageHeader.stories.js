@@ -36,7 +36,7 @@ export let story = () => {
         borderBottom: `1px solid ${theme.colors.neutrals[0]}`,
       }}
     >
-      <Flex gap={1} alignItems="center">
+      <Flex gap="sm" alignItems="center">
         <Subtitle large>Section</Subtitle>
         <SubSection active label="Sub-section 1" />
         <SubSection label="Sub-section 2" />
@@ -48,7 +48,7 @@ export let story = () => {
         <Dropdown trigger="icon" />
       </Flex>
 
-      <Flex gap={1}>
+      <Flex gap="sm">
         <Button info small icon="map">
           Product Tour
         </Button>
@@ -70,7 +70,7 @@ export let DetailHeader = () => (
     }}
   >
     <Title large>Page title</Title>
-    <Flex alignItems="center" gap={1}>
+    <Flex alignItems="center" gap="sm">
       <Button primary>Primary</Button>
       <Dropdown trigger="icon" icon="notifications" />
       <Dropdown trigger="icon" icon="share" />

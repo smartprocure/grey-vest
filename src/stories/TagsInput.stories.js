@@ -54,7 +54,7 @@ export let baseUsage = () => {
         addTag={tag => setTags(F.push(tag))}
         removeTag={tag => setTags(_.pull(tag))}
       />
-      <Divider margin={2} />
+      <Divider margin="md" />
       <code>{JSON.stringify(tags)}</code>
     </>
   )
@@ -69,7 +69,7 @@ export let empty = () => {
         addTag={tag => setTags(F.push(tag))}
         removeTag={tag => setTags(_.pull(tag))}
       />
-      <Divider margin={2} />
+      <Divider margin="md" />
       <code>{JSON.stringify(tags)}</code>
     </>
   )
@@ -85,7 +85,7 @@ export let flipped = () => {
         addTag={tag => setTags(F.push(tag))}
         removeTag={tag => setTags(_.pull(tag))}
       />
-      <Divider margin={2} />
+      <Divider margin="md" />
       <code>{JSON.stringify(tags)}</code>
     </>
   )

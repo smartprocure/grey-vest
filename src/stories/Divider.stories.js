@@ -1,5 +1,6 @@
 import React from 'react'
-import { Divider, Text, Flex, Grid } from '..'
+import _ from 'lodash/fp'
+import { Divider, Text, Flex, Grid, Box } from '..'
 
 export default { title: 'Divider', component: Divider }
 
@@ -29,4 +30,17 @@ export let withGrid = () => (
     <Divider vertical />
     <Text>toes</Text>
   </Grid>
+)
+
+export let controlledMargin = () => (
+  <Flex column gap="md">
+    {_.map(
+      m => (
+        <Box padding={0}>
+          <Divider margin={m} />
+        </Box>
+      ),
+      ['xs,', 'sm', 'md', 'lg']
+    )}
+  </Flex>
 )

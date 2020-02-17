@@ -33,7 +33,7 @@ export let noChildren = () => (
 )
 
 export let gap = () => (
-  <Flex gap={2} style={{ backgroundColor: 'yellow' }}>
+  <Flex gap="md" style={{ backgroundColor: 'yellow' }}>
     {_.times(
       () => (
         <div
@@ -50,7 +50,7 @@ export let gap = () => (
 )
 
 export let wrappedGap = () => (
-  <Flex wrap gap={2} style={{ backgroundColor: 'yellow' }}>
+  <Flex wrap gap="md" style={{ backgroundColor: 'yellow' }}>
     {_.times(
       () => (
         <div
@@ -68,7 +68,7 @@ export let wrappedGap = () => (
 )
 
 export let columnGap = () => (
-  <Flex inline column gap={2} style={{ backgroundColor: 'yellow' }}>
+  <Flex inline column gap="md" style={{ backgroundColor: 'yellow' }}>
     {_.times(
       () => (
         <div

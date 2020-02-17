@@ -148,7 +148,7 @@ let TagsInput = ({
       css={theme.inputStyle}
       alignItems="stretch"
       justifyContent="center"
-      gap={1}
+      gap="sm"
       {...props}
     >
       {flipped && input}

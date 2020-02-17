@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import { forwardRef } from 'react'
+import F from 'futil'
 import theme from './theme'
 
 let Flex = ({
@@ -15,7 +16,7 @@ let Flex = ({
   gap = 0,
   ...props
 }, ref) => {
-  let m = theme.space(gap)
+  let m = F.alias(gap, theme.spaces)
   let flexStyle = [
     {
       display: `${inline ? 'inline-' : ''}flex`,
