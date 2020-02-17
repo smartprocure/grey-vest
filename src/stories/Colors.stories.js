@@ -36,7 +36,7 @@ let SwatchSet = ({ title, colors }) => (
 )
 
 export let story = () => (
-  <Flex wrap gap={4} justifyContent="space-around">
+  <Flex wrap gap="lg" justifyContent="space-around">
     <SwatchSet colors={colors.primary} title="primary" />
     <SwatchSet colors={colors.secondary} title="secondary" />
     <SwatchSet colors={colors.text} title="text" />

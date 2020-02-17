@@ -12,7 +12,7 @@ export default { title: 'Grid', component: Grid }
 export let grailDemo = () => (
   <>
     <Grid
-      gap={3}
+      gap="md"
       areas={[
         'header header header',
         'left main right',
