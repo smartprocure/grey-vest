@@ -18,6 +18,7 @@ Over a dozen new components have been added:
 
 - **Text**, **Title** and **Subtitle** - typography components
 - **Dropdown** and **Dialog** - Popovers pre-rolled with trigger buttons and a simpler API
+- **DateTimeInput** - like DateInput, but also allows the user to enter a time
 - **Tooltip** - courtesy of react-tooltip
 - **Banner** - a brightly-colored box for text
 - **Pager** - a pagination control component meant to be used with tables
@@ -53,7 +54,6 @@ A small number of components have been 🚨 **REMOVED** 🚨(or renamed):
 - Changes to **CheckboxList** and **RadioList**:
   - Both now support the `disabled` property on options (to mark that option as disabled)
   - Both components now also support ColumnList props (`gap`, `columnCount`, `columnWidth`, and `columnGap`)
-- **DateInput** now includes a time picker (now uses `react-datetime-picker` internally instead of `react-date-picker`)
 - New props on **DropdownItem**: `disabled`, `truncate`, and `icon` (same as the Icon component's `icon` prop)
 - Changes to **Icon**:
   - New variants: `small` and `large`
@@ -113,8 +113,11 @@ Component props that control whitespace now take spacing values from GreyVest's 
 
 - Overhaul Popover component (and Dropdown)! New library, new API, new stories (see the 3.0 changelog for more info)
 - Add Dialog component
-- Remove some unused imports (react-date-picker, react-outside-click-handler)
+- Remove some unused imports (react-outside-click-handler, moment)
+- Remove ExpandableTagsInput
+- Split off DateTimeInput from DateInput
 - Box: improve handling of `padding`/`paddingX`/`paddingY` props (`padding` now also accepts a 2-element array)
+- Update ExpandableTable for new design system
 
 #### 3.0.0-alpha.18
 
