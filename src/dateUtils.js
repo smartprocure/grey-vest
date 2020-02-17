@@ -8,6 +8,12 @@ export let utcDate = d =>
 
 export let toLocalISOString = x => _.trimCharsEnd('Z', utcDate(x).toISOString())
 
+export let toHyphenatedDateString = d =>
+  _.flow(
+    _.map(_.padCharsStart('0', 2)),
+    _.join('-')
+  )([d.getFullYear(), d.getMonth() + 1, d.getDate()])
+
 export let toDateWith = f => value =>
   isNaN(Date.parse(value)) ? '' : f(new Date(value))
 

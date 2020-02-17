@@ -6,10 +6,10 @@ import _ from 'lodash/fp'
 export default { title: 'DateInput', component: DateInput }
 
 export let baseStory = () => {
-  let [date, setDate] = React.useState(new Date('2019-12-31T05:00Z'))
+  let [date, setDate] = React.useState(new Date('2019-12-31'))
   return (
     <Grid gap={2} placeItems="start">
-      <Text>Selected: {date.toString()}</Text>
+      <Text>Selected: {date.toUTCString()}</Text>
       <DateInput
         value={date}
         onChange={_.flow(
@@ -22,10 +22,10 @@ export let baseStory = () => {
 }
 
 export let native = () => {
-  let [date, setDate] = React.useState(new Date('2019-12-31T05:00Z'))
+  let [date, setDate] = React.useState(new Date('2019-12-31'))
   return (
     <Grid gap={2} placeItems="start">
-      <Text>Selected: {date.toString()}</Text>
+      <Text>Selected: {date.toUTCString()}</Text>
       <DateInput
         native
         value={date}

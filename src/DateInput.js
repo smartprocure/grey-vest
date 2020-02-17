@@ -4,7 +4,13 @@ import { observer } from 'mobx-react'
 import DatePicker from 'react-date-picker'
 import _ from 'lodash/fp'
 import Icon from './Icon'
-import { toDate, pickerStyles, calendarStyles } from './dateUtils'
+import {
+  toDate,
+  toDateWith,
+  toHyphenatedDateString,
+  pickerStyles,
+  calendarStyles,
+} from './dateUtils'
 import theme from './theme'
 let { inputStyle, fonts } = theme
 
@@ -12,9 +18,9 @@ let NativeDateInput = ({ value, onChange = _.noop, ...props }) => (
   <input
     type="date"
     onChange={x => onChange(toDate(x.target.value))}
-    valueasnumber={toDate(value).valueOf()}
-    {...props}
+    value={toDateWith(toHyphenatedDateString)(value)}
     css={[fonts.Text, inputStyle]}
+    {...props}
   />
 )
 
