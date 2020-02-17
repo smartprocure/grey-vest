@@ -46,8 +46,7 @@ export let Popover = _.flow(
     Popup = PopupBox,
     triggerProps = {},
     popupProps = {},
-    placement,
-    side = placement ? '' : 'left',
+    placement = 'bottom-left',
     label = 'dropdown',
     isOpen: controlledIsOpen,
     onChange: controlledOnChange,
@@ -66,10 +65,6 @@ export let Popover = _.flow(
         trigger="click"
         tooltipShown={isOpen}
         onVisibilityChange={onChange}
-        placement={F.compactJoin('-', [
-          placement || 'bottom',
-          { left: 'start', right: 'end' }[side],
-        ])}
         modifiers={{
           preventOverflow: { boundariesElement: 'document' },
           offset: { offset: `0, ${theme.spaces.xs}` },
@@ -87,7 +82,7 @@ export let Popover = _.flow(
             </PopoverContext.Provider>
           </Popup>
         )}
-        {...props}
+        {...{ placement, ...props }}
       >
         {({ getTriggerProps, triggerRef }) => (
           <Trigger
