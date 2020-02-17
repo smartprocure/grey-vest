@@ -8,7 +8,7 @@ export default { title: 'DateTimeInput', component: DateTimeInput }
 export let baseStory = () => {
   let [date, setDate] = React.useState(new Date('2019-12-31T05:00Z'))
   return (
-    <Grid gap={2} placeItems="start">
+    <Grid gap="md" placeItems="start">
       <Text>Selected: {date.toString()}</Text>
       <DateTimeInput
         value={date}
@@ -24,7 +24,7 @@ export let baseStory = () => {
 export let native = () => {
   let [date, setDate] = React.useState(new Date('2019-12-31T05:00Z'))
   return (
-    <Grid gap={2} placeItems="start">
+    <Grid gap="md" placeItems="start">
       <Text>Selected: {date.toString()}</Text>
       <DateTimeInput
         native

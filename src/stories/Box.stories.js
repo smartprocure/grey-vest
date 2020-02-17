@@ -47,7 +47,7 @@ export let controlledPadding = () => {
     </Box>
   )
   return (
-    <Grid gap={2}>
+    <Grid gap="md">
       <GreyPaddingBox paddingX={4} paddingY="sm">
         {theme.space(4)}px by {theme.space('sm')}px padding
       </GreyPaddingBox>

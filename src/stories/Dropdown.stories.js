@@ -6,7 +6,7 @@ import { lipsum } from './utils'
 export default { title: 'Dropdown', component: Dropdown }
 
 let Center = props => (
-  <Flex gap={2} justifyContent="space-around" alignItems="center" {...props} />
+  <Flex gap="md" justifyContent="space-around" alignItems="center" {...props} />
 )
 
 let generateDropdownItems = _.times(() => (

@@ -4,7 +4,7 @@ import { Grid, Flex, Title, Text } from '.'
 import theme from './theme'
 
 export let Form = props => (
-  <Flex css={{ width: theme.widths.lg }} column gap={2} {...props} />
+  <Flex css={{ width: theme.widths.lg }} column gap="md" {...props} />
 )
 
 export let FormHeader = ({ title, description, ...props }) => (

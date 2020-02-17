@@ -8,7 +8,7 @@ export default { title: 'DateInput', component: DateInput }
 export let baseStory = () => {
   let [date, setDate] = React.useState(new Date('2019-12-31'))
   return (
-    <Grid gap={2} placeItems="start">
+    <Grid gap="md" placeItems="start">
       <Text>Selected: {date.toUTCString()}</Text>
       <DateInput
         value={date}
@@ -24,7 +24,7 @@ export let baseStory = () => {
 export let native = () => {
   let [date, setDate] = React.useState(new Date('2019-12-31'))
   return (
-    <Grid gap={2} placeItems="start">
+    <Grid gap="md" placeItems="start">
       <Text>Selected: {date.toUTCString()}</Text>
       <DateInput
         native

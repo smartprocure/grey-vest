@@ -36,7 +36,7 @@ let clickAction = () => action('clicked')()
 
 let Container = ({ cols = 3, ...props }) => (
   <Grid
-    gap={2}
+    gap="md"
     columns={`repeat(${cols}, auto)`}
     placeItems="baseline"
     {...props}
