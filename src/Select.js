@@ -8,8 +8,12 @@ import theme from './theme'
 import Icon from './Icon'
 let { spaces, fonts, colors } = theme
 
-let NativeSelect = ({ placeholder, options, ...props }) => (
-  <select {...props} css={[theme.inputStyle, fonts.Text]}>
+let NativeSelect = ({ placeholder, options, onChange, ...props }) => (
+  <select
+    css={[theme.inputStyle, fonts.Text]}
+    onChange={e => onChange(e.target.value)}
+    {...props}
+  >
     {placeholder && <option value="">{placeholder}</option>}
     {_.map(
       x => (
@@ -69,7 +73,7 @@ let ReactSelect = ({ value, options, onChange, ...props }) => (
     }}
     {...{ options, ...props }}
     value={_.find({ value }, options)}
-    onChange={option => onChange({ target: { value: option.value } })}
+    onChange={option => onChange(option.value)}
     components={{
       DropdownIndicator: ({ isFocused }) => (
         <Icon
