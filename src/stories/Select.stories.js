@@ -31,11 +31,7 @@ export let usage = () => {
       <div>
         Selected: <b>{value}</b>
       </div>
-      <Select
-        value={value}
-        onChange={setValue}
-        options={[{ label: '' }]}
-      />
+      <Select value={value} onChange={setValue} options={options} />
     </Grid>
   )
 }
