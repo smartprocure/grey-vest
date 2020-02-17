@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
+import F from 'futil'
 import theme from './theme'
 
 let ColumnList = ({
@@ -14,10 +15,10 @@ let ColumnList = ({
     css={{
       columnWidth,
       columnCount,
-      columnGap: theme.space(columnGap),
+      columnGap: F.alias(columnGap, theme.spaces),
       '& > *': { breakInside: 'avoid-column' },
       // Targets every direct child with another direct child before it
-      '& > * + *': { marginTop: theme.space(gap) },
+      '& > * + *': { marginTop: F.alias(gap, theme.spaces) },
     }}
     {...props}
   >
