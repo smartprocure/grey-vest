@@ -56,7 +56,7 @@ export let story = () => {
   })
   return (
     <>
-      <Flex gap={1}>{makeFields(state)}</Flex>
+      <Flex gap="sm">{makeFields(state)}</Flex>
       <Divider margin={2} />
       <ColumnList
         {..._.mapValues(

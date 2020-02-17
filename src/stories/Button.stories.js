@@ -144,7 +144,7 @@ export let disabled = () => (
 
 export let withIcon = () => {
   let IconDemo = props => (
-    <Flex inline column gap={1} alignItems="flex-start">
+    <Flex inline column gap="sm" alignItems="flex-start">
       <Button {...props} icon="keyboard_arrow_down">
         Dropdown
       </Button>

@@ -25,7 +25,7 @@ export let withInlineContent = () => {
         {...F.domLens.value(component)}
       />
       <Divider margin={2} />
-      <Dynamic component={components[F.view(component)]} gap={1}>
+      <Dynamic component={components[F.view(component)]} gap="sm">
         {inlineContent}
       </Dynamic>
     </>
@@ -59,7 +59,7 @@ export let columns = () => {
       <Dynamic
         component={components[F.view(component)]}
         // both Grid and ColumnList
-        gap={1}
+        gap="sm"
         // Grid property
         columns={2}
         // ColumnList properties

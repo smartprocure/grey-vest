@@ -9,7 +9,7 @@ let textArea
 export default { title: 'Refs' }
 
 export let story = () => (
-  <Grid gap={1}>
+  <Grid gap="sm">
     <TextInput ref={e => (input = e)} placeholder="Text input" />
     <Textarea ref={e => (textArea = e)} placeholder="Textarea" />
     <Select

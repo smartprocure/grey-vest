@@ -5,7 +5,7 @@ import { loremIpsum } from 'lorem-ipsum'
 export default { title: 'Tooltip', component: Tooltip }
 
 export let basicUsage = () => (
-  <Grid gap={1} placeItems="start">
+  <Grid gap="sm" placeItems="start">
     <a data-tip="hello world">hover me</a>
     <Button data-tip="it is a button">is it a button?</Button>
     <DropdownItem

@@ -10,7 +10,7 @@ export let story = () => {
   let totalRecordsLens = React.useState(21)
   return (
     <>
-      <Grid columns={3} gap={1}>
+      <Grid columns={3} gap="sm">
         <div>
           <Text as="div">Page:</Text>{' '}
           <TextInput {...F.domLens.value([page, onChangePage])} />

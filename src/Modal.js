@@ -70,7 +70,7 @@ export let ModalFooter = ({ children }) => (
     alignItems="center"
     justifyContent="flex-end"
     css={{ marginTop: theme.space(3) }}
-    gap={1}
+    gap="sm"
   >
     {children}
   </Flex>
