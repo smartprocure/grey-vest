@@ -1,5 +1,5 @@
 import React from 'react'
-import { loremIpsum } from 'lorem-ipsum'
+import { lipsum } from '../utils'
 import { Flex, Subtitle } from '../..'
 import theme from '../../theme'
 import SizeInfo from './SizeInfo'
@@ -14,7 +14,7 @@ export let regular = () => (
   <Flex alignItems="center">
     <SizeInfo config={theme.fonts.Subtitle} />
     <Subtitle>
-      Regular subtitle. Used for buttons and navigation elements. {loremIpsum()}
+      Regular subtitle. Used for buttons and navigation elements. {lipsum()}
     </Subtitle>
   </Flex>
 )
@@ -24,7 +24,14 @@ export let largeVariant = () => (
     <SizeInfo config={theme.fonts.Subtitle.variants.large} />
     <Subtitle large>
       Large subtitle. Used for section headers, subsections within pages, and
-      large buttons. {loremIpsum()}
+      large buttons. {lipsum()}
     </Subtitle>
+  </Flex>
+)
+
+export let weightAndItalicsVariants = () => (
+  <Flex column gap={2}>
+    <Subtitle normal>{lipsum()}</Subtitle>
+    <Subtitle italic>{lipsum()}</Subtitle>
   </Flex>
 )

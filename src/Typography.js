@@ -5,10 +5,16 @@ import _ from 'lodash/fp'
 import { getVariants } from './utils'
 import theme from './theme'
 
+let modifiers = {
+  bold: { fontWeight: 600 },
+  normal: { fontWeight: 400 },
+  italic: { fontStyle: 'italic' },
+}
+
 let toComponent = ({ variants, ...styles }) =>
   forwardRef(({ as: As = 'span', ...props }, ref) => (
     <As
-      css={[styles, ...getVariants(props, variants)]}
+      css={[styles, ...getVariants(props, { ...variants, ...modifiers })]}
       {...{ ref, ...props }}
     />
   ))

@@ -12,7 +12,7 @@ export default {
   parameters: { componentSubtitle: <>Body text component with <tt>small</tt> and <tt>extraSmall</tt> variants</> },
 }
 
-let lipsum = () => loremIpsum({ units: 'paragraphs' })
+let lipsum = size => loremIpsum({ size, units: 'paragraphs' })
 
 export let regular = () => (
   <Flex alignItems="center">
@@ -26,7 +26,7 @@ export let smallVariant = () => (
     <SizeInfo config={fonts.Text.variants.small} />
     <Text small>
       Small text. Used for table headers and footers, field labels, dropdown
-      items, compact buttons, pagination, and banner copy. {lipsum()}
+      items, small buttons, pagination, and banner copy. {lipsum()}
     </Text>
   </Flex>
 )
@@ -41,3 +41,10 @@ export let extraSmallVariant = () => (
 )
 
 export let asParagraph = _.times(() => <Text as="p">{lipsum()}</Text>, 3)
+
+export let weightAndItalicsVariants = () => (
+  <Flex column gap={2}>
+    <Text bold>{lipsum()}</Text>
+    <Text italic>{lipsum()}</Text>
+  </Flex>
+)

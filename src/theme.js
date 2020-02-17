@@ -111,7 +111,7 @@ theme.fonts = {
     fontWeight: 400,
     letterSpacing: 'normal',
     variants: {
-      // Table header & footer, field labels, dropdown items, compact buttons, pagination, banner copy
+      // Table header & footer, field labels, dropdown items, small buttons, pagination, banner copy
       small: {
         fontSize: theme.fontSizes[1],
         lineHeight: theme.lineHeights[4],
@@ -126,7 +126,6 @@ theme.fonts = {
 }
 
 theme.inputStyle = {
-  ...theme.fonts.Text,
   transition: 'border-color 0.2s ease-in',
   // borders & padding
   borderRadius: theme.borderRadius,
@@ -135,9 +134,9 @@ theme.inputStyle = {
   outline: 'none',
   '&:focus': { borderColor: theme.colors.primary },
   // dimensions
-  height: theme.space(5),
   boxSizing: 'border-box',
   minWidth: theme.widths.formField.min,
+  minHeight: theme.space(5),
   // colors
   '::placeholder': { color: theme.colors.text, opacity: 0.5 },
   color: theme.colors.text,

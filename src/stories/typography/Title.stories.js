@@ -8,7 +8,13 @@ let { fonts } = theme
 export default {
   title: 'Design System | Typography / Title',
   component: Title,
-  parameters: { componentSubtitle: <>Header text component with <tt>large</tt> and <tt>small</tt> variants</> },
+  parameters: {
+    componentSubtitle: (
+      <>
+        Header text component with <tt>large</tt> and <tt>small</tt> variants
+      </>
+    ),
+  },
 }
 
 export let regular = () => (
@@ -47,4 +53,12 @@ export let largeAndSmallVariantsSimultaneously = () => (
       precedence.
     </Title>
   </>
+)
+
+export let weightAndItalicsVariants = () => (
+  <Flex column gap={2}>
+    <Title bold>{lipsum()}</Title>
+    <Title italic>{lipsum()}</Title>
+    <Title small normal>{lipsum()}</Title>
+  </Flex>
 )

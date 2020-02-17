@@ -4,7 +4,14 @@ import _ from 'lodash/fp'
 import { Select, Grid } from '..'
 import { lipsum, optionsFromArray } from './utils'
 
-export default { title: 'Select', component: Select }
+let props = {
+  rows: [
+    { name: 'value'},
+    { name: 'options', type: { summary: 'Array<{ label: string, value: any, disabled: boolean }>'} },
+    { name: 'onChange', type: { summary: '(value: any) => any' }, description: "Called with the value of the selected option"}
+  ]
+}
+export default { title: 'Select', component: Select, parameters: { props } }
 
 let options = optionsFromArray(_.times(lipsum, 5))
 
@@ -15,15 +22,37 @@ export let usage = () => {
       <div>
         Selected: <b>{value}</b>
       </div>
-      <Select {...F.domLens.value([value, setValue])} options={options} />
+      <Select value={value} onChange={setValue} options={options} />
     </Grid>
   )
 }
 
+export let withDomLens = () => {
+  let selected = React.useState(1)
+  return (
+    <Grid gap={1}>
+      <div>
+        Selected: <b>{F.view(selected)}</b>
+      </div>
+      <Select {...F.domLens.value(selected)} options={options} />
+    </Grid>
+  )
+}
+withDomLens.story = {
+  parameters: {
+    docs: {
+      storyDescription: `
+[\`F.domLens.value\`](https://github.com/smartprocure/futil-js#domlensvalue)
+takes any valid [futil](https://github.com/smartprocure/futil-js) lens format
+(such as the \`[value, setter]\` array returned from React state) and returns a
+\`value\`/\`onChange\` object that can be spread onto a component.
+`,
+    },
+  },
+}
+
 export let shortOptions = () => (
-  <Select
-    options={optionsFromArray(_.times(() => lipsum(1, 'words'), 8))}
-  />
+  <Select options={optionsFromArray(_.times(() => lipsum(1, 'words'), 8))} />
 )
 
 export let noOptions = () => <Select options={[]} />

@@ -10,7 +10,7 @@ let Textarea = (props, ref) => (
     {...props}
     ref={ref}
     rows={4}
-    css={[theme.inputStyle, { height: 'auto' }]}
+    css={[theme.inputStyle, theme.fonts.Text, { height: 'auto' }]}
   />
 )
 

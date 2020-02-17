@@ -26,7 +26,16 @@ let types = {
   tags: TagsInput,
 }
 
-let gridItemProps = ['as', 'column', 'row', 'area', 'width', 'height', 'place']
+let wrapperProps = [
+  'as',
+  'column',
+  'row',
+  'area',
+  'width',
+  'height',
+  'place',
+  'style',
+]
 
 let FormField = ({
   label,
@@ -37,7 +46,7 @@ let FormField = ({
   error,
   ...props
 }) => (
-  <Flex column as={GridItem} {..._.pick(gridItemProps, props)}>
+  <Flex column as={GridItem} {..._.pick(wrapperProps, props)}>
     <Flex alignItems="center" gap="xs">
       <Text small style={{ fontWeight: 600 }}>
         {label}{' '}
@@ -63,7 +72,7 @@ let FormField = ({
         />
       )}
     </Flex>
-    <As {...{ error, ..._.omit(gridItemProps, props) }} />
+    <As {...{ error, ..._.omit(wrapperProps, props) }} />
     {error && (
       <Flex
         alignItems="center"

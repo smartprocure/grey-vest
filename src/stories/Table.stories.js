@@ -1,8 +1,18 @@
 import React from 'react'
 import { Table } from '..'
 import _ from 'lodash/fp'
+import { flag } from './commonProps'
 
-export default { title: 'Table', component: Table }
+let props = {
+  rows: [
+    {
+      name: 'plain',
+      ...flag,
+      description: 'Disables the stripe effect on table rows',
+    },
+  ],
+}
+export default { title: 'Table', component: Table, parameters: { props } }
 
 let users = [
   { user: 'barney', age: 36, active: true },
@@ -12,6 +22,31 @@ let users = [
 
 export let story = () => (
   <Table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Active</th>
+      </tr>
+    </thead>
+    <tbody>
+      {_.map(
+        ({ user, age, active }) => (
+          <tr>
+            <td>{user}</td>
+            <td>{age}</td>
+            <td>{active ? 'yes' : 'no'}</td>
+          </tr>
+        ),
+        users
+      )}
+    </tbody>
+  </Table>
+)
+
+
+export let plain = () => (
+  <Table plain>
     <thead>
       <tr>
         <th>Name</th>

@@ -8,8 +8,12 @@ import theme from './theme'
 import Icon from './Icon'
 let { spaces, fonts, colors } = theme
 
-let NativeSelect = ({ placeholder, options, ...props }) => (
-  <select {...props} css={theme.inputStyle}>
+let NativeSelect = ({ placeholder, options, onChange, ...props }) => (
+  <select
+    css={[theme.inputStyle, fonts.Text]}
+    onChange={e => onChange(e.target.value)}
+    {...props}
+  >
     {placeholder && <option value="">{placeholder}</option>}
     {_.map(
       x => (
@@ -22,7 +26,7 @@ let NativeSelect = ({ placeholder, options, ...props }) => (
   </select>
 )
 
-let ReactSelect = ({ value, options, ...props }) => (
+let ReactSelect = ({ value, options, onChange, ...props }) => (
   <BaseReactSelect
     styles={{
       container: provided => ({
@@ -61,7 +65,7 @@ let ReactSelect = ({ value, options, ...props }) => (
       }),
       indicatorSeparator: () => ({}),
       indicatorContainer: () => ({}),
-      dropdownIndicator: () => ({ padding: 8 }),
+      dropdownIndicator: () => ({ padding: spaces.sm }),
       placeholder: provided => ({
         ...provided,
         ...theme.inputStyle['::placeholder'],
@@ -69,12 +73,11 @@ let ReactSelect = ({ value, options, ...props }) => (
     }}
     {...{ options, ...props }}
     value={_.find({ value }, options)}
-    onChange={option => props.onChange(option.value)}
+    onChange={option => onChange(option.value)}
     components={{
       DropdownIndicator: ({ isFocused }) => (
         <Icon
-          icon="keyboard_arrow_down"
-          size={3}
+          icon="arrow_drop_down"
           style={{ marginRight: spaces.sm, opacity: isFocused ? 1 : 0.5 }}
         />
       ),

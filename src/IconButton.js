@@ -1,14 +1,13 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import { forwardRef } from 'react'
-import Icon from './Icon'
+import GVIcon from './Icon'
 import theme from './theme'
 
-let IconButton = ({ icon, ...props }, ref) => (
+let IconButton = ({ Icon = GVIcon, icon, small, large, ...props }, ref) => (
   <div
     css={{
-      width: theme.spaces.lg,
-      height: theme.spaces.lg,
+      padding: small ? theme.spaces.xs : theme.spaces.sm,
       borderRadius: 100,
       cursor: 'pointer',
       display: 'inline-flex',
@@ -28,7 +27,7 @@ let IconButton = ({ icon, ...props }, ref) => (
     }}
     {...{ ref, ...props }}
   >
-    <Icon icon={icon} />
+    <Icon {...{ icon, large }} />
   </div>
 )
 

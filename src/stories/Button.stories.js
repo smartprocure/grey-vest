@@ -9,7 +9,7 @@ let flagProps = _.map(x => ({ name: x, ...flag }))
 let props = {
   rows: [],
   sections: {
-    'size flags': flagProps(['compact', 'large']),
+    'size flags': flagProps(['small', 'large']),
     'color flags': flagProps(['primary', 'secondary', 'danger', 'ghost']),
     other: [
       {
@@ -49,7 +49,7 @@ export let regular = () => (
     <Button large onClick={clickAction}>
       Large Button
     </Button>
-    <Button compact onClick={clickAction}>
+    <Button small onClick={clickAction}>
       Compact Button
     </Button>
   </Container>
@@ -61,7 +61,7 @@ export let primary = () => (
     <Button primary large>
       Large
     </Button>
-    <Button primary compact>
+    <Button primary small>
       Compact
     </Button>
   </Container>
@@ -73,7 +73,7 @@ export let secondary = () => (
     <Button secondary large>
       Large
     </Button>
-    <Button secondary compact>
+    <Button secondary small>
       Compact
     </Button>
   </Container>
@@ -85,7 +85,7 @@ export let danger = () => (
     <Button danger large>
       Large
     </Button>
-    <Button danger compact>
+    <Button danger small>
       Compact
     </Button>
   </Container>
@@ -97,7 +97,7 @@ export let ghost = () => (
     <Button ghost large>
       Large
     </Button>
-    <Button ghost compact>
+    <Button ghost small>
       Compact
     </Button>
   </Container>
@@ -109,7 +109,7 @@ export let success = () => (
     <Button success large>
       Large
     </Button>
-    <Button success compact>
+    <Button success small>
       Compact
     </Button>
   </Container>
@@ -121,7 +121,7 @@ export let info = () => (
     <Button info large>
       Large
     </Button>
-    <Button info compact>
+    <Button info small>
       Compact
     </Button>
   </Container>
@@ -142,29 +142,24 @@ export let disabled = () => (
   </Container>
 )
 
-export let withIcon = () => (
-  <Container cols={3}>
+export let withIcon = () => {
+  let IconDemo = props => (
     <Flex inline column gap={1} alignItems="flex-start">
-      <Button icon="keyboard_arrow_down">Dropdown</Button>
-      <Button icon="beach_access">Other</Button>
-    </Flex>
-    <Flex inline column gap={1} alignItems="flex-start">
-      <Button large icon="keyboard_arrow_down">
+      <Button {...props} icon="keyboard_arrow_down">
         Dropdown
       </Button>
-      <Button large icon="face">
+      <Button {...props} icon="free_breakfast">
         Other
       </Button>
     </Flex>
-    <Flex inline column gap={1} alignItems="flex-start">
-      <Button compact icon="keyboard_arrow_down">
-        Dropdown
-      </Button>
-      <Button compact icon="eco">
-        Other
-      </Button>
-    </Flex>
-  </Container>
-)
+  )
+  return (
+    <Container cols={3}>
+      <IconDemo />
+      <IconDemo large />
+      <IconDemo small />
+    </Container>
+  )
+}
 
 export let asDiv = () => <Button as="div">Click</Button>

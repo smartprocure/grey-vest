@@ -18,6 +18,7 @@ Over a dozen new components have been added:
 
 - **Text**, **Title** and **Subtitle** - typography components
 - **Dropdown** and **Dialog** - Popovers pre-rolled with trigger buttons and a simpler API
+- **DateTimeInput** - like DateInput, but also allows the user to enter a time
 - **Tooltip** - courtesy of react-tooltip
 - **Banner** - a brightly-colored box for text
 - **Pager** - a pagination control component meant to be used with tables
@@ -38,13 +39,14 @@ A small number of components have been 🚨 **REMOVED** 🚨(or renamed):
 - **ErrorList** - renamed to **ErrorText**
 - **LinkButton** - renamed to **LinkText**
 - **ButtonRadio** has been removed
+- **ExpandableTagsInput** has been removed
 - **BarChart** is no longer exported
 
 #### Changes to individual components
 
-- 🚨 **Awaiter**'s `promise` prop has been renamed to `promiseFn` (for consistency with react-async)
+- **Awaiter** is now built on top of react-async's [Async component](https://docs.react-async.com/api/interfaces#async-component)
 - Changes to **Button**:
-  - New variants: `primary`, `secondary`, `danger`, and `ghost` colors/stylings, and `compact` and `large` sizes
+  - New variants: `primary`, `secondary`, `danger`, and `ghost` colors/stylings, and `small` and `large` sizes
   - Now supports an `icon` prop (same API as the Icon component's `icon` prop)
 - Changes to **Box**:
   - New variants: `modal` and `popup`, with different shadow styles
@@ -52,8 +54,10 @@ A small number of components have been 🚨 **REMOVED** 🚨(or renamed):
 - Changes to **CheckboxList** and **RadioList**:
   - Both now support the `disabled` property on options (to mark that option as disabled)
   - Both components now also support ColumnList props (`gap`, `columnCount`, `columnWidth`, and `columnGap`)
-- **DateInput** now includes a time picker (now uses `react-datetime-picker` internally instead of `react-date-picker`)
 - New props on **DropdownItem**: `disabled`, `truncate`, and `icon` (same as the Icon component's `icon` prop)
+- Changes to **Icon**:
+  - New variants: `small` and `large`
+  - 🚨 Removed support for contexture-react's custom icon keys (eg 'SortAscending', 'TableColumnMenu', etc) - the `icon` prop now only supports [material icon keys](https://material.io/resources/icons/) or components
 - Changes to **Modal**:
   - New components representing Modal sections: **ModalHeader**, **ModalContent**, and **ModalFooter** (available as top-level exports)
   - Modals now have a close button and can additionally be closed with the `Esc` key
@@ -64,11 +68,12 @@ A small number of components have been 🚨 **REMOVED** 🚨(or renamed):
 - Changes to **TextInput**, **Textarea**, and **Select**:
   - Now properly handle the `disabled` prop
   - 🚨 No longer default to 100% width
-- 🚨 **Tag** no longer accepts a RemoveIcon component prop
 - Changes to **Tabs**/**TabList**:
   - New variants for Tabs and TabsList: `transparent` and `classic`
   - The look & feel of TabsList has been overhauled! (the old styling is preseved under the `classic` variant)
   - 🚨 **TabList** component has been renamed to **TabsList** (added an 's') for parity with the `TabsList` component prop on Tabs
+- 🚨 **Tag** no longer accepts a RemoveIcon component prop
+- New props on **TagsInput**: `flipped` (variant with the input on top and the tags in reverse order), and `readOnly` (keeps the tags but hides the input)
 
 ### Spacing props
 
@@ -90,26 +95,32 @@ Component props that control whitespace now take spacing values from GreyVest's 
 ## Migration Guide
 
 1. For all `gap` props on **Box** components that use numbers, divide the value by 8
-2. Rename all `promise` props on **Awaiter** components to `promiseFn`
-3. Convert all `onClose` props on **Popover** components to `onChange` (the callback receives the open/closed state of the popover as its argument)
-4. Replace all references to...
+2. Convert all `onClose` props on **Popover** components to `onChange` (the callback receives the open/closed state of the popover as its argument)
+3. Replace all references to...
    - **TabList** with **TabsList**
    - **SpacedList** with **ColumnList**
    - **TextButton** with **IconButton**
    - **ErrorList** with **ErrorText**
-   - **LinkButton** with **Link**
-5. Remove all references to the **ButtonRadio**, **BarChart**, and **Style** components
-6. Remove any CSS targeting `gv-` classNames
+   - **LinkButton** with **LinkText**
+4. Remove all references to the **ButtonRadio**, **BarChart**, **ExpandableTagsInput**, and **Style** components
+5. Remove any CSS targeting `gv-` classNames
+6. Update any **Icon** components using contexture-react icon keys to use a material icon key (or a custom component) instead
 7. Import and use the design system constants from GreyVest's theme file, rather than hard-coding spacing or color values
 
 <hr />
+
+#### 3.0.0-alpha.20
+
+- Remove some unused imports (react-outside-click-handler, moment)
+- Remove ExpandableTagsInput
+- Split off DateTimeInput from DateInput
+- Box: improve handling of `padding`/`paddingX`/`paddingY` props (`padding` now also accepts a 2-element array)
+- Update ExpandableTable for new design system
 
 #### 3.0.0-alpha.19
 
 - Overhaul Popover component (and Dropdown)! New library, new API, new stories (see the 3.0 changelog for more info)
 - Add Dialog component
-- Remove some unused imports (react-date-picker, react-outside-click-handler)
-- Box: improve handling of `padding`/`paddingX`/`paddingY` props (`padding` now also accepts a 2-element array)
 
 #### 3.0.0-alpha.18
 

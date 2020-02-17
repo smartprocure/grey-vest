@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
-import { forwardRef } from 'react'
+import { forwardRef, useState, createContext } from 'react'
 import TooltipTrigger from 'react-popper-tooltip'
 import { setDisplayName } from 'recompose'
 import { observer } from 'mobx-react'
@@ -32,6 +32,8 @@ let EmptyTrigger = forwardRef((props, ref) => (
   />
 ))
 
+export let PopoverContext = createContext()
+
 // TODO: expand the API for triggerProps and popupProps to include functions
 // of `isToggled` to props in addition to a props object
 export let Popover = _.flow(
@@ -44,40 +46,57 @@ export let Popover = _.flow(
     Popup = PopupBox,
     triggerProps = {},
     popupProps = {},
-    placement,
-    side = placement ? '' : 'left',
+    placement = 'bottom-left',
     label = 'dropdown',
-    isOpen,
-    onChange,
+    isOpen: controlledIsOpen,
+    onChange: controlledOnChange,
+    keepOpen,
     children,
     ...props
-  }) => (
-    <TooltipTrigger
-      trigger="click"
-      tooltipShown={isOpen}
-      onVisibilityChange={onChange}
-      placement={F.compactJoin('-', [
-        placement || 'bottom',
-        { left: 'start', right: 'end' }[side],
-      ])}
-      modifiers={{
-        preventOverflow: { boundariesElement: 'document' },
-        offset: { offset: `0, ${theme.spaces.xs}` },
-      }}
-      tooltip={({ tooltipRef, getTooltipProps }) => (
-        <Popup {...getTooltipProps({ ...popupProps, ref: tooltipRef })}>
-          {children}
-        </Popup>
-      )}
-      {...props}
-    >
-      {({ getTriggerProps, triggerRef }) => (
-        <Trigger {...getTriggerProps({ ...triggerProps, ref: triggerRef })}>
-          {label}
-        </Trigger>
-      )}
-    </TooltipTrigger>
-  )
+  }) => {
+    let state = useState(false)
+    let [isOpen, onChange] =
+      controlledIsOpen === undefined
+        ? state
+        : [controlledIsOpen, controlledOnChange]
+    let close = () => onChange(false)
+    return (
+      <TooltipTrigger
+        trigger="click"
+        tooltipShown={isOpen}
+        onVisibilityChange={onChange}
+        modifiers={{
+          preventOverflow: { boundariesElement: 'document' },
+          offset: { offset: `0, ${theme.spaces.xs}` },
+        }}
+        tooltip={({ tooltipRef, getTooltipProps }) => (
+          <Popup
+            {...getTooltipProps({
+              ...popupProps,
+              onClick: _.over([!keepOpen && close, popupProps.onClick]),
+              ref: tooltipRef,
+            })}
+          >
+            <PopoverContext.Provider value={[isOpen, onChange]}>
+              {F.callOrReturn(children, close)}
+            </PopoverContext.Provider>
+          </Popup>
+        )}
+        {...{ placement, ...props }}
+      >
+        {({ getTriggerProps, triggerRef }) => (
+          <Trigger
+            {...getTriggerProps({
+              ...F.callOrReturn(triggerProps, isOpen),
+              ref: triggerRef,
+            })}
+          >
+            {F.callOrReturn(label, isOpen)}
+          </Trigger>
+        )}
+      </TooltipTrigger>
+    )
+  }
 )
 
 let parentProps = [
@@ -87,6 +106,7 @@ let parentProps = [
   'isOpen',
   'onChange',
   'open',
+  'keepOpen',
   'children',
 ]
 
@@ -94,12 +114,20 @@ let parentProps = [
 // but we need it to customize Dropdown
 let buttonPopover = popupProps => ({
   trigger = 'button',
-  icon = { button: 'arrow_drop_down', icon: 'more_vert' }[trigger],
+  icon = open =>
+    ({ button: `arrow_drop_${open ? 'up' : 'down'}`, icon: 'more_vert' }[
+      trigger
+    ]),
   ...props
 }) => (
   <Popover
     Trigger={{ button: Button, icon: IconButton }[trigger]}
-    triggerProps={{ icon, ..._.omit(parentProps, props) }}
+    triggerProps={open =>
+      _.mapValues(x => F.callOrReturn(x, open), {
+        icon,
+        ..._.omit(parentProps, props),
+      })
+    }
     {...{ popupProps, ..._.pick(parentProps, props) }}
   />
 )

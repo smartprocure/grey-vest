@@ -1,11 +1,13 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import { forwardRef } from 'react'
-import { darken, lighten } from 'polished'
+import { darken, lighten, padding } from 'polished'
 import _ from 'lodash/fp'
-import { Subtitle, Text, Icon, Flex } from './'
+import { Subtitle, Text } from './Typography'
+import GVIcon from './Icon'
+import Flex from './Flex'
 import theme from './theme'
-import { getVariants } from './utils'
+import { getVariants, getVariant } from './utils'
 let { spaces, space, colors } = theme
 
 let colorVariants = _.mapValues(
@@ -16,7 +18,7 @@ let colorVariants = _.mapValues(
     ':active': { backgroundColor: active || darken(0.16, base) },
   }),
   {
-    regular: {
+    default: {
       base: colors.neutralLight,
       hover: colors.neutral,
       active: colors.neutralDark,
@@ -46,24 +48,23 @@ let colorVariants = _.mapValues(
   }
 )
 
-let ButtonText = ({ size, ...x }) => {
-  if (size === 'compact')
-    return <Text extraSmall css={{ fontWeight: 'bold' }} {...x} />
-  if (size === 'large') return <Subtitle large {...x} />
-  return <Subtitle {...x} />
+let textVariants = {
+  small: x => <Text extraSmall bold {...x} />,
+  large: x => <Subtitle large {...x} />,
+  default: x => <Subtitle {...x} />,
 }
 
-let getPadding = (size, ratio = 2) =>
-  `${space(size)}px ${space(size * ratio)}px`
+let paddings = { small: [0.5, 1], large: [2, 2], default: [1, 2] }
+let paddingVariants = _.mapValues(_.map(space), paddings)
 
 let Button = (
-  { as: As = 'button', compact, large, icon, disabled, children, ...props },
+  { as: As = 'button', Icon = GVIcon, icon, disabled, children, ...props },
   ref
 ) => (
   <As
     css={[
       {
-        padding: getPadding(large ? 2 : compact ? 0.5 : 1, large ? 1 : 2),
+        ...padding(...getVariant(props, paddingVariants)),
         border: 'none',
         outline: 'none',
         cursor: 'pointer',
@@ -73,24 +74,21 @@ let Button = (
       },
       icon && { paddingRight: 0 },
       disabled && { cursor: 'not-allowed', opacity: 0.5 },
-      ...getVariants(props, colorVariants, 'regular'),
+      ...getVariants(props, colorVariants),
     ]}
     {...{ ref, ...props }}
   >
     <Flex alignItems="center" justifyContent="center">
-      <ButtonText size={(compact && 'compact') || (large && 'large')}>
-        {children}
-      </ButtonText>
+      {getVariant(props, textVariants)({ children })}
       {icon && (
         <Icon
-          icon={icon}
+          {...{ icon, ..._.pick(['large', 'small'], props) }}
           style={{
             paddingLeft: spaces.xs,
-            paddingRight: compact ? spaces.xs : spaces.sm,
+            paddingRight: props.small ? spaces.xs : spaces.sm,
             opacity: 0.5,
             lineHeight: 0,
           }}
-          size={large ? 4 : compact ? 2 : 3}
         />
       )}
     </Flex>

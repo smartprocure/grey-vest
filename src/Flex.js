@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
+import { forwardRef } from 'react'
 import theme from './theme'
 
 let Flex = ({
@@ -13,7 +14,7 @@ let Flex = ({
   children,
   gap = 0,
   ...props
-}) => {
+}, ref) => {
   let m = theme.space(gap)
   let flexStyle = [
     {
@@ -26,21 +27,21 @@ let Flex = ({
     },
     wrap
       ? {
-          '> *': { marginBottom: m, marginRight: m },
-          marginBottom: -m,
+          '> *': { marginTop: m, marginRight: m },
+          marginTop: -m,
           marginRight: -m,
         }
       : { '& > * + *': { [`margin${column ? 'Top' : 'Left'}`]: m } },
   ]
   return wrap ? (
     <As css={{ overflow: 'hidden' }} {...props}>
-      <div css={flexStyle}>{children}</div>
+      <div css={flexStyle} ref={ref}>{children}</div>
     </As>
   ) : (
-    <As css={flexStyle} {...props}>
+    <As css={flexStyle} {...props} ref={ref}>
       {children}
     </As>
   )
 }
 
-export default Flex
+export default forwardRef(Flex)
