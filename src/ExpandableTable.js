@@ -1,8 +1,15 @@
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
+import { Fragment } from 'react'
 import _ from 'lodash/fp'
 import * as F from 'futil'
-import React from 'react'
 import { observable } from 'mobx'
 import { observer, inject } from 'mobx-react'
+import Table from './Table'
+import Flex from './Flex'
+import IconButton from './IconButton'
+import Icon from './Icon'
+import theme from './theme'
 
 export let Column = _.identity
 Column.displayName = 'Column'
@@ -11,7 +18,12 @@ let ExpandedSection = observer(
   ({ columnCount, expandedRow }) =>
     _.getOr(null, 'details.Component', expandedRow) && (
       <tr align="center">
-        <td colSpan={columnCount}>
+        <td
+          colSpan={columnCount}
+          css={{
+            backgroundColor: theme.colors.neutralLight,
+          }}
+        >
           {expandedRow.details.Component(
             _.get(expandedRow.field, expandedRow.record),
             expandedRow.record
@@ -50,13 +62,16 @@ let TableBody = inject(TableBodyState)(
     <tbody>
       {_.map(
         x => (
-          <React.Fragment key={x[recordKey]}>
+          <Fragment key={x[recordKey]}>
             <tr
               {...x.rowAttrs}
               key={x[recordKey]}
-              className={
-                _.getOr('', 'rowAttrs.className', x) +
-                (expanded.has(x[recordKey]) ? 'expanded' : '')
+              className={_.get('rowAttrs.className', x)}
+              css={
+                expanded.has(x[recordKey]) && {
+                  backgroundColor: theme.colors.secondary,
+                  color: theme.colors.background,
+                }
               }
             >
               {F.mapIndexed(
@@ -95,7 +110,7 @@ let TableBody = inject(TableBodyState)(
                 columnCount={columns.length}
               />
             )}
-          </React.Fragment>
+          </Fragment>
         ),
         data
       )}
@@ -127,24 +142,33 @@ let ExpandableTable = inject(TableState)(
       columnSort = _.identity,
       ...props
     }) => (
-      <table {...props.tableAttrs}>
+      <Table plain {...props.tableAttrs}>
         <thead>
           <tr>
             {F.mapIndexed(
               (c, i) => (
-                <th
-                  key={`${c.field}${i}`}
-                  {...c.enableSort && {
-                    onClick: () => columnSort(c),
-                    style: { cursor: 'pointer', textDecoration: 'underline' },
-                  }}
-                >
-                  {F.callOrReturn(_.getOr(F.autoLabel(c.field), 'label', c))}
-                  {c.enableSort && c.field === sortField && sortDir
-                    ? sortDir === 'asc'
-                      ? '▲'
-                      : '▼'
-                    : ''}
+                <th key={`${c.field}${i}`}>
+                  <Flex alignItems="center" gap="xs">
+                    <span>
+                      {F.callOrReturn(
+                        _.getOr(F.autoLabel(c.field), 'label', c)
+                      )}
+                    </span>
+                    {sortDir && c.field === sortField && (
+                      <Icon
+                        icon={
+                          { asc: 'expand_less', desc: 'expand_more' }[sortDir]
+                        }
+                      />
+                    )}
+                    {c.enableSort && (
+                      <IconButton
+                        small
+                        onClick={() => columnSort(c)}
+                        icon="sort"
+                      />
+                    )}
+                  </Flex>
                 </th>
               ),
               columns
@@ -152,7 +176,7 @@ let ExpandableTable = inject(TableState)(
           </tr>
         </thead>
         <TableBody columns={columns} data={data} recordKey={recordKey} />
-      </table>
+      </Table>
     )
   )
 )
