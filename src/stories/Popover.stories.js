@@ -37,13 +37,8 @@ let props = {
         name: 'placement',
         description:
           'Which side of the trigger the popup appears on (as long as it has space)',
-        type: { summary: `'top' | 'bottom' | 'left' | 'right'` },
-        defaultValue: { summary: "'bottom'" },
-      },
-      {
-        name: 'side',
-        type: { summary: `left' | 'right'` },
-        defaultValue: { summary: "'left'" },
+        type: { summary: `'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | left-start' | 'left-end' | 'right' | 'right-start' | 'right-end'` },
+        defaultValue: { summary: "'bottom-start'" },
       },
       {
         name: 'children',
