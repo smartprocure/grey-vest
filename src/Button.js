@@ -7,7 +7,7 @@ import { Subtitle, Text } from './Typography'
 import GVIcon from './Icon'
 import Flex from './Flex'
 import theme from './theme'
-import { getVariants, getVariant } from './utils'
+import { getButtonVariants, getButtonVariant } from './utils'
 let { spaces, space, colors } = theme
 
 let colorVariants = _.mapValues(
@@ -64,7 +64,7 @@ let Button = (
   <As
     css={[
       {
-        ...padding(...getVariant(props, paddingVariants)),
+        ...padding(...getButtonVariant(props, paddingVariants)),
         border: 'none',
         outline: 'none',
         cursor: 'pointer',
@@ -74,12 +74,12 @@ let Button = (
       },
       icon && { paddingRight: 0 },
       disabled && { cursor: 'not-allowed', opacity: 0.5 },
-      ...getVariants(props, colorVariants),
+      ...getButtonVariants(props, colorVariants),
     ]}
     {...{ ref, ...props }}
   >
     <Flex alignItems="center" justifyContent="center">
-      {getVariant(props, textVariants)({ children })}
+      {getButtonVariant(props, textVariants)({ children })}
       {icon && (
         <Icon
           {...{ icon, ..._.pick(['large', 'small'], props) }}

@@ -40,3 +40,14 @@ export let getVariants = (props, variants, defaultKey = 'default') =>
 
 // Returns only the last variant of getVariants
 export let getVariant = (...args) => _.last(getVariants(...args))
+
+
+//getVariants modification to solve warning problem., use color attribute instead of using boolean to mark button type.
+
+export let getButtonVariants = (props, variants, defaultKey = 'default') =>
+    _.flow(
+        _.pick(_.compact([defaultKey, props.color])),
+        _.values
+    )(variants)
+
+export let getButtonVariant = (...args) => _.last(getColorVariants(...args))
