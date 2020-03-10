@@ -12,15 +12,23 @@ export let story = () => {
       <Grid columns={3} gap="sm">
         <div>
           <Text as="div">Page:</Text>
-          <TextInput value={page} onChange={onChangePage} />
+          <TextInput type="number" value={page} onChange={onChangePage} />
         </div>
         <div>
           <Text as="div">Page Size:</Text>
-          <TextInput value={pageSize} onChange={onChangePageSize} />
+          <TextInput
+            type="number"
+            value={pageSize}
+            onChange={onChangePageSize}
+          />
         </div>
         <div>
           <Text as="div">Total Records:</Text>
-          <TextInput value={totalRecords} onChange={setTotalRecords} />
+          <TextInput
+            type="number"
+            value={totalRecords}
+            onChange={setTotalRecords}
+          />
         </div>
       </Grid>
       <Divider margin="md" />
