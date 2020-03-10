@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
+import _ from 'lodash/fp'
 import { Icon, Text, Flex } from '.'
 import theme from './theme'
 import { getVariant } from './utils'
@@ -36,7 +37,7 @@ let Banner = ({ children, icon, ...props }) => {
       justifyContent="center"
       css={[{ padding: theme.spaces.xs }, styleFromVariant(variant)]}
       gap="xs"
-      {...props}
+      {..._.omit(_.keys(variants), props)}
     >
       <Icon
         icon={icon || variant.icon}

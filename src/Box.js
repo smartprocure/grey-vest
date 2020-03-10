@@ -24,7 +24,7 @@ let Box = (
         [paddingX, _.last(_.castArray(padding))],
       ]),
     }}
-    {...{ ref, ...props }}
+    {...{ ref, ..._.omit(_.keys(theme.boxShadows), props) }}
   />
 )
 

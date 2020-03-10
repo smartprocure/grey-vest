@@ -14,7 +14,7 @@ let Icon = React.forwardRef(({ icon, style, className, ...props }, ref) =>
     <i
       className={`material-icons ${className}`}
       style={{ fontSize: getVariant(props, sizeVariants), ...style }}
-      {...{ ref, ...props }}
+      {...{ ref, ..._.omit(_.keys(sizes), props) }}
     >
       {icon}
     </i>

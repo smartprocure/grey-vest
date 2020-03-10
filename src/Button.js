@@ -54,6 +54,8 @@ let textVariants = {
   default: x => <Subtitle {...x} />,
 }
 
+let variantKeys = [..._.keys(colorVariants), ..._.keys(textVariants)]
+
 let paddings = { small: [0.5, 1], large: [2, 2], default: [1, 2] }
 let paddingVariants = _.mapValues(_.map(space), paddings)
 
@@ -76,7 +78,7 @@ let Button = (
       disabled && { cursor: 'not-allowed', opacity: 0.5 },
       ...getVariants(props, colorVariants),
     ]}
-    {...{ ref, ...props }}
+    {...{ ref, ..._.omit(variantKeys, props) }}
   >
     <Flex alignItems="center" justifyContent="center">
       {getVariant(props, textVariants)({ children })}
