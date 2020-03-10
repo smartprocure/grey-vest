@@ -49,7 +49,10 @@ let TableFooter = ({
       <PageSize
         sizeOptions={pageSizeOptions}
         value={pageSize}
-        onChange={onChangePageSize}
+        onChange={size => {
+          onChangePage(_.ceil((startRecord || 0) / size) || 1)
+          onChangePageSize(size)
+        }}
         css={{ flex: '0 1 30%' }}
       />
       <Flex css={{ flex: 1 }} alignItems="center" justifyContent="center">
