@@ -40,3 +40,9 @@ export let getVariants = (props, variants, defaultKey = 'default') =>
 
 // Returns only the last variant of getVariants
 export let getVariant = (...args) => _.last(getVariants(...args))
+
+let keysAll = _.flow(
+  _.castArray,
+  _.reduce((acc, x) => _.union(_.keys(x), acc), [])
+)
+export let omitKeysFrom = _.curry((objs, x) => _.omit(keysAll(objs), x))
