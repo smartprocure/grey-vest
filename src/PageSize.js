@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import _ from 'lodash/fp'
-import { observer } from 'mobx-react'
 import { margin } from 'polished'
 import GVPagerItem from './PagerItem'
 import { Text } from './Typography'
@@ -45,4 +44,4 @@ let PageSize = ({
   )
 }
 
-export default observer(PageSize)
+export default PageSize
