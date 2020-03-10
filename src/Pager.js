@@ -12,8 +12,9 @@ let Pager = ({
   PagerItem = GVPagerItem,
   Icon = GVIcon,
   ...props
-}) =>
-  pageCount > 1 && (
+}) => {
+  value = _.toInteger(value) || 1
+  return pageCount <= 1 ? null : (
     <Flex justifyContent="center" alignItems="center" gap="xs" {...props}>
       <PagerItem disabled={!(value > 1)} onClick={() => onChange(value - 1)}>
         <Icon icon="chevron_left" />
@@ -63,5 +64,6 @@ let Pager = ({
       </PagerItem>
     </Flex>
   )
+}
 
 export default Pager
