@@ -1,7 +1,20 @@
 import React from 'react'
 import { TableFooter, TextInput, Text, Grid, Divider } from '..'
 
-export default { title: 'TableFooter', component: TableFooter }
+let props = {
+  rows: [
+    { name: 'page', type: { summary: 'integer' } },
+    { name: 'onChangePage', type: { summary: 'function' } },
+    { name: 'pageSize', type: { summary: 'integer' } },
+    { name: 'onChangePageSize', type: { summary: 'function' } },
+  ],
+}
+
+export default {
+  title: 'TableFooter',
+  component: TableFooter,
+  parameters: { props },
+}
 
 export let story = () => {
   let [page, onChangePage] = React.useState(1)
