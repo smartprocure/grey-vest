@@ -2,7 +2,7 @@
 import { jsx } from '@emotion/core'
 import { forwardRef } from 'react'
 import _ from 'lodash/fp'
-import { getVariants } from './utils'
+import { getVariants, omitKeysFrom } from './utils'
 import theme from './theme'
 
 let modifiers = {
@@ -15,7 +15,7 @@ let toComponent = ({ variants, ...styles }) =>
   forwardRef(({ as: As = 'span', ...props }, ref) => (
     <As
       css={[styles, ...getVariants(props, { ...variants, ...modifiers })]}
-      {...{ ref, ...props }}
+      {...{ ref, ...omitKeysFrom([variants, modifiers], props) }}
     />
   ))
 

@@ -1,9 +1,8 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
-import _ from 'lodash/fp'
 import { Icon, Text, Flex } from '.'
 import theme from './theme'
-import { getVariant } from './utils'
+import { getVariant, omitKeysFrom } from './utils'
 let { colors } = theme
 
 let styleFromVariant = ({ backgroundColor, textColor }) => ({
@@ -37,7 +36,7 @@ let Banner = ({ children, icon, ...props }) => {
       justifyContent="center"
       css={[{ padding: theme.spaces.xs }, styleFromVariant(variant)]}
       gap="xs"
-      {..._.omit(_.keys(variants), props)}
+      {...omitKeysFrom(variants, props)}
     >
       <Icon
         icon={icon || variant.icon}
