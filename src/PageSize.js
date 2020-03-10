@@ -9,12 +9,12 @@ import theme from './theme'
 let PageSize = ({
   value,
   onChange = () => {},
-  sizeOptions = [20, 50, 100, 250],
+  sizeOptions = [10, 20, 50, 100, 250],
   PagerItem = GVPagerItem,
   ...props
 }) => (
   <Flex alignItems="baseline" {...props}>
-    <Text small css={{ marginRight: theme.spaces.xs, fontWeight: 'bold' }}>View</Text>
+    <Text small bold css={{ marginRight: theme.spaces.xs }}>View</Text>
     {_.map(
       size => (
         <PagerItem
