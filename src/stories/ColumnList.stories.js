@@ -9,22 +9,24 @@ import theme from '../theme'
 
 let props = {
   gap: {
-    ...spacingValue,
+    type: spacingValue,
+    defaultValue: 0,
     description: 'vertical spacing between each element in the list',
   },
   columnGap: {
-    ...spacingValue,
+    type: spacingValue,
+    defaultValue: 0,
     description: 'horizontal spacing between columns',
   },
   columnCount: {
-    description: '_maximum_ number of columns',
     type: 'number',
     defaultValue: 1,
+    description: '_maximum_ number of columns',
   },
   columnWidth: {
-    ...cssValue,
-    description: '_minimum_ width of each column',
+    type: cssValue,
     defaultValue: theme.widths.xs,
+    description: '_minimum_ width of each column',
   },
 }
 

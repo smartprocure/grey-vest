@@ -13,7 +13,7 @@ let propSections = {
     onClick: {
       description: 'Click handler for button',
       type: 'function',
-      defaultValue: '() => {}',
+      defaultValue: '() => void',
     },
     icon: {
       description: "supports the same values as Icon's `icon` prop",
