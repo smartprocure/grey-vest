@@ -25,7 +25,7 @@ let convertTypes = F.expandObject(
 )
 
 let convertProps = _.flow(
-  F.unkeyBy('name'),
+  F.unless(_.isArray, F.unkeyBy('name')),
   _.map(convertTypes)
 )
 
@@ -40,7 +40,9 @@ addParameters({
       <DocsPage
         propsSlot={({ parameters: { props = {}, propGroups } }) => ({
           rows: convertProps(props),
-          ...propGroups && { sections: _.mapValues(convertProps, propGroups) },
+          ...(propGroups && {
+            sections: _.mapValues(convertProps, propGroups),
+          }),
         })}
       />
     ),
