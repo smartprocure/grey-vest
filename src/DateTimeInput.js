@@ -17,7 +17,7 @@ let { inputStyle, fonts } = theme
 let NativeDateInput = ({ value, onChange = _.noop, ...props }) => (
   <input
     type="datetime-local"
-    onChange={x => onChange(toDate(x.target.value))}
+    onChange={e => onChange(toDate(e.target.value))}
     value={toDateWith(toLocalISOString)(value)}
     {...props}
     css={[fonts.Text, inputStyle]}

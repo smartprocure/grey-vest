@@ -4,7 +4,7 @@ import _ from 'lodash/fp'
 import F from 'futil'
 import { forwardRef } from 'react'
 import { padding as pad } from 'polished'
-import { getVariants, coalesce } from './utils'
+import { getVariants, coalesce, omitKeysFrom } from './utils'
 import theme from './theme'
 
 let Box = (
@@ -24,7 +24,7 @@ let Box = (
         [paddingX, _.last(_.castArray(padding))],
       ]),
     }}
-    {...{ ref, ...props }}
+    {...{ ref, ...omitKeysFrom(theme.boxShadows, props) }}
   />
 )
 

@@ -7,7 +7,7 @@ import { Subtitle, Text } from './Typography'
 import GVIcon from './Icon'
 import Flex from './Flex'
 import theme from './theme'
-import { getVariants, getVariant } from './utils'
+import { getVariants, getVariant, omitKeysFrom } from './utils'
 let { spaces, space, colors } = theme
 
 let colorVariants = _.mapValues(
@@ -54,6 +54,8 @@ let textVariants = {
   default: x => <Subtitle {...x} />,
 }
 
+let omitVariants = omitKeysFrom([colorVariants, textVariants])
+
 let paddings = { small: [0.5, 1], large: [2, 2], default: [1, 2] }
 let paddingVariants = _.mapValues(_.map(space), paddings)
 
@@ -76,7 +78,7 @@ let Button = (
       disabled && { cursor: 'not-allowed', opacity: 0.5 },
       ...getVariants(props, colorVariants),
     ]}
-    {...{ ref, ...props }}
+    {...{ ref, ...omitVariants(props) }}
   >
     <Flex alignItems="center" justifyContent="center">
       {getVariant(props, textVariants)({ children })}
