@@ -6,7 +6,7 @@ import { flag, asProp } from './commonProps'
 
 let flagProps = F.arrayToObject(x => x, () => flag)
 
-let propGroups = {
+let propSections = {
   'size flags': flagProps(['small', 'large']),
   'color flags': flagProps(['primary', 'secondary', 'danger', 'ghost']),
   other: {
@@ -28,7 +28,7 @@ export default {
   component: Button,
   parameters: {
     componentSubtitle: 'With five color variations and three sizes',
-    propGroups,
+    propSections,
   },
 }
 

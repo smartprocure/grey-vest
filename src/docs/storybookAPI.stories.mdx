@@ -17,7 +17,7 @@ export default {
     componentSubtitle,
     info,
     props,
-    propGroups,
+    propSections,
   },
 }
 ```
@@ -29,7 +29,7 @@ Storybook docs are supposed to automatically parse PropTypes and JSDocs into dat
 1. Our widespread use of HOCs such as mobx-react's `observer` means that Storybook has trouble parsing metadata for a lot of our components (this will likely be ironed out as Storybook Docs matures, but we'd rather not wait for that to happen)
 2. We haven't historically used PropTypes and would have to add the data in some format to each of our components or stories anyway - and for documentation only, using PropTypes is less flexible than manually specifying the arguments to PropTable
 
-As a result, our storybook configuration is customized to pass the values from the `props` (or `propGroups`) and `info` properties in `parameters` directly into Storybook's PropsTable and Description components, respectively.
+As a result, our storybook configuration is customized to pass the values from the `props` (or `propSections`) and `info` properties in `parameters` directly into Storybook's PropsTable and Description components, respectively.
 
 ## Subtitle
 
@@ -85,7 +85,7 @@ In addition to a string value, the `type` and `defaultValue` properties accept a
 
 ### Groups
 
-Storybook's props table supports either a single list of props, or multiple lists grouped into titled sections. For the latter, use the `propGroups` property instead of `props`, and pass an object of the form `{ [sectionTitle]: props }`.
+Storybook's props table supports either a single list of props, or multiple lists grouped into titled sections. For the latter, use the `propSections` property instead of `props`, and pass an object of the form `{ [sectionTitle]: props }`.
 
 ### Example
 
@@ -94,7 +94,7 @@ Storybook's props table supports either a single list of props, or multiple list
 
 let flagDef = { type: 'boolean', defaultValue: 'false' }
 
-let propGroups = {
+let propSections = {
   flags: { small: flagDef, large: flagDef },
   other: {
     icon: {
@@ -108,7 +108,7 @@ let propGroups = {
   },
 }
 
-export default { title: 'Button', parameters: { propGroups } }
+export default { title: 'Button', parameters: { propSections } }
 
 export let story = () => // ...
 ```

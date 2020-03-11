@@ -3,7 +3,7 @@ import { Flex, Dialog, Icon } from '..'
 import { lipsum } from './utils'
 import { func } from './commonProps'
 
-let propGroups = {
+let propSections = {
   'controlled state': [
     { name: 'isOpen' },
     { ...func, name: 'onChange' },
@@ -39,7 +39,7 @@ let propGroups = {
 export default {
   title: 'Dialog',
   component: Dialog,
-  parameters: { propGroups },
+  parameters: { propSections },
 }
 
 let Center = props => (

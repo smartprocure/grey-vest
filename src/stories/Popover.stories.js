@@ -3,7 +3,7 @@ import F from 'futil'
 import { Button, Flex, Popover } from '..'
 import { func } from './commonProps'
 
-let propGroups = {
+let propSections = {
   'controlled state': [
     { name: 'isOpen' },
     { ...func, name: 'onChange' },
@@ -50,7 +50,7 @@ let propGroups = {
 export default {
   title: 'Popover',
   component: Popover,
-  parameters: { propGroups },
+  parameters: { propSections },
 }
 
 export let uncontrolled = () => (

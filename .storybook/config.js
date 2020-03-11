@@ -38,10 +38,10 @@ addParameters({
   docs: {
     page: () => (
       <DocsPage
-        propsSlot={({ parameters: { props = {}, propGroups } }) => ({
+        propsSlot={({ parameters: { props = {}, propSections } }) => ({
           rows: convertProps(props),
-          ...(propGroups && {
-            sections: _.mapValues(convertProps, propGroups),
+          ...(propSections && {
+            sections: _.mapValues(convertProps, propSections),
           }),
         })}
       />
