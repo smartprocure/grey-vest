@@ -68,24 +68,20 @@ simply pass it as a flag to the component:
 
 ## Props
 
-The `props` property accepts an array of prop definitions (or an object - see the section below on **shorthand forms**), which is passed to Storybook's Props component and finally rendered into the props table that appears on a story's docs page. A prop definition has the following shape (see Storybook's [PropDef](https://github.com/storybookjs/storybook/blob/next/lib/components/src/blocks/PropsTable/PropDef.ts) type for reference):
+The `props` property accepts either a `{ [propName]: propDefinition }` object, or an array of `{ propName, ...propDefinition }` objects. This is passed to Storybook's Props component and eventually rendered into the props table that appears on a story's docs page. A prop definition has the following shape (see Storybook's [PropDef](https://github.com/storybookjs/storybook/blob/next/lib/components/src/blocks/PropsTable/PropDef.ts) type for reference):
 
 ```ts
 {
-  name: string,
   required: boolean, // defaults to false
-  type: { summary: string, detail?: string },
+  type: string | { summary: string, detail?: string },
   description?: string,
-  defaultValue?: { summary: string, detail?: string },
+  defaultValue?: string | { summary: string, detail?: string }
 }
 ```
 
-### Shorthand forms
+### Summary values
 
-For convenience, our storybook configuration performs a couple of transformations on `props` (or `propGroups`) so we can write the definitions a little more succinctly. Specifically:
-
-1. In addition to an array of `{ name, ...definition }` objects, `props` can also be an *object* of the form `{ [name]: definition }`
-2. In addition to a `{ summary, detail }` object, `type` and `defaultValue` also support a *plain string value*
+In addition to a string value, the `type` and `defaultValue` properties accept a `{ summary, detail }` object. This is the representation used by Storybook internally - the value of `summary` is displayed in the prop table, and the value of `detail`, if given, is displayed in a tooltip underneath. (If `type` or `defaultValue` receives a plain string instead of an object, it's used as the value of `summary` when passed to Storybook.)
 
 ### Groups
 
