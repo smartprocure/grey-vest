@@ -15,6 +15,10 @@ let propGroups = {
       type: 'function',
       defaultValue: '() => {}',
     },
+    icon: {
+      description: "supports the same values as Icon's `icon` prop",
+      type: 'string | Component',
+    },
     as: { ...asProp, defaultValue: `'button'` },
   },
 }
