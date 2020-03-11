@@ -1,14 +1,12 @@
 import React from 'react'
 import { TableFooter, TextInput, Text, Grid, Divider } from '..'
 
-let props = {
-  rows: [
-    { name: 'page', type: { summary: 'integer' } },
-    { name: 'onChangePage', type: { summary: 'function' } },
-    { name: 'pageSize', type: { summary: 'integer' } },
-    { name: 'onChangePageSize', type: { summary: 'function' } },
-  ],
-}
+let props = [
+  { name: 'page', type: { summary: 'integer' } },
+  { name: 'onChangePage', type: { summary: 'function' } },
+  { name: 'pageSize', type: { summary: 'integer' } },
+  { name: 'onChangePageSize', type: { summary: 'function' } },
+]
 
 export default {
   title: 'TableFooter',

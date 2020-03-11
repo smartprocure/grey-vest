@@ -3,51 +3,55 @@ import F from 'futil'
 import { Button, Flex, Popover } from '..'
 import { func } from './commonProps'
 
-let props = {
-  sections: {
-    'controlled state': [
-      { name: 'isOpen' },
-      { ...func, name: 'onChange' },
-      { name: 'open', type: { summary: 'Lens' } },
-    ],
-    trigger: [
-      {
-        name: 'Trigger',
-        description:
-          'The component that the popup attaches to. Must support refs. Defaults to a 0px div.',
-        type: { summary: 'Component | string' },
-        defaultValue: { summary: 'EmptyTrigger' },
+let propGroups = {
+  'controlled state': [
+    { name: 'isOpen' },
+    { ...func, name: 'onChange' },
+    { name: 'open', type: { summary: 'Lens' } },
+  ],
+  trigger: [
+    {
+      name: 'Trigger',
+      description:
+        'The component that the popup attaches to. Must support refs. Defaults to a 0px div.',
+      type: { summary: 'Component | string' },
+      defaultValue: { summary: 'EmptyTrigger' },
+    },
+    { name: 'triggerProps', type: { summary: 'object' } },
+    {
+      name: 'label',
+      description: 'Passed to `children` of the Trigger component',
+      type: { summary: 'string' },
+      defaultValue: { summary: "'dropdown'" },
+    },
+  ],
+  popup: [
+    {
+      name: 'Popup',
+      type: { summary: 'Component | string' },
+      defaultValue: { summary: 'PopupBox' },
+    },
+    { name: 'popupProps', type: { summary: 'object' } },
+    {
+      name: 'placement',
+      description:
+        'Which side of the trigger the popup appears on (as long as it has space)',
+      type: {
+        summary: `'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | left-start' | 'left-end' | 'right' | 'right-start' | 'right-end'`,
       },
-      { name: 'triggerProps', type: { summary: 'object' } },
-      {
-        name: 'label',
-        description: 'Passed to `children` of the Trigger component',
-        type: { summary: 'string' },
-        defaultValue: { summary: "'dropdown'" },
-      },
-    ],
-    popup: [
-      {
-        name: 'Popup',
-        type: { summary: 'Component | string' },
-        defaultValue: { summary: 'PopupBox' },
-      },
-      { name: 'popupProps', type: { summary: 'object' } },
-      {
-        name: 'placement',
-        description:
-          'Which side of the trigger the popup appears on (as long as it has space)',
-        type: { summary: `'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | left-start' | 'left-end' | 'right' | 'right-start' | 'right-end'` },
-        defaultValue: { summary: "'bottom-start'" },
-      },
-      {
-        name: 'children',
-        description: 'Passed to `children` of the Popup component',
-      },
-    ],
-  },
+      defaultValue: { summary: "'bottom-start'" },
+    },
+    {
+      name: 'children',
+      description: 'Passed to `children` of the Popup component',
+    },
+  ],
 }
-export default { title: 'Popover', component: Popover, parameters: { props } }
+export default {
+  title: 'Popover',
+  component: Popover,
+  parameters: { propGroups },
+}
 
 export let uncontrolled = () => (
   <Popover
@@ -146,7 +150,9 @@ export let closingManually = () => (
           alignItems="center"
           justifyContent="center"
         >
-          <Button primary onClick={close}>Click me to close the popup</Button>
+          <Button primary onClick={close}>
+            Click me to close the popup
+          </Button>
         </Flex>
       )}
     </Popover>

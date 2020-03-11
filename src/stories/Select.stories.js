@@ -4,22 +4,20 @@ import _ from 'lodash/fp'
 import { Select, Grid } from '..'
 import { lipsum, optionsFromArray } from './utils'
 
-let props = {
-  rows: [
-    { name: 'value' },
-    {
-      name: 'options',
-      type: {
-        summary: 'Array<{ label: string, value: any, disabled: boolean }>',
-      },
+let props = [
+  { name: 'value' },
+  {
+    name: 'options',
+    type: {
+      summary: 'Array<{ label: string, value: any, disabled: boolean }>',
     },
-    {
-      name: 'onChange',
-      type: { summary: '(value: any) => any' },
-      description: 'Called with the value of the selected option',
-    },
-  ],
-}
+  },
+  {
+    name: 'onChange',
+    type: { summary: '(value: any) => any' },
+    description: 'Called with the value of the selected option',
+  },
+]
 export default { title: 'Select', component: Select, parameters: { props } }
 
 let options = optionsFromArray(_.times(lipsum, 5))

@@ -3,15 +3,13 @@ import { Table } from '..'
 import _ from 'lodash/fp'
 import { flag } from './commonProps'
 
-let props = {
-  rows: [
-    {
-      name: 'plain',
-      ...flag,
-      description: 'Disables the stripe effect on table rows',
-    },
-  ],
-}
+let props = [
+  {
+    name: 'plain',
+    ...flag,
+    description: 'Disables the stripe effect on table rows',
+  },
+]
 export default { title: 'Table', component: Table, parameters: { props } }
 
 let users = [
@@ -43,7 +41,6 @@ export let story = () => (
     </tbody>
   </Table>
 )
-
 
 export let plain = () => (
   <Table plain>

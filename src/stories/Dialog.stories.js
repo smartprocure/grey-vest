@@ -3,42 +3,44 @@ import { Flex, Dialog, Icon } from '..'
 import { lipsum } from './utils'
 import { func } from './commonProps'
 
-let props = {
-  sections: {
-    'controlled state': [
-      { name: 'isOpen' },
-      { ...func, name: 'onChange' },
-      { name: 'open', type: { summary: 'Lens' } },
-    ],
-    trigger: [
-      {
-        name: 'label',
-        description: 'Text on the trigger button',
-        type: { summary: 'string' },
-        defaultValue: { summary: "'dropdown'" },
-      },
-    ],
-    popup: [
-      {
-        name: 'placement',
-        description:
-          'Which side of the trigger the popup appears on (as long as it has space)',
-        type: { summary: `'top' | 'bottom' | 'left' | 'right'` },
-        defaultValue: { summary: "'bottom'" },
-      },
-      {
-        name: 'side',
-        type: { summary: `left' | 'right'` },
-        defaultValue: { summary: "'left'" },
-      },
-      {
-        name: 'children',
-        description: 'Rendered inside the popup',
-      },
-    ],
-  },
+let propGroups = {
+  'controlled state': [
+    { name: 'isOpen' },
+    { ...func, name: 'onChange' },
+    { name: 'open', type: { summary: 'Lens' } },
+  ],
+  trigger: [
+    {
+      name: 'label',
+      description: 'Text on the trigger button',
+      type: { summary: 'string' },
+      defaultValue: { summary: "'dropdown'" },
+    },
+  ],
+  popup: [
+    {
+      name: 'placement',
+      description:
+        'Which side of the trigger the popup appears on (as long as it has space)',
+      type: { summary: `'top' | 'bottom' | 'left' | 'right'` },
+      defaultValue: { summary: "'bottom'" },
+    },
+    {
+      name: 'side',
+      type: { summary: `left' | 'right'` },
+      defaultValue: { summary: "'left'" },
+    },
+    {
+      name: 'children',
+      description: 'Rendered inside the popup',
+    },
+  ],
 }
-export default { title: 'Dialog', component: Dialog, parameters: { props } }
+export default {
+  title: 'Dialog',
+  component: Dialog,
+  parameters: { propGroups },
+}
 
 let Center = props => (
   <Flex gap="md" justifyContent="space-around" alignItems="center" {...props} />

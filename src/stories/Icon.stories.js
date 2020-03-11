@@ -2,18 +2,16 @@ import React from 'react'
 import { Icon, Flex, Button } from '..'
 import { flag } from './commonProps'
 
-let props = {
-  rows: [
-    {
-      name: 'icon',
-      description:
-        'Accepts a [Material-UI icon ID](https://material.io/resources/icons/) or a React component',
-      type: { summary: 'string | Component' },
-    },
-    { name: 'small', ...flag },
-    { name: 'large', ...flag },
-  ],
-}
+let props = [
+  {
+    name: 'icon',
+    description:
+      'Accepts a [Material-UI icon ID](https://material.io/resources/icons/) or a React component',
+    type: { summary: 'string | Component' },
+  },
+  { name: 'small', ...flag },
+  { name: 'large', ...flag },
+]
 export default { title: 'Icon', component: Icon, parameters: { props } }
 
 export let story = () => <Icon icon="weekend" />
