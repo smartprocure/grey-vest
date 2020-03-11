@@ -22,7 +22,8 @@ Over a dozen new components have been added:
 - **Tooltip** - courtesy of react-tooltip
 - **Banner** - a brightly-colored box for text
 - **Pager** - a pagination control component meant to be used with tables
-- **TableFooter** - incorporates Pager, page size controls, and page info
+- **PageSize** - companion to Pager, displays controls to change the page size 
+- **TableFooter** - incorporates Pager, PageSize, and some page info
 - **Divider** - a horizontal or vertical separator
 - **ModalHeader**, **ModalContent**, and **ModalFooter** - helper components for building modals
 - **FormField** - a form input plus label, tooltip, error text, etc
@@ -46,7 +47,7 @@ A small number of components have been 🚨 **REMOVED** 🚨(or renamed):
 
 - **Awaiter** is now built on top of react-async's [Async component](https://docs.react-async.com/api/interfaces#async-component)
 - Changes to **Button**:
-  - New variants: `primary`, `secondary`, `danger`, and `ghost` colors/stylings, and `small` and `large` sizes
+  - New variants: `primary`, `secondary`, `danger`, `success`, `info`, and `ghost` colors/stylings, and `small` and `large` sizes
   - Now supports an `icon` prop (same API as the Icon component's `icon` prop)
 - Changes to **Box**:
   - New variants: `modal` and `popup`, with different shadow styles
@@ -69,6 +70,7 @@ A small number of components have been 🚨 **REMOVED** 🚨(or renamed):
 - Changes to **TextInput**, **Textarea**, and **Select**:
   - Now properly handle the `disabled` prop
   - 🚨 No longer default to 100% width
+  - 🚨 `onChange` is now called with the value that was changed (`event.target.value`) instead of with the element's `change` event
 - Changes to **Tabs**/**TabList**:
   - New variants for Tabs and TabsList: `transparent` and `classic`
   - The look & feel of TabsList has been overhauled! (the old styling is preseved under the `classic` variant)
@@ -108,6 +110,12 @@ Component props that control whitespace now take the following spacing aliases f
 6. Import and use the design system constants from GreyVest's theme file, rather than hard-coding spacing or color values
 
 <hr />
+
+#### 3.0.0-alpha.22
+
+- Updates & improvements to the TableFooter family of components (PageSize, Pager, etc) and the TableFooter story
+- No longer pass variant flags through to child components (should stop those pesky React console errors)
+- Convert the rest of our `onChange` callbacks to pass the plain value instead of an event
 
 #### 3.0.0-alpha.21
 
