@@ -66,7 +66,7 @@ let colors = {
     '#aaaaaa', // Radiobutton & checkbox borders, secondary button active
   ],
   success: '#5bb85b', // not actually used anywhere in grey-vest
-  error: '#de350b',
+  error: '#de350b', // old error color: #d75050   
   info: '#6554c0',
   warning: '#ffab00',
   pastels: { // also not actually used in grey-vest
@@ -174,7 +174,6 @@ Since GreyVest has so many different input components that have to be styled sim
 
 ```js
 theme.inputStyle = {
-  ...theme.fonts.Text,
   transition: 'border-color 0.2s ease-in',
   // borders & padding
   borderRadius: theme.borderRadius,
@@ -183,9 +182,9 @@ theme.inputStyle = {
   outline: 'none',
   '&:focus': { borderColor: theme.colors.primary },
   // dimensions
-  height: theme.space(5),
   boxSizing: 'border-box',
   minWidth: theme.widths.formField.min,
+  minHeight: theme.space(5),
   // colors
   '::placeholder': { color: theme.colors.text, opacity: 0.5 },
   color: theme.colors.text,
