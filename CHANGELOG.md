@@ -27,7 +27,7 @@ Over a dozen new components have been added:
 - **Divider**: a horizontal or vertical separator
 - **ModalHeader**, **ModalContent**, and **ModalFooter**: helper components for building modals
 - **FormField**: a form input plus label, tooltip, error text, etc
-- **Form**, **FormHeader**, **FormContent**, **FormFooter**: helper components for bilding forms
+- **Form**, **FormHeader**, **FormContent**, **FormFooter**: helper components for building forms
 - **IconButton**: replaces TextButton, except it's just for icons
 - **ColumnList**: a container that supports spacing between children, plus CSS columns
 - **CommandButton**: a stateful button that leverages futil's `command` aspect
