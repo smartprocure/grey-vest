@@ -1,10 +1,13 @@
-import { Meta } from '@storybook/addon-docs/blocks'
+import { Meta, Preview } from '@storybook/addon-docs/blocks'
+import { Button, Title, Fonts } from '..'
 
 <Meta title="Design System | Variants" />
 
+<Fonts />
+
 # Variants
 
-Several GreyVest components have multiple options for coloration, size, or other properties -- for example, each typography component has at least one alternate text size in addition to the default. 
+Several GreyVest components have multiple options for coloration, size, or other properties -- for example, each typography component has at least one alternate text size in addition to the default.
 
 The GreyVest component library uses a **flag prop** API for component variants.
 
@@ -18,34 +21,43 @@ A flag prop is simply a boolean prop on a component. With React's [prop shorthan
 <Title large>This is a large title</Title>
 ```
 
+<Preview>
+  <Title>This is a normal-sized title</Title>
+  <Title large>This is a large title</Title>
+</Preview>
+
 The main disadvantage of using standalone flags for each variant over enumerated properties like `type` or `size` is that flags are never mutually exclusive even when the variants should be, so applying multiple variant flags at once can have unintended consequences. However, we feel that the conciseness of the flag API makes up for this downside. (Contrast `<Button size="small" type="primary">` with `<Button primary small>`.)
 
 ```jsx
 <Button primary small>I am a small primary button</Button>
 ```
 
+<Preview>
+  <Button>I am a normal button</Button>
+  <Button primary small>I am a small primary button</Button>
+</Preview>
+
 ## Variants in GreyVest
 
-| Component | Variants | Differences |
-| --- | --- | --- |
-| Banner | `warning`, `error` | background color and icon |
-| Box | `popup`, `modal` | box-shadow styling |
-| Button | `primary`, `secondary`, `danger`, `success`, `info`, `ghost` | background and text colors |
-| Button | `small`, `large` | padding, text size, and icon size |
-| Icon | `small`, `large` | icon size |
-| IconButton | `small`, `large` | padding (on the `small` variant) and size (on the `large` variant) |
-| Subtitle | `large` | font size and line height |
-| Tabs | `transparent`, `classic` | TabsList styling |
-| Text | `small`, `extraSmall` | font size and line height |
-| Title | `small`, `large` | font size and line height |
-
+| Component  | Variants                                                     | Differences                                                        |
+| ---------- | ------------------------------------------------------------ | ------------------------------------------------------------------ |
+| Banner     | `warning`, `error`                                           | background color and icon                                          |
+| Box        | `popup`, `modal`                                             | box-shadow styling                                                 |
+| Button     | `primary`, `secondary`, `danger`, `success`, `info`, `ghost` | background and text colors                                         |
+| Button     | `small`, `large`                                             | padding, text size, and icon size                                  |
+| Icon       | `small`, `large`                                             | icon size                                                          |
+| IconButton | `small`, `large`                                             | padding (on the `small` variant) and size (on the `large` variant) |
+| Subtitle   | `large`                                                      | font size and line height                                          |
+| Tabs       | `transparent`, `classic`                                     | TabsList styling                                                   |
+| Text       | `small`, `extraSmall`                                        | font size and line height                                          |
+| Title      | `small`, `large`                                             | font size and line height                                          |
 
 In addition to these, there are some common flags in GreyVest that are supported by multiple components, and could be considered to be variants:
 
-| Flag | Supported components | Purpose |
-| --- | --- | --- |
-| `native` | DateInput, RadioList, Select | Use native form elements instead of JS implementations |
-| `active` | Button, PagerItem, PickerItem | Update styling to convey that the item is currently active |
+| Flag       | Supported components                                  | Purpose                                                                                           |
+| ---------- | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `native`   | DateInput, RadioList, Select                          | Use native form elements instead of JS implementations                                            |
+| `active`   | Button, PagerItem, PickerItem                         | Update styling to convey that the item is currently active                                        |
 | `disabled` | Button, Checkbox, DropdownItem, PagerItem, PickerItem | Disable input and events on the component, and update styling to convey that the item is disabled |
 
 ## Component-level variants
