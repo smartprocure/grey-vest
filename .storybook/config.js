@@ -1,9 +1,8 @@
-import _ from 'lodash/fp'
-import F from 'futil'
-import { configure, addParameters, addDecorator } from '@storybook/react'
 import { DocsPage } from '@storybook/addon-docs/blocks'
-import Fonts from '../src/Fonts'
+import { configure, addParameters, addDecorator } from '@storybook/react'
 import React from 'react'
+import Fonts from '../src/Fonts'
+import { convertProps } from './utils'
 
 addDecorator(Story => (
   <>
@@ -11,23 +10,6 @@ addDecorator(Story => (
     <Story />
   </>
 ))
-
-let convertType = F.unless(
-  _.overEvery(_.isObject, _.has('summary')),
-  summary => ({ summary })
-)
-
-let convertTypes = F.expandObject(
-  _.flow(
-    _.pick(['type', 'defaultValue']),
-    _.mapValues(convertType)
-  )
-)
-
-let convertProps = _.flow(
-  F.unless(_.isArray, F.unkeyBy('name')),
-  _.map(convertTypes)
-)
 
 // DocsPage's propsSlot supplies the data for its Props component, and extractComponentDescription
 // does the same for the Description slot. This customization tells storybook to pull data from
