@@ -1,5 +1,6 @@
 import { DocsPage } from '@storybook/addon-docs/blocks'
 import { configure, addParameters, addDecorator } from '@storybook/react'
+import _ from 'lodash/fp'
 import React from 'react'
 import Fonts from '../src/Fonts'
 import { convertProps } from './utils'
