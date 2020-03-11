@@ -121,5 +121,5 @@
     "react-tooltip": "^3.11.1",
     "recompose": "^0.30.0"
   },
-  "readme": "README.mdx"
+  "readme": "README.md"
 }
