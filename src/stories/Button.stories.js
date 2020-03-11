@@ -1,25 +1,25 @@
 import React from 'react'
-import _ from 'lodash/fp'
+import F from 'futil'
 import { action } from '@storybook/addon-actions'
 import { Button, Grid, Flex } from '..'
 import { flag, asProp } from './commonProps'
 
-let flagProps = _.map(x => ({ name: x, ...flag }))
+let flagProps = F.arrayToObject(x => x, () => flag)
 
-let props = {
-  rows: [],
-  sections: {
-    'size flags': flagProps(['small', 'large']),
-    'color flags': flagProps(['primary', 'secondary', 'danger', 'ghost']),
-    other: [
-      {
-        name: 'onClick',
-        description: 'Click handler for button',
-        type: { summary: 'function' },
-        defaultValue: { summary: '() => {}' },
-      },
-      { ...asProp, defaultValue: { summary: `'button'` } },
-    ],
+let propSections = {
+  'size flags': flagProps(['small', 'large']),
+  'color flags': flagProps(['primary', 'secondary', 'danger', 'ghost']),
+  other: {
+    onClick: {
+      description: 'Click handler for button',
+      type: 'function',
+      defaultValue: '() => void',
+    },
+    icon: {
+      description: "supports the same values as Icon's `icon` prop",
+      type: 'string | Component',
+    },
+    as: { ...asProp, defaultValue: `'button'` },
   },
 }
 
@@ -28,7 +28,7 @@ export default {
   component: Button,
   parameters: {
     componentSubtitle: 'With five color variations and three sizes',
-    props,
+    propSections,
   },
 }
 

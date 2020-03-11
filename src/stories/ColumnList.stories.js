@@ -8,31 +8,26 @@ import { spacingValue, cssValue } from './commonProps'
 import theme from '../theme'
 
 let props = {
-  rows: [
-    {
-      ...spacingValue,
-      name: 'gap',
-      description:
-        'vertical spacing between each element in the list',
-    },
-    {
-      ...spacingValue,
-      name: 'columnGap',
-      description: 'horizontal spacing between columns',
-    },
-    {
-      name: 'columnCount',
-      description: '_maximum_ number of columns',
-      type: { summary: 'number' },
-      defaultValue: { summary: 1 },
-    },
-    {
-      ...cssValue,
-      name: 'columnWidth',
-      description: '_minimum_ width of each column',
-      defaultValue: { summary: theme.widths.xs },
-    },
-  ],
+  gap: {
+    type: spacingValue,
+    defaultValue: 0,
+    description: 'vertical spacing between each element in the list',
+  },
+  columnGap: {
+    type: spacingValue,
+    defaultValue: 0,
+    description: 'horizontal spacing between columns',
+  },
+  columnCount: {
+    type: 'number',
+    defaultValue: 1,
+    description: '_maximum_ number of columns',
+  },
+  columnWidth: {
+    type: cssValue,
+    defaultValue: theme.widths.xs,
+    description: '_minimum_ width of each column',
+  },
 }
 
 export default {

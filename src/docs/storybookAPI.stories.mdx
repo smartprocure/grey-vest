@@ -16,7 +16,8 @@ export default {
   parameters: {
     componentSubtitle,
     info,
-    props
+    props,
+    propSections,
   },
 }
 ```
@@ -28,8 +29,7 @@ Storybook docs are supposed to automatically parse PropTypes and JSDocs into dat
 1. Our widespread use of HOCs such as mobx-react's `observer` means that Storybook has trouble parsing metadata for a lot of our components (this will likely be ironed out as Storybook Docs matures, but we'd rather not wait for that to happen)
 2. We haven't historically used PropTypes and would have to add the data in some format to each of our components or stories anyway - and for documentation only, using PropTypes is less flexible than manually specifying the arguments to PropTable
 
-As a result, our storybook configuration is customized to pass the values from the `props` and `info` properties in `parameters` directly into Storybook's PropsTable and Description components, respectively.
-
+As a result, our storybook configuration is customized to pass the values from the `props` (or `propSections`) and `info` properties in `parameters` directly into Storybook's PropsTable and Description components, respectively.
 
 ## Subtitle
 
@@ -39,10 +39,11 @@ As a result, our storybook configuration is customized to pass the values from t
 
 ```jsx
 {
-  componentSubtitle: <>Button with <tt>large</tt> and <tt>small</tt> variants</>
+  componentSubtitle: <>
+    Button with <tt>large</tt> and <tt>small</tt> variants
+  </>
 }
 ```
-
 
 ## Description
 
@@ -52,63 +53,64 @@ You can supply a description for the story with the `info` property. It takes on
 
 ```js
 {
-  info:
-`
-GreyVest's Button component features five styling variants: **primary**, **secondary**, **tertiary**, **danger**, and **ghost**. The variants are subcomponents of Button (eg \`Button.Primary\`).
+  info: `
+GreyVest's Button component features six styling variants: **primary**,
+**secondary**, **danger**, **success**, **info**, and **ghost**. It also
+supports two size variants, **small** and **large**. To specify a variant,
+simply pass it as a flag to the component:
+
+\`\`\`jsx
+<Button primary small>I am a small primary button</Button>
+\`\`\`
 `
 }
 ```
-
 
 ## Props
 
-The `props` property accepts an object with two keys, `rows` and `sections`. Only one of these is used; if `sections` has a value, it overrides `rows`.
+The `props` property accepts either a `{ [propName]: propDefinition }` object, or an array of `{ propName, ...propDefinition }` objects. This is passed to Storybook's Props component and eventually rendered into the props table that appears on a story's docs page. A prop definition has the following shape (see Storybook's [PropDef](https://github.com/storybookjs/storybook/blob/next/lib/components/src/blocks/PropsTable/PropDef.ts) type for reference):
 
-| Property | Value  |
-| --- | --- |
-| `rows` | an array of prop definitions |
-| `sections` | an object where each key is a section heading, and each value is an array of prop definitions |
-
-A prop definition has the following shape (see Storybook's [PropDef](https://github.com/storybookjs/storybook/blob/next/lib/components/src/blocks/PropsTable/PropDef.ts) type for reference):
-
-```js
+```ts
 {
-  name,
-  required, // defaults to false
-  description,
-  type: { summary, detail },
-  defaultValue: { summary, detail },
+  required: boolean, // defaults to false
+  type: string | { summary: string, detail?: string },
+  description?: string,
+  defaultValue?: string | { summary: string, detail?: string }
 }
 ```
+
+### Summary values
+
+In addition to a string value, the `type` and `defaultValue` properties accept a `{ summary, detail }` object. This is the representation used by Storybook internally - the value of `summary` is displayed in the prop table, and the value of `detail`, if given, is displayed in a tooltip underneath. (If `type` or `defaultValue` receives a plain string instead of an object, it's used as the value of `summary` when passed to Storybook.)
+
+### Groups
+
+Storybook's props table supports either a single list of props, or multiple lists grouped into titled sections. For the latter, use the `propSections` property instead of `props`, and pass an object of the form `{ [sectionTitle]: props }`.
 
 ### Example
 
 ```js
-let flagDef = {
-  type: { summary: 'boolean' },
-  defaultValue: { summary: 'false' },
-}
+// Button.stories.js
 
-let props = {
-  sections: {
-    flags: [
-      { name: 'small', ...flagDef },
-      { name: 'large', ...flagDef },
-    ],
-    other: [
-      {
-        name: 'onClick',
-        description: 'click handler for button',
-        type: { summary: 'function' }
-      }
-    ]
+let flagDef = { type: 'boolean', defaultValue: 'false' }
+
+let propSections = {
+  flags: { small: flagDef, large: flagDef },
+  other: {
+    icon: {
+      description: "supports the same values as Icon's `icon` prop",
+      type: 'string | Component',
+    },
+    onClick: {
+      description: 'click handler for button',
+      type: 'function',
+    },
   },
 }
 
-export default {
-  title: 'Button',
-  parameters: { docs: { props } },
-}
+export default { title: 'Button', parameters: { propSections } }
+
+export let story = () => // ...
 ```
 
 ## Stories

@@ -16,29 +16,29 @@ Breaking changes are marked with a siren emoji: 🚨
 
 Over a dozen new components have been added:
 
-- **Text**, **Title** and **Subtitle** - typography components
-- **Dropdown** and **Dialog** - Popovers pre-rolled with trigger buttons and a simpler API
-- **DateTimeInput** - like DateInput, but also allows the user to enter a time
-- **Tooltip** - courtesy of react-tooltip
-- **Banner** - a brightly-colored box for text
-- **Pager** - a pagination control component meant to be used with tables
-- **PageSize** - companion to Pager, displays controls to change the page size 
-- **TableFooter** - incorporates Pager, PageSize, and some page info
-- **Divider** - a horizontal or vertical separator
-- **ModalHeader**, **ModalContent**, and **ModalFooter** - helper components for building modals
-- **FormField** - a form input plus label, tooltip, error text, etc
-- **Form**, **FormHeader**, **FormContent**, **FormFooter** - helper components for bilding forms
-- **IconButton** - replaces TextButton, except it's just for icons
-- **ColumnList** - a container that supports spacing between children, plus CSS columns
-- **CommandButton** - a stateful button that leverages futil's `command` aspect
+- **Text**, **Title** and **Subtitle**: typography components
+- **Dropdown** and **Dialog**: Popovers pre-rolled with trigger buttons and a simpler API
+- **DateTimeInput**: like DateInput, but also allows the user to enter a time
+- **Tooltip**: courtesy of react-tooltip
+- **Banner**: a brightly-colored box for text
+- **Pager**: a pagination control component meant to be used with tables
+- **PageSize**: companion to Pager, displays controls to change the page size
+- **TableFooter**: incorporates Pager, PageSize, and some page info
+- **Divider**: a horizontal or vertical separator
+- **ModalHeader**, **ModalContent**, and **ModalFooter**: helper components for building modals
+- **FormField**: a form input plus label, tooltip, error text, etc
+- **Form**, **FormHeader**, **FormContent**, **FormFooter**: helper components for building forms
+- **IconButton**: replaces TextButton, except it's just for icons
+- **ColumnList**: a container that supports spacing between children, plus CSS columns
+- **CommandButton**: a stateful button that leverages futil's `command` aspect
 
 A small number of components have been 🚨 **REMOVED** 🚨(or renamed):
 
 - **Style** is dead and gone 🎊
-- **SpacedList** - upcycled into ColumnList
-- **TextButton** - removed in favor of IconButton
-- **ErrorList** - renamed to **ErrorText**
-- **LinkButton** - renamed to **LinkText**
+- **SpacedList**: upcycled into ColumnList
+- **TextButton**: removed in favor of IconButton
+- **ErrorList**: renamed to **ErrorText**
+- **LinkButton**: renamed to **LinkText**
 - **ButtonRadio** has been removed
 - **ExpandableTagsInput** has been removed
 - **BarChart** is no longer exported
@@ -110,6 +110,10 @@ Component props that control whitespace now take the following spacing aliases f
 6. Import and use the design system constants from GreyVest's theme file, rather than hard-coding spacing or color values
 
 <hr />
+
+#### 3.0.0-alpha.23
+
+- Improve prop documentation API
 
 #### 3.0.0-alpha.22
 

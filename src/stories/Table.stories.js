@@ -4,13 +4,10 @@ import _ from 'lodash/fp'
 import { flag } from './commonProps'
 
 let props = {
-  rows: [
-    {
-      name: 'plain',
-      ...flag,
-      description: 'Disables the stripe effect on table rows',
-    },
-  ],
+  plain: {
+    ...flag,
+    description: 'Disables the stripe effect on table rows',
+  },
 }
 export default { title: 'Table', component: Table, parameters: { props } }
 
@@ -43,7 +40,6 @@ export let story = () => (
     </tbody>
   </Table>
 )
-
 
 export let plain = () => (
   <Table plain>

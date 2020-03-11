@@ -2,12 +2,14 @@ import React from 'react'
 import { TableFooter, TextInput, Text, Grid, Divider } from '..'
 
 let props = {
-  rows: [
-    { name: 'page', type: { summary: 'integer' } },
-    { name: 'onChangePage', type: { summary: 'function' } },
-    { name: 'pageSize', type: { summary: 'integer' } },
-    { name: 'onChangePageSize', type: { summary: 'function' } },
-  ],
+  page: { type: 'number' },
+  onChangePage: {
+    type: { summary: 'function', description: '(page: number) => void' },
+  },
+  pageSize: { type: 'number' },
+  onChangePageSize: {
+    type: { summary: 'function', description: '(pageSize: number) => void' },
+  },
 }
 
 export default {

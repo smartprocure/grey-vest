@@ -1,6 +1,6 @@
 {
   "name": "grey-vest",
-  "version": "3.0.0-alpha.22",
+  "version": "3.0.0-alpha.23",
   "description": "GreyVest component library",
   "main": "dist/index.js",
   "scripts": {
@@ -121,5 +121,5 @@
     "react-tooltip": "^3.11.1",
     "recompose": "^0.30.0"
   },
-  "readme": "README.mdx"
+  "readme": "README.md"
 }
