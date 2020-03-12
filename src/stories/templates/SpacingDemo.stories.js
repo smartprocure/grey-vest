@@ -64,7 +64,7 @@ export let columns = () => {
         columns={2}
         // ColumnList properties
         columnCount={2}
-        columnGap={2}
+        columnGap="md"
       >
         {columnContent}
       </Dynamic>
