@@ -1,6 +1,15 @@
 import React from 'react'
 import F from 'futil'
-import { Form, FormHeader, FormContent, FormFooter, FormField, TextInput, Button, Box } from '../..'
+import {
+  Form,
+  FormHeader,
+  FormContent,
+  FormFooter,
+  FormField,
+  TextInput,
+  Button,
+  Box,
+} from '../..'
 
 export default { title: 'Demos | Form' }
 
@@ -25,7 +34,22 @@ export let story = () => (
         error="This is an error message that extends to the next line"
         component={TextInput}
       />
-      <FormField width={2} label="Phone number" type="number" placeholder="(xxx)-xxx-xxxx" />
+      <FormField
+        width={2}
+        label="Phone number"
+        type="number"
+        placeholder="(xxx)-xxx-xxxx"
+      />
+      <FormField
+        hideLabel
+        width={2}
+        label="Phone number"
+        type="number"
+        required
+        tooltip="Tooltip on field with label hidden"
+        placeholder="Field with label hidden"
+      />
+
       <FormField
         width={2}
         label="Favorite color"

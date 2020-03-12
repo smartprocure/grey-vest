@@ -9,18 +9,19 @@ export default { title: 'TextHighlight', component: TextHighlight }
 let text = _.times(() => loremIpsum({ units: 'paragraph' }), 3)
 
 export let usage = () => {
-  let filter = React.useState('')
+  let [filter, setFilter] = React.useState('')
   return (
     <Grid gap="sm">
       <TextInput
         placeholder="Enter text to highlight..."
-        {...F.domLens.value(filter)}
+        value={filter}
+        onChange={setFilter}
       />
       <div>
         {F.mapIndexed(
           (t, i) => (
             <Text as="p" key={i}>
-              <TextHighlight text={t} pattern={F.view(filter)} />
+              <TextHighlight text={t} pattern={filter} />
             </Text>
           ),
           text

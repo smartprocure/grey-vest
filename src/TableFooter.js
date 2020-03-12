@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
-import F from 'futil'
 import _ from 'lodash/fp'
 import Pager from './Pager'
 import PagerItem from './PagerItem'
@@ -13,7 +12,7 @@ let PageDetails = ({ startRecord, endRecord, totalRecords, hasMore }) => (
   <Text small css={{ flex: '0 1 30%', textAlign: 'right' }}>
     <b>Showing </b>
     {startRecord >= endRecord ? endRecord : `${startRecord}-${endRecord}`}
-    {F.isNotNil(totalRecords) && ` of ${totalRecords}${hasMore ? '+' : ''}`}
+    {!hasMore && ` of ${totalRecords}`}
   </Text>
 )
 
@@ -29,7 +28,7 @@ let TableFooter = ({
   onChangePageSize,
   pageSizeOptions,
   hasMore,
-  totalRecords,
+  totalRecords = 0,
   startRecord = pageSize * (page - 1) + 1,
   endRecord = hasMore ? page * pageSize : 0,
   ...props
@@ -58,11 +57,8 @@ let TableFooter = ({
       <Flex css={{ flex: 1 }} alignItems="center" justifyContent="center">
         <Pager value={page} onChange={onChangePage} pageCount={pageCount} />
         {hasMore && page >= pageCount && (
-          <PagerItem
-            style={{ margin: '0 8px', paddingLeft: 12, paddingRight: 12 }}
-            onClick={() => onChangePage(page + 1)}
-          >
-            Load More...
+          <PagerItem onClick={() => onChangePage(page + 1)}>
+            Load more...
           </PagerItem>
         )}
       </Flex>

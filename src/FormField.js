@@ -1,5 +1,5 @@
 import _ from 'lodash/fp'
-import { defaultProps } from 'recompose'
+import { defaultProps, renameProp } from 'recompose'
 import React from 'react'
 import Flex from './Flex'
 import GridItem from './GridItem'
@@ -9,6 +9,7 @@ import { Text } from './Typography'
 import DateInput from './DateInput'
 import TextInput from './TextInput'
 import Textarea from './Textarea'
+import Checkbox from './Checkbox'
 import CheckboxList from './CheckboxList'
 import Select from './Select'
 import RadioList from './RadioList'
@@ -20,6 +21,7 @@ let types = {
   text: TextInput,
   number: defaultProps({ type: 'number' })(TextInput),
   textarea: Textarea,
+  checkbox: renameProp('value', 'checked')(Checkbox),
   checkboxList: CheckboxList,
   select: Select,
   radioList: RadioList,
@@ -44,42 +46,47 @@ let FormField = ({
   tooltip,
   required,
   error,
+  hideLabel,
   ...props
 }) => (
   <Flex column as={GridItem} {..._.pick(wrapperProps, props)}>
-    <Flex alignItems="center" gap="xs">
-      <Text small style={{ fontWeight: 600 }}>
-        {label}{' '}
-        {required && (
-          <span
-            style={{
-              fontSize: theme.fontSizes[3],
-              lineHeight: 0,
-              color: theme.colors.error,
-              verticalAlign: 'middle',
-            }}
-          >
-            *
-          </span>
+    {!hideLabel && (
+      <Flex alignItems="center" gap="xs">
+        <Text small style={{ fontWeight: 600 }}>
+          {label}{' '}
+          {required && (
+            <span
+              style={{
+                fontSize: theme.fontSizes[3],
+                lineHeight: 0,
+                color: theme.colors.error,
+                verticalAlign: 'middle',
+              }}
+            >
+              *
+            </span>
+          )}
+        </Text>
+        {tooltip && (
+          <Icon
+            icon="info"
+            small
+            style={{ color: theme.colors.info, cursor: 'help' }}
+            data-tip={tooltip}
+          />
         )}
-      </Text>
-      {tooltip && (
-        <Icon
-          icon="info"
-          size={2}
-          style={{ color: theme.colors.info, cursor: 'help' }}
-          data-tip={tooltip}
-        />
-      )}
-    </Flex>
-    <As {...{ error, ..._.omit(wrapperProps, props) }} />
+      </Flex>
+    )}
+    <As
+      data-tip={hideLabel && tooltip}
+      {...{ error, ..._.omit(wrapperProps, props) }}
+    />
     {error && (
       <Flex
-        alignItems="center"
         gap="xs"
         style={{ color: theme.colors.error, marginTop: theme.spaces.xs }}
       >
-        <Icon icon="error_outline" size={2} />
+        <Icon icon="error_outline" small style={{ marginTop: 1 }} />
         <Text extraSmall>{error}</Text>
       </Flex>
     )}

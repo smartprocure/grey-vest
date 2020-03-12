@@ -111,6 +111,12 @@ Component props that control whitespace now take the following spacing aliases f
 
 <hr />
 
+#### 3.0.0-alpha.24
+
+- Fix Checkbox toggle bug
+- Improve CheckboxList, RadioList, Select, and TableFooter stories
+- FormField: support `hideLabel` flag, add `checkbox` type
+
 #### 3.0.0-alpha.23
 
 - Improve prop documentation API

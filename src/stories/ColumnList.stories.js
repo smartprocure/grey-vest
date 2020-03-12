@@ -1,71 +1,34 @@
 import React from 'react'
 import F from 'futil'
 import _ from 'lodash/fp'
-import { loremIpsum } from 'lorem-ipsum'
-import { Divider, Flex, ColumnList, FormField } from '..'
+import ColumnList from '../ColumnList'
 import { useLensObject } from '../utils'
-import { spacingValue, cssValue } from './commonProps'
-import theme from '../theme'
-
-let props = {
-  gap: {
-    type: spacingValue,
-    defaultValue: 0,
-    description: 'vertical spacing between each element in the list',
-  },
-  columnGap: {
-    type: spacingValue,
-    defaultValue: 0,
-    description: 'horizontal spacing between columns',
-  },
-  columnCount: {
-    type: 'number',
-    defaultValue: 1,
-    description: '_maximum_ number of columns',
-  },
-  columnWidth: {
-    type: cssValue,
-    defaultValue: theme.widths.xs,
-    description: '_minimum_ width of each column',
-  },
-}
+import { columnProps } from './commonProps'
+import { lipsum, Controls } from './utils'
 
 export default {
   title: 'ColumnList',
   component: ColumnList,
-  parameters: { props },
+  parameters: { props: columnProps },
 }
 
-let content = _.times(loremIpsum, 30)
-
-let makeFields = F.mapIndexed((lens, key) => (
-  <FormField label={key} type="number" {...F.domLens.value(lens)} />
-))
+let content = _.times(lipsum, 10)
 
 export let story = () => {
   let state = useLensObject({
-    gap: 1,
-    columnGap: 2,
+    gap: 8,
+    columnGap: 16,
     columnCount: 5,
     columnWidth: 300,
   })
   return (
     <>
-      <Flex gap="sm">{makeFields(state)}</Flex>
-      <Divider margin="md" />
-      <ColumnList
-        {..._.mapValues(
-          _.flow(
-            F.view,
-            _.toNumber
-          ),
-          state
-        )}
-      >
+      <Controls state={state} />
+      <ColumnList {..._.mapValues(F.view, state)}>
         {F.mapIndexed(
           (x, i) => (
             <div style={{ background: 'cyan' }}>
-              {i + 1}. {x}
+              <b>({i + 1})</b> {x}
             </div>
           ),
           content

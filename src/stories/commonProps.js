@@ -1,3 +1,5 @@
+import theme from '../theme'
+
 export let flag = {
   type: { summary: 'boolean' },
   defaultValue: { summary: 'false' },
@@ -34,4 +36,47 @@ If string, units should be specified. */
 export let func = {
   type: { summary: 'function' },
   defaultValue: { summary: '() => {}' },
+}
+
+
+export let optionProps = {
+  value: {
+    type: 'any',
+    description:
+      'Matches the `value` property of the selected option. Can be any type, but should be shallow-comparable.',
+  },
+  options: {
+    type: {
+      summary: 'Option[]',
+      detail: 'type Option = { label: string, value: any, disabled?: boolean }',
+    },
+    defaultValue: '[]',
+  },
+  onChange: {
+    type: { summary: 'function', detail: '(value: any) => void' },
+    description: 'Called with the value of the selected option',
+  },
+}
+
+export let columnProps = {
+  gap: {
+    type: spacingValue,
+    defaultValue: 0,
+    description: 'Vertical spacing between each element in the list',
+  },
+  columnGap: {
+    type: spacingValue,
+    defaultValue: 0,
+    description: 'Horizontal spacing between columns',
+  },
+  columnCount: {
+    type: 'number',
+    defaultValue: 1,
+    description: '_Maximum_ number of columns',
+  },
+  columnWidth: {
+    type: cssValue,
+    defaultValue: theme.widths.xs,
+    description: '_Minimum_ width of each column',
+  },
 }
