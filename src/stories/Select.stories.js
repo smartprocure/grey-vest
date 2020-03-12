@@ -1,16 +1,24 @@
 import React from 'react'
 import F from 'futil'
 import _ from 'lodash/fp'
-import { Select, Grid } from '..'
+import { Select, Divider } from '..'
 import { lipsum, optionsFromArray } from './utils'
 
 let props = {
-  value: {},
+  value: {
+    type: 'any',
+    description:
+      'Matches the `value` property of the selected option. Can be any type, but should be shallow-comparable.',
+  },
   options: {
-    type: 'Array<{ label: string, value: any, disabled: boolean }>',
+    type: {
+      summary: 'Option[]',
+      detail: 'type Option = { label: string, value: any, disabled?: boolean }',
+    },
+    defaultValue: '[]',
   },
   onChange: {
-    type: '(value: any) => any',
+    type: { summary: 'function', detail: '(value: any) => void' },
     description: 'Called with the value of the selected option',
   },
 }
@@ -19,12 +27,11 @@ export default { title: 'Select', component: Select, parameters: { props } }
 let options = optionsFromArray(_.times(lipsum, 5))
 
 export let usage = () => {
-  let [value, setValue] = React.useState(1)
+  let [value, setValue] = React.useState('lizard')
   return (
-    <Grid gap="sm">
-      <div>
-        Selected: <b>{value}</b>
-      </div>
+    <div style={{ height: 240 }}>
+      Selected: <b>{value}</b>
+      <Divider />
       <Select
         value={value}
         onChange={setValue}
@@ -36,19 +43,18 @@ export let usage = () => {
           { label: '🍆', value: 'eggplant' },
         ]}
       />
-    </Grid>
+    </div>
   )
 }
 
 export let withDomLens = () => {
   let selected = React.useState(1)
   return (
-    <Grid gap="sm">
-      <div>
-        Selected: <b>{F.view(selected)}</b>
-      </div>
+    <div style={{ height: 360 }}>
+      Selected: <b>{F.view(selected)}</b>
+      <Divider />
       <Select {...F.domLens.value(selected)} options={options} />
-    </Grid>
+    </div>
   )
 }
 withDomLens.story = {
@@ -64,22 +70,30 @@ takes any valid [futil](https://github.com/smartprocure/futil-js) lens format
   },
 }
 
-export let shortOptions = () => (
-  <Select options={optionsFromArray(_.times(() => lipsum(1, 'words'), 8))} />
-)
-
 export let noOptions = () => <Select options={[]} />
 
 export let native = () => {
-  let selected = React.useState(1)
+  let [value, setValue] = React.useState(1)
   return (
-    <Grid gap="sm">
-      <div>
-        Selected: <b>{F.view(selected)}</b>
-      </div>
-      <Select native {...F.domLens.value(selected)} options={options} />
-    </Grid>
+    <>
+      Selected: <b>{value}</b>
+      <Divider />
+      <Select native value={value} onChange={setValue} options={options} />
+    </>
   )
 }
 
-export let disabled = () => <Select options={options} disabled />
+export let disabled = () => {
+  let [selected, setSelected] = React.useState(0)
+  return (
+    <div style={{ height: 360 }}>
+      Selected: <b>{selected}</b>
+      <Divider />
+      <Select
+        value={selected}
+        onChange={setSelected}
+        options={_.map(_.set('disabled', true), options)}
+      />
+    </div>
+  )
+}
