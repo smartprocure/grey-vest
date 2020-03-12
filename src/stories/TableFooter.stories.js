@@ -1,3 +1,4 @@
+import _ from 'lodash/fp'
 import React from 'react'
 import TableFooter from '../TableFooter'
 import { Controls } from './utils'
@@ -21,9 +22,21 @@ let props = {
     type: 'number',
     defaultValue: 0,
   },
+  startRecord: {
+    type: 'number',
+    description: 'Number of the first item on the current page',
+    defaultValue: 'pageSize * (page - 1) + 1',
+  },
+  endRecord: {
+    type: 'number',
+    description:
+      'Number of the last item on the current page. Used to display pagination details.',
+    defaultValue: 'hasMore ? (pageSize * page) : 0',
+  },
   hasMore: {
     type: 'boolean',
-    description: '',
+    description:
+      'If set, shows a "Load more" button that advances the page via `onChangePage`. ',
   },
 }
 
@@ -63,12 +76,106 @@ export let hasMore = () => {
         state={{
           page: [page, onChangePage],
           pageSize: [pageSize, onChangePageSize],
+          totalRecords: [0],
           hasMore: [hasMore, setHasMore],
         }}
-        types={{ hasMore: 'checkbox' }}
+        fields={{
+          hasMore: { type: 'checkbox' },
+          totalRecords: { disabled: true },
+        }}
       />
       <TableFooter
-        {...{ page, pageSize, onChangePage, onChangePageSize, hasMore }}
+        {...{
+          page,
+          pageSize,
+          onChangePage,
+          onChangePageSize,
+          hasMore,
+        }}
+      />
+    </>
+  )
+}
+hasMore.story = { name: 'hasMore' }
+
+export let hasMoreWithEndRecord = () => {
+  let [page, onChangePage] = React.useState(1)
+  let [pageSize, onChangePageSize] = React.useState(20)
+  let [hasMore, setHasMore] = React.useState(true)
+  let endRecord = page * pageSize
+  return (
+    <>
+      <Controls
+        state={{
+          hasMore: [hasMore, setHasMore],
+          endRecord: [endRecord],
+        }}
+        fields={{
+          hasMore: { type: 'checkbox' },
+          endRecord: { disabled: true },
+        }}
+      />
+      <TableFooter
+        {...{
+          page,
+          pageSize,
+          onChangePage,
+          onChangePageSize,
+          hasMore,
+          endRecord,
+        }}
+      />
+    </>
+  )
+}
+
+hasMoreWithEndRecord.story = {
+  name: 'hasMore with endRecord',
+  parameters: {
+    docs: {
+      storyDescription: `
+The \`endRecord\` prop allows TableFooter to display useful information in the bottom-right section even when \`totalRecords\` is missing and \`hasMore\` is false. It should contain the number of the last record on the page; usually this is \`page\` * \`pageSize\`, but it might be less if there are fewer items on the page than \`pageSize\` allows.
+`,
+    },
+  },
+}
+
+export let hasMoreWithTotalRecords = () => {
+  let [page, onChangePage] = React.useState(1)
+  let [pageSize, onChangePageSize] = React.useState(20)
+  let [hasMore, setHasMore] = React.useState(true)
+  let [totalRecords, setTotalRecords] = React.useState(undefined)
+  let [updateOnLoad, setUpdateOnLoad] = React.useState(true)
+  return (
+    <>
+      <Controls
+        state={{
+          hasMore: [hasMore, setHasMore],
+          totalRecords: [totalRecords, setTotalRecords],
+          updateOnLoad: [updateOnLoad, setUpdateOnLoad],
+        }}
+        fields={{
+          updateOnLoad: {
+            label: 'Set automatically?',
+            type: 'checkbox',
+          },
+          hasMore: { type: 'checkbox' },
+        }}
+      />
+      <TableFooter
+        onChangePage={_.over([
+          updateOnLoad
+            ? p => setTotalRecords(_.max([totalRecords, p * pageSize]))
+            : _.noop,
+          onChangePage,
+        ])}
+        {...{
+          page,
+          pageSize,
+          onChangePageSize,
+          hasMore,
+          totalRecords,
+        }}
       />
     </>
   )
