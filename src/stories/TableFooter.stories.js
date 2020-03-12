@@ -1,15 +1,29 @@
 import React from 'react'
-import { TableFooter, Divider } from '..'
+import TableFooter from '../TableFooter'
 import { Controls } from './utils'
 
 let props = {
-  page: { type: 'number' },
-  onChangePage: {
-    type: { summary: 'function', description: '(page: number) => void' },
+  page: {
+    description: 'Current page number. Starts at 1 for the first page.',
+    type: 'number',
+    defaultValue: 1,
   },
-  pageSize: { type: 'number' },
+  onChangePage: {
+    type: { summary: 'function', detail: '(page: number) => void' },
+  },
+  pageSize: { type: 'number', description: 'Number of items per page' },
   onChangePageSize: {
-    type: { summary: 'function', description: '(pageSize: number) => void' },
+    type: { summary: 'function', detail: '(pageSize: number) => void' },
+  },
+  totalRecords: {
+    description:
+      'Total number of items in the table. Used with `pageSize` to calculate the total number of pages.',
+    type: 'number',
+    defaultValue: 0,
+  },
+  hasMore: {
+    type: 'boolean',
+    description: '',
   },
 }
 
@@ -32,9 +46,29 @@ export let story = () => {
           totalRecords: [totalRecords, setTotalRecords],
         }}
       />
-      <Divider margin="md" />
       <TableFooter
         {...{ page, pageSize, onChangePage, onChangePageSize, totalRecords }}
+      />
+    </>
+  )
+}
+
+export let hasMore = () => {
+  let [page, onChangePage] = React.useState(1)
+  let [pageSize, onChangePageSize] = React.useState(20)
+  let [hasMore, setHasMore] = React.useState(true)
+  return (
+    <>
+      <Controls
+        state={{
+          page: [page, onChangePage],
+          pageSize: [pageSize, onChangePageSize],
+          hasMore: [hasMore, setHasMore],
+        }}
+        types={{ hasMore: 'checkbox' }}
+      />
+      <TableFooter
+        {...{ page, pageSize, onChangePage, onChangePageSize, hasMore }}
       />
     </>
   )
