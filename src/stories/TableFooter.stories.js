@@ -1,5 +1,6 @@
 import React from 'react'
-import { TableFooter, TextInput, Text, Grid, Divider } from '..'
+import { TableFooter, Divider } from '..'
+import { Controls } from './utils'
 
 let props = {
   page: { type: 'number' },
@@ -21,35 +22,19 @@ export default {
 export let story = () => {
   let [page, onChangePage] = React.useState(1)
   let [pageSize, onChangePageSize] = React.useState(20)
-  let [totalRecords, setTotalRecords] = React.useState(21)
+  let [totalRecords, setTotalRecords] = React.useState(51)
   return (
     <>
-      <Grid columns={3} gap="sm">
-        <div>
-          <Text as="div">Page:</Text>
-          <TextInput type="number" value={page} onChange={onChangePage} />
-        </div>
-        <div>
-          <Text as="div">Page Size:</Text>
-          <TextInput
-            type="number"
-            value={pageSize}
-            onChange={onChangePageSize}
-          />
-        </div>
-        <div>
-          <Text as="div">Total Records:</Text>
-          <TextInput
-            type="number"
-            value={totalRecords}
-            onChange={setTotalRecords}
-          />
-        </div>
-      </Grid>
+      <Controls
+        state={{
+          page: [page, onChangePage],
+          pageSize: [pageSize, onChangePageSize],
+          totalRecords: [totalRecords, setTotalRecords],
+        }}
+      />
       <Divider margin="md" />
       <TableFooter
-        {...{ page, pageSize, onChangePage, onChangePageSize }}
-        totalRecords={totalRecords}
+        {...{ page, pageSize, onChangePage, onChangePageSize, totalRecords }}
       />
     </>
   )

@@ -1,11 +1,10 @@
 import React from 'react'
 import F from 'futil'
 import _ from 'lodash/fp'
-import { loremIpsum } from 'lorem-ipsum'
-import { Divider, Flex, ColumnList, FormField } from '..'
+import { Divider, ColumnList } from '..'
 import { useLensObject } from '../utils'
 import { columnProps } from './commonProps'
-
+import { lipsum, Controls } from './utils'
 
 export default {
   title: 'ColumnList',
@@ -13,22 +12,18 @@ export default {
   parameters: { props: columnProps },
 }
 
-let content = _.times(loremIpsum, 30)
-
-let makeFields = F.mapIndexed((lens, key) => (
-  <FormField label={key} type="number" {...F.domLens.value(lens)} />
-))
+let content = _.times(lipsum, 10)
 
 export let story = () => {
   let state = useLensObject({
-    gap: 1,
-    columnGap: 2,
+    gap: 8,
+    columnGap: 16,
     columnCount: 5,
     columnWidth: 300,
   })
   return (
     <>
-      <Flex gap="sm">{makeFields(state)}</Flex>
+      <Controls state={state} />
       <Divider margin="md" />
       <ColumnList
         {..._.mapValues(
@@ -42,7 +37,7 @@ export let story = () => {
         {F.mapIndexed(
           (x, i) => (
             <div style={{ background: 'cyan' }}>
-              {i + 1}. {x}
+              <b>({i + 1})</b> {x}
             </div>
           ),
           content
