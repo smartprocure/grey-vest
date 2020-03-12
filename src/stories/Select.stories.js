@@ -3,26 +3,13 @@ import F from 'futil'
 import _ from 'lodash/fp'
 import { Select, Divider } from '..'
 import { lipsum, optionsFromArray } from './utils'
+import { optionProps } from './commonProps'
 
-let props = {
-  value: {
-    type: 'any',
-    description:
-      'Matches the `value` property of the selected option. Can be any type, but should be shallow-comparable.',
-  },
-  options: {
-    type: {
-      summary: 'Option[]',
-      detail: 'type Option = { label: string, value: any, disabled?: boolean }',
-    },
-    defaultValue: '[]',
-  },
-  onChange: {
-    type: { summary: 'function', detail: '(value: any) => void' },
-    description: 'Called with the value of the selected option',
-  },
+export default {
+  title: 'Select',
+  component: Select,
+  parameters: { props: optionProps },
 }
-export default { title: 'Select', component: Select, parameters: { props } }
 
 let options = optionsFromArray(_.times(lipsum, 5))
 

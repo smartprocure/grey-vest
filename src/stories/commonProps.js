@@ -35,3 +35,23 @@ export let func = {
   type: { summary: 'function' },
   defaultValue: { summary: '() => {}' },
 }
+
+
+export let optionProps = {
+  value: {
+    type: 'any',
+    description:
+      'Matches the `value` property of the selected option. Can be any type, but should be shallow-comparable.',
+  },
+  options: {
+    type: {
+      summary: 'Option[]',
+      detail: 'type Option = { label: string, value: any, disabled?: boolean }',
+    },
+    defaultValue: '[]',
+  },
+  onChange: {
+    type: { summary: 'function', detail: '(value: any) => void' },
+    description: 'Called with the value of the selected option.',
+  },
+}

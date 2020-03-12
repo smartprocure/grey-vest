@@ -2,8 +2,13 @@ import React from 'react'
 import _ from 'lodash/fp'
 import { CheckboxList, Divider } from '..'
 import { lipsum, optionsFromArray } from './utils'
+import { optionProps } from './commonProps'
 
-export default { title: 'CheckboxList', component: CheckboxList }
+export default {
+  title: 'CheckboxList',
+  component: CheckboxList,
+  parameters: { props: optionProps },
+}
 
 let options = optionsFromArray(_.times(lipsum, 5))
 

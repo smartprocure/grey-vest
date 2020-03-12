@@ -2,8 +2,13 @@ import React from 'react'
 import _ from 'lodash/fp'
 import { RadioList, Divider } from '..'
 import { lipsum, optionsFromArray } from './utils'
+import { optionProps } from './commonProps'
 
-export default { title: 'RadioList', component: RadioList }
+export default {
+  title: 'RadioList',
+  component: RadioList,
+  parameters: { props: optionProps },
+}
 
 let options = optionsFromArray(_.times(lipsum, 5))
 let shortOptions = optionsFromArray(_.times(() => lipsum(1, 'words'), 30))
