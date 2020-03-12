@@ -14,6 +14,7 @@ let PagerItem = ({ active, disabled, ...props }) => (
         lineHeight: `${theme.space(3)}px`,
         borderRadius: theme.borderRadius,
         cursor: 'pointer',
+        userSelect: 'none',
         display: 'inline-block',
         boxSizing: 'border-box',
         textAlign: 'center',
