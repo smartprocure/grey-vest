@@ -8,15 +8,21 @@ export let optionsFromArray = F.mapIndexed((label, value) => ({ label, value }))
 
 export let lipsum = (count, units) => loremIpsum({ count, units })
 
-export let Controls = ({ state, types }) => (
+export let Controls = ({ state, fields, children }) => (
   <>
-    <Flex gap="sm" justifyContent="space-evenly">
+    <Flex gap="sm" justifyContent="space-evenly" >
       {F.mapIndexed(
         (lens, key) => (
-          <FormField label={key} type={_.getOr('number', key, types)} {...F.domLens.value(lens)} />
+          <FormField
+            label={key}
+            {..._.get(key, fields)}
+            type={_.getOr('number', [key, 'type'], fields)}
+            {...F.domLens.value(lens)}
+          />
         ),
         state
       )}
+      {children}
     </Flex>
     <Divider margin="md" />
   </>
