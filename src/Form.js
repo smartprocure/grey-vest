@@ -18,7 +18,9 @@ export let FormHeader = ({ title, description, ...props }) => (
   </div>
 )
 
-export let FormContent = props => <Grid rowGap={2} columnGap={3} {...props} />
+export let FormContent = props => (
+  <Grid rowGap={theme.space(2)} columnGap={theme.space(3)} {...props} />
+)
 
 export let FormFooter = props => (
   <Flex gap="sm" css={{ paddingTop: theme.space(1) }} {...props} />

@@ -66,7 +66,7 @@ let FormField = ({
       {tooltip && (
         <Icon
           icon="info"
-          size={2}
+          small
           style={{ color: theme.colors.info, cursor: 'help' }}
           data-tip={tooltip}
         />
@@ -75,11 +75,10 @@ let FormField = ({
     <As {...{ error, ..._.omit(wrapperProps, props) }} />
     {error && (
       <Flex
-        alignItems="center"
         gap="xs"
         style={{ color: theme.colors.error, marginTop: theme.spaces.xs }}
       >
-        <Icon icon="error_outline" size={2} />
+        <Icon icon="error_outline" small style={{ marginTop: 1 }} />
         <Text extraSmall>{error}</Text>
       </Flex>
     )}
