@@ -1,7 +1,6 @@
 import React from 'react'
 import _ from 'lodash/fp'
-import F from 'futil'
-import { CheckboxList, Grid } from '..'
+import { CheckboxList, Divider } from '..'
 import { lipsum, optionsFromArray } from './utils'
 
 export default { title: 'CheckboxList', component: CheckboxList }
@@ -9,36 +8,39 @@ export default { title: 'CheckboxList', component: CheckboxList }
 let options = optionsFromArray(_.times(lipsum, 5))
 
 export let story = () => {
-  let values = React.useState([0, 1])
+  let [checked, setChecked] = React.useState([])
   return (
-    <Grid gap="sm">
-      <div>
-        Selected: <b>[{_.join(', ', F.view(values))}]</b>
-      </div>
+    <>
+      Selected: <b>[{_.join(', ', checked)}]</b>
+      <Divider />
       <CheckboxList
-        {...F.domLens.value(values)}
+        value={checked}
+        onChange={setChecked}
         options={[
-          ..._.initial(options),
-          { ..._.last(options), disabled: true },
+          { label: '🏈', value: 'sports' },
+          { label: '🥡', value: 'takeout' },
+          { label: '👌', value: 'ok_hand' },
+          { label: '👼', value: 'cherub' },
+          { label: '🦾', value: 'bionic_arm', disabled: true },
         ]}
       />
-    </Grid>
+    </>
   )
 }
 
 export let columns = () => {
-  let values = React.useState()
+  let [checked, setChecked] = React.useState([0, 1])
   return (
-    <Grid gap="sm">
-      <div>
-        Selected: <b>[{_.join(', ', F.view(values))}]</b>
-      </div>
+    <>
+      Selected: <b>[{_.join(', ', checked)}]</b>
+      <Divider />
       <CheckboxList
-        {...F.domLens.value(values)}
+        value={checked}
+        onChange={setChecked}
         options={options}
         columnCount={2}
       />
-    </Grid>
+    </>
   )
 }
 columns.story = {
@@ -51,17 +53,17 @@ columns.story = {
 }
 
 export let disabled = () => {
-  let values = React.useState([0, 1])
+  let [checked, setChecked] = React.useState([0, 1])
   return (
-    <Grid gap="sm">
-      <div>
-        Selected: <b>[{_.join(', ', F.view(values))}]</b>
-      </div>
+    <>
+      Selected: <b>[{_.join(', ', checked)}]</b>
+      <Divider />
       <CheckboxList
         native
-        {...F.domLens.value(values)}
+        value={checked}
+        onChange={setChecked}
         options={_.map(_.set('disabled', true), options)}
       />
-    </Grid>
+    </>
   )
 }
