@@ -1,5 +1,5 @@
 import _ from 'lodash/fp'
-import { defaultProps } from 'recompose'
+import { defaultProps, renameProp } from 'recompose'
 import React from 'react'
 import Flex from './Flex'
 import GridItem from './GridItem'
@@ -9,6 +9,7 @@ import { Text } from './Typography'
 import DateInput from './DateInput'
 import TextInput from './TextInput'
 import Textarea from './Textarea'
+import Checkbox from './Checkbox'
 import CheckboxList from './CheckboxList'
 import Select from './Select'
 import RadioList from './RadioList'
@@ -20,6 +21,7 @@ let types = {
   text: TextInput,
   number: defaultProps({ type: 'number' })(TextInput),
   textarea: Textarea,
+  checkbox: renameProp('value', 'checked')(Checkbox),
   checkboxList: CheckboxList,
   select: Select,
   radioList: RadioList,
@@ -75,7 +77,10 @@ let FormField = ({
         )}
       </Flex>
     )}
-    <As data-tip={hideLabel && tooltip} {...{ error, ..._.omit(wrapperProps, props) }} />
+    <As
+      data-tip={hideLabel && tooltip}
+      {...{ error, ..._.omit(wrapperProps, props) }}
+    />
     {error && (
       <Flex
         gap="xs"
