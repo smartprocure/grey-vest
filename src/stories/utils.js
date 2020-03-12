@@ -10,7 +10,7 @@ export let lipsum = (count, units) => loremIpsum({ count, units })
 
 export let Controls = ({ state, fields, children }) => (
   <>
-    <Flex gap="sm" justifyContent="space-evenly" >
+    <Flex gap="sm" justifyContent="space-evenly" alignItems="center">
       {F.mapIndexed(
         (lens, key) => (
           <FormField

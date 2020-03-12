@@ -1,6 +1,7 @@
 import _ from 'lodash/fp'
 import React from 'react'
 import TableFooter from '../TableFooter'
+import { Button } from '..'
 import { Controls } from './utils'
 
 let props = {
@@ -145,28 +146,23 @@ export let hasMoreWithTotalRecords = () => {
   let [pageSize, onChangePageSize] = React.useState(20)
   let [hasMore, setHasMore] = React.useState(true)
   let [totalRecords, setTotalRecords] = React.useState(undefined)
-  let [updateOnLoad, setUpdateOnLoad] = React.useState(true)
   return (
     <>
       <Controls
         state={{
           hasMore: [hasMore, setHasMore],
           totalRecords: [totalRecords, setTotalRecords],
-          updateOnLoad: [updateOnLoad, setUpdateOnLoad],
         }}
         fields={{
-          updateOnLoad: {
-            label: 'Set automatically?',
-            type: 'checkbox',
-          },
           hasMore: { type: 'checkbox' },
+          totalRecords: { disabled: true },
         }}
-      />
+      >
+        <Button danger onClick={() => setTotalRecords(0)}>Clear total</Button>
+      </Controls>
       <TableFooter
         onChangePage={_.over([
-          updateOnLoad
-            ? p => setTotalRecords(_.max([totalRecords, p * pageSize]))
-            : _.noop,
+          p => setTotalRecords(x => _.max([x, p * pageSize])),
           onChangePage,
         ])}
         {...{
