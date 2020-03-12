@@ -44,35 +44,38 @@ let FormField = ({
   tooltip,
   required,
   error,
+  hideLabel,
   ...props
 }) => (
   <Flex column as={GridItem} {..._.pick(wrapperProps, props)}>
-    <Flex alignItems="center" gap="xs">
-      <Text small style={{ fontWeight: 600 }}>
-        {label}{' '}
-        {required && (
-          <span
-            style={{
-              fontSize: theme.fontSizes[3],
-              lineHeight: 0,
-              color: theme.colors.error,
-              verticalAlign: 'middle',
-            }}
-          >
-            *
-          </span>
+    {!hideLabel && (
+      <Flex alignItems="center" gap="xs">
+        <Text small style={{ fontWeight: 600 }}>
+          {label}{' '}
+          {required && (
+            <span
+              style={{
+                fontSize: theme.fontSizes[3],
+                lineHeight: 0,
+                color: theme.colors.error,
+                verticalAlign: 'middle',
+              }}
+            >
+              *
+            </span>
+          )}
+        </Text>
+        {tooltip && (
+          <Icon
+            icon="info"
+            small
+            style={{ color: theme.colors.info, cursor: 'help' }}
+            data-tip={tooltip}
+          />
         )}
-      </Text>
-      {tooltip && (
-        <Icon
-          icon="info"
-          small
-          style={{ color: theme.colors.info, cursor: 'help' }}
-          data-tip={tooltip}
-        />
-      )}
-    </Flex>
-    <As {...{ error, ..._.omit(wrapperProps, props) }} />
+      </Flex>
+    )}
+    <As data-tip={hideLabel && tooltip} {...{ error, ..._.omit(wrapperProps, props) }} />
     {error && (
       <Flex
         gap="xs"
