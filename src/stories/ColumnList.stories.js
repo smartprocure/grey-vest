@@ -1,7 +1,7 @@
 import React from 'react'
 import F from 'futil'
 import _ from 'lodash/fp'
-import { Divider, ColumnList } from '..'
+import ColumnList from '../ColumnList'
 import { useLensObject } from '../utils'
 import { columnProps } from './commonProps'
 import { lipsum, Controls } from './utils'
@@ -24,16 +24,7 @@ export let story = () => {
   return (
     <>
       <Controls state={state} />
-      <Divider margin="md" />
-      <ColumnList
-        {..._.mapValues(
-          _.flow(
-            F.view,
-            _.toNumber
-          ),
-          state
-        )}
-      >
+      <ColumnList {..._.mapValues(F.view, state)}>
         {F.mapIndexed(
           (x, i) => (
             <div style={{ background: 'cyan' }}>
