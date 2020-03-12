@@ -17,15 +17,16 @@ let inlineContent = F.mapIndexed(
 
 export let withInlineContent = () => {
   let components = { Flex, Grid, ColumnList }
-  let component = React.useState('Flex')
+  let [component, setComponent] = React.useState('Flex')
   return (
     <>
       <Select
         options={F.autoLabelOptions(_.keys(components))}
-        {...F.domLens.value(component)}
+        value={component}
+        onChange={setComponent}
       />
       <Divider margin="md" />
-      <Dynamic component={components[F.view(component)]} gap="sm">
+      <Dynamic component={components[component]} gap="sm">
         {inlineContent}
       </Dynamic>
     </>
@@ -38,7 +39,12 @@ let columnContent = F.mapIndexed(
       alignItems="center"
       justifyContent="center"
       key={i}
-      style={{ border: '2px solid cyan', background: 'yellow', fontSize: 20, height }}
+      style={{
+        border: '2px solid cyan',
+        background: 'yellow',
+        fontSize: 20,
+        height,
+      }}
     >
       {i}
     </Flex>
@@ -48,16 +54,17 @@ let columnContent = F.mapIndexed(
 
 export let columns = () => {
   let components = { Grid, ColumnList }
-  let component = React.useState('Grid')
+  let [component, setComponent] = React.useState('Grid')
   return (
     <>
       <Select
         options={F.autoLabelOptions(_.keys(components))}
-        {...F.domLens.value(component)}
+        value={component}
+        onChange={setComponent}
       />
       <Divider margin="md" />
       <Dynamic
-        component={components[F.view(component)]}
+        component={components[component]}
         // both Grid and ColumnList
         gap="sm"
         // Grid property
@@ -74,8 +81,7 @@ export let columns = () => {
 columns.story = {
   parameters: {
     docs: {
-      storyDescription: 
-`
+      storyDescription: `
 This story demonstrates the differences in the way GreyVest's \`Grid\` and \`ColumnList\` components handle columns.
 
 | | Grid | ColumnList |
@@ -84,7 +90,7 @@ This story demonstrates the differences in the way GreyVest's \`Grid\` and \`Col
 | **gap API** | \`columnGap\` and \`rowGap\` control the gap between columns and rows respectively; \`gap\` is a shorthand to set both | \`gap\` controls the gap between elements, and \`columnGap\` controls the gap between columns |
 | **content ordering** | Left-to-right, then top-to-bottom | Top-to-bottom, then left-to-right |
 | **placement** | Each child element is placed inside a grid square, which is sized according to the largest element in the row | Content flows vertically within each column, then overflows to the next |
-`
+`,
     },
   },
 }
