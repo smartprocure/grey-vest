@@ -7,7 +7,6 @@ import Checkbox from './Checkbox'
 import ColumnList from './ColumnList'
 import Flex from './Flex'
 import { Text } from './Typography'
-import theme from './theme'
 
 let CheckboxList = ({ options, value, onChange, ...props }) => (
   <ColumnList gap="sm" {...props}>
@@ -15,13 +14,13 @@ let CheckboxList = ({ options, value, onChange, ...props }) => (
       option => (
         <Flex
           as="label"
-          alignItems="baseline"
           key={option.value}
           css={{ cursor: option.disabled ? 'not-allowed' : 'pointer' }}
+          gap="sm"
         >
           <Checkbox
+            css={{ marginTop: 3 }}
             {...F.domLens.checkboxValues(option.value, [value, onChange])}
-            css={{ marginRight: theme.spaces.sm }}
             {...option}
           />
           <Text small css={{ flex: 1, opacity: option.disabled && 0.5 }}>
