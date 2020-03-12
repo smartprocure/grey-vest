@@ -4,36 +4,13 @@ import _ from 'lodash/fp'
 import { loremIpsum } from 'lorem-ipsum'
 import { Divider, Flex, ColumnList, FormField } from '..'
 import { useLensObject } from '../utils'
-import { spacingValue, cssValue } from './commonProps'
-import theme from '../theme'
+import { columnProps } from './commonProps'
 
-let props = {
-  gap: {
-    type: spacingValue,
-    defaultValue: 0,
-    description: 'vertical spacing between each element in the list',
-  },
-  columnGap: {
-    type: spacingValue,
-    defaultValue: 0,
-    description: 'horizontal spacing between columns',
-  },
-  columnCount: {
-    type: 'number',
-    defaultValue: 1,
-    description: '_maximum_ number of columns',
-  },
-  columnWidth: {
-    type: cssValue,
-    defaultValue: theme.widths.xs,
-    description: '_minimum_ width of each column',
-  },
-}
 
 export default {
   title: 'ColumnList',
   component: ColumnList,
-  parameters: { props },
+  parameters: { props: columnProps },
 }
 
 let content = _.times(loremIpsum, 30)
