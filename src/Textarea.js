@@ -5,8 +5,9 @@ import { observer } from 'mobx-react'
 import _ from 'lodash/fp'
 import theme from './theme'
 
-let Textarea = (props, ref) => (
+let Textarea = ({ onChange, ...props }, ref) => (
   <textarea
+    onChange={e => onChange(e.target.value)}
     {...props}
     ref={ref}
     rows={4}
