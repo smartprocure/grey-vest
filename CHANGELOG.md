@@ -115,6 +115,13 @@ Component props that control whitespace now take the following spacing aliases f
 
 <hr />
 
+#### 3.0.0-alpha.25
+
+- Checkbox: add support for labels, add prop documentation, improve stories
+- Textarea: convert `onChange` callback to pass the plain value instead of an event (missed this one earlier)
+- Fix styling bug in the new TabsList default variant
+- Add migration notes about the `onChange` changes to the changelog
+
 #### 3.0.0-alpha.24
 
 - Fix Checkbox toggle bug
