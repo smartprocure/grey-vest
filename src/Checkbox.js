@@ -2,10 +2,10 @@
 import { jsx } from '@emotion/core'
 import Icon from './Icon'
 import Flex from './Flex'
+import { Text } from './Typography'
 import theme from './theme'
 
-// Low effort custom checkbox
-let Checkbox = ({
+let BaseCheckbox = ({
   checked = false,
   disabled,
   onChange = () => {},
@@ -45,10 +45,31 @@ let Checkbox = ({
     <input
       type="checkbox"
       style={{ display: 'none' }}
+      {...{ disabled, checked }}
       onChange={() => !disabled && onChange(!checked)}
-      checked={checked}
     />
     <Icon icon="check" small style={{ fontWeight: 800 }} />
   </Flex>
 )
+
+let LabeledCheckbox = ({ disabled, label, ...props }) => (
+  <Flex
+    as="label"
+    css={{ cursor: disabled ? 'not-allowed' : 'pointer' }}
+    gap="sm"
+  >
+    <Checkbox css={{ marginTop: 3 }} {...{ disabled, ...props }} />
+    <Text small css={{ flex: 1, opacity: disabled && 0.5 }}>
+      {label}
+    </Text>
+  </Flex>
+)
+
+let Checkbox = ({ label, ...props }) =>
+  label ? (
+    <LabeledCheckbox {...{ label, ...props }} />
+  ) : (
+    <BaseCheckbox {...props} />
+  )
+
 export default Checkbox

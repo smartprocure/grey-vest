@@ -67,9 +67,9 @@ export let Tabs = ({
   )(childrenArray)
 
   return (
-    <>
+    <div>
       <TabsList {...{ ...props, value, options }} onChange={handleChange} />
       <TabPanel>{content}</TabPanel>
-    </>
+    </div>
   )
 }

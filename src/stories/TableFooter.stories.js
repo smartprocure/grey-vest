@@ -158,7 +158,9 @@ export let hasMoreWithTotalRecords = () => {
           totalRecords: { disabled: true },
         }}
       >
-        <Button danger onClick={() => setTotalRecords(0)}>Clear total</Button>
+        <Button danger onClick={() => setTotalRecords(0)}>
+          Clear total
+        </Button>
       </Controls>
       <TableFooter
         onChangePage={_.over([

@@ -38,10 +38,11 @@ let colors = {
     '#aaaaaa', // Radiobutton & checkbox borders, secondary button active
   ],
   success: '#5bb85b', // not actually used anywhere in grey-vest
-  error: '#de350b', // old error color: #d75050   
+  error: '#de350b', // old error color: #d75050
   info: '#6554c0',
   warning: '#ffab00',
-  pastels: { // also not actually used in grey-vest
+  pastels: {
+    // also not actually used in grey-vest
     primary: '#b9d9f6',
     error: '#ffbdad',
     info: '#c0b6f2',

@@ -1,15 +1,18 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
-import { transparentize } from 'polished'
+import { transparentize, padding } from 'polished'
 import { Text } from './Typography'
 import _ from 'lodash/fp'
+import F from 'futil'
 import { observer } from 'mobx-react'
 import theme from './theme'
 import { getVariant } from './utils'
 let { colors } = theme
 
+let themePadding = F.mapArgs(theme.space, padding)
+
 let classic = {
-  padding: `${theme.space(1.5)}px ${theme.space(2.5)}px`,
+  ...themePadding(1.5, 2.5),
   backgroundColor: colors.neutrals[0],
   color: colors.text,
   borderLeft: `solid 1px ${colors.neutrals[1]}`,
@@ -22,7 +25,7 @@ let classic = {
     borderLeft: 'none',
   },
   '&.active, &.active:hover': {
-    padding: `${theme.space(1.5)}px ${theme.space(4)}px`,
+    ...themePadding(1.5, 4),
     backgroundColor: colors.backgrounds[0],
     // white box shadow trick from http://dev.housetrip.com/2012/06/15/good-looking-css-tabs/
     boxShadow: `0 10px 0 0 ${colors.backgrounds[0]}, ${
@@ -36,7 +39,7 @@ let classic = {
   },
 }
 let transparent = {
-  padding: `${theme.space(0.25)}px ${theme.spaces.md}px`,
+  ...themePadding(0.25, 2),
   borderBottom: `2px solid ${colors.neutrals[1]}`,
   color: transparentize(0.5, colors.text),
   borderTopLeftRadius: theme.borderRadius,
@@ -55,9 +58,7 @@ let regular = {
   backgroundColor: colors.neutrals[0],
   '&.active': {
     backgroundColor: colors.backgrounds[0],
-    boxShadow: `0 10px 0 0 ${colors.backgrounds[0]}, ${
-      theme.boxShadows.normal
-    }`,
+    boxShadow: theme.boxShadows.normal,
   },
   '&:active': {
     backgroundColor: colors.neutrals[1],

@@ -52,4 +52,7 @@ let Tag = ({ value, removeTag, tagStyle, ...props }, ref) => {
   )
 }
 
-export default _.flow(forwardRef, observer)(Tag)
+export default _.flow(
+  forwardRef,
+  observer
+)(Tag)

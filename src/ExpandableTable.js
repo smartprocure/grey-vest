@@ -22,6 +22,7 @@ let ExpandedSection = observer(
           colSpan={columnCount}
           css={{
             backgroundColor: theme.colors.neutralLight,
+            padding: 0,
           }}
         >
           {expandedRow.details.Component(

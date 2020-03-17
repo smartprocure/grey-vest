@@ -46,7 +46,7 @@ export let Popover = _.flow(
     Popup = PopupBox,
     triggerProps = {},
     popupProps = {},
-    placement = 'bottom-left',
+    placement = 'bottom-start',
     label = 'dropdown',
     isOpen: controlledIsOpen,
     onChange: controlledOnChange,

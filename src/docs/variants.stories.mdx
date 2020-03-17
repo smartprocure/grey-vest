@@ -29,12 +29,16 @@ A flag prop is simply a boolean prop on a component. With React's [prop shorthan
 The main disadvantage of using standalone flags for each variant over enumerated properties like `type` or `size` is that flags are never mutually exclusive even when the variants should be, so applying multiple variant flags at once can have unintended consequences. However, we feel that the conciseness of the flag API makes up for this downside. (Contrast `<Button size="small" type="primary">` with `<Button primary small>`.)
 
 ```jsx
-<Button primary small>I am a small primary button</Button>
+<Button primary small>
+  I am a small primary button
+</Button>
 ```
 
 <Preview>
   <Button>I am a normal button</Button>
-  <Button primary small>I am a small primary button</Button>
+  <Button primary small>
+    I am a small primary button
+  </Button>
 </Preview>
 
 ## Variants in GreyVest

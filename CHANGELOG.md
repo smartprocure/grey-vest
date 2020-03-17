@@ -11,6 +11,8 @@ Breaking changes are marked with a siren emoji: 🚨
 - Stories are no longer co-located with components (GreyVest alone is much smaller and flatter than contexture-react, so it makes more sense to keep them separate)
 - Expanded the `options` prop API (for **CheckboxList**, **RadioList**, and **Select**): in addition to `label` and `value`, each element now also accepts a boolean `disabled` property
 - 🚨 Purged CSS: removed `gv-` classNames from all components, and killed the **Style** component 🚨
+- Standardized component APIs with `onChange` functions to always pass the callback the value that was changed
+  - This is a 🚨 breaking change 🚨 for **Checkbox**, **DateInput**, **Select**, **Textarea**, and **TextInput**, which previously passed the HTMLEvent
 
 ### Components
 
@@ -52,6 +54,7 @@ A small number of components have been 🚨 **REMOVED** 🚨(or renamed):
 - Changes to **Box**:
   - New variants: `modal` and `popup`, with different shadow styles
   - New props: `padding`, `paddingX`, and `paddingY`
+- New props on **Checkbox**: now supports `label`!
 - Changes to **CheckboxList** and **RadioList**:
   - Both now support the `disabled` property on options (to mark that option as disabled)
   - Both components now also support ColumnList props (`gap`, `columnCount`, `columnWidth`, and `columnGap`)
@@ -105,11 +108,19 @@ Component props that control whitespace now take the following spacing aliases f
    - **ErrorList** with **ErrorText**
    - **LinkButton** with **LinkText**
 3. Remove all references to the **ButtonRadio**, **BarChart**, **ExpandableTagsInput**, and **Style** components
-4. Remove any CSS targeting `gv-` classNames
-5. Update any **Icon** components using contexture-react icon keys to use a material icon key (or a custom component) instead
-6. Import and use the design system constants from GreyVest's theme file, rather than hard-coding spacing or color values
+4. Update any `onChange` functions passed to GreyVest components to take a raw value as their argument instead of an HTML event (specifically relevant to **Checkbox**, **DateInput**, **Select**, **Textarea**, and **TextInput**)
+5. Remove any CSS targeting `gv-` classNames
+6. Update any **Icon** components using contexture-react icon keys to use a material icon key (or a custom component) instead
+7. Import and use the design system constants from GreyVest's theme file, rather than hard-coding spacing or color values
 
 <hr />
+
+#### 3.0.0-alpha.25
+
+- Checkbox: add support for labels, add prop documentation, improve stories
+- Textarea: convert `onChange` callback to pass the plain value instead of an event (missed this one earlier)
+- Fix styling bug in the new TabsList default variant
+- Add migration notes about the `onChange` changes to the changelog
 
 #### 3.0.0-alpha.24
 

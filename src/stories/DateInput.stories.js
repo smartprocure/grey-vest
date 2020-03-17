@@ -26,11 +26,7 @@ export let native = () => {
   return (
     <Grid gap="md" placeItems="start">
       <Text>Selected: {date.toUTCString()}</Text>
-      <DateInput
-        native
-        value={date}
-        onChange={setDate}
-      />
+      <DateInput native value={date} onChange={setDate} />
     </Grid>
   )
 }

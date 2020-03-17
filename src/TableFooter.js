@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import _ from 'lodash/fp'
+import { padding } from 'polished'
 import Pager from './Pager'
 import PagerItem from './PagerItem'
 import PageSize from './PageSize'
@@ -42,7 +43,7 @@ let TableFooter = ({
     <Flex
       justifyContent="space-between"
       alignItems="center"
-      css={{ padding: theme.spaces.sm }}
+      css={padding(theme.spaces.sm, theme.spaces.md)}
       {...props}
     >
       <PageSize
