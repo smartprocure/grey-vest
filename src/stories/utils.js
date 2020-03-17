@@ -27,3 +27,11 @@ export let Controls = ({ state, fields, children }) => (
     <Divider margin="md" />
   </>
 )
+
+export let setDescription = (story = {}, storyDescription) => {
+  story.story = { ...story.story, parameters: { docs: { storyDescription } } }
+}
+
+export let setName = (story = {}, name) => {
+  story.story = { ...story.story, name }
+}
