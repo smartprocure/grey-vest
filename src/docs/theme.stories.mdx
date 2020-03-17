@@ -28,7 +28,7 @@ theme.spaces = { xs: 4, sm: 8, md: 16, lg: 32 }
 theme.space = F.ifElse(_.isNumber, n => n * 8, F.aliasIn(theme.spaces))
 ```
 
-GreyVest uses an 8-pixel grid for spacing. Instead of an array of valid spacing values, we provide a function in `theme.space` that multiplies its input by 8. This way, if we need more granularity than the 8px grid, we can simply pass decimal numbers to `theme.space` - though using increments smaller than 0.5 (4px) is ***strongly discouraged***.
+GreyVest uses an 8-pixel grid for spacing. Instead of an array of valid spacing values, we provide a function in `theme.space` that multiplies its input by 8. This way, if we need more granularity than the 8px grid, we can simply pass decimal numbers to `theme.space` - though using increments smaller than 0.5 (4px) is **_strongly discouraged_**.
 
 ## Widths
 
@@ -49,8 +49,7 @@ theme.widths = {
 }
 ```
 
-Unlike spaces, widths are in raw pixel values. 
-
+Unlike spaces, widths are in raw pixel values.
 
 ## Colors
 
@@ -66,10 +65,11 @@ let colors = {
     '#aaaaaa', // Radiobutton & checkbox borders, secondary button active
   ],
   success: '#5bb85b', // not actually used anywhere in grey-vest
-  error: '#de350b', // old error color: #d75050   
+  error: '#de350b', // old error color: #d75050
   info: '#6554c0',
   warning: '#ffab00',
-  pastels: { // also not actually used in grey-vest
+  pastels: {
+    // also not actually used in grey-vest
     primary: '#b9d9f6',
     error: '#ffbdad',
     info: '#c0b6f2',
@@ -88,7 +88,6 @@ theme.colors = {
 
 See the Colors story under Design System for swatches.
 
-
 ## Box shadows
 
 ```js
@@ -101,7 +100,6 @@ theme.boxShadows = {
 ```
 
 Our design system specifies three levels of box-shadow. See the Box story for examples of each variant.
-
 
 ## Fonts
 

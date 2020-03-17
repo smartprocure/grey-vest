@@ -9,10 +9,7 @@ let lipsum = () => loremIpsum({ units: 'word' })
 
 export let story = () => {
   let listButtons = flag =>
-    _.map(
-      n => <Button {...{ [flag]: true }}>{n}</Button>,
-      _.times(lipsum, 4)
-    )
+    _.map(n => <Button {...{ [flag]: true }}>{n}</Button>, _.times(lipsum, 4))
   return (
     <Grid inline gap="md">
       <ButtonGroup>{listButtons()}</ButtonGroup>

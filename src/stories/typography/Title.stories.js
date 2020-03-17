@@ -59,6 +59,8 @@ export let weightAndItalicsVariants = () => (
   <Flex column gap="md">
     <Title bold>{lipsum()}</Title>
     <Title italic>{lipsum()}</Title>
-    <Title small normal>{lipsum()}</Title>
+    <Title small normal>
+      {lipsum()}
+    </Title>
   </Flex>
 )

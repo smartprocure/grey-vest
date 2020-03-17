@@ -8,10 +8,7 @@ export let basicUsage = () => (
   <Grid gap="sm" placeItems="start">
     <a data-tip="hello world">hover me</a>
     <Button data-tip="it is a button">is it a button?</Button>
-    <DropdownItem
-      icon="help_outline"
-      data-tip={loremIpsum({ count: 2 })}
-    >
+    <DropdownItem icon="help_outline" data-tip={loremIpsum({ count: 2 })}>
       This dropdown item has a very long tooltip
     </DropdownItem>
     <Tooltip />

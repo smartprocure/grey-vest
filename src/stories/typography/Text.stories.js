@@ -9,7 +9,13 @@ let { fonts } = theme
 export default {
   title: 'Design System | Typography / Text',
   component: Text,
-  parameters: { componentSubtitle: <>Body text component with <tt>small</tt> and <tt>extraSmall</tt> variants</> },
+  parameters: {
+    componentSubtitle: (
+      <>
+        Body text component with <tt>small</tt> and <tt>extraSmall</tt> variants
+      </>
+    ),
+  },
 }
 
 let lipsum = size => loremIpsum({ size, units: 'paragraphs' })

@@ -20,7 +20,7 @@ export let grailDemo = () => (
       ]}
       rows="2fr 5fr 1fr"
       columns="1fr 3fr 1fr"
-      css={{'> *': { border: '2px solid black' }}}
+      css={{ '> *': { border: '2px solid black' } }}
     >
       <GridItem area="header">header</GridItem>
       <GridItem area="footer">footer</GridItem>

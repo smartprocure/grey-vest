@@ -87,12 +87,14 @@ let PanelTreePicker = inject((store, { onChange, options }) => {
   observer(({ selectAtLevel, state, nestedOptions }) => (
     <div
       css={{
-        display: 'inline-flex', width: '100%', overflow: 'auto',
+        display: 'inline-flex',
+        width: '100%',
+        overflow: 'auto',
         maxHeight: 640,
         '> div': {
           borderRight: 'solid 1px #eef0f1',
           ':last-child': { borderRight: 'none' },
-        }
+        },
       }}
     >
       <Section

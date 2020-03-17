@@ -38,7 +38,6 @@ export let func = {
   defaultValue: { summary: '() => {}' },
 }
 
-
 export let optionProps = {
   value: {
     type: 'any',

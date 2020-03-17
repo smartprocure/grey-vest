@@ -4,18 +4,21 @@ import { forwardRef } from 'react'
 import F from 'futil'
 import theme from './theme'
 
-let Flex = ({
-  as: As = 'div',
-  alignItems,
-  alignContent,
-  justifyContent,
-  wrap = false,
-  column = false,
-  inline = false,
-  children,
-  gap = 0,
-  ...props
-}, ref) => {
+let Flex = (
+  {
+    as: As = 'div',
+    alignItems,
+    alignContent,
+    justifyContent,
+    wrap = false,
+    column = false,
+    inline = false,
+    children,
+    gap = 0,
+    ...props
+  },
+  ref
+) => {
   let m = F.alias(gap, theme.spaces)
   let flexStyle = [
     {
@@ -36,7 +39,9 @@ let Flex = ({
   ]
   return wrap ? (
     <As css={{ overflow: 'hidden' }} {...props}>
-      <div css={flexStyle} ref={ref}>{children}</div>
+      <div css={flexStyle} ref={ref}>
+        {children}
+      </div>
     </As>
   ) : (
     <As css={flexStyle} {...props} ref={ref}>

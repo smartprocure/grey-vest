@@ -1,13 +1,6 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
-import {
-  Flex,
-  Button,
-  Subtitle,
-  Title,
-  Dropdown,
-  DropdownItem,
-} from '../..'
+import { Flex, Button, Subtitle, Title, Dropdown, DropdownItem } from '../..'
 import theme from '../../theme'
 
 export default { title: 'Demos | Page Header' }
