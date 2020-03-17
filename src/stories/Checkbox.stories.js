@@ -30,15 +30,24 @@ export let withDomLens = () => {
   let checkedLens = React.useState(false)
   return (
     <Checkbox
-      {...F.domLens.targetBinding('checked')(checkedLens)}
+      {...F.domLens.binding('checked')(checkedLens)}
       label="Check me!"
     />
   )
 }
 setName(withDomLens, 'With domLens')
+setDescription(
+  withDomLens,
+  `
+Demonstrats how to use futil's \`domLens\` to bind Checkbox's \`checked\` and
+\`onChange\` control props to React state.
+`
+)
 
-export let unchecked = () => <Checkbox />
-export let checked = () => <Checkbox checked />
+export let noLabel = () => {
+  let [checked, setChecked] = React.useState(true)
+  return <Checkbox checked={checked} onChange={setChecked} />
+}
 
 export let disabled = () => {
   let [checked, setChecked] = React.useState(true)
@@ -51,7 +60,10 @@ export let disabled = () => {
     />
   )
 }
-setDescription(disabled, `
-A disabled checkbox should not handle click events. We attach state to the
+setDescription(
+  disabled,
+  `
+A disabled checkbox should not handle change events. We attach state to the
 checkbox in this story to confirm that it will *not* be updated.
-`)
+`
+)
