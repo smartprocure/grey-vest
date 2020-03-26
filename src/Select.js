@@ -86,10 +86,10 @@ let ReactSelect = ({ value, options, onChange, ...props }) => (
 )
 
 let Select = (
-  { options, native = false, placeholder = 'Please Select...', ...props },
+  { options, custom = false, placeholder = 'Please Select...', ...props },
   ref
 ) => {
-  let Component = native ? NativeSelect : ReactSelect
+  let Component = custom ? ReactSelect : NativeSelect 
   return <Component {...{ options, placeholder, ref, ...props }} />
 }
 

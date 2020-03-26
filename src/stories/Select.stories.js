@@ -59,13 +59,13 @@ takes any valid [futil](https://github.com/smartprocure/futil-js) lens format
 
 export let noOptions = () => <Select options={[]} />
 
-export let native = () => {
+export let custom = () => {
   let [value, setValue] = React.useState(1)
   return (
     <>
       Selected: <b>{value}</b>
       <Divider />
-      <Select native value={value} onChange={setValue} options={options} />
+      <Select custom value={value} onChange={setValue} options={options} />
     </>
   )
 }

@@ -115,6 +115,11 @@ Component props that control whitespace now take the following spacing aliases f
 
 <hr />
 
+#### 3.0.0-alpha.26
+
+- Use native Select component by default
+- Move JavaScript Select component under `custom` opt-in
+
 #### 3.0.0-alpha.25
 
 - Checkbox: add support for labels, add prop documentation, improve stories
