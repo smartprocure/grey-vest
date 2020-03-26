@@ -115,6 +115,10 @@ Component props that control whitespace now take the following spacing aliases f
 
 <hr />
 
+#### 3.0.0-alpha.26
+
+- Move `react-select` to `dependencies` from `devDependencies`
+
 #### 3.0.0-alpha.25
 
 - Checkbox: add support for labels, add prop documentation, improve stories
