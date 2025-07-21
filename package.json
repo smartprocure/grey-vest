@@ -95,7 +95,7 @@
     "duti": "^0.15.2",
     "eslint": "^4.12.1",
     "eslint-config-smartprocure": "^1.1.0",
-    "jest": "^24.7.1",
+    "jest": "^30.0.4",
     "lorem-ipsum": "^2.0.3",
     "mobx": "^4.3.1",
     "mobx-react": "^6.1.1",
